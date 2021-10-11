@@ -1,4 +1,4 @@
-val ktorVersion = "1.6.3"
+val ktorVersion = "1.6.4"
 val kafkaVersion = "3.0.0"
 val junitJupiterVersion = "5.8.1"
 
@@ -22,6 +22,14 @@ dependencies {
     implementation("io.ktor:ktor-server-core:$ktorVersion")
     implementation("io.ktor:ktor-server-cio:$ktorVersion")
     implementation("io.ktor:ktor-client-cio:$ktorVersion")
+
+    implementation("org.slf4j:slf4j-api:1.7.29")
+    implementation("ch.qos.logback:logback-classic:1.2.3")
+    implementation("net.logstash.logback:logstash-logback-encoder:6.2")
+
+
+    api("io.ktor:ktor-metrics-micrometer:$ktorVersion")
+    api("io.micrometer:micrometer-registry-prometheus:1.7.3")
 
     testImplementation("no.nav:kafka-embedded-env:2.8.0")
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")

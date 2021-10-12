@@ -1,5 +1,5 @@
 val ktorVersion = "1.6.4"
-val kafkaVersion = "3.0.0"
+val kafkaVersion = "2.8.0"
 val junitJupiterVersion = "5.8.1"
 
 plugins {
@@ -23,17 +23,18 @@ dependencies {
     implementation("io.ktor:ktor-server-cio:$ktorVersion")
     implementation("io.ktor:ktor-client-cio:$ktorVersion")
 
-    implementation("org.slf4j:slf4j-api:1.7.29")
-    implementation("ch.qos.logback:logback-classic:1.2.3")
-    implementation("net.logstash.logback:logstash-logback-encoder:6.2")
+    implementation("org.slf4j:slf4j-api:1.7.32")
+    implementation("ch.qos.logback:logback-classic:1.2.6")
+    implementation("net.logstash.logback:logstash-logback-encoder:6.6")
 
 
     api("io.ktor:ktor-metrics-micrometer:$ktorVersion")
-    api("io.micrometer:micrometer-registry-prometheus:1.7.3")
+    api("io.micrometer:micrometer-registry-prometheus:1.7.4")
 
     testImplementation("no.nav:kafka-embedded-env:2.8.0")
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
     testImplementation("org.junit.jupiter:junit-jupiter-params:$junitJupiterVersion")
+    testImplementation("org.awaitility:awaitility:4.1.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
 }
 

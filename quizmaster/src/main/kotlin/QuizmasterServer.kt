@@ -7,27 +7,51 @@ import io.ktor.response.*
 import io.ktor.routing.*
 import io.ktor.server.cio.*
 import io.ktor.server.engine.*
-import io.ktor.sessions.Sessions.Feature.install
 import io.micrometer.core.instrument.Clock
 import io.micrometer.core.instrument.binder.jvm.ClassLoaderMetrics
 import io.micrometer.core.instrument.binder.jvm.JvmGcMetrics
 import io.micrometer.core.instrument.binder.jvm.JvmMemoryMetrics
 import io.micrometer.core.instrument.binder.jvm.JvmThreadMetrics
-import io.micrometer.core.instrument.binder.logging.LogbackMetrics
 import io.micrometer.core.instrument.binder.system.ProcessorMetrics
 import io.micrometer.prometheus.PrometheusConfig
 import io.micrometer.prometheus.PrometheusMeterRegistry
 import io.prometheus.client.CollectorRegistry
 import io.prometheus.client.exporter.common.TextFormat
+import org.slf4j.LoggerFactory
 
 fun main() {
-    QuizmasterServer().start()
+    QuizmasterServer(Config.fromEnv()).start()
 }
 
-class QuizmasterServer {
+class QuizmasterServer(private val config: Config) {
+
+    private val log = LoggerFactory.getLogger("Quizmaster")
 
     fun start() {
-        ktorServer().start(true)
+        val quizRapid = QuizRapid(
+            config.bootstrapServers,
+            onRecords = { consumerRecords ->
+                consumerRecords.records("quiz-rapid").forEach {
+                    println(it.value())
+
+                    // TODO just an example
+                    if (it.value().startsWith("register ")) {
+                        publish("Registration received for team: ${it.value().split(" ")[1]}")
+                    }
+                }
+            }
+        )
+        val ktorServer = ktorServer().start(false)
+        try {
+            quizRapid.start()
+        } finally {
+            val gracePeriod = 5000L
+            val forcefulShutdownTimeout = 30000L
+            log.info("shutting down ktor, waiting $gracePeriod ms for workers to exit. Forcing shutdown after $forcefulShutdownTimeout ms")
+            ktorServer.stop(gracePeriod, forcefulShutdownTimeout)
+            log.info("ktor shutdown complete: end of life. goodbye.")
+        }
+
     }
 }
 

@@ -27,7 +27,6 @@ class QuizRapid(
 
     private val running = AtomicBoolean(false)
 
-
     internal fun isRunning() = running.get()
 
     internal fun publish(message: String) {

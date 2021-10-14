@@ -10,7 +10,9 @@ import org.apache.kafka.clients.producer.KafkaProducer
 import org.apache.kafka.clients.producer.Producer
 import org.apache.kafka.clients.producer.ProducerConfig
 import org.apache.kafka.clients.producer.ProducerRecord
-import org.apache.kafka.common.config.SaslConfigs
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 import org.apache.kafka.common.serialization.StringDeserializer
 import org.apache.kafka.common.serialization.StringSerializer
 import org.awaitility.Awaitility.await
@@ -67,15 +69,20 @@ internal class QuizRapidTest {
             println(it.records(testTopic))
             counter += 1
         }
+        val currentJob = GlobalScope.launch {
+            quizRapid.start()
+        }
+
+
         embeddedKafkaEnvironment.produceToTopic(testTopic, listOf("Hello1", "Hello2", "Hello3"))
 
         await("wait until recods are sent")
             .atMost(20, TimeUnit.SECONDS)
             .until {
-                counter > 0
+                counter > 2
             }
         assertEquals(3, counter)
-
+        currentJob.cancel()
     }
 
     private fun KafkaEnvironment.produceToTopic(name: String, records: List<String>) {

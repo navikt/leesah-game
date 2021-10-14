@@ -17,7 +17,7 @@ TODO
   
   Handles the flow of the game. Reads and writes on the game topic
 
-- **Quizboard**
+- **Quizboard** (Leaderboard)
 
   Handles showing the state of the game as a webpage
 
@@ -27,3 +27,10 @@ TODO
 - [ ] Accept team registration
 - [ ] Issue challenges
   - [ ] Challenge 1 ("\<number\> + \<number\>")
+
+### Data Model
+
+TODO
+
+
+

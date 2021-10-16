@@ -26,7 +26,7 @@ jobs:
           java-version: '17.x'
           distribution: 'temurin'
       - name: test and build
-        run: ./gradlew build
+        run: ../gradlew build
         working-directory: quizmaster
       - name: build docker image
         run: docker build . --pull -t ${{ needs.set_version.outputs.image }}

@@ -1,4 +1,4 @@
-name: Quizmaster build
+name: Quizmaster-build
 
 on:
   push:

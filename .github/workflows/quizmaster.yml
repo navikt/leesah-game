@@ -3,6 +3,9 @@ name: Quizmaster-build
 on:
   push:
     branches: [ main ]
+    paths-ignore:
+    - '**/README.md'
+    - 'docker-compose.yml'
 
 jobs:
   set_version:

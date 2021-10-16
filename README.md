@@ -1,4 +1,4 @@
-# Life is a Stream of Events | the game
+# 🏞️ Life is a Stream of Events | the game
 
 ## Description
 

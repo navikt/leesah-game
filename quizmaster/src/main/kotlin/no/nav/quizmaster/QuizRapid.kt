@@ -1,4 +1,4 @@
-package no.nav.quizmaster
+package no.nav.quizmaster.no.nav.quizmaster
 
 import org.apache.kafka.clients.CommonClientConfigs
 import org.apache.kafka.clients.consumer.ConsumerConfig
@@ -19,7 +19,7 @@ class QuizRapid(
     private val bootrapServers: List<String>,
     private val clientId: String = UUID.randomUUID().toString().slice(1..5),
     private val rapidTopic: String = "quiz-rapid",
-    private val onRecords: QuizRapid.(records: ConsumerRecords<String, String>) -> Unit
+    private val run: QuizRapid.(records: ConsumerRecords<String, String>) -> Unit
 ) {
     private val consumer = KafkaConsumer(consumerConfig(), StringDeserializer(), StringDeserializer())
     private val producer = KafkaProducer(producerConfig(), StringSerializer(), StringSerializer())
@@ -57,7 +57,7 @@ class QuizRapid(
             consumer.subscribe(listOf(rapidTopic))
             while (running.get()) {
                 consumer.poll(Duration.ofSeconds(1)).also {
-                    onRecords(it)
+                    run(it)
                 }
             }
         } catch (err: WakeupException) {

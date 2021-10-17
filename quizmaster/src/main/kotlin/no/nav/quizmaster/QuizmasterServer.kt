@@ -17,33 +17,49 @@ import io.micrometer.prometheus.PrometheusConfig
 import io.micrometer.prometheus.PrometheusMeterRegistry
 import io.prometheus.client.CollectorRegistry
 import io.prometheus.client.exporter.common.TextFormat
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import no.nav.quizmaster.no.nav.quizmaster.Config
+import no.nav.quizmaster.no.nav.quizmaster.QuizMaster
+import no.nav.quizmaster.no.nav.quizmaster.QuizRapid
 import org.slf4j.LoggerFactory
+import java.util.concurrent.atomic.AtomicBoolean
 
 fun main() {
-    QuizmasterServer(Config.fromEnv()).start()
+    QuizmasterServer(Config.fromEnv()).startBlocking()
 }
 
 class QuizmasterServer(private val config: Config) {
 
     private val log = LoggerFactory.getLogger("Quizmaster")
+    private val quizMaster = QuizMaster()
+    private val quizRapid = QuizRapid(
+        config.bootstrapServers,
+        rapidTopic = config.quizTopic
+    ) { consumerRecords ->
+        consumerRecords.records(config.quizTopic).forEach { record ->
+            log.debug("Message received on rapid", record.value())
+            quizMaster.handle(record.value())
+        }
+        quizMaster.events().forEach {
+            log.debug("publishing event", it)
+            publish(it)
+        }
+    }
 
-    fun start() {
-        val quizRapid = QuizRapid(
-            config.bootstrapServers,
-            onRecords = { consumerRecords ->
-                consumerRecords.records("quiz-rapid").forEach {
-                    println(it.value())
+    fun startBlocking() {
+        runBlocking { start() }
+    }
 
-                    // TODO just an example
-                    if (it.value().startsWith("register ")) {
-                        publish("Registration received for team: ${it.value().split(" ")[1]}")
-                    }
-                }
-            }
-        )
+    suspend fun start() {
         val ktorServer = ktorServer().start(false)
         try {
-            quizRapid.start()
+            coroutineScope {
+                launch { quizRapid.start() }
+            }
+
         } finally {
             val gracePeriod = 5000L
             val forcefulShutdownTimeout = 30000L

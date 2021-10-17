@@ -23,10 +23,10 @@ TODO
 
 ### TODO
 
-- [ ] Start new game
-- [ ] Accept team registration
-- [ ] Issue challenges
-  - [ ] Challenge 1 ("\<number\> + \<number\>")
+- [x] Start new game
+- [x] Accept team registration
+- [x] Issue challenges
+  - [x] Challenge 1 ("\<number\> + \<number\>")
 
 ### Data Model
 

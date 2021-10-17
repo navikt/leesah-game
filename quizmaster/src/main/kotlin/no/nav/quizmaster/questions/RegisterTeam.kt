@@ -50,7 +50,8 @@ class RegisterTeam {
     }
 
     private fun publish(teamName: String, answerId: String) {
-        val assessment = Assessment(category = CATEGORY, teamName = teamName, answerId = answerId)
+        val assessment =
+            Assessment(category = CATEGORY, teamName = teamName, questionId = questionPostedId!!, answerId = answerId)
         logger.debug("publishing assessment", assessment)
         outEvents.add(assessment)
     }

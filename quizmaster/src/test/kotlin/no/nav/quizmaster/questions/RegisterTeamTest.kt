@@ -31,5 +31,5 @@ internal class RegisterTeamTest {
     }
 
     private fun answer() =
-        Answer(category = RegisterTeam.CATEGORY, teamName = "", answer = "coolteam")
+        Answer(category = RegisterTeam.CATEGORY, teamName = "", questionId = "question1", answer = "coolteam")
 }

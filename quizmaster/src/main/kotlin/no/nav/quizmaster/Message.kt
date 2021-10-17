@@ -42,6 +42,7 @@ data class Answer private constructor(
     val type: MessageType,
     val category: String,
     val teamName: String,
+    val questionId: String,
     val answer: String
 ) : Message {
     override fun id() = messageId
@@ -51,8 +52,9 @@ data class Answer private constructor(
         messageId: String = UUID.randomUUID().toString(),
         category: String,
         teamName: String,
+        questionId: String,
         answer: String
-    ) : this(messageId, MessageType.ANSWER, category, teamName, answer)
+    ) : this(messageId, MessageType.ANSWER, category, teamName, questionId, answer)
 }
 
 data class Assessment private constructor(
@@ -60,6 +62,7 @@ data class Assessment private constructor(
     val type: MessageType,
     val category: String,
     val teamName: String,
+    val questionId: String,
     val answerId: String,
     val sign: String,
 ) : Message {
@@ -74,8 +77,9 @@ data class Assessment private constructor(
         messageId: String = UUID.randomUUID().toString(),
         category: String,
         teamName: String,
+        questionId: String,
         answerId: String,
-    ) : this(messageId, MessageType.ASSESSMENT, category, teamName, answerId, sign())
+    ) : this(messageId, MessageType.ASSESSMENT, category, teamName, questionId, answerId, sign())
 }
 
 val objectMapper: ObjectMapper

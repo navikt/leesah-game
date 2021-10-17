@@ -57,6 +57,10 @@ data class Answer private constructor(
     ) : this(messageId, MessageType.ANSWER, category, teamName, questionId, answer)
 }
 
+enum class AssessmentStatus {
+    SUCCESS, FAILURE
+}
+
 data class Assessment private constructor(
     val messageId: String = UUID.randomUUID().toString(),
     val type: MessageType,
@@ -64,6 +68,7 @@ data class Assessment private constructor(
     val teamName: String,
     val questionId: String,
     val answerId: String,
+    val status: AssessmentStatus,
     val sign: String,
 ) : Message {
     override fun id() = messageId
@@ -71,6 +76,31 @@ data class Assessment private constructor(
 
     companion object {
         private fun sign() = ""
+        fun correct(
+            category: String,
+            teamName: String,
+            questionId: String,
+            answerId: String
+        ) = Assessment(
+            category = category,
+            teamName = teamName,
+            questionId = questionId,
+            answerId = answerId,
+            status = AssessmentStatus.SUCCESS
+        )
+
+        fun wrong(
+            category: String,
+            teamName: String,
+            questionId: String,
+            answerId: String
+        ) = Assessment(
+            category = category,
+            teamName = teamName,
+            questionId = questionId,
+            answerId = answerId,
+            status = AssessmentStatus.FAILURE
+        )
     }
 
     constructor(
@@ -79,7 +109,8 @@ data class Assessment private constructor(
         teamName: String,
         questionId: String,
         answerId: String,
-    ) : this(messageId, MessageType.ASSESSMENT, category, teamName, questionId, answerId, sign())
+        status: AssessmentStatus,
+    ) : this(messageId, MessageType.ASSESSMENT, category, teamName, questionId, answerId, status, sign())
 }
 
 val objectMapper: ObjectMapper

@@ -6,7 +6,7 @@ import java.time.Duration
 import java.time.LocalDateTime.now
 import kotlin.random.Random
 
-class Arithmetic(private val frequency: Duration): QuestionFactory("arithmetic") {
+class Arithmetic(private val frequency: Duration): QuestionFactory("arithmetic", 10) {
 
     private val operators = listOf(Operator.ADD, Operator.MULTI, Operator.SUB, Operator.DIV)
     private var nextQuestion = now() + frequency
@@ -22,11 +22,11 @@ class Arithmetic(private val frequency: Duration): QuestionFactory("arithmetic")
     }
 
     private fun Int.checkAnswer(answer: Answer) {
-        if(this == answer.answer.toInt()) publish(answer.teamName, answer.questionId, answer.messageId)
+        (this == answer.answer.toInt()).publish(answer.teamName, answer.questionId, answer.messageId)
     }
 
-    override fun questions(): List<Question> {
-        return if (now() > nextQuestion) listOf(newQuestion())
+    override fun newQuestions(): List<Question> {
+        return if (now() > nextQuestion && active) listOf(newQuestion()).also { nextQuestion = now() + frequency }
         else emptyList()
     }
 

@@ -18,14 +18,11 @@ import io.micrometer.prometheus.PrometheusMeterRegistry
 import io.prometheus.client.CollectorRegistry
 import io.prometheus.client.exporter.common.TextFormat
 import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import no.nav.quizmaster.no.nav.quizmaster.Config
-import no.nav.quizmaster.no.nav.quizmaster.QuizMaster
 import no.nav.quizmaster.no.nav.quizmaster.QuizRapid
 import org.slf4j.LoggerFactory
-import java.util.concurrent.atomic.AtomicBoolean
 
 fun main() {
     QuizmasterServer(Config.fromEnv()).startBlocking()

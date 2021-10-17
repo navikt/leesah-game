@@ -77,7 +77,7 @@ internal class QuizmasterServerTest {
     }
 
     private fun teamRegistration(): String {
-        return Answer(category = RegisterTeam.CATEGORY, teamName = "", questionId="question1", answer = "coolteam").json()
+        return Answer(category = "team-registration", teamName = "", questionId="question1", answer = "coolteam").json()
     }
 
     private fun produceToTopic(name: String, records: List<String>) {

@@ -1,62 +1,31 @@
 package no.nav.quizmaster.questions
 
 import no.nav.quizmaster.*
+import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 
-class RegisterTeam {
+class RegisterTeam: QuestionFactory("team-registration") {
 
-    companion object {
-        internal const val CATEGORY = "team-registration"
-    }
-
-    private val logger = LoggerFactory.getLogger(this.javaClass.name)
+    override val logger: Logger = LoggerFactory.getLogger(this.javaClass.name)
     private var questionPostedId: String? = null
     private val teams = mutableListOf<String>()
-    private val outEvents = mutableListOf<Assessment>()
 
-    internal fun handle(event: String): Boolean {
-        val teamRegistration: Answer = tryFromRaw(event) {
-            it.containsValue("type", MessageType.ANSWER.name) &&
-                    it.containsValue("category", CATEGORY)
-        } ?: return false
-        return handle(teamRegistration)
-    }
-
-    private fun handle(answer: Answer): Boolean {
+    override fun handle(answer: Answer) {
         logger.debug("Handling answer", answer)
-        if (!teams.contains(answer.teamName)) {
+        if (questionPostedId != null && !teams.contains(answer.teamName)) {
             logger.info("new quiz team created", answer.teamName)
             teams.add(answer.teamName)
-            publish(answer.teamName, answer.messageId)
+            true.publish(answer.answer, questionPostedId!!, answer.messageId)
         }
-        return true
     }
 
-    internal fun events(): List<Message> {
-        val out = outEvents.toList()
-        outEvents.clear()
-        return out
+    override fun newQuestions(): List<Question> {
+        return if(active) {
+            val question = Question(category = category, question = "Register your team name")
+            questionPostedId = question.messageId
+            listOf(question)
+        } else emptyList()
     }
-
-    internal fun shouldBeAsked(): Boolean {
-        return !hasBeenAsked()
-    }
-
-    internal fun question(): Question {
-        val question = Question(category = CATEGORY, question = "Register your team name")
-        questionPostedId = question.messageId
-        return question
-    }
-
-    private fun publish(teamName: String, answerId: String) {
-        val assessment =
-            Assessment(category = CATEGORY, teamName = teamName, questionId = questionPostedId!!, answerId = answerId)
-        logger.debug("publishing assessment", assessment)
-        outEvents.add(assessment)
-    }
-
-    private fun hasBeenAsked() = questionPostedId != null
-
 }
 

@@ -13,17 +13,17 @@ internal class RegisterTeamTest {
     }
 
     @Test
-    fun shouldBePosted() {
+    fun onlyOnce() {
         val registerQuestion = RegisterTeam()
 
-        assertTrue(registerQuestion.shouldBeAsked())
-        registerQuestion.question()
-        assertFalse(registerQuestion.shouldBeAsked())
+        assertTrue(registerQuestion.questions().isNotEmpty())
+        assertTrue(registerQuestion.questions().isEmpty())
     }
 
     @Test
     fun events() {
         val registerQuestion = RegisterTeam()
+        registerQuestion.questions()
         registerQuestion.handle(answer().json())
         registerQuestion.handle(answer().json())
         assertTrue(registerQuestion.events().size == 1)
@@ -31,5 +31,5 @@ internal class RegisterTeamTest {
     }
 
     private fun answer() =
-        Answer(category = RegisterTeam.CATEGORY, teamName = "", questionId = "question1", answer = "coolteam")
+        Answer(category = "team-registration", teamName = "", questionId = "question1", answer = "coolteam")
 }

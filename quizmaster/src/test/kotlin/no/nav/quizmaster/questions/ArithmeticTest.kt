@@ -47,6 +47,10 @@ internal class ArithmeticTest {
                 answer = "${result!! + 1}"
             ).json()
         )
-        assertTrue(art.events().size == 1)
+        art.events().also {
+            assertTrue(it.size == 2)
+            assertTrue(it[0].json().contains("SUCCESS"))
+            assertTrue(it[1].json().contains("FAILURE"))
+        }
     }
 }

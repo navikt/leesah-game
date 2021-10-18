@@ -16,12 +16,32 @@ import java.time.Duration
 import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
 
+
+interface QuizParticipant {
+    fun handle(question: Question): Boolean
+    fun handle(answer: Answer): Boolean
+    fun handle(assessment: Assessment): Boolean
+    fun messages(): List<Message>
+}
+
+val nooParticipant = object : QuizParticipant {
+    override fun handle(question: Question) = true
+
+    override fun handle(answer: Answer) = true
+
+    override fun handle(assessment: Assessment) = true
+
+    override fun messages(): List<Message> = emptyList()
+
+}
+
 class QuizRapid(
     private val appName: String,
     private val boostrapServers: List<String>,
     private val clientId: String = UUID.randomUUID().toString().slice(1..5),
     private val rapidTopic: String = "quiz-rapid",
-    private val run: QuizRapid.(records: ConsumerRecords<String, String>) -> Unit
+    private val participant: QuizParticipant = nooParticipant,
+    private val run: QuizRapid.(records: ConsumerRecords<String, String>) -> Unit = {}
 ) {
     private val consumer = KafkaConsumer(consumerConfig(), StringDeserializer(), StringDeserializer())
     private val producer = KafkaProducer(producerConfig(), StringSerializer(), StringSerializer())
@@ -58,8 +78,10 @@ class QuizRapid(
         try {
             consumer.subscribe(listOf(rapidTopic))
             while (running.get()) {
-                consumer.poll(Duration.ofSeconds(1)).also {
-                    run(it)
+                consumer.poll(Duration.ofSeconds(1)).also { records ->
+                    records.forEach { participantHandle(it.value()) }
+                    run(records)
+                    participant.messages().forEach { publish(it.json()) }
                 }
             }
         } catch (err: WakeupException) {
@@ -108,6 +130,20 @@ class QuizRapid(
         put(ProducerConfig.ACKS_CONFIG, "1")
         put(ProducerConfig.LINGER_MS_CONFIG, "0")
         put(ProducerConfig.MAX_IN_FLIGHT_REQUESTS_PER_CONNECTION, "1")
+    }
+
+    private fun participantHandle(message: String): Boolean {
+        // ugly, I know
+        tryFromRaw<Question>(message) {
+            it.containsValue("type", MessageType.QUESTION.name)
+        }?.also { return participant.handle(it) }
+        tryFromRaw<Answer>(message) {
+            it.containsValue("type", MessageType.ANSWER.name)
+        }?.also { return participant.handle(it) }
+        tryFromRaw<Assessment>(message) {
+            it.containsValue("type", MessageType.ASSESSMENT.name)
+        }?.also { return participant.handle(it) }
+        return false
     }
 
     companion object {

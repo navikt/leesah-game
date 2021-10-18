@@ -1,7 +1,6 @@
 package no.nav.quizmaster
 
 import no.nav.common.KafkaEnvironment
-import no.nav.quizmaster.no.nav.quizmaster.QuizRapid
 import org.apache.kafka.clients.CommonClientConfigs
 import org.apache.kafka.clients.consumer.Consumer
 import org.apache.kafka.clients.consumer.ConsumerConfig

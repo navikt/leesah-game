@@ -1,4 +1,4 @@
-package no.nav.quizmaster.no.nav.quizmaster
+package no.nav.quizmaster
 
 import org.apache.kafka.clients.CommonClientConfigs
 import org.apache.kafka.clients.consumer.ConsumerConfig

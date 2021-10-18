@@ -21,7 +21,6 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import no.nav.quizmaster.no.nav.quizmaster.Config
-import no.nav.quizmaster.no.nav.quizmaster.QuizRapid
 import org.slf4j.LoggerFactory
 
 fun main() {

@@ -8,13 +8,14 @@ import org.apache.kafka.clients.consumer.ConsumerRecords
 import org.slf4j.LoggerFactory
 
 
-class RapidServer(config: Config, private val ktor: ApplicationEngine, run: QuizRapid.(records: ConsumerRecords<String, String>) -> Unit) {
+class RapidServer(config: Config, private val ktor: ApplicationEngine, participant: QuizParticipant = nooParticipant, run: QuizRapid.(records: ConsumerRecords<String, String>) -> Unit) {
 
     private val log = LoggerFactory.getLogger(config.appName)
     private val quizRapid = QuizRapid(
         config.appName,
         config.bootstrapServers,
         rapidTopic = config.quizTopic,
+        participant = participant,
         run = run
     )
 

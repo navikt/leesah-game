@@ -1,6 +1,5 @@
 package no.nav.quizmaster.questions
 
-import no.nav.quizmaster.*
 import no.nav.quizrapid.*
 import org.slf4j.LoggerFactory
 
@@ -58,8 +57,8 @@ abstract class QuestionCategory(
         outEvents.add(assessment)
     }
 
-    internal fun stats(): Stats {
-        return Stats(
+    internal fun stats(): CategoryStats {
+        return CategoryStats(
             if (active) Status.ACTIVE else Status.INACTIVE,
             maxCount,
             questionCounter,
@@ -76,7 +75,7 @@ abstract class QuestionCategory(
 }
 
 enum class Status { ACTIVE, INACTIVE }
-data class Stats(
+data class CategoryStats(
     val status: Status,
     val maxCount: Int,
     val questionCount: Int,

@@ -64,6 +64,10 @@ fun ktorServer(quizMaster: QuizMaster): ApplicationEngine = embeddedServer(CIO, 
                 call.respond(quizMaster.categories())
             }
 
+            get("/quiz-stats") {
+                call.respond(quizMaster.stats())
+            }
+
             get("/categories/{category}") {
                 val category = call.parameters["category"] ?: return@get call.respond(HttpStatusCode.BadRequest, "missing a category")
                 quizMaster.stats(category)?.also {

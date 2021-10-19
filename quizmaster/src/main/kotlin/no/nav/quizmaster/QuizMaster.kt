@@ -2,12 +2,13 @@ package no.nav.quizmaster
 
 import no.nav.quizmaster.questions.Arithmetic
 import no.nav.quizmaster.questions.RegisterTeam
-import no.nav.quizmaster.questions.Stats
+import no.nav.quizmaster.questions.CategoryStats
+import no.nav.quizmaster.questions.Status
 import no.nav.quizrapid.*
 import java.time.Duration
 
 
-class QuizMaster: QuizParticipant {
+class QuizMaster : QuizParticipant {
     private val questions = listOf(RegisterTeam(), Arithmetic(Duration.ofMinutes(1)))
 
     fun events(): List<String> {
@@ -46,12 +47,18 @@ class QuizMaster: QuizParticipant {
     }
 
     fun categories(): List<String> = questions.map { it.category }
-    fun stats(category: String): Stats? = questions.firstOrNull { it.category == category }?.stats()
-    fun activate(category: String): Stats? {
+    fun stats(category: String): CategoryStats? = questions.firstOrNull { it.category == category }?.stats()
+    fun stats(): QuizStats {
+        return QuizStats(Status.ACTIVE, questions.map { it.stats() })
+    }
+
+    fun activate(category: String): CategoryStats? {
         return questions.firstOrNull { it.category == category }?.apply {
             activate()
         }?.stats()
     }
 }
+
+data class QuizStats(val status: Status, val categories: List<CategoryStats>)
 
 private fun Iterable<Message>.json() = map { it.json() }

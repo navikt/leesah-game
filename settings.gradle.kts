@@ -1,3 +1,7 @@
 rootProject.name = "leesah-game"
-include("quizboard", "quizmaster")
-include("quizrapid")
+include(
+    "quizmaster",
+    "quizboard:frontend",
+    "quizboard:backend",
+    "quizrapid"
+)

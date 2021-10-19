@@ -1,3 +1,5 @@
+import java.nio.file.Paths
+
 plugins {
     kotlin("jvm")
 }
@@ -10,8 +12,9 @@ dependencies {
 }
 
 tasks {
+
     jar {
-        mustRunAfter(clean)
+        dependsOn(clean, ":quizboard:frontend:npm_run_build")
 
         archiveFileName.set("app.jar")
 
@@ -20,6 +23,20 @@ tasks {
             attributes["Class-Path"] = configurations.runtimeClasspath.get().joinToString(separator = " ") {
                 it.name
             }
+        }
+
+        from({ Paths.get(project(":quizboard:frontend").buildDir.path) }) {
+            into("static")
+        }
+
+        doLast {
+            configurations.runtimeClasspath.get()
+                .filter { it.name != "app.jar" }
+                .forEach {
+                    val file = File("$buildDir/libs/${it.name}")
+                    if (!file.exists())
+                        it.copyTo(file)
+                }
         }
     }
 }

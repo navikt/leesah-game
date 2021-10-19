@@ -42,3 +42,12 @@ services:
     depends_on:
       - zookeeper
       - kafka
+
+  quizboard:
+    container_name: quizboard
+    build: quizboard
+    environment:
+      NAIS_APP_NAME : "quizboard"
+      BOOTSTRAP_SERVERS : "localhost:29092"
+    ports:
+      - "8081:8081"

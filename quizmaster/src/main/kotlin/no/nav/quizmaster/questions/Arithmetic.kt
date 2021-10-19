@@ -1,7 +1,7 @@
 package no.nav.quizmaster.questions
 
-import no.nav.quizmaster.Answer
-import no.nav.quizmaster.Question
+import no.nav.quizrapid.Answer
+import no.nav.quizrapid.Question
 import java.time.Duration
 import java.time.LocalDateTime.now
 import kotlin.random.Random

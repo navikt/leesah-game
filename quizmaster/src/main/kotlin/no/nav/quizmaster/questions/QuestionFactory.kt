@@ -1,25 +1,17 @@
 package no.nav.quizmaster.questions
 
 import no.nav.quizmaster.*
-import no.nav.quizmaster.containsValue
+import no.nav.quizrapid.*
 import org.slf4j.LoggerFactory
 
-abstract class QuestionFactory(protected val category: String, private val maxCount: Int = 1) {
+abstract class QuestionFactory(val category: String, private val maxCount: Int = 1) {
     protected open val logger = LoggerFactory.getLogger(this.javaClass.name)
     private val outEvents = mutableListOf<Assessment>()
     private var questionCounter = 0
     protected var active = true
 
-    internal fun handle(event: String): Boolean {
-        val answer: Answer = tryFromRaw(event) {
-            it.containsValue("type", MessageType.ANSWER.name) &&
-                    it.containsValue("category", category)
-        } ?: return false
-        handle(answer)
-        return true
-    }
 
-    protected abstract fun handle(answer: Answer)
+    internal abstract fun handle(answer: Answer)
 
     fun questions(): List<Question> {
         val capped = newQuestions().filter {
@@ -52,6 +44,5 @@ abstract class QuestionFactory(protected val category: String, private val maxCo
         logger.debug("publishing assessment", assessment)
         outEvents.add(assessment)
     }
-
 
 }

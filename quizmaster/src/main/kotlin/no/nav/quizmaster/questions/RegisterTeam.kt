@@ -1,11 +1,12 @@
 package no.nav.quizmaster.questions
 
-import no.nav.quizmaster.*
+import no.nav.quizrapid.Answer
+import no.nav.quizrapid.Question
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 
-class RegisterTeam: QuestionFactory("team-registration") {
+class RegisterTeam : QuestionFactory("team-registration") {
 
     override val logger: Logger = LoggerFactory.getLogger(this.javaClass.name)
     private var questionPostedId: String? = null
@@ -21,8 +22,12 @@ class RegisterTeam: QuestionFactory("team-registration") {
     }
 
     override fun newQuestions(): List<Question> {
-        return if(active) {
-            val question = Question(category = category, question = "Register your team name")
+
+        return if (active) {
+            val question = Question(
+                category = category,
+                question = "Register new team, template = {\"messageId\":\"<INSERT NEW UUID>\", \"questionId\": \"<INSERT QUESTION ID>\",\"type\":\"ANSWER\",\"category\":\"team-registration\",\"teamName\":  \"\", \"questionId\": \"\", \"answer\": \"<INSERT TEAM NAME>\"}"
+            )
             questionPostedId = question.messageId
             listOf(question)
         } else emptyList()

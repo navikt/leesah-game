@@ -1,6 +1,7 @@
 package no.nav.quizrapid
 
 
+import com.fasterxml.jackson.core.JacksonException
 import org.apache.kafka.clients.CommonClientConfigs
 import org.apache.kafka.clients.consumer.ConsumerConfig
 import org.apache.kafka.clients.consumer.ConsumerRecords
@@ -45,7 +46,7 @@ class QuizRapid(
 ) {
     private val consumer = KafkaConsumer(consumerConfig(), StringDeserializer(), StringDeserializer())
     private val producer = KafkaProducer(producerConfig(), StringSerializer(), StringSerializer())
-    private val log = LoggerFactory.getLogger(QuizRapid::class.java)
+    private val logger = LoggerFactory.getLogger(QuizRapid::class.java)
 
     private val running = AtomicBoolean(false)
 
@@ -55,21 +56,21 @@ class QuizRapid(
         //check(!producerClosed.get()) { "can't publish messages when producer is closed" }
         producer.send(ProducerRecord(rapidTopic, message)) { _, err ->
             if (err == null || !isFatalError(err)) return@send
-            log.error("Shutting down QuizRapid due to fatal error: ${err.message}", err)
+            logger.error("Shutting down QuizRapid due to fatal error: ${err.message}", err)
             stop()
         }
         producer.flush()
     }
 
     fun start() {
-        log.info("starting QuizRapid")
-        if (true == running.getAndSet(true)) return log.info("QuizRapid already started")
+        logger.info("starting QuizRapid")
+        if (true == running.getAndSet(true)) return logger.info("QuizRapid already started")
         consumeMessages()
     }
 
     fun stop() {
-        log.info("stopping QuizRapid")
-        if (!running.getAndSet(false)) return log.info("rapid already stopped")
+        logger.info("stopping QuizRapid")
+        if (!running.getAndSet(false)) return logger.info("rapid already stopped")
         consumer.wakeup()
     }
 
@@ -97,9 +98,9 @@ class QuizRapid(
 
     private fun closeResources(lastException: Exception?) {
         if (running.getAndSet(false)) {
-            log.warn("stopped consuming messages due to an error", lastException)
+            logger.warn("stopped consuming messages due to an error", lastException)
         } else {
-            log.info("stopped consuming messages after receiving stop signal")
+            logger.info("stopped consuming messages after receiving stop signal")
         }
         tryAndLog(producer::close)
         tryAndLog(consumer::unsubscribe)
@@ -110,7 +111,7 @@ class QuizRapid(
         try {
             block()
         } catch (err: Exception) {
-            log.error(err.message, err)
+            logger.error(err.message, err)
         }
     }
 
@@ -133,17 +134,23 @@ class QuizRapid(
     }
 
     private fun participantHandle(message: String): Boolean {
-        // ugly, I know
-        tryFromRaw<Question>(message) {
-            it.containsValue("type", MessageType.QUESTION.name)
-        }?.also { return participant.handle(it) }
-        tryFromRaw<Answer>(message) {
-            it.containsValue("type", MessageType.ANSWER.name)
-        }?.also { return participant.handle(it) }
-        tryFromRaw<Assessment>(message) {
-            it.containsValue("type", MessageType.ASSESSMENT.name)
-        }?.also { return participant.handle(it) }
-        return false
+        try {
+            // ugly, I know
+            tryFromRaw<Question>(message) {
+                it.containsValue("type", MessageType.QUESTION.name)
+            }?.also { return participant.handle(it) }
+            tryFromRaw<Answer>(message) {
+                it.containsValue("type", MessageType.ANSWER.name)
+            }?.also { return participant.handle(it) }
+            tryFromRaw<Assessment>(message) {
+                it.containsValue("type", MessageType.ASSESSMENT.name)
+            }?.also { return participant.handle(it) }
+            return false
+        } catch (e: JacksonException) {
+            logger.warn("failed to parse, skipping message = $message")
+            logger.warn(e.toString())
+            return false
+        }
     }
 
     companion object {

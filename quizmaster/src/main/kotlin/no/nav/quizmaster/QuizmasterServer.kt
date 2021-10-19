@@ -1,7 +1,9 @@
 package no.nav.quizmaster
 
 import io.ktor.application.*
+import io.ktor.features.*
 import io.ktor.http.*
+import io.ktor.jackson.*
 import io.ktor.metrics.micrometer.*
 import io.ktor.response.*
 import io.ktor.routing.*
@@ -17,58 +19,18 @@ import io.micrometer.prometheus.PrometheusConfig
 import io.micrometer.prometheus.PrometheusMeterRegistry
 import io.prometheus.client.CollectorRegistry
 import io.prometheus.client.exporter.common.TextFormat
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import no.nav.quizmaster.no.nav.quizmaster.Config
-import org.slf4j.LoggerFactory
+import no.nav.quizrapid.Config
+import no.nav.quizrapid.RapidServer
+import no.nav.quizrapid.objectMapper
 
 fun main() {
-    QuizmasterServer(Config.fromEnv()).startBlocking()
-}
-
-class QuizmasterServer(private val config: Config) {
-
-    private val log = LoggerFactory.getLogger("Quizmaster")
-    private val quizMaster = QuizMaster()
-    private val quizRapid = QuizRapid(
-        config.bootstrapServers,
-        rapidTopic = config.quizTopic
-    ) { consumerRecords ->
-        consumerRecords.records(config.quizTopic).forEach { record ->
-            log.debug("Message received on rapid", record.value())
-            quizMaster.handle(record.value())
-        }
-        quizMaster.events().forEach {
-            log.debug("publishing event", it)
-            publish(it)
-        }
-    }
-
-    fun startBlocking() {
-        runBlocking { start() }
-    }
-
-    suspend fun start() {
-        val ktorServer = ktorServer().start(false)
-        try {
-            coroutineScope {
-                launch { quizRapid.start() }
-            }
-
-        } finally {
-            val gracePeriod = 5000L
-            val forcefulShutdownTimeout = 30000L
-            log.info("shutting down ktor, waiting $gracePeriod ms for workers to exit. Forcing shutdown after $forcefulShutdownTimeout ms")
-            ktorServer.stop(gracePeriod, forcefulShutdownTimeout)
-            log.info("ktor shutdown complete: end of life. goodbye.")
-        }
-
-    }
+    val quizMaster = QuizMaster()
+    val config = Config.fromEnv()
+    RapidServer(config = config, ktor = ktorServer(quizMaster), participant = quizMaster).startBlocking()
 }
 
 
-fun ktorServer(): ApplicationEngine = embeddedServer(CIO, applicationEngineEnvironment {
+fun ktorServer(quizMaster: QuizMaster): ApplicationEngine = embeddedServer(CIO, applicationEngineEnvironment {
     val collectorRegistry = CollectorRegistry.defaultRegistry
 
     connector {
@@ -90,9 +52,16 @@ fun ktorServer(): ApplicationEngine = embeddedServer(CIO, applicationEngineEnvir
                 //LogbackMetrics()
             )
         }
+        install(ContentNegotiation) { register(ContentType.Application.Json, JacksonConverter(objectMapper)) }
+
+
         routing {
             get("/") {
                 call.respond("Quizmaster")
+            }
+
+            get("/categories") {
+                call.respond(quizMaster.categories())
             }
 
             get("/metrics") {

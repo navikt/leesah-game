@@ -40,6 +40,7 @@ subprojects {
         implementation("io.ktor:ktor-server-core:$ktorVersion")
         implementation("io.ktor:ktor-server-cio:$ktorVersion")
         implementation("io.ktor:ktor-client-cio:$ktorVersion")
+        implementation("io.ktor:ktor-jackson:1.6.4")
 
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.0")
         implementation("com.fasterxml.jackson.core:jackson-core:2.13.0")

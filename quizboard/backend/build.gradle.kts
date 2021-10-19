@@ -19,7 +19,7 @@ tasks {
         archiveFileName.set("app.jar")
 
         manifest {
-            attributes["Main-Class"] = "no.nav.quizboard.QuizboardKt"
+            attributes["Main-Class"] = "no.nav.quizboard.AppKt"
             attributes["Class-Path"] = configurations.runtimeClasspath.get().joinToString(separator = " ") {
                 it.name
             }

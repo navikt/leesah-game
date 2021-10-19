@@ -1,70 +1,47 @@
 package no.nav.quizboard
 
-import io.ktor.application.*
-import io.ktor.http.*
-import io.ktor.http.content.*
-import io.ktor.response.*
-import io.ktor.routing.*
-import io.ktor.server.cio.*
-import io.ktor.server.engine.*
 import no.nav.quizrapid.*
-import org.slf4j.LoggerFactory
-
 
 class Quizboard: QuizParticipant {
 
+    private val categories = mutableListOf<Category>()
+
     internal val quizTeams = mutableMapOf<String, Int>()
 
-    override fun handle(question: Question) = true
+    override fun handle(question: Question): Boolean {
+        categories.handle(question)
+        return true
+    }
 
     override fun handle(answer: Answer) = true
 
     override fun handle(assessment: Assessment): Boolean {
-        if( assessment.ok()) quizTeams.merge(assessment.teamName, 1, Int::plus)
+        categories.handle(assessment)
         return true
+    }
+
+    fun result(): List<TeamResult> {
+        val teams = categories.teams()
+        return teams.map { TeamResult(it, 100, categories.result(it)) }
     }
 
     override fun messages(): List<Message> = emptyList()
 
 }
 
+data class TeamResult(
+    val name: String,
+    val score: Int,
+    val categoryResult: List<CategoryResult>
+)
+
+data class CategoryResult(
+    val name: String,
+    val status: Status
+)
 
 
-fun main() {
-    val quizboard = Quizboard()
-    val logger = LoggerFactory.getLogger("Quizboard")
-    RapidServer(Config.fromEnv(), ktorServer(quizboard), quizboard) { records ->
-        records.forEach {
-            logger.info("message received: ${it.value()}") // Her må vi lese inn Questions og Assessments for boardet
-        }
-    }.startBlocking()
+enum class Status {
+    OK, PENDING, FAILURE
 }
-
-fun ktorServer(quizboard: Quizboard): ApplicationEngine = embeddedServer(CIO, applicationEngineEnvironment {
-    connector {
-        port = 8081
-    }
-    module {
-        routing {
-            get("/") {
-                call.respondText(
-                    this::class.java.classLoader.getResource("static/index.html")!!.readText(),
-                    ContentType.Text.Html
-                )
-            }
-            static("/") {
-                resources("static")
-            }
-
-            get("/hei") {
-                call.respond("QuizBoard")
-            }
-            get("/board") {
-                call.respond(quizboard.quizTeams.toString())
-            }
-        }
-    }
-
-})
-
 

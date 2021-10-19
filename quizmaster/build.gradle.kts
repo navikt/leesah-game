@@ -12,7 +12,7 @@ version = "0.0.1"
 
 dependencies {
     implementation(project(":quizrapid"))
-    implementation("io.ktor:ktor-jackson:1.6.4")
+
 }
 
 tasks {

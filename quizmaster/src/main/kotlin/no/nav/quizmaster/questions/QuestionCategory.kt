@@ -4,17 +4,20 @@ import no.nav.quizmaster.*
 import no.nav.quizrapid.*
 import org.slf4j.LoggerFactory
 
-abstract class QuestionCategory(val category: String, private val maxCount: Int = 1) {
+abstract class QuestionCategory(
+    val category: String,
+    private var maxCount: Int = 1,
+    protected var active: Boolean = true
+) {
     protected open val logger = LoggerFactory.getLogger(this.javaClass.name)
     private val outEvents = mutableListOf<Assessment>()
     private var questionCounter = 0
     private var answerCounter = 0
     private var correctAnswersCounter = 0
-    protected var active = true
 
 
     internal fun handle(answer: Answer): Boolean {
-        if(answer.category != category) return false
+        if (answer.category != category) return false
         answerCounter++
         check(answer)
         return true
@@ -27,7 +30,7 @@ abstract class QuestionCategory(val category: String, private val maxCount: Int 
             (questionCounter < maxCount).also { questionCounter++ }
         }
 
-        if(questionCounter >= maxCount && active) {
+        if (questionCounter >= maxCount && active) {
             logger.info("${this.javaClass} reached question limit = $maxCount")
             active = false
         }
@@ -56,9 +59,27 @@ abstract class QuestionCategory(val category: String, private val maxCount: Int 
     }
 
     internal fun stats(): Stats {
-        return Stats(if(active) Status.ACTIVE else Status.INACTIVE, questionCounter, answerCounter, correctAnswersCounter)
+        return Stats(
+            if (active) Status.ACTIVE else Status.INACTIVE,
+            maxCount,
+            questionCounter,
+            answerCounter,
+            correctAnswersCounter
+        )
+    }
+
+    fun activate() {
+        if (active) return
+        if(questionCounter >= maxCount) maxCount *= 2
+        active = true
     }
 }
 
-enum class Status{ACTIVE, INACTIVE}
-data class Stats(val status: Status, val questionCount: Int, val answerCount: Int, val correctAnswerCount: Int)
+enum class Status { ACTIVE, INACTIVE }
+data class Stats(
+    val status: Status,
+    val maxCount: Int,
+    val questionCount: Int,
+    val answerCount: Int,
+    val correctAnswerCount: Int
+)

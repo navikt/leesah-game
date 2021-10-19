@@ -47,6 +47,11 @@ class QuizMaster: QuizParticipant {
 
     fun categories(): List<String> = questions.map { it.category }
     fun stats(category: String): Stats? = questions.firstOrNull { it.category == category }?.stats()
+    fun activate(category: String): Stats? {
+        return questions.firstOrNull { it.category == category }?.apply {
+            activate()
+        }?.stats()
+    }
 }
 
 private fun Iterable<Message>.json() = map { it.json() }

@@ -22,11 +22,14 @@ internal class ArithmeticTest {
 
     @Test
     fun question() {
-        assertTrue(Arithmetic(Duration.ZERO).questions().isNotEmpty())
+        val art0 = Arithmetic(Duration.ZERO)
+        art0.activate()
+        assertTrue(art0.questions().isNotEmpty())
         assertTrue(Arithmetic(Duration.ofHours(1)).questions().isEmpty())
 
 
         val art = Arithmetic(Duration.ZERO)
+        art.activate()
         val questions = art.questions()
         val exp = questions.first().question.split(" ")
         val result = operatorMap[exp[1]]?.invoke(exp[0].toInt(), exp[2].toInt())

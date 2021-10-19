@@ -6,13 +6,13 @@ import java.time.Duration
 import java.time.LocalDateTime.now
 import kotlin.random.Random
 
-class Arithmetic(private val frequency: Duration): QuestionFactory("arithmetic", 10) {
+class Arithmetic(private val frequency: Duration): QuestionCategory("arithmetic", 10) {
 
     private val operators = listOf(Operator.ADD, Operator.MULTI, Operator.SUB, Operator.DIV)
     private var nextQuestion = now() + frequency
     private val publishedQuestions = mutableMapOf<String, Int>()
 
-    override fun handle(answer: Answer) {
+    override fun check(answer: Answer) {
         try {
             publishedQuestions[answer.questionId]?.checkAnswer(answer)
         } catch (e: NumberFormatException ) {

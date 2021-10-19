@@ -6,13 +6,13 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 
-class RegisterTeam : QuestionFactory("team-registration") {
+class RegisterTeam : QuestionCategory("team-registration") {
 
     override val logger: Logger = LoggerFactory.getLogger(this.javaClass.name)
     private var questionPostedId: String? = null
     private val teams = mutableListOf<String>()
 
-    override fun handle(answer: Answer) {
+    override fun check(answer: Answer) {
         logger.debug("Handling answer", answer)
         if (questionPostedId != null && !teams.contains(answer.teamName)) {
             logger.info("new quiz team created", answer.teamName)

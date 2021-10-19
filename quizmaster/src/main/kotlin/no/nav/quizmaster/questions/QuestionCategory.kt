@@ -4,14 +4,23 @@ import no.nav.quizmaster.*
 import no.nav.quizrapid.*
 import org.slf4j.LoggerFactory
 
-abstract class QuestionFactory(val category: String, private val maxCount: Int = 1) {
+abstract class QuestionCategory(val category: String, private val maxCount: Int = 1) {
     protected open val logger = LoggerFactory.getLogger(this.javaClass.name)
     private val outEvents = mutableListOf<Assessment>()
     private var questionCounter = 0
+    private var answerCounter = 0
+    private var correctAnswersCounter = 0
     protected var active = true
 
 
-    internal abstract fun handle(answer: Answer)
+    internal fun handle(answer: Answer): Boolean {
+        if(answer.category != category) return false
+        answerCounter++
+        check(answer)
+        return true
+    }
+
+    internal abstract fun check(answer: Answer)
 
     fun questions(): List<Question> {
         val capped = newQuestions().filter {
@@ -29,6 +38,7 @@ abstract class QuestionFactory(val category: String, private val maxCount: Int =
 
     fun events(): List<Message> {
         val out = outEvents.toList()
+        correctAnswersCounter += out.count { it.ok() }
         outEvents.clear()
         return out
     }
@@ -45,4 +55,10 @@ abstract class QuestionFactory(val category: String, private val maxCount: Int =
         outEvents.add(assessment)
     }
 
+    internal fun stats(): Stats {
+        return Stats(if(active) Status.ACTIVE else Status.INACTIVE, questionCounter, answerCounter, correctAnswersCounter)
+    }
 }
+
+enum class Status{ACTIVE, INACTIVE}
+data class Stats(val status: Status, val questionCount: Int, val answerCount: Int, val correctAnswerCount: Int)

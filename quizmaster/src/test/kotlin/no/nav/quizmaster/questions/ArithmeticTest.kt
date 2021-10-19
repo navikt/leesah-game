@@ -1,6 +1,6 @@
 package no.nav.quizmaster.questions
 
-import no.nav.quizmaster.Answer
+import no.nav.quizrapid.Answer
 import org.junit.jupiter.api.BeforeEach
 
 import org.junit.jupiter.api.Assertions.*
@@ -31,21 +31,21 @@ internal class ArithmeticTest {
         val exp = questions.first().question.split(" ")
         val result = operatorMap[exp[1]]?.invoke(exp[0].toInt(), exp[2].toInt())
         assertNotNull(result)
-        art.handle(
+        art.check(
             Answer(
                 category = "arithmetic",
                 teamName = "coolteam",
                 questionId = questions.first().messageId,
                 answer = "$result"
-            ).json()
+            )
         )
-        art.handle(
+        art.check(
             Answer(
                 category = "arithmetic",
                 teamName = "coolteam",
                 questionId = questions.first().messageId,
                 answer = "${result!! + 1}"
-            ).json()
+            )
         )
         art.events().also {
             assertTrue(it.size == 2)

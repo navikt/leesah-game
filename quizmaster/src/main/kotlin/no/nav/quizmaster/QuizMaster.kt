@@ -1,10 +1,9 @@
 package no.nav.quizmaster
 
-import com.fasterxml.jackson.core.JacksonException
 import no.nav.quizmaster.questions.Arithmetic
 import no.nav.quizmaster.questions.RegisterTeam
+import no.nav.quizmaster.questions.Stats
 import no.nav.quizrapid.*
-import org.slf4j.LoggerFactory
 import java.time.Duration
 
 
@@ -47,6 +46,7 @@ class QuizMaster: QuizParticipant {
     }
 
     fun categories(): List<String> = questions.map { it.category }
+    fun stats(category: String): Stats? = questions.firstOrNull { it.category == category }?.stats()
 }
 
 private fun Iterable<Message>.json() = map { it.json() }

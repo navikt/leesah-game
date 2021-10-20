@@ -1,4 +1,12 @@
 body {
-  margin: 0;
-  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    font-family: "Roboto", "Helvetica Neue", sans-serif;
+}
+
+.leaderboard {
+    display: flex;
+}
+
+.leaderboard__team {
+
 }

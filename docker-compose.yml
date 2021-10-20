@@ -50,7 +50,7 @@ services:
       NAIS_APP_NAME: "quizmaster"
       BOOTSTRAP_SERVERS: "kafka:9092"
     ports:
-      - "8080:8080"
+      - "8000:8080"
     depends_on:
       - kafka
 

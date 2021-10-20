@@ -1,3 +1,6 @@
+# accidental node modules
+**/node_modules/
+
 .gradle
 **/build/
 !src/**/build/

@@ -1,6 +1,10 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {useInterval} from "./poller";
-import {BoardDto, restBackend, TeamResultDto} from "./restBackend";
+import {Backend, BoardDto, restBackend, TeamResultDto} from "./restBackend";
+import {Environment} from "./environment";
+import {testBackend} from "./hardcodedBackend";
+
+const backend: Backend = Environment.isDevelopment ? testBackend() : restBackend(true)
 
 function Leaderboard() {
 
@@ -11,7 +15,7 @@ function Leaderboard() {
         // Your custom logic here
 
         const update = async () => {
-            const response = restBackend(true).board();
+            const response = backend.board();
             setBoard(await response)
         }
         update().then(r => console.log("updating..."))

@@ -15,9 +15,11 @@ export type CategoryResultDto ={
     status: string
 }
 
+export type Backend = {
+    board: () => Promise<BoardDto>
+}
 
-
-export const restBackend = (development: boolean) => {
+export const restBackend = (development: boolean): Backend => {
     const baseUrl: string =
         development ? "http://localhost:8081" : "";
     return {

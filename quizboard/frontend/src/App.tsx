@@ -3,10 +3,6 @@ import { useInterval } from "./poller"
 import { Backend, BoardDto, restBackend, TeamResultDto } from "./restBackend"
 import { Environment } from "./environment"
 import { testBackend } from "./hardcodedBackend"
-import { Category } from "../../backend/src/main/kotlin/no/nav/quizboard/Category.kt"
-import { ReactComponent as FailureIcon } from "./ikoner/Error.svg"
-import { ReactComponent as PendingIcon } from "./ikoner/Warning.svg"
-import { ReactComponent as OkIcon } from "./ikoner/Success.svg"
 import "./index.css"
 
 const backend: Backend = Environment.isDevelopment

@@ -23,13 +23,31 @@ internal class RegisterTeamTest {
     @Test
     fun events() {
         val registerQuestion = RegisterTeam()
-        registerQuestion.questions()
-        registerQuestion.check(answer())
-        registerQuestion.check(answer())
-        assertTrue(registerQuestion.events().size == 1)
+        val q = registerQuestion.questions().first()
+        registerQuestion.check(answer(q.id(), "team1"))
+        registerQuestion.check(answer(q.id(), "team2"))
+        assertTrue(registerQuestion.events().size == 2)
         assertTrue(registerQuestion.events().isEmpty())
+    }
+
+    @Test
+    fun `wrong question id`() {
+        val registerQuestion = RegisterTeam()
+        val question = registerQuestion.questions()
+        val qId = question.first().id()
+
+        registerQuestion.check(answer(qId, "team1"))
+        registerQuestion.check(answer("wrongid", "team2"))
+        registerQuestion.check(answer(qId, "team3"))
+        val assessments = registerQuestion.events()
+        assertTrue(assessments.size == 2)
+        assertTrue(assessments.first().json().contains("team1"))
+        assertTrue(assessments[1].json().contains("team3"))
     }
 
     private fun answer() =
         Answer(category = "team-registration", teamName = "", questionId = "question1", answer = "coolteam")
+
+    private fun answer(qid: String, teamName: String) =
+        Answer(category = "team-registration", teamName = "", questionId = qid, answer = teamName)
 }

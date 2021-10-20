@@ -14,10 +14,12 @@ class RegisterTeam : QuestionCategory("team-registration") {
 
     override fun check(answer: Answer) {
         logger.debug("Handling answer", answer)
-        if (questionPostedId != null && !teams.contains(answer.teamName)) {
-            logger.info("new quiz team created", answer.teamName)
-            teams.add(answer.teamName)
+        if (questionPostedId != null && questionPostedId == answer.questionId && answer.answer !in teams) {
+            logger.info("new quiz team created: team = ${answer.answer}")
+            teams.add(answer.answer)
             true.publish(answer.answer, questionPostedId!!, answer.messageId)
+        } else {
+            logger.warn("Incorrect team registration: answer = ${answer.json()}")
         }
     }
 

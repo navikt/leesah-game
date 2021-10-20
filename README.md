@@ -8,7 +8,7 @@ TODO
 ## Setup
 
 
-### Hele sulamitten
+### Build
 
 Prosjektet bruker Java 16. En praktisk måte å installere det på er med [`sdkman`](https://sdkman.io/):
 - Installer `sdkman`
@@ -69,4 +69,11 @@ Merk at dette er en helt frikoblet versjon av frontend, så all testdata må moc
 TODO
 
 
+### Testdata
+
+**Team registration answer**
+`{"messageId": "b29175a7-059a-4a46-b274-94sd9f165473", "questionId": "b29175a7-059a-4a46-b274-947a9f165473", "type": "ANSWER", "category": "team-registration", "teamName": "", "answer": "coolteam"}`
+
+**Arithmetic answer**
+`{"messageId": "b30175a7-059a-4a46-b274-947a9f165473", "questionId": "cc07eb49-3454-4bdf-91f2-475d6e9d855e", "type": "ANSWER", "teamName": "coolteam", "category": "arithmetic", "answer": "7"}`
 

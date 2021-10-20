@@ -6,8 +6,6 @@ class Quizboard: QuizParticipant {
 
     private val categories = mutableListOf<Category>()
 
-    internal val quizTeams = mutableMapOf<String, Int>()
-
     override fun handle(question: Question): Boolean {
         categories.handle(question)
         return true
@@ -20,14 +18,19 @@ class Quizboard: QuizParticipant {
         return true
     }
 
-    fun result(): List<TeamResult> {
-        val teams = categories.teams()
-        return teams.map { TeamResult(it, 100, categories.result(it)) }
-    }
-
     override fun messages(): List<Message> = emptyList()
 
+    fun result(): BoardResult {
+        val teams = categories.teams()
+        return BoardResult(teams.map { TeamResult(it, 100, categories.result(it)) })
+    }
+
+
 }
+
+data class BoardResult(
+    val board: List<TeamResult>
+)
 
 data class TeamResult(
     val name: String,

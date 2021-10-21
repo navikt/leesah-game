@@ -59,6 +59,7 @@ abstract class QuestionCategory(
 
     internal fun stats(): CategoryStats {
         return CategoryStats(
+            category,
             if (active) Status.ACTIVE else Status.INACTIVE,
             maxCount,
             questionCounter,
@@ -76,6 +77,7 @@ abstract class QuestionCategory(
 
 enum class Status { ACTIVE, INACTIVE }
 data class CategoryStats(
+    val name: String,
     val status: Status,
     val maxCount: Int,
     val questionCount: Int,

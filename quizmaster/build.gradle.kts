@@ -1,3 +1,5 @@
+import java.nio.file.Paths
+
 val ktorVersion = "1.6.4"
 val kafkaVersion = "2.8.0"
 val junitJupiterVersion = "5.8.1"
@@ -18,7 +20,7 @@ dependencies {
 
 tasks {
     jar {
-        mustRunAfter(clean)
+        dependsOn(clean, ":quizmaster:adminpanel:npm_run_build")
 
         archiveFileName.set("app.jar")
 
@@ -27,6 +29,10 @@ tasks {
             attributes["Class-Path"] = configurations.runtimeClasspath.get().joinToString(separator = " ") {
                 it.name
             }
+        }
+
+        from({ Paths.get(project(":quizmaster:adminpanel").buildDir.path) }) {
+            into("static")
         }
 
         doLast {

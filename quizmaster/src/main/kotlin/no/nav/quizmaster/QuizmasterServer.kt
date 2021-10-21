@@ -3,6 +3,7 @@ package no.nav.quizmaster
 import io.ktor.application.*
 import io.ktor.features.*
 import io.ktor.http.*
+import io.ktor.http.content.*
 import io.ktor.jackson.*
 import io.ktor.metrics.micrometer.*
 import io.ktor.response.*
@@ -57,7 +58,13 @@ fun ktorServer(quizMaster: QuizMaster): ApplicationEngine = embeddedServer(CIO, 
 
         routing {
             get("/") {
-                call.respond("Quizmaster")
+                call.respondText(
+                    this::class.java.classLoader.getResource("static/index.html")!!.readText(),
+                    ContentType.Text.Html
+                )
+            }
+            static("/") {
+                resources("static/")
             }
 
             get("/categories") {

@@ -1,66 +1,17 @@
-import React, { useState, useEffect, useRef } from "react"
-import { useInterval } from "./poller"
-import { Backend, BoardDto, restBackend, TeamResultDto } from "./restBackend"
-import { Environment } from "./environment"
-import { testBackend } from "./hardcodedBackend"
-import "./index.css"
-
-const backend: Backend = Environment.isDevelopment
-    ? testBackend()
-    : restBackend(true)
-
-function Leaderboard() {
-    const nullBoard: BoardDto = { board: [] }
-    const [board, setBoard] = useState(nullBoard)
-
-    useInterval(() => {
-        // Your custom logic here
-
-        const update = async () => {
-            const response = backend.board()
-            setBoard(await response)
-        }
-        update().then((r) => console.log("Updating..."))
-    }, 2000)
-
-    // const icon = (status) => {
-    //     console.log(status)
-    //     if (status === "FAILURE") {
-    //         return <FailureIcon />
-    //     } else if (status === "PENDING") {
-    //         return <PendingIcon />
-    //     } else if (status === "OK") {
-    //         return <OkIcon />
-    //     }
-    // }
-
-    return (
-        <div className="leaderboard">
-            {board.board.map((team) => (
-                <div className="leaderboard__team">
-                    <p>Teamnavn: {team.name}</p>
-                    <p>Score: {team.score}</p>
-                    {team.categoryResult.map((cat) => (
-                        <span>
-                            {cat.name} = {cat.status}
-                            {/*{cat.name} = {icon(cat.status)}*/}
-                        </span>
-                    ))}
-                </div>
-            ))}
-        </div>
-    )
-}
+import React from "react"
+import "./index.less"
+import Leaderboard from "./Leaderboard/Leaderboard";
 
 const App = () => {
     // fetch("http://localhost:8081/teams")
     //     .then(response => console.log(response))
 
     return (
-        <>
-            <h1> Life is a stream of events | LEADERBOARD</h1>
+        <div className="app">
+            <h1 className="header">Leaderboard</h1>
+            <h2 className="sub-header">Life is a stream of events</h2>
             <Leaderboard />
-        </>
+        </div>
     )
 }
 

@@ -1,0 +1,51 @@
+
+.leaderboard {
+  display: flex;
+  flex-direction: column;
+
+  &__team {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 1rem auto;
+    background-color: #e8f4f8;
+    width: fit-content;
+  }
+
+  &__info {
+    width: 10rem;
+    padding: 1rem;
+  }
+
+  &__teamname {
+    align-self: center;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Architects Daughter', cursive;
+  }
+
+  &__score {
+    align-self: center;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+  }
+
+  &__category {
+    display: grid;
+    align-items: center;
+    padding: 1rem;
+    width: 7rem;
+    border-left: 1px solid grey;
+    text-align: center;
+    place-items: center;
+    grid-template-rows: 50% 30% 20%;
+  }
+
+  img {
+    width: 2rem;
+    height: auto;
+  }
+}
+

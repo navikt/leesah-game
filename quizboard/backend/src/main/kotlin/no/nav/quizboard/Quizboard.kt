@@ -2,7 +2,7 @@ package no.nav.quizboard
 
 import no.nav.quizrapid.*
 
-class Quizboard: QuizParticipant {
+class Quizboard : QuizParticipant {
 
     private val categories = mutableListOf<Category>()
 
@@ -22,10 +22,8 @@ class Quizboard: QuizParticipant {
 
     fun result(): BoardResult {
         val teams = categories.teams()
-        return BoardResult(teams.map { TeamResult(it, 100, categories.result(it)) })
+        return BoardResult(teams.map { TeamResult(it, categories.score(it), categories.result(it)) })
     }
-
-
 }
 
 data class BoardResult(

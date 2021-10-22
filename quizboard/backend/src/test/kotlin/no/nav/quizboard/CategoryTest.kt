@@ -49,6 +49,23 @@ internal class CategoryTest {
         assertEquals(results[1].okCount, 0)
     }
 
+    @Test
+    fun score() {
+        val categories = mutableListOf<Category>()
+        val q1 = question()
+        val q2 = question()
+        val q3 = question()
+        categories.handle(q1)
+        categories.handle(q2)
+        categories.handle(q3)
+
+        categories.handle(okAssessment(q1))
+        categories.handle(okAssessment(q2))
+        categories.handle(okAssessment(q2))
+        categories.handle(okAssessment(q3))
+
+        assertEquals(30, categories.score(categories.teams().first()))
+    }
 
     private fun okAssessment(question: Question) =
         Assessment(

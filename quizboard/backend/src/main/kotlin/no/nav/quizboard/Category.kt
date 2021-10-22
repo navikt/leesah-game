@@ -56,6 +56,9 @@ private class CategoryQuestion(val id: String) {
     fun ok(teamName: String) = status(teamName) == Status.OK
 }
 
+internal fun Iterable<Category>.score(teamName: String) =
+    fold(0) {sum, cat -> sum + cat.okCount(teamName) * 10 } // 10 points per ok question
+
 internal fun Iterable<Category>.result(teamName: String) =
     map { CategoryResult(it.name, it.status(teamName), it.okCount(teamName)) }
 

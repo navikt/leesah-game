@@ -12,7 +12,7 @@ export const testBackend = (): Backend => {
 let testData = {
     'board': [{
         'name': 'Team Solo',
-        'score': 800,
+        'score': 60,
         'categoryResult': [{
             'name': 'team-registration',
             'status': 'OK',
@@ -24,7 +24,7 @@ let testData = {
         }],
     }, {
         'name': 'Team Vera',
-        'score': 100,
+        'score': 10,
         'categoryResult': [{
             'name': 'team-registration',
             'status': 'OK',
@@ -36,7 +36,7 @@ let testData = {
         }],
     }, {
         'name': 'Team Anne',
-        'score': 1100,
+        'score': 110,
         'categoryResult': [{
             'name': 'team-registration',
             'status': 'OK',

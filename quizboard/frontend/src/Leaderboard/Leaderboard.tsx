@@ -48,8 +48,10 @@ export default function Leaderboard() {
                     {team.categoryResult.map((category: any, index: number) => (
                         <div key={index} className='leaderboard__category'>
                             <p>{category.name}</p>
-                            {icon(category.status)}
-                            <p>{category.okCount}</p>
+                            <div className="leaderboard__status">
+                                {icon(category.status)}
+                                <p>{category.okCount}</p>
+                            </div>
                         </div>
                     ))}
                 </div>

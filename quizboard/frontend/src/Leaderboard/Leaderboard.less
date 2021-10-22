@@ -11,11 +11,15 @@
     margin: 1rem auto;
     background-color: #e8f4f8;
     width: fit-content;
+    height: 8rem;
   }
 
   &__info {
     width: 10rem;
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    margin: auto 0;
   }
 
   &__teamname {
@@ -23,6 +27,7 @@
     text-align: center;
     font-size: 30px;
     font-family: 'Architects Daughter', cursive;
+    margin: 0;
   }
 
   &__score {
@@ -40,7 +45,13 @@
     border-left: 1px solid grey;
     text-align: center;
     place-items: center;
-    grid-template-rows: 50% 30% 20%;
+    grid-template-rows: 50% 50%;
+  }
+
+  &__status {
+    display: flex;
+    width: 4rem;
+    justify-content: space-between;
   }
 
   img {

@@ -30,6 +30,7 @@ class Category(question: Question) {
     }
 
     fun teams() = questions.teams()
+    fun okCount(teamName: String) = questions.okCount(teamName)
 }
 
 
@@ -52,10 +53,11 @@ private class CategoryQuestion(val id: String) {
     }
 
     fun teams() = failure + ok
+    fun ok(teamName: String) = status(teamName) == Status.OK
 }
 
 internal fun Iterable<Category>.result(teamName: String) =
-    map { CategoryResult(it.name, it.status(teamName)) }
+    map { CategoryResult(it.name, it.status(teamName), it.okCount(teamName)) }
 
 internal fun MutableList<Category>.handle(question: Question) =
     firstOrNull { it.name == question.category }?.handle(question) ?: add(Category(question))
@@ -64,6 +66,9 @@ internal fun Iterable<Category>.handle(assessment: Assessment) = forEach { it.ha
 
 internal fun Iterable<Category>.teams(): List<String> =
     fold(emptySet<String>()) { set, question -> set + question.teams() }.toList()
+
+
+private fun Iterable<CategoryQuestion>.okCount(teamName: String) = fold(0) { sum, question -> if(question.ok(teamName)) sum + 1 else sum}
 
 @JvmName("handleQuestion")
 private fun Iterable<CategoryQuestion>.handle(assessment: Assessment) = forEach { it.handle(assessment) }

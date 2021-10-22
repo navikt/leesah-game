@@ -40,7 +40,8 @@ data class TeamResult(
 
 data class CategoryResult(
     val name: String,
-    val status: Status
+    val status: Status,
+    val okCount: Int
 )
 
 

@@ -20,7 +20,7 @@ dependencies {
 
 tasks {
     jar {
-        dependsOn(clean, ":quizmaster:adminpanel:npm_run_build")
+        dependsOn(":quizmaster:adminpanel:npm_run_build")
 
         archiveFileName.set("app.jar")
 

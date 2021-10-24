@@ -14,7 +14,7 @@ dependencies {
 tasks {
 
     jar {
-        dependsOn(clean, ":quizboard:frontend:npm_run_build")
+        dependsOn(":quizboard:frontend:npm_run_build")
 
         archiveFileName.set("app.jar")
 

@@ -19,5 +19,5 @@ gradle-app.setting
 *.pem
 *.cert
 *.key
-client.keystore.p12
-client.truststore.jks
+creds/client.keystore.p12
+creds/client.truststore.jks

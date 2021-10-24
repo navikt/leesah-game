@@ -15,7 +15,7 @@ class RapidServer(
     run: QuizRapid.(records: ConsumerRecords<String, String>) -> Unit = {}
 ) {
 
-    private val log = LoggerFactory.getLogger(config.appName)
+    private val logger = LoggerFactory.getLogger(config.appName)
     private val quizRapid = QuizRapid(
         config,
         rapidTopic = config.quizTopic,
@@ -37,9 +37,9 @@ class RapidServer(
         } finally {
             val gracePeriod = 5000L
             val forcefulShutdownTimeout = 30000L
-            log.info("shutting down ktor, waiting $gracePeriod ms for workers to exit. Forcing shutdown after $forcefulShutdownTimeout ms")
+            logger.info("shutting down ktor, waiting $gracePeriod ms for workers to exit. Forcing shutdown after $forcefulShutdownTimeout ms")
             ktorServer.stop(gracePeriod, forcefulShutdownTimeout)
-            log.info("ktor shutdown complete: end of life. goodbye.")
+            logger.info("ktor shutdown complete: end of life. goodbye.")
         }
     }
 }

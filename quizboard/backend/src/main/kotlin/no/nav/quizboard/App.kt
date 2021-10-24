@@ -16,12 +16,7 @@ import org.slf4j.LoggerFactory
 
 fun main() {
     val quizboard = Quizboard()
-    val logger = LoggerFactory.getLogger("Quizboard")
-    RapidServer(Config.fromEnv(), ktorServer(quizboard), quizboard) { records ->
-        records.forEach {
-            logger.info("message received: ${it.value()}")
-        }
-    }.startBlocking()
+    RapidServer(Config.fromEnv(), ktorServer(quizboard), quizboard).startBlocking()
 }
 
 fun ktorServer(quizboard: Quizboard): ApplicationEngine = embeddedServer(CIO, applicationEngineEnvironment {

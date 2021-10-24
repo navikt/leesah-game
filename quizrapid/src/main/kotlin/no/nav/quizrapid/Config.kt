@@ -3,6 +3,7 @@ package no.nav.quizrapid
 import org.apache.kafka.clients.CommonClientConfigs
 import org.apache.kafka.clients.consumer.ConsumerConfig
 import org.apache.kafka.clients.producer.ProducerConfig
+import org.slf4j.LoggerFactory
 import java.util.*
 
 class Config(
@@ -55,6 +56,7 @@ class Config(
     }
 
     private fun sslConfig() = Properties().apply {
+        LoggerFactory.getLogger("RapidConfig").info("SSL config enabled")
         put("security.protocol", "SSL")
         put("ssl.truststore.location", kafkaTrustStorePath!!)
         put("ssl.truststore.password", credStorePassword!!)

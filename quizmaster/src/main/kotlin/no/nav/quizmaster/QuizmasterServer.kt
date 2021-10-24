@@ -6,6 +6,7 @@ import io.ktor.http.*
 import io.ktor.http.content.*
 import io.ktor.jackson.*
 import io.ktor.metrics.micrometer.*
+import io.ktor.request.*
 import io.ktor.response.*
 import io.ktor.routing.*
 import io.ktor.server.cio.*
@@ -26,8 +27,8 @@ import no.nav.quizrapid.objectMapper
 
 fun main() {
     val quizMaster = QuizMaster()
-    val config = Config.fromEnv()
-    RapidServer(config = config, ktor = ktorServer(quizMaster), participant = quizMaster).startBlocking()
+    val rapidConfig = Config.fromEnv()
+    RapidServer(config = rapidConfig, ktor = ktorServer(quizMaster), participant = quizMaster).startBlocking()
 }
 
 
@@ -102,6 +103,13 @@ fun ktorServer(quizMaster: QuizMaster): ApplicationEngine = embeddedServer(CIO, 
                 call.respondTextWriter(ContentType.parse(TextFormat.CONTENT_TYPE_004)) {
                     TextFormat.write004(this, collectorRegistry.filteredMetricFamilySamples(names))
                 }
+            }
+
+            get("/ready") {
+                call.respondText("OK")
+            }
+            get("/alive") {
+                call.respondText("OK")
             }
         }
     }

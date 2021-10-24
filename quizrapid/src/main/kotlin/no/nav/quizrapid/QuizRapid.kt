@@ -37,15 +37,14 @@ val nooParticipant = object : QuizParticipant {
 }
 
 class QuizRapid(
-    private val appName: String,
-    private val boostrapServers: List<String>,
-    private val clientId: String = UUID.randomUUID().toString().slice(1..5),
+    config: Config,
+    clientId: String = UUID.randomUUID().toString().slice(1..5),
     private val rapidTopic: String = "quiz-rapid",
     private val participant: QuizParticipant = nooParticipant,
     private val run: QuizRapid.(records: ConsumerRecords<String, String>) -> Unit = {}
 ) {
-    private val consumer = KafkaConsumer(consumerConfig(), StringDeserializer(), StringDeserializer())
-    private val producer = KafkaProducer(producerConfig(), StringSerializer(), StringSerializer())
+    private val consumer = KafkaConsumer(config.consumerConfig(clientId), StringDeserializer(), StringDeserializer())
+    private val producer = KafkaProducer(config.producerConfig(clientId), StringSerializer(), StringSerializer())
     private val logger = LoggerFactory.getLogger(QuizRapid::class.java)
 
     private val running = AtomicBoolean(false)
@@ -113,24 +112,6 @@ class QuizRapid(
         } catch (err: Exception) {
             logger.error(err.message, err)
         }
-    }
-
-    private fun consumerConfig() = Properties().apply {
-        put(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG, boostrapServers)
-        put(ConsumerConfig.GROUP_ID_CONFIG, "consumer-$appName")
-        put(ConsumerConfig.CLIENT_ID_CONFIG, "consumer-$appName-$clientId")
-        put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest")
-        put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "true")
-        put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, "1")
-        //put(ConsumerConfig.MAX_POLL_INTERVAL_MS_CONFIG, "$maxPollIntervalMs")
-    }
-
-    private fun producerConfig() = Properties().apply {
-        put(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG, boostrapServers)
-        put(ProducerConfig.CLIENT_ID_CONFIG, "producer-$appName-$clientId")
-        put(ProducerConfig.ACKS_CONFIG, "1")
-        put(ProducerConfig.LINGER_MS_CONFIG, "0")
-        put(ProducerConfig.MAX_IN_FLIGHT_REQUESTS_PER_CONNECTION, "1")
     }
 
     private fun participantHandle(message: String): Boolean {

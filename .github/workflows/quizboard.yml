@@ -1,11 +1,11 @@
-name: Quizmaster-build
+name: Quizboard-build
 
 on:
   push:
     branches: [ main ]
     paths-ignore:
-    - '**/README.md'
-    - 'docker-compose.yml'
+      - '**/README.md'
+      - 'docker-compose.yml'
 
 jobs:
   set_version:
@@ -15,7 +15,7 @@ jobs:
       - name: create docker tag
         run: echo "TAG=$(echo ${{ github.sha }} | cut -c1-7)" >> $GITHUB_ENV
     outputs:
-      image: ghcr.io/${{ github.repository }}/leesah-quizmaster:${{ env.TAG }}
+      image: ghcr.io/${{ github.repository }}/leesah-quizboard:${{ env.TAG }}
 
 
   build:
@@ -29,10 +29,10 @@ jobs:
           java-version: '17.x'
       - name: test and build
         run: ../gradlew build
-        working-directory: quizmaster
+        working-directory: quizboard
       - name: build docker image
         run: docker build . --pull -t ${{ needs.set_version.outputs.image }}
-        working-directory: quizmaster
+        working-directory: quizboard
       - name: push docker image
         run: |
           docker login --username "$GITHUB_REPOSITORY" -p ${{ secrets.GITHUB_TOKEN }} ghcr.io

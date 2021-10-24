@@ -15,3 +15,9 @@ gradle-app.setting
 .gradletasknamecache
 
 .idea
+
+*.pem
+*.cert
+*.key
+client.keystore.p12
+client.truststore.jks

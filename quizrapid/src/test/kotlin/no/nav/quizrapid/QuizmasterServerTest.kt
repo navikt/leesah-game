@@ -76,7 +76,7 @@ internal class QuizmasterServerTest {
 
         val quizmasterServer =
             RapidServer(
-                config = Config("testApp", listOf(embeddedKafkaEnvironment.brokersURL), testTopic),
+                config = Config.local("testApp", listOf(embeddedKafkaEnvironment.brokersURL), testTopic),
                 ktor = testKtor()
             ) { records ->
                 publish("TEST MESSAGE")

@@ -64,7 +64,8 @@ internal class QuizRapidTest {
 
         var counter = 0
 
-        val quizRapid = QuizRapid("testApp", listOf(embeddedKafkaEnvironment.brokersURL), rapidTopic = testTopic) {
+        val config = Config.local("testApp", listOf(embeddedKafkaEnvironment.brokersURL), testTopic)
+        val quizRapid = QuizRapid(config, rapidTopic = testTopic) {
             println(it.records(testTopic))
             counter += 1
         }

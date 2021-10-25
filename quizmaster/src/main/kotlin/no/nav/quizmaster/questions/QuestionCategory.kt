@@ -67,6 +67,8 @@ abstract class QuestionCategory(
         )
     }
 
+    protected fun maxCountReached() = questionCounter == maxCount
+
     fun activate() {
         if (active) return
         if(questionCounter >= maxCount) maxCount *= 2

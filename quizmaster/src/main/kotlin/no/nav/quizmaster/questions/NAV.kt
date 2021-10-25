@@ -58,7 +58,6 @@ class NAV(private val frequency: Duration): QuestionCategory("NAV", 2, false) {
 
     }
 
-
     private fun navQuestion(spørsmål : String, fasit : String) : Question {
         val question = Question(
             category = category,

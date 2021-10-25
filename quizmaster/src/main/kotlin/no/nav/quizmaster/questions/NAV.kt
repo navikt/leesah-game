@@ -6,7 +6,7 @@ import java.time.Duration
 import java.time.LocalDateTime
 
 class NAV(private val frequency: Duration): QuestionCategory("NAV", 2, false) {
-    private var nextQuestion = LocalDateTime.now() + frequency
+    private var nextQuestion = LocalDateTime.now()
     private val publishedQuestions = mutableMapOf<String, String>()
     private var questionIndex = 0
     private val navQuestions = listOf(

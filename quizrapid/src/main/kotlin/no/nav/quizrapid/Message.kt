@@ -1,5 +1,6 @@
 package no.nav.quizrapid
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
@@ -74,7 +75,9 @@ data class Assessment private constructor(
     override fun id() = messageId
     override fun type() = type
 
+    @JsonIgnore
     fun isOk() = status == AssessmentStatus.SUCCESS
+    @JsonIgnore
     fun isWrong() = status == AssessmentStatus.FAILURE
 
     companion object {

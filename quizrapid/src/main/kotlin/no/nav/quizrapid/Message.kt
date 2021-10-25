@@ -74,7 +74,8 @@ data class Assessment private constructor(
     override fun id() = messageId
     override fun type() = type
 
-    fun ok() = status == AssessmentStatus.SUCCESS
+    fun isOk() = status == AssessmentStatus.SUCCESS
+    fun isWrong() = status == AssessmentStatus.FAILURE
 
     companion object {
         private fun sign() = ""

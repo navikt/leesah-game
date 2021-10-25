@@ -14,7 +14,6 @@ abstract class QuestionCategory(
     private var answerCounter = 0
     private var correctAnswersCounter = 0
 
-
     internal fun handle(answer: Answer): Boolean {
         if (answer.category != category) return false
         answerCounter++
@@ -40,7 +39,7 @@ abstract class QuestionCategory(
 
     fun events(): List<Message> {
         val out = outEvents.toList()
-        correctAnswersCounter += out.count { it.ok() }
+        correctAnswersCounter += out.count { it.isOk() }
         outEvents.clear()
         return out
     }

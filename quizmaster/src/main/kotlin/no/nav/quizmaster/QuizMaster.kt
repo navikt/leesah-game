@@ -2,6 +2,7 @@ package no.nav.quizmaster
 
 import no.nav.quizmaster.questions.Arithmetic
 import no.nav.quizmaster.questions.RegisterTeam
+import no.nav.quizmaster.questions.NAV
 import no.nav.quizmaster.questions.CategoryStats
 import no.nav.quizmaster.questions.Status
 import no.nav.quizrapid.*
@@ -9,7 +10,11 @@ import java.time.Duration
 
 
 class QuizMaster : QuizParticipant {
-    private val questions = listOf(RegisterTeam(), Arithmetic(Duration.ofMinutes(1)))
+    private val questions = listOf(
+        RegisterTeam(),
+        Arithmetic(Duration.ofMinutes(1)),
+        NAV(Duration.ofMinutes(5))
+    )
 
     fun events(): List<String> {
         val outQuestions: List<String> = questions

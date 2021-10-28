@@ -11,7 +11,7 @@ export const testBackend = (): Backend => {
 
 let testData = {
     'board': [{
-        'name': 'Team Solo',
+        'name': 'Team SoloPolo Pølsedalt',
         'score': 60,
         'categoryResult': [{
             'name': 'team-registration',
@@ -33,6 +33,90 @@ let testData = {
             'name': 'arithmetic',
             'status': 'FAILURE',
             'okCount': 0,
+        }],
+    }, {
+        'name': 'Team Anne',
+        'score': 110,
+        'categoryResult': [{
+            'name': 'team-registration',
+            'status': 'OK',
+            'okCount': 1,
+        }, {
+            'name': 'arithmetic',
+            'status': 'OK',
+            'okCount': 10,
+        }],
+    }, {
+        'name': 'HEUHEUHUEE',
+        'score': 110,
+        'categoryResult': [{
+            'name': 'team-registration',
+            'status': 'OK',
+            'okCount': 1,
+        }, {
+            'name': 'arithmetic',
+            'status': 'OK',
+            'okCount': 10,
+        }],
+    }, {
+        'name': 'Norefjell blir superkult',
+        'score': 110,
+        'categoryResult': [{
+            'name': 'team-registration',
+            'status': 'OK',
+            'okCount': 1,
+        }, {
+            'name': 'arithmetic',
+            'status': 'OK',
+            'okCount': 10,
+        }],
+    }, {
+        'name': 'ØAHGJANØKGJNDHAERHSDFHSFJFHJLYAETKJLKHFITDUR',
+        'score': 110,
+        'categoryResult': [{
+            'name': 'team-registration',
+            'status': 'OK',
+            'okCount': 1,
+        }, {
+            'name': 'arithmetic',
+            'status': 'OK',
+            'okCount': 10,
+        }],
+    }, {
+        'name': 'Flåklypa Grand Prix',
+        'score': 110,
+        'categoryResult': [{
+            'name': 'team-registration',
+            'status': 'OK',
+            'okCount': 1,
+        }, {
+            'name': 'arithmetic',
+            'status': 'OK',
+            'okCount': 10,
+        }],
+    }, {
+        'name': 'HEI SONDRE OG ULRIK',
+        'score': 110,
+        'categoryResult': [{
+            'name': 'team-registration',
+            'status': 'OK',
+            'okCount': 1,
+        }, {
+            'name': 'arithmetic',
+            'status': 'OK',
+            'okCount': 10,
+        }],
+    }, {
+        'name': 'Team Anne',
+        'score': 140,
+        'categoryResult': [{
+            'name': 'team-registration',
+            'status': 'OK',
+            'okCount': 1,
+        }, {
+            'name': 'arithmetic',
+            'status': 'OK',
+            'okCount': 10,
         }],
     }, {
         'name': 'Team Anne',

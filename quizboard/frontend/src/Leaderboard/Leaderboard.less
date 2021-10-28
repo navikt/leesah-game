@@ -1,22 +1,23 @@
-
 .leaderboard {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 
   &__team {
     border: 1px solid black;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin: 1rem auto;
+    margin: 1rem;
     background-color: #e8f4f8;
     width: fit-content;
-    height: 8rem;
+    height: 6rem;
   }
 
   &__info {
-    width: 10rem;
-    padding: 1rem;
+    width: 15rem;
+    padding: .5rem 0;
     display: flex;
     flex-direction: column;
     margin: auto 0;
@@ -25,9 +26,13 @@
   &__teamname {
     align-self: center;
     text-align: center;
-    font-size: 30px;
+    font-size: 24px;
     font-family: 'Architects Daughter', cursive;
     margin: 0;
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   &__score {
@@ -35,28 +40,33 @@
     text-align: center;
     font-family: 'Playfair Display', serif;
     font-size: 18px;
+    margin: 0;
   }
 
   &__category {
     display: grid;
     align-items: center;
-    padding: 1rem;
+    padding: .5rem;
     width: 7rem;
     border-left: 1px solid grey;
     text-align: center;
     place-items: center;
     grid-template-rows: 50% 50%;
-  }
 
-  &__status {
-    display: flex;
-    width: 4rem;
-    justify-content: space-between;
-  }
+    &__name {
+      margin: 0
+    }
 
-  img {
-    width: 2rem;
-    height: auto;
+    &__status {
+      display: flex;
+      width: 4rem;
+      justify-content: space-between;
+
+      img {
+        width: 2rem;
+        height: auto;
+      }
+    }
   }
 }
 

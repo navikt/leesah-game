@@ -41,14 +41,14 @@ private class CategoryQuestion(val id: String) {
     fun handle(assessment: Assessment) {
         if (assessment.questionId != id) return
         val name = assessment.teamName
-        if (failed(name)) if (assessment.isOk()) ok.add(name) else failure.add(name)
+        if (assessment.isOk()) ok.add(name).also { failure.remove(name) } else failure.add(name)
     }
 
     private fun failed(teamName: String) = teamName !in ok
 
     fun status(teamName: String): Status {
-        if (teamName in ok) return Status.OK
         if (teamName in failure) return Status.FAILURE
+        if (teamName in ok) return Status.OK
         return Status.PENDING
     }
 

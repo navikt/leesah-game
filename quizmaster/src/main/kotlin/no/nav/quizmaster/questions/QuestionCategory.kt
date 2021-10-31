@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory
 
 abstract class QuestionCategory(
     val category: String,
-    private var maxCount: Int = 1,
+    var maxCount: Int = 1,
     protected var active: Boolean = true
 ) {
     protected open val logger = LoggerFactory.getLogger(this.javaClass.name)

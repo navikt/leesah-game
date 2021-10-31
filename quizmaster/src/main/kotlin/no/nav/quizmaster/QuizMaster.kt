@@ -10,7 +10,8 @@ class QuizMaster : QuizParticipant {
         RegisterTeam(),
         Arithmetic(Duration.ofMinutes(1)),
         NAV(Duration.ofMinutes(5)),
-        Deduplication(Duration.ofMinutes(1), 10, false)
+        Deduplication(Duration.ofMinutes(1), 10, false),
+        Transactions()
     )
 
     fun events(): List<String> {

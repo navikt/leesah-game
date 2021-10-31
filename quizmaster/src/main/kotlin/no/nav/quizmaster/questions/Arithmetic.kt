@@ -6,7 +6,7 @@ import java.time.Duration
 import java.time.LocalDateTime.now
 import kotlin.random.Random
 
-class Arithmetic(private val frequency: Duration): QuestionCategory("arithmetic", 10, false) {
+class Arithmetic(private val frequency: Duration, active: Boolean = false): QuestionCategory("arithmetic", 10, active) {
 
     private val operators = listOf(Operator.ADD, Operator.MULTI, Operator.SUB, Operator.DIV)
     private var nextQuestion = now() + frequency

@@ -5,7 +5,7 @@ import no.nav.quizrapid.Question
 import java.time.Duration
 import java.time.LocalDateTime
 
-class NAV(private val frequency: Duration): QuestionCategory("NAV", 2, false) {
+class NAV(private val frequency: Duration, active: Boolean = false): QuestionCategory("NAV", 2, active) {
     private var nextQuestion = LocalDateTime.now()
     private val publishedQuestions = mutableMapOf<String, String>()
     private var questionIndex = 0

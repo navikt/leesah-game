@@ -8,10 +8,11 @@ import java.time.Duration
 class QuizMaster : QuizParticipant {
     private val questions = listOf(
         RegisterTeam(),
-        Arithmetic(Duration.ofMinutes(1)),
-        NAV(Duration.ofMinutes(5)),
+        Arithmetic(Duration.ofMinutes(1), false),
+        NAV(Duration.ofMinutes(5), false),
         Deduplication(Duration.ofMinutes(1), 10, false),
-        Transactions()
+        Transactions(20, false),
+        PingPong(10, false, Duration.ofMinutes(1))
     )
 
     fun events(): List<String> {

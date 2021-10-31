@@ -67,6 +67,20 @@ internal class CategoryTest {
         assertEquals(30, categories.score(categories.teams().first()))
     }
 
+    @Test
+    fun `failure after ok`() {
+        val categories = mutableListOf<Category>()
+        val q1 = question()
+        categories.handle(q1)
+
+        categories.handle(okAssessment(q1))
+        assertEquals(10, categories.score(categories.teams().first()))
+        categories.handle(failureAssessment(q1))
+        assertEquals(0, categories.score(categories.teams().first()))
+        categories.handle(okAssessment(q1))
+        assertEquals(10, categories.score(categories.teams().first()))
+    }
+
     private fun okAssessment(question: Question) =
         Assessment(
             UUID.randomUUID().toString(),
@@ -75,6 +89,16 @@ internal class CategoryTest {
             question.id(),
             UUID.randomUUID().toString(),
             AssessmentStatus.SUCCESS
+        )
+
+    private fun failureAssessment(question: Question) =
+        Assessment(
+            UUID.randomUUID().toString(),
+            question.category,
+            testName,
+            question.id(),
+            UUID.randomUUID().toString(),
+            AssessmentStatus.FAILURE
         )
 
     private fun question() = Question(UUID.randomUUID().toString(), "c${next}", "cat?")

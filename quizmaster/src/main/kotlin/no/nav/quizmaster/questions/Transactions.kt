@@ -2,9 +2,11 @@ package no.nav.quizmaster.questions
 
 import no.nav.quizrapid.Answer
 import no.nav.quizrapid.Question
+import java.time.Duration
 import java.time.LocalDateTime
 
-class Transactions: QuestionCategory("transactions", 20, false) {
+class Transactions(maxCount : Int = 20, active: Boolean = false):
+    QuestionCategory("transactions", maxCount, active) {
     private var nextQuestion = LocalDateTime.now()
     private val publishedQuestions = mutableMapOf<String, Int>()
 

@@ -1,15 +1,22 @@
 package no.nav.quizmaster.questions
 
-import no.nav.quizrapid.*
+import no.nav.quizrapid.Answer
+import no.nav.quizrapid.Assessment
+import no.nav.quizrapid.Message
+import no.nav.quizrapid.Question
 import org.slf4j.LoggerFactory
+import java.time.Duration
+import java.time.LocalDateTime.now
 
 abstract class QuestionCategory(
     val category: String,
     var maxCount: Int = 1,
-    protected var active: Boolean = true
+    protected var active: Boolean = true,
+    private val interval: Duration = Duration.ZERO
 ) {
     protected open val logger = LoggerFactory.getLogger(this.javaClass.name)
     private val outEvents = mutableListOf<Assessment>()
+    private var questionDelay = now()
     private var questionCounter = 0
     private var answerCounter = 0
     private var correctAnswersCounter = 0
@@ -24,6 +31,9 @@ abstract class QuestionCategory(
     internal abstract fun check(answer: Answer)
 
     fun questions(): List<Question> {
+        if(now() < questionDelay) return emptyList()
+        else questionDelay = now() + interval
+
         val capped = newQuestions().filter {
             (questionCounter < maxCount).also { questionCounter++ }
         }

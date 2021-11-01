@@ -4,20 +4,59 @@ import no.nav.quizrapid.Answer
 import no.nav.quizrapid.Question
 import java.time.Duration
 import java.time.LocalDateTime
+import java.util.*
+
+enum class TransactionType{
+    INNSKUDD,
+    UTTREKK
+}
+
+data class Transaction(
+    val id : String = UUID.randomUUID().toString(),
+    val type : TransactionType,
+    val amount : Int
+) {
+    override fun toString(): String = "${type.name} $amount"
+}
+
 
 class Transactions(maxCount : Int = 20, active: Boolean = false):
     QuestionCategory("transactions", maxCount, active) {
+
     private var nextQuestion = LocalDateTime.now()
-    private val publishedQuestions = mutableMapOf<String, Int>()
+    private val publishedQuestions = mutableListOf<Pair<String, Transaction>>()
 
     override fun check(answer: Answer) {
-        publishedQuestions[answer.questionId]?.checkAnswer(answer) ?: run {
-            logger.warn("answer = $answer contains invalid data = ${answer.answer}")
+        val question : Pair<String, Transaction>? = publishedQuestions.find {
+            it.first == answer.questionId
+        }
+        if (question == null){
+            logger.warn("answer = $answer does not refer to a stored question = ${answer.answer}")
+        }
+        val transactionsUpToAnswer = publishedQuestions
+            .subList(0, publishedQuestions.indexOf(question) + 1)
+            .map { it.second }
+        val isAnswerCorrect = calculateBalance(transactionsUpToAnswer) == answer.answer.toInt()
+        isAnswerCorrect.publish(answer.teamName, questionId = question!!.first, answerId = answer.messageId)
+    }
+
+    companion object {
+        fun calculateBalance(transactions: List<Transaction>): Int {
+            var balance = 0;
+            transactions.forEach { transaction ->
+                balance = when (transaction.type) {
+                    TransactionType.INNSKUDD ->
+                        balance.plus(transaction.amount)
+                    TransactionType.UTTREKK ->
+                        balance.minus(transaction.amount)
+                }
+            }
+            return balance
         }
     }
 
-    private fun storeQuestion(newQuestion: Question, fasit: Int) {
-        publishedQuestions[newQuestion.messageId] = fasit
+    private fun storeQuestion(newQuestion: Question, transaction : Transaction) {
+        publishedQuestions.add(Pair(newQuestion.messageId, transaction))
     }
 
     override fun newQuestions(): List<Question> {
@@ -26,31 +65,25 @@ class Transactions(maxCount : Int = 20, active: Boolean = false):
         }
 
         val transactions = getTransactions()
-        val questions = transactions.map {
+        return transactions.map { transaction ->
             Question(
                 category = category,
-                question = it.toString()
-            )
-        } as MutableList<Question>
-        val transactionSum = transactions.sum()
-        questions.forEach{ storeQuestion(it, transactionSum) }
-        return questions
-    }
-
-
-    private fun Int.checkAnswer(answer: Answer) {
-        // hacky fix to publish a correct assessment for every transaction
-        // since QuestionCategory requires one assessment per question
-        val isAnswerCorrect = (this == answer.answer.toInt())
-        publishedQuestions.keys.forEach{
-           isAnswerCorrect.publish(answer.teamName, it, answer.messageId)
+                question = transaction.toString()
+            ).also {
+                storeQuestion(it, transaction)
+            }
         }
     }
 
-    private fun getTransactions() : List<Int> {
-        val transactions = mutableListOf<Int>()
+    private fun randomTransaction() : Transaction = Transaction(
+        type = TransactionType.values().random(),
+        amount = (-10000..10000).random()
+    )
+
+    private fun getTransactions() : List<Transaction> {
+        val transactions = mutableListOf<Transaction>()
         repeat(maxCount){
-            transactions.add((-1000000..1000000).random())
+            transactions.add(randomTransaction())
         }
         return transactions
     }

@@ -19,7 +19,7 @@ class RegisterTeam : QuestionCategory("team-registration") {
             teams.add(answer.answer)
             true.publish(answer.answer, questionPostedId!!, answer.messageId)
         } else {
-            logger.warn("Incorrect team registration: answer = ${answer.json()}")
+            logger.debug("Incorrect team registration: answer = ${answer.json()}")
         }
     }
 

@@ -13,7 +13,7 @@ class Deduplication(
 
     private var nextQuestion = LocalDateTime.now()
     private val teamAnswers = mutableMapOf<String, List<String>>()
-    private val completed = mutableListOf<String>()
+    private val completed = mutableSetOf<String>()
     private var question: Question = Question(category = category, question = "answer this question only once with an <you wont dupe me!>")
     private val resetAnswer = "you duped me!"
     private val fasit = "you wont dupe me!"
@@ -22,22 +22,25 @@ class Deduplication(
         if(answer.questionId != question.messageId) return
         if(answer.answer == resetAnswer) {
             teamAnswers[answer.teamName] = emptyList()
+            completed.remove(answer.teamName)
+            logger.info("team = ${answer.teamName} reset in deduplication")
             return
         }
         if(answer.answer != fasit) {
             false.publish(answer.teamName, question.messageId, answer.messageId)
+            completed.remove(answer.teamName)
         }
         teamAnswers.compute(answer.teamName) { key, value, -> if(value == null)  listOf(answer.messageId) else value + answer.messageId }
+
         if (teamAnswers[answer.teamName]!!.size > 1) {
             false.publish(answer.teamName, question.messageId, answer.messageId)
+            completed.remove(answer.teamName)
+            logger.info("team = ${answer.teamName} received failing assessment due to multiple answers")
         }
-
+        publishAssessments()
     }
 
     override fun newQuestions(): List<Question> {
-        if(maxCountReached()) {
-            publishAssessments()
-        }
 
         return if (LocalDateTime.now() > nextQuestion && active) listOf(question).also {
             nextQuestion = LocalDateTime.now() + interval

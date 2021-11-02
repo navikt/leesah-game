@@ -32,7 +32,7 @@ internal class DeduplicationTest {
             answer("notcoolteam", question.messageId)
         )
         dedup.questions()
-        val assessment2 = dedup.events().first().json()
+        val assessment2 = dedup.events()[1].json()
         assertTrue(assessment2.contains("notcoolteam"))
         assertTrue(assessment2.contains("FAILURE"))
         dedup.check(
@@ -63,14 +63,11 @@ internal class DeduplicationTest {
         dedup.check(
             answer("coolteam", question.messageId)
         )
-        dedup.questions()
-        assertTrue(dedup.events().isEmpty())
-
         dedup.check(
             answer("coolteam", question.messageId)
         )
         dedup.questions()
-        val assessment2 = dedup.events().first().json()
+        val assessment2 = dedup.events()[1].json()
         assertTrue(assessment2.contains("coolteam"))
         assertTrue(assessment2.contains("FAILURE"))
         dedup.check(
@@ -80,10 +77,7 @@ internal class DeduplicationTest {
             answer("coolteam", question.messageId)
         )
         Thread.sleep(1000)
-        dedup.questions()
         Thread.sleep(1000)
-        dedup.questions()
-        dedup.questions()
         val assessment3 = dedup.events().first().json()
         assertTrue(assessment3.contains("coolteam"))
         assertTrue(assessment3.contains("SUCCESS"))

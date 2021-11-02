@@ -12,7 +12,8 @@ class QuizMaster : QuizParticipant {
         NAV(Duration.ofMinutes(5), false),
         Deduplication(Duration.ofMinutes(1), 10, false),
         Transactions(20, false),
-        PingPong(10, false, Duration.ofMinutes(1))
+        PingPong(10, false, Duration.ofMinutes(1)),
+        Base64Echo(5, false, Duration.ofMinutes(1))
     )
 
     fun events(): List<String> {

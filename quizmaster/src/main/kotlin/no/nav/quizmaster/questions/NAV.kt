@@ -5,20 +5,24 @@ import no.nav.quizrapid.Question
 import java.time.Duration
 import java.time.LocalDateTime
 
-class NAV(private val frequency: Duration, active: Boolean = false): QuestionCategory("NAV", 2, active) {
+class NAV(private val frequency: Duration, active: Boolean = false) : QuestionCategory("NAV", 2, active) {
     private var nextQuestion = LocalDateTime.now()
     private val publishedQuestions = mutableMapOf<String, String>()
     private var questionIndex = 0
     private val navQuestions = listOf(
-            navQuestion(
-                "På hvilken nettside finner man informasjon om rekruttering til NAV IT?",
-                "detsombetyrnoe"
-            ),
-            navQuestion(
-                "Hva heter applikasjonsplattformen til NAV?",
-                "nais"
-            )
+        navQuestion(
+            "På hvilken nettside finner man informasjon om rekruttering til NAV IT?",
+            "detsombetyrnoe"
+        ),
+        navQuestion(
+            "Hva heter applikasjonsplattformen til NAV?",
+            "nais"
+        ),
+        navQuestion(
+            "Hva står NAV for?",
+            "nav"
         )
+    )
 
     override fun check(answer: Answer) {
         publishedQuestions[answer.questionId]?.checkAnswer(answer) ?: run {
@@ -27,7 +31,7 @@ class NAV(private val frequency: Duration, active: Boolean = false): QuestionCat
     }
 
     // TODO: accept a list of correct answers, evt. a function (String) -> Boolean
-    private fun String.checkAnswer(answer: Answer){
+    private fun String.checkAnswer(answer: Answer) {
         val validation = answer.answer
             .replace("\\s".toRegex(), "")
             .contains(this, true)
@@ -48,7 +52,7 @@ class NAV(private val frequency: Duration, active: Boolean = false): QuestionCat
         return if (q == null) emptyList() else listOf(q)
     }
 
-    private fun getNextQuestion() : Question? {
+    private fun getNextQuestion(): Question? {
         return if (questionIndex > navQuestions.lastIndex) null
         else {
             navQuestions.get(questionIndex).also {
@@ -58,7 +62,7 @@ class NAV(private val frequency: Duration, active: Boolean = false): QuestionCat
 
     }
 
-    private fun navQuestion(spørsmål : String, fasit : String) : Question {
+    private fun navQuestion(spørsmål: String, fasit: String): Question {
         val question = Question(
             category = category,
             question = spørsmål

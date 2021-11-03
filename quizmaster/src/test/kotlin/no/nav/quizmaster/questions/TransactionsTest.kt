@@ -16,7 +16,7 @@ internal class TransactionsTest {
 
     @Test
     fun `answering the last question uses all transactions for calculating the balance`() {
-        val transactionCategory = Transactions()
+        val transactionCategory = Transactions(interval = Duration.ZERO)
         transactionCategory.activate()
         val questions = transactionCategory.questions()
         val transactions = questions.map { it.toTransaction() }
@@ -35,7 +35,7 @@ internal class TransactionsTest {
 
     @Test
     fun `answering the second question uses only the first two transactions to calculate the balance`() {
-        val transactionCategory = Transactions()
+        val transactionCategory = Transactions(interval = Duration.ZERO)
         transactionCategory.activate()
         val questions = transactionCategory.questions()
         val relevantQuestions = questions.subList(0, 2)
@@ -54,7 +54,7 @@ internal class TransactionsTest {
     }
     @Test
     fun `answering the first question uses only the first two transactions to calculate the balance`() {
-        val transactionCategory = Transactions()
+        val transactionCategory = Transactions(interval = Duration.ZERO)
         transactionCategory.activate()
         val questions = transactionCategory.questions()
         val relevantQuestions = questions.subList(0, 2)
@@ -74,7 +74,7 @@ internal class TransactionsTest {
 
     @Test
     fun `answering the all questions but the last with the sum of all transactions is incorrect`() {
-        val transactionCategory = Transactions()
+        val transactionCategory = Transactions(interval = Duration.ZERO)
         transactionCategory.activate()
         val questions = transactionCategory.questions()
         val transactions = questions.map { it.toTransaction() }

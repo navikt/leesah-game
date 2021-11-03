@@ -20,8 +20,8 @@ data class Transaction(
 }
 
 
-class Transactions(maxCount : Int = 20, active: Boolean = false):
-    QuestionCategory("transactions", maxCount, active) {
+class Transactions(maxCount : Int = 20, active: Boolean = false, interval : Duration = Duration.ZERO):
+    QuestionCategory("transactions", maxCount, active, interval) {
 
     private var nextQuestion = LocalDateTime.now()
     private val publishedQuestions = mutableListOf<Pair<String, Transaction>>()
@@ -32,12 +32,16 @@ class Transactions(maxCount : Int = 20, active: Boolean = false):
         }
         if (question == null){
             logger.warn("answer = $answer does not refer to a stored question = ${answer.answer}")
+        } else {
+            val transactionsUpToAnswer = publishedQuestions
+                .subList(0, publishedQuestions.indexOf(question) + 1)
+                .map { it.second }
+            val isAnswerCorrect = calculateBalance(transactionsUpToAnswer) == answer.answer.toInt()
+            if (!isAnswerCorrect){
+                logger.info("${answer.answer} with answerId ${answer.messageId} and questionId ${answer.questionId} is incorrect")
+            }
+            isAnswerCorrect.publish(answer.teamName, questionId = question.first, answerId = answer.messageId)
         }
-        val transactionsUpToAnswer = publishedQuestions
-            .subList(0, publishedQuestions.indexOf(question) + 1)
-            .map { it.second }
-        val isAnswerCorrect = calculateBalance(transactionsUpToAnswer) == answer.answer.toInt()
-        isAnswerCorrect.publish(answer.teamName, questionId = question!!.first, answerId = answer.messageId)
     }
 
     companion object {
@@ -77,7 +81,7 @@ class Transactions(maxCount : Int = 20, active: Boolean = false):
 
     private fun randomTransaction() : Transaction = Transaction(
         type = TransactionType.values().random(),
-        amount = (-10000..10000).random()
+        amount = (10..10000).random()
     )
 
     private fun getTransactions() : List<Transaction> {

@@ -11,7 +11,7 @@ class QuizMaster : QuizParticipant {
         Arithmetic(Duration.ofMinutes(1), false),
         NAV(Duration.ofMinutes(5), false),
         Deduplication(Duration.ofMinutes(1), 10, false),
-        Transactions(20, false),
+        Transactions(20, false, Duration.ofMinutes(1)),
         PingPong(10, false, Duration.ofMinutes(1)),
         Base64Echo(5, false, Duration.ofMinutes(1))
     )

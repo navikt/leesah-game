@@ -1,10 +1,11 @@
 val ktorVersion = "1.6.4"
 val kafkaVersion = "2.8.0"
 val junitJupiterVersion = "5.8.1"
+val kotlinVersion = "1.6.20"
 
 
 plugins {
-    kotlin("jvm") version "1.5.21"
+    kotlin("jvm") version "1.6.20"
 }
 allprojects {
     repositories {
@@ -19,11 +20,11 @@ subprojects {
 
     tasks {
         compileKotlin {
-            kotlinOptions.jvmTarget = "16"
+            kotlinOptions.jvmTarget = "17"
         }
 
         compileTestKotlin {
-            kotlinOptions.jvmTarget = "16"
+            kotlinOptions.jvmTarget = "17"
         }
         withType<Test> {
             useJUnitPlatform()
@@ -34,17 +35,17 @@ subprojects {
     }
 
     dependencies {
-        implementation("org.jetbrains.kotlin:kotlin-stdlib:1.5.31")
+        implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
 
         implementation("org.apache.kafka:kafka-clients:$kafkaVersion")
         implementation("io.ktor:ktor-server-core:$ktorVersion")
         implementation("io.ktor:ktor-server-cio:$ktorVersion")
         implementation("io.ktor:ktor-client-cio:$ktorVersion")
-        implementation("io.ktor:ktor-jackson:1.6.4")
+        implementation("io.ktor:ktor-jackson:$ktorVersion")
 
-        implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.0")
-        implementation("com.fasterxml.jackson.core:jackson-core:2.13.0")
-        implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.0")
+        implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.2")
+        implementation("com.fasterxml.jackson.core:jackson-core:2.13.2")
+        implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.2")
 
 
         implementation("org.slf4j:slf4j-api:1.7.32")

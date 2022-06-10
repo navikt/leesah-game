@@ -39,4 +39,19 @@ tasks {
                 }
         }
     }
+    tasks {
+        compileKotlin {
+            kotlinOptions.jvmTarget = "17"
+        }
+
+        compileTestKotlin {
+            kotlinOptions.jvmTarget = "17"
+        }
+        withType<Test> {
+            useJUnitPlatform()
+            testLogging {
+                events("skipped", "failed")
+            }
+        }
+    }
 }

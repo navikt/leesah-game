@@ -48,7 +48,7 @@ services:
     build: quizmaster
     environment:
       NAIS_APP_NAME: "quizmaster"
-      BOOTSTRAP_SERVERS: "kafka:9092"
+      KAFKA_BROKERS: "kafka:9092"
     ports:
       - "8000:8080"
     depends_on:
@@ -59,7 +59,7 @@ services:
     build: quizboard
     environment:
       NAIS_APP_NAME : "quizboard"
-      BOOTSTRAP_SERVERS : "kafka:9092"
+      KAFKA_BROKERS : "kafka:9092"
     ports:
       - "8081:8081"
     depends_on:

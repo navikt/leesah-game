@@ -49,5 +49,5 @@ jobs:
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: dev-gcp
-          RESOURCE: deploy/dev.yml
+          RESOURCE: nais/quizboard-dev.yml
           IMAGE: ${{ needs.set_version.outputs.image }}

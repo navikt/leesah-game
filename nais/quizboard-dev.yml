@@ -13,11 +13,11 @@ spec:
   liveness:
     failureThreshold: 10
     initialDelay: 20
-    path: alive
+    path: /alive
     timeout: 1
   readiness:
     initialDelay: 20
-    path: ready
+    path: /ready
     timeout: 1
   replicas:
     cpuThresholdPercentage: 90

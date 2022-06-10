@@ -9,9 +9,9 @@ import io.ktor.response.*
 import io.ktor.routing.*
 import io.ktor.server.cio.*
 import io.ktor.server.engine.*
-import no.nav.quizrapid.*
-import org.slf4j.LoggerFactory
-
+import no.nav.quizrapid.Config
+import no.nav.quizrapid.RapidServer
+import no.nav.quizrapid.objectMapper
 
 
 fun main() {
@@ -38,9 +38,13 @@ fun ktorServer(quizboard: Quizboard): ApplicationEngine = embeddedServer(CIO, ap
                 resources("static")
             }
 
-            get("/hei") {
-                call.respond("QuizBoard")
+            get("/alive") {
+                call.respond("OK")
             }
+            get("/ready") {
+                call.respond("OK")
+            }
+
             get("/board") {
                 call.respond(quizboard.result())
             }

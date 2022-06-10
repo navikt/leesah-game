@@ -1,0 +1,32 @@
+apiVersion: nais.io/v1alpha1
+kind: Application
+metadata:
+  name: quizboard
+  namespace: leesah-game
+  labels:
+    team: leesah-game
+spec:
+  image: {{image}}
+  port: 8080
+  ingresses:
+    - https://leeesah-quizboard.dev.intern.nav.no
+  liveness:
+    failureThreshold: 10
+    initialDelay: 20
+    path: alive
+    timeout: 1
+  readiness:
+    initialDelay: 20
+    path: ready
+    timeout: 1
+  replicas:
+    cpuThresholdPercentage: 90
+    max: 1
+    min: 1
+  resources:
+    limits:
+      cpu: 2000m
+      memory: 5120Mi
+    requests:
+      cpu: 100m
+      memory: 1024Mi

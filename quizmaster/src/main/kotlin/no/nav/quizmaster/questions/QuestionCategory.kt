@@ -15,16 +15,25 @@ abstract class QuestionCategory(
     private val interval: Duration = Duration.ZERO
 ) {
     protected open val logger = LoggerFactory.getLogger(this.javaClass.name)
+    protected val sentQuestions = mutableListOf<Question>()
     private val outEvents = mutableListOf<Assessment>()
     private var questionDelay = now()
-    private var questionCounter = 0
+    private val questionCounter: Int get() = sentQuestions.size
     private var answerCounter = 0
     private var correctAnswersCounter = 0
 
     internal fun handle(answer: Answer): Boolean {
         if (answer.category != category) return false
+        if (answer.questionId !in sentQuestions.map { it.messageId }) return false
         answerCounter++
         check(answer)
+        return true
+    }
+
+    internal fun handle(question: Question): Boolean {
+        if (question.category != category) return false
+        if (question.messageId in sentQuestions.map { it.messageId }) return false
+        sentQuestions.add(question)
         return true
     }
 
@@ -34,14 +43,15 @@ abstract class QuestionCategory(
         if(now() < questionDelay) return emptyList()
         else questionDelay = now() + interval
 
-        val capped = newQuestions().filter {
-            (questionCounter < maxCount).also { questionCounter++ }
+        val capped = newQuestions().filterIndexed { i,_ ->
+            (questionCounter + i < maxCount)
         }
 
-        if (questionCounter >= maxCount && active) {
+        if (questionCounter + capped.size >= maxCount && active) {
             logger.info("${this.javaClass} reached question limit = $maxCount")
             active = false
         }
+        sentQuestions += capped
         return capped
     }
 

@@ -36,9 +36,9 @@ internal class RegisterTeamTest {
         val question = registerQuestion.questions()
         val qId = question.first().id()
 
-        registerQuestion.check(answer(qId, "team1"))
-        registerQuestion.check(answer("wrongid", "team2"))
-        registerQuestion.check(answer(qId, "team3"))
+        registerQuestion.handle(answer(qId, "team1"))
+        registerQuestion.handle(answer("wrongid", "team2"))
+        registerQuestion.handle(answer(qId, "team3"))
         val assessments = registerQuestion.events()
         assertTrue(assessments.size == 2)
         assertTrue(assessments.first().json().contains("team1"))

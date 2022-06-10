@@ -29,12 +29,10 @@ class QuizMaster : QuizParticipant {
         return outEvents + outQuestions
     }
 
-    override fun handle(question: Question) = false
+    override fun handle(question: Question) = questions.any { it.handle(question) }
 
-    override fun handle(answer: Answer): Boolean {
-        questions.forEach { question -> question.handle(answer) }
-        return true
-    }
+    override fun handle(answer: Answer) = questions.any { question -> question.handle(answer) }
+
 
     override fun handle(assessment: Assessment) = false
 

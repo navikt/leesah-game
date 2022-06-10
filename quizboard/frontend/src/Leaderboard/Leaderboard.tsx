@@ -10,7 +10,7 @@ import './Leaderboard.less';
 
 const backend: Backend = Environment.isDevelopment
     ? testBackend()
-    : restBackend(true);
+    : restBackend(false);
 
 export default function Leaderboard() {
     const nullBoard: BoardDto = { board: [] };

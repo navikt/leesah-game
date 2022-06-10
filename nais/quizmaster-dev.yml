@@ -37,4 +37,4 @@ spec:
     pool: nav-dev
   env:
     - name: QUIZ_TOPIC
-      value: leesah-rapid-v1
+      value: leesah-quiz.leesah-rapid-v1

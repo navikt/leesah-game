@@ -30,3 +30,5 @@ spec:
     requests:
       cpu: 100m
       memory: 1024Mi
+  kafka:
+    pool: nav-dev

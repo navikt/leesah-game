@@ -30,3 +30,8 @@ spec:
     requests:
       cpu: 100m
       memory: 1024Mi
+  prometheus:
+    enabled: true
+    path: /metrics
+  kafka:
+    pool: nav-dev

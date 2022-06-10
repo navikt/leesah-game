@@ -8,7 +8,7 @@ import {Card, LabelCard} from "./Card";
 
 const backend: Backend = Environment.isDevelopment
     ? testBackend()
-    : restBackend(true)
+    : restBackend(false)
 
 function QuizStats() {
     const nullBoard: QuizStatsDto = {status: "INACTIVE", categories: []}

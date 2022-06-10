@@ -2,9 +2,9 @@ apiVersion: nais.io/v1alpha1
 kind: Application
 metadata:
   name: quizmaster
-  namespace: leesah-game
+  namespace: leesah-quiz
   labels:
-    team: leesah-game
+    team: leesah-quiz
 spec:
   image: {{image}}
   port: 8080

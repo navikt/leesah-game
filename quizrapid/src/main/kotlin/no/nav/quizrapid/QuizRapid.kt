@@ -46,6 +46,7 @@ class QuizRapid(
     private val consumer = KafkaConsumer(config.consumerConfig(clientId), StringDeserializer(), StringDeserializer())
     private val producer = KafkaProducer(config.producerConfig(clientId), StringSerializer(), StringSerializer())
     private val logger = LoggerFactory.getLogger(QuizRapid::class.java)
+    private var ajour = false
 
     private val running = AtomicBoolean(false)
 
@@ -79,9 +80,10 @@ class QuizRapid(
             consumer.subscribe(listOf(rapidTopic))
             while (running.get()) {
                 consumer.poll(Duration.ofSeconds(1)).also { records ->
+                    if (records.isEmpty) ajour = true
                     records.forEach { participantHandle(it.value()) }
                     run(records)
-                    participant.messages().forEach { publish(it.json()) }
+                    if (ajour) participant.messages().forEach { publish(it.json()) }
                 }
             }
         } catch (err: WakeupException) {

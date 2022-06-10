@@ -21,7 +21,7 @@ fun main() {
 
 fun ktorServer(quizboard: Quizboard): ApplicationEngine = embeddedServer(CIO, applicationEngineEnvironment {
     connector {
-        port = 8081
+        port = 8080
     }
     module {
         install(ContentNegotiation) { register(ContentType.Application.Json, JacksonConverter(objectMapper)) }

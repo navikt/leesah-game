@@ -32,3 +32,6 @@ spec:
       memory: 1024Mi
   kafka:
     pool: nav-dev
+  env:
+    - name: QUIZ_TOPIC
+      value: leesah-rapid-v1

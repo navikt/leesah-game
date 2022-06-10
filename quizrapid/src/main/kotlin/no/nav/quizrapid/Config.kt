@@ -19,7 +19,7 @@ class Config(
         fun fromEnv(): Config {
             return Config(
                 System.getenv("NAIS_APP_NAME"),
-                System.getenv("BOOTSTRAP_SERVERS").split(";"),
+                System.getenv("KAFKA_BROKERS").split(";"),
                 System.getenv("QUIZ_TOPIC") ?: "quiz-rapid",
                 System.getenv("KAFKA_TRUSTSTORE_PATH"),
                 System.getenv("KAFKA_KEYSTORE_PATH"),

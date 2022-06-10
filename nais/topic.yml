@@ -1,0 +1,23 @@
+apiVersion: kafka.nais.io/v1
+kind: Topic
+metadata:
+  name: leesah-rapid-v1
+  namespace: leesah-quiz
+  labels:
+    team: leesah-quiz
+spec:
+  pool: nav-dev
+  config:  # optional; all fields are optional too; defaults shown
+    cleanupPolicy: delete  # delete, compact, compact,delete
+    minimumInSyncReplicas: 1
+    partitions: 1
+    replication: 1  # see min/max requirements
+    retentionBytes: -1  # -1 means unlimited
+    retentionHours: 48  # -1 means unlimited
+  acl:
+    - team: leesah-quiz
+      application: quizboard
+      access: readwrite   # read, write, readwrite
+    - team: leesah-quiz
+      application: quizmaster
+      access: readwrite

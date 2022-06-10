@@ -9,7 +9,7 @@ spec:
   image: {{image}}
   port: 8080
   ingresses:
-    - https://leeesah-quizboard.dev.intern.nav.no
+    - https://leesah-quizboard.dev.intern.nav.no
   liveness:
     failureThreshold: 10
     initialDelay: 20

@@ -14,7 +14,10 @@ class QuizMaster : QuizParticipant {
         Transactions(20, false, Duration.ofMinutes(1)),
         PingPong(10, false, Duration.ofMinutes(1)),
         Base64Echo(5, false, Duration.ofMinutes(1)),
-        IsAPrime()
+        IsAPrime(),
+        PendingQuestion("check-app-log", question = "[NAIS Oppgave] Finn applikasjon loggen for /hello endpunktet. Hvis loggen for din applikasjon til et Orakel for godkjenning."),
+        PendingQuestion("make-grafana-board", question = "[NAIS Oppgave] Lag et Grafana board for applikasjonen. Boardet skal inneholder Counters for  /hello endepunktet og antall Kafka meldinger applikasjonen har motatt. Hvis boardet til et Orakel for godkjenning."),
+        PendingQuestion("make-alert", question = "[NAIS Oppgave] Lag en Alert for applikasjonen. Alarmen skal skrive en Slack melding i quiz-kanalen når /hello endepunktet har mottatt over 100 kall. Vis alerten i kanalen til et Orakel for godkjenning.")
     )
 
     fun events(): List<String> {
@@ -59,6 +62,12 @@ class QuizMaster : QuizParticipant {
     fun activate(category: String): CategoryStats? {
         return questions.firstOrNull { it.category == category }?.apply {
             activate()
+        }?.stats()
+    }
+
+    fun accept(category: String, answerId: String): CategoryStats? {
+        return questions.firstOrNull { it.category == category }?.apply {
+           accept(answerId)
         }?.stats()
     }
 }

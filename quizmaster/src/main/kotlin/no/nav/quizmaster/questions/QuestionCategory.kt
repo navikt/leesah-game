@@ -38,8 +38,10 @@ abstract class QuestionCategory(
     }
 
     internal abstract fun check(answer: Answer)
+    internal open fun accept(answerId: String) {}
 
     fun questions(): List<Question> {
+        if(!active) return  emptyList()
         if(now() < questionDelay) return emptyList()
         else questionDelay = now() + interval
 
@@ -72,18 +74,19 @@ abstract class QuestionCategory(
             questionId,
             answerId
         )
-        logger.debug("publishing assessment", assessment)
+        logger.debug("publishing assessment: {}", assessment)
         outEvents.add(assessment)
     }
 
-    internal fun stats(): CategoryStats {
+    internal open fun stats(): CategoryStats {
         return CategoryStats(
             category,
             if (active) Status.ACTIVE else Status.INACTIVE,
             maxCount,
             questionCounter,
             answerCounter,
-            correctAnswersCounter
+            correctAnswersCounter,
+            emptyList()
         )
     }
 
@@ -103,5 +106,8 @@ data class CategoryStats(
     val maxCount: Int,
     val questionCount: Int,
     val answerCount: Int,
-    val correctAnswerCount: Int
+    val correctAnswerCount: Int,
+    val pendingAnswers: List<PendingAnswer>
 )
+
+data class PendingAnswer(val teamName: String, val answerId: String, val answer: String)

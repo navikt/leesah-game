@@ -1,4 +1,4 @@
-import {Backend, CategoriesDto, errorWhenBadResponse, QuizStatsDto, wrapNetworkErrors} from "./restBackend";
+import {Backend, CategoriesDto, QuizStatsDto} from "./restBackend";
 
 
 export const testBackend = (): Backend => {
@@ -10,6 +10,9 @@ export const testBackend = (): Backend => {
             return Promise.resolve(testData)
         },
         toggle(category: string): Promise<CategoriesDto> {
+            return Promise.resolve(testCategoryData)
+        },
+        accept(category: string, answerId: string): Promise<CategoriesDto> {
             return Promise.resolve(testCategoryData)
         }
     }
@@ -24,7 +27,8 @@ let testData = {
             "maxCount": 1,
             "questionCount": 1,
             "answerCount": 0,
-            "correctAnswerCount": 0
+            "correctAnswerCount": 0,
+            "pendingAnswers": []
         },
         {
             "name": "arithmetic",
@@ -32,7 +36,8 @@ let testData = {
             "maxCount": 10,
             "questionCount": 0,
             "answerCount": 0,
-            "correctAnswerCount": 0
+            "correctAnswerCount": 0,
+            "pendingAnswers": []
         },
         {
             "name": "ping-pong",
@@ -40,7 +45,8 @@ let testData = {
             "maxCount": 10,
             "questionCount": 0,
             "answerCount": 0,
-            "correctAnswerCount": 0
+            "correctAnswerCount": 0,
+            "pendingAnswers": []
         },
         {
             "name": "event-question-1",
@@ -48,7 +54,8 @@ let testData = {
             "maxCount": 10,
             "questionCount": 0,
             "answerCount": 0,
-            "correctAnswerCount": 0
+            "correctAnswerCount": 0,
+            "pendingAnswers": []
         },
         {
             "name": "nav-question-1",
@@ -56,7 +63,24 @@ let testData = {
             "maxCount": 10,
             "questionCount": 0,
             "answerCount": 0,
-            "correctAnswerCount": 0
+            "correctAnswerCount": 0,
+            "pendingAnswers": []
+        },
+        {
+            "name": "pending-question",
+            "status": "INACTIVE",
+            "maxCount": 1,
+            "questionCount": 1,
+            "answerCount": 0,
+            "correctAnswerCount": 0,
+            "pendingAnswers": [
+                {"teamName": "testteam", "answerId": "1234", "answer": "https://www.google.com"},
+                {"teamName": "testteam1", "answerId": "1234", "answer": "google.com"},
+                {"teamName": "testteam2", "answerId": "1234", "answer": "google.com"},
+                {"teamName": "testteam3", "answerId": "1234", "answer": "google.com"},
+                {"teamName": "testteam4", "answerId": "1234", "answer": "google.com"},
+                {"teamName": "testteam5", "answerId": "1234", "answer": "google.com"},
+            ]
         }
     ]
 }
@@ -67,5 +91,6 @@ let testCategoryData = {
             "maxCount": 10,
             "questionCount": 0,
             "answerCount": 0,
-            "correctAnswerCount": 0
+            "correctAnswerCount": 0,
+            "pendingAnswers": []
         }

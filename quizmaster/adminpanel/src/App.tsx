@@ -1,6 +1,6 @@
-import React, {useState, useEffect, useRef} from "react"
+import React, {useState} from "react"
 import {useInterval} from "./poller"
-import {Backend, QuizStatsDto, restBackend, CategoriesDto} from "./restBackend"
+import {Backend, QuizStatsDto, restBackend, CategoriesDto, PendingAnswer} from "./restBackend"
 import {Environment} from "./environment"
 import {testBackend} from "./hardcodedBackend"
 import "./index.css"
@@ -48,6 +48,7 @@ const CategoryView = (props: { categories: CategoriesDto[] }) =>
                 <CategoryDetail label={"questionCount"} value={cat.questionCount}/>
                 <CategoryDetail label={"answerCount"} value={cat.answerCount}/>
                 <CategoryDetail label={"correctAnswerCount"} value={cat.correctAnswerCount}/>
+                {cat.pendingAnswers.length > 0 &&<PendingAnswers category={cat.name} answers={cat.pendingAnswers}/>}
                 <button onClick={() => backend.toggle(cat.name)}>Activate</button>
             </Card>))}
     </div>)
@@ -56,6 +57,20 @@ const CategoryDetail = (props: { label: string, value: string | number }) =>
     (<div className={"categoryView"}>
         <LabelCard text={props.label + ":"}/>
         <p className={props.value === "ACTIVE" ? "activeFont" : ""}>{props.value}</p>
+    </div>)
+
+const PendingAnswers = (props: { category: string, answers: PendingAnswer[] }) =>
+    (<div>
+        <p>answers pending:</p>
+        <div className={"categoryView"}>
+            { props.answers.map((answer) =>
+                (   <>
+                    <button onClick={() => backend.accept(props.category, answer.answerId)}>{answer.teamName}</button>
+                    <a style={{marginLeft: "1em"}} href={answer.answer}>{answer.answer}</a>
+                    </>
+                ))
+            }
+        </div>
     </div>)
 
 

@@ -6,7 +6,6 @@ import io.ktor.http.*
 import io.ktor.http.content.*
 import io.ktor.jackson.*
 import io.ktor.metrics.micrometer.*
-import io.ktor.request.*
 import io.ktor.response.*
 import io.ktor.routing.*
 import io.ktor.server.cio.*
@@ -94,6 +93,21 @@ fun ktorServer(quizMaster: QuizMaster): ApplicationEngine = embeddedServer(CIO, 
                 quizMaster.activate(category)?.also { call.respond(it) } ?: call.respond(
                     HttpStatusCode.NotFound,
                     "could not find category = $category"
+                )
+            }
+
+            put("/categories/{category}/{answerId}") {
+                val category = call.parameters["category"] ?: return@put call.respond(
+                    HttpStatusCode.BadRequest,
+                    "missing a category"
+                )
+                val answerId = call.parameters["answerId"] ?: return@put call.respond(
+                    HttpStatusCode.BadRequest,
+                    "missing a team"
+                )
+                quizMaster.accept(category, answerId)?.also { call.respond(it) } ?: call.respond(
+                    HttpStatusCode.NotFound,
+                    "could not find category = $category containing answerId = $answerId"
                 )
             }
 

@@ -12,12 +12,20 @@ export type CategoriesDto ={
     questionCount: number,
     answerCount: number,
     correctAnswerCount: number,
+    pendingAnswers: PendingAnswer[]
+}
+
+export type  PendingAnswer = {
+    teamName: string,
+    answerId: string,
+    answer: string
 }
 
 export type Backend = {
     quizStats: () => Promise<QuizStatsDto>
     toggle: (category: string) => Promise<CategoriesDto>
     quiz: (stop: string) => Promise<QuizStatsDto>
+    accept(answerId: string, teamName: string): Promise<CategoriesDto>
 }
 
 export const restBackend = (development: boolean): Backend => {
@@ -49,6 +57,17 @@ export const restBackend = (development: boolean): Backend => {
         },
         toggle(category: string): Promise<CategoriesDto> {
             return fetch(`${baseUrl}/categories/${category}`, {
+                method: 'put',
+                headers: {
+                    Accept: 'application/json',
+                }
+            })
+                .catch(wrapNetworkErrors)
+                .then(errorWhenBadResponse)
+                .then(response => response.json())
+        },
+        accept(category: string, teamName: string): Promise<CategoriesDto> {
+            return fetch(`${baseUrl}/categories/${category}/${teamName}`, {
                 method: 'put',
                 headers: {
                     Accept: 'application/json',

@@ -21,3 +21,6 @@ spec:
     - team: leesah-quiz
       application: quizmaster
       access: readwrite
+    - team: leesah-quiz
+      application: *
+      access: readwrite

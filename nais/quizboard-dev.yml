@@ -35,3 +35,7 @@ spec:
   env:
     - name: QUIZ_TOPIC
       value: leesah-quiz.leesah-rapid-v1
+    - name: QUIZRAPID_AUTO_COMMIT
+      value: false
+    - name: QUIZRAPID_CONSUMER_GROUP
+      value: consumer-leesah-quizboard-v2

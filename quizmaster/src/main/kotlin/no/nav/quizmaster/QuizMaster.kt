@@ -15,9 +15,11 @@ class QuizMaster : QuizParticipant {
         PingPong(10, false, Duration.ofMinutes(1)),
         Base64Echo(5, false, Duration.ofMinutes(1)),
         IsAPrime(),
-        PendingQuestion("check-app-log", question = "[NAIS Oppgave] Finn applikasjon loggen for /hello endpunktet. Hvis loggen for din applikasjon til et Orakel for godkjenning."),
-        PendingQuestion("make-grafana-board", question = "[NAIS Oppgave] Lag et Grafana board for applikasjonen. Boardet skal inneholder Counters for  /hello endepunktet og antall Kafka meldinger applikasjonen har motatt. Hvis boardet til et Orakel for godkjenning."),
-        PendingQuestion("make-alert", question = "[NAIS Oppgave] Lag en Alert for applikasjonen. Alarmen skal skrive en Slack melding i quiz-kanalen når /hello endepunktet har mottatt over 100 kall. Vis alerten i kanalen til et Orakel for godkjenning.")
+        PendingQuestion("make-ingress", question = "[NAIS Oppgave] Lag en NAIS ingress for appen din i formatet: <app navn>.dev.intern.nav.no. Send link til ingress som svar "),
+        PendingQuestion("check-app-log", question = "[NAIS Oppgave] Søk opp applikasjon loggen for /hello endpunktet for din app. Send short link til søket som svar."),
+        PendingQuestion("make-grafana-board", question = "[NAIS Oppgave] Lag et Grafana board for applikasjonen. Boardet skal inneholder Counters for  /hello endepunktet og antall Kafka meldinger applikasjonen har mottatt. Send link til boardet som svar."),
+        PendingQuestion("make-alert", question = "[NAIS Oppgave] Lag en Alert for applikasjonen. Alarmen skal skrive en Slack melding i quiz-kanalen når /hello endepunktet har mottatt over 100 kall. Send link til slack-meldingen som svar."),
+        PendingQuestion("setup-wonderwall", question = "[NAIS Oppgave] Sett opp Wonderwall OIDC Autentisering over /secure endepunktet. Send link til /secure endepunktet på din app som svar.")
     )
 
     fun events(): List<String> {

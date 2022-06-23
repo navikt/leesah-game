@@ -34,8 +34,8 @@ spec:
     pool: nav-dev
   env:
     - name: QUIZ_TOPIC
-      value: "leesah-quiz.leesah-rapid-v1"
+      value: "leesah-quiz.leesah-rapid-v2"
     - name: QUIZRAPID_AUTO_COMMIT
       value: "false"
     - name: QUIZRAPID_CONSUMER_GROUP
-      value: "consumer-leesah-quizboard-v2"
+      value: "consumer-leesah-quizboard-v3"

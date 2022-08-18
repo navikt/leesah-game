@@ -6,9 +6,16 @@
 
 # 🏞️ Life is a Stream of Events | the game
 
-## Description
+## Beskrivelse
 
-TODO
+Leesah-game er et hendelsedrevet applikasjonsutviklingspill laget for å utfordre spilleren til å utvikle en applikasjon som kan håndtere et diverst utvalg av utfordrende hendelser som den mottar på eller utenfor NAIS-plattformen.
+
+## Eksempel leaderboardet som vises under spillet
+
+<p align="center">
+<img style="height:20em;" src="/leesah-game-board.png">
+</p>
+
 
 
 ## Setup

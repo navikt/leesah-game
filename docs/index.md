@@ -1,6 +1,6 @@
 # Livet er en strøm av ~~hendelser~~ oppgaver!
 
-![Leesah](leesah-game/leesah.png)
+![Leesah](assets/leesah.png)
 
 ## Om
 

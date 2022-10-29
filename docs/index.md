@@ -14,5 +14,14 @@ Lykke til!
 
 ## Dokumentasjon om oppgavene
 
-Les mer om oppgavene i Leesah-game: [Oppgaveforklaring](oppgaver)
+Oppgavene du kan møte i Leesah-game. Oppgavene kommer ikke nødvendigvis i rekkefølgen til listen.
+
+- [team-registration](oppgaver/team-registration) (Første oppgaven som alltid må gjøres før man kan løse andre oppgaver)
+- [ping-pong](oppgaver/ping-pong)
+- [arithmetic](oppgaver/arithmetic)
+- [NAV](oppgaver/nav)
+- [base64](oppgaver/base64)
+- [is-a-prime](oppgaver/is-a-prime)
+- [transactions](oppgaver/transactions)
+- [deduplication](oppgaver/deduplication)
 

@@ -1,0 +1,3 @@
+# Jekyll config
+markdown: kramdown
+theme: minimal

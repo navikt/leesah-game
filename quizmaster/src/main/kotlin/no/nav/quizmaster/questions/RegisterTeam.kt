@@ -12,7 +12,7 @@ class RegisterTeam : QuestionCategory("team-registration") {
     private val teams = mutableListOf<String>()
 
     override fun check(answer: Answer) {
-        logger.debug("Handling answer", answer)
+        logger.debug("Handling answer: {}", answer)
         if (answer.answer !in teams) {
             logger.info("new quiz team created: team = ${answer.answer}")
             teams.add(answer.answer)
@@ -27,7 +27,7 @@ class RegisterTeam : QuestionCategory("team-registration") {
         return if (active) {
             val question = Question(
                 category = category,
-                question = "Register new team, template = {\"messageId\":\"<INSERT NEW UUID>\", \"questionId\": \"<INSERT QUESTION ID>\",\"type\":\"ANSWER\",\"category\":\"team-registration\",\"teamName\":  \"\", \"questionId\": \"\", \"answer\": \"<INSERT TEAM NAME>\"}"
+                question = "Register a new team"
             )
             listOf(question)
         } else emptyList()

@@ -1,7 +1,5 @@
 # Livet er en strøm av ~~hendelser~~ oppgaver!
 
-![Leesah](assets/leesah.png)
-
 ## Om
 
 Leesah-game er et hedelsedrevet applikasjonsutviklingspill som utforder spillerene til å bygge en applikasjon som håndter

@@ -12,9 +12,7 @@ og fordelene og utfordringene med en slik system-arkitektur. Dessuten er det inn
 
 Lykke til!
 
-## Dokumentajon om oppgavene
+## Dokumentasjon om oppgavene
 
-Les mer om oppgavene i Leesah-game
-
-[Oppgaveforklaring](oppgaver)
+Les mer om oppgavene i Leesah-game: [Oppgaveforklaring](oppgaver)
 

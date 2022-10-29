@@ -4,13 +4,13 @@
 
 Første oppgave alle team må løse er team-registration oppgaven. Oppgaven løses med å publisere et svar med ditt team navn.
 
-**Eksempel hendelse**
+**Eksempel oppgave-hendelse**
 
 ```json
 {
   "type": "QUESTION",
   "messageId": "41fe30bd-4050-45cb-80b2-cb2e82ec4b84",
-  "question": "Register new team",
+  "question": "Register a new team",
   "category": "team-registration"
 }
 ```
@@ -28,6 +28,21 @@ Første oppgave alle team må løse er team-registration oppgaven. Oppgaven løs
 ```
 
 ### ping-pong
+
+Oppgaven er å svare alle ping oppgave-meldinger.
+
+
+**Eksempel oppgave-hendelse**
+
+```json
+{
+  "type": "QUESTION",
+  "messageId": "9e679608-fb1c-482c-9ced-00a3593bb684",
+  "question": "ping",
+  "category": "ping-pong"
+}
+```
+
 
 ### arithmetic
 

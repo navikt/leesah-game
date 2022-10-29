@@ -12,7 +12,13 @@ og fordelene og utfordringene med en slik system-arkitektur. Dessuten er det inn
 
 Lykke til!
 
+
+
 ## Dokumentasjon om oppgavene
+
+**Start her**
+
+[Hvordan spille](hvordan-spille-spillet)
 
 Oppgavene du kan møte i Leesah-game. Oppgavene kommer ikke nødvendigvis i rekkefølgen til listen.
 

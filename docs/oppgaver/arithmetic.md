@@ -1,6 +1,6 @@
 # arithmetic
 
-Aritmetikk oppgaver handler om å løse matteoppgaver som ligger i `question` feltet i oppgave-hendelsen.
+Aritmetikk oppgaver handler om å løse matteoppgaven som ligger i `question` feltet i oppgave-hendelsen.
 
 Feltet er bygd opp slik: `"<integer> <operator> <integer>"`hvor operatoren kan være +,-,* eller /.
 

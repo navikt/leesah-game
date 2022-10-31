@@ -2,6 +2,8 @@
 
 ## Om
 
+<img src="assets/leesah-game-board.png" style="float: right;width: 50%" alt="leaderboard image">
+
 Leesah-game er et hedelsedrevet applikasjonsutviklingspill som utforder spillerene til å bygge en applikasjon som håndter
 forskjellige typer oppgaver som applikasjonen mottar som hendelser på en hendelsestrøm. Oppgavene varierer fra veldig enkle
 til mer komplekse oppgaver. 
@@ -19,8 +21,6 @@ Lykke til!
 **Start her**
 
 [Hvordan spille](hvordan-spille-spillet)
-
-<img src="assets/leesah-game-board.png" style="float: right" alt="leaderboard image">
 
 Oppgavene du kan møte i Leesah-game. Oppgavene kommer ikke nødvendigvis i rekkefølgen til listen.
 

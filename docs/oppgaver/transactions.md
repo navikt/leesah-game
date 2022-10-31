@@ -7,6 +7,7 @@ Svar med korrekt sammenstilt saldo for hver oppgave-hendelse appen mottar.
 **Eksempel oppgave-hendelse**
 
 ```json lines
+
 {
   "type": "QUESTION",
   "messageId": "bc22a3d2-ff4b-477c-8b67-52f3888f5848",
@@ -20,11 +21,13 @@ Svar med korrekt sammenstilt saldo for hver oppgave-hendelse appen mottar.
   "question": "UTTREKK 8421",
   "category": "transactions"
 }
+
 ```
 
 **Eksempel svar**
 
 ```json lines
+
 {
   "type": "ANSWER",
   "messageId": "07e8ca72-ff90-4c68-ad6e-476e7becc5ac",

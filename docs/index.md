@@ -20,6 +20,8 @@ Lykke til!
 
 [Hvordan spille](hvordan-spille-spillet)
 
+<img src="assets/leesah-game-board.png" style="float: right" alt="leaderboard image">
+
 Oppgavene du kan møte i Leesah-game. Oppgavene kommer ikke nødvendigvis i rekkefølgen til listen.
 
 - [team-registration](oppgaver/team-registration) (Første oppgaven som alltid må gjøres før man kan løse andre oppgaver)

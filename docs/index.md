@@ -20,6 +20,7 @@ Lykke til!
 
 **Start her**
 
+[Oppsett og Installasjon](oppsett)
 [Hvordan spille](hvordan-spille-spillet)
 
 Oppgavene du kan møte i Leesah-game. Oppgavene kommer ikke nødvendigvis i rekkefølgen til listen.

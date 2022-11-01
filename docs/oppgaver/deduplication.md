@@ -17,16 +17,16 @@ I denne oppgaven vil Quizmaster sende ut samme melding flere ganger, det er appe
 en gang. Det finst sikkert flere måter man kan jukse seg til poeng her, men oppfordringen er å løse problemet på en
 ordentlig måte.
 
-### Om du mislykkes og sender svar mer en en gang
+### Om du mislykkes, altså sender svar mer en en gang
 
-Da vil du se at du har fått underkjent løsningen din på leaderboardet
+Da vil du se at du har fått underkjent løsningen din på leaderboardet. Da er oppgaven låst som underkjent til du 
+nullstiller oppgaven.
 
 <img src="/leesah-game/assets/deduplication-failed.png" style="width: 25%;padding: 1em" alt="deduplication failed showed on leaderboard">
 
 
-Da er oppgaven låst som underkjent til du nullstiller oppgaven.
-
 **Nullstille oppgaven**
+
 For å nullstille oppgaven for ditt team så må du sende følgende streng som svar på oppgaven: `you duped me!`
 
 **Eksempel på nullstilling**
@@ -63,7 +63,7 @@ For å nullstille oppgaven for ditt team så må du sende følgende streng som s
   "messageId": "2e47641c-4023-4893-8187-9de2445b45c0",
   "questionId": "0c8408aa-d592-47fa-aaef-eb8ee90993e5",
   "category": "deduplication",
-  "teamName": "team 1",
+  "teamName": "l33t team",
   "answer": "you wont dupe me!"
 }
 ```

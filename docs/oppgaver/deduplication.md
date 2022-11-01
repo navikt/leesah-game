@@ -20,7 +20,9 @@ ordentlig måte.
 ### Om du mislykkes og sender svar mer en en gang
 
 Da vil du se at du har fått underkjent løsningen din på leaderboardet
-![deduplication failed](/leesah-game/assets/deduplication-failed.png)
+
+<img src="/leesah-game/assets/deduplication-failed.png" style="width: 25%;padding: 1em" alt="deduplication failed showed on leaderboard">
+
 
 Da er oppgaven låst som underkjent til du nullstiller oppgaven.
 

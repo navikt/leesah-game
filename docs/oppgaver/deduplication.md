@@ -25,7 +25,7 @@ nullstiller oppgaven.
 <img src="/leesah-game/assets/deduplication-failed.png" style="width: 25%;padding: 1em" alt="deduplication failed showed on leaderboard">
 
 
-**Nullstille oppgaven**
+### Nullstille oppgaven
 
 For å nullstille oppgaven for ditt team så må du sende følgende streng som svar på oppgaven: `you duped me!`
 

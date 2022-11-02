@@ -11,6 +11,6 @@
 
 ## Sett opp din spiller applikasjon
 
-1. Gå til https://github.com/navikt/leesah-game-starter og følg guiden i README.md
+1. Gå til [https://github.com/navikt/leesah-game-starter](https://github.com/navikt/leesah-game-starter) og følg guiden i README.md
 
 

@@ -12,7 +12,7 @@ class IsAPrime(maxCount: Int = 10, active: Boolean = false, interval: Duration =
 
     override fun check(answer: Answer) {
         fasit[answer.questionId]?.let {
-            it && answer.answer == "true" || !it && answer.answer == "false"
+            it && answer.answer.lowercase() == "true" || !it && answer.answer.lowercase() == "false"
         }?.publish(answer.teamName, answer.questionId, answer.messageId)
     }
 

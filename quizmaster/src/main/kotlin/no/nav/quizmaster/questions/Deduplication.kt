@@ -14,7 +14,7 @@ class Deduplication(
     private var nextQuestion = LocalDateTime.now()
     private val teamAnswers = mutableMapOf<String, List<String>>()
     private val completed = mutableSetOf<String>()
-    private var question: Question = Question(category = category, question = "answer this question only once with an <you wont dupe me!>")
+    private var question: Question = Question(category = category, question = "answer this question only once with an <you wont dupe me!>. hjelp til oppgaven: https://navikt.github.io/leesah-game/oppgaver/deduplication")
     private val resetAnswer = "you duped me!"
     private val fasit = "you wont dupe me!"
 

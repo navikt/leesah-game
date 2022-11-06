@@ -94,6 +94,7 @@ abstract class QuestionCategory(
         )
     }
 
+    // TODO: burde denne brukes?
     protected fun maxCountReached() = questionCounter == maxCount
 
     fun activate() {

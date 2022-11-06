@@ -2,6 +2,7 @@ package no.nav.quizmaster.questions
 
 import no.nav.quizrapid.Answer
 import no.nav.quizrapid.Assessment
+import no.nav.quizrapid.AssessmentStatus
 import no.nav.quizrapid.Question
 import org.junit.jupiter.api.BeforeEach
 
@@ -93,6 +94,23 @@ internal class NAVTest {
         assertTrue((incorrectAssessments.all { (it as Assessment).isWrong() }))
 
         assertTrue(navQuestions.events().isEmpty())
+    }
+
+    @Test
+    fun `event sourcing`() {
+        val first = NAV(active = true, frequency = Duration.ZERO)
+        val second = NAV(active = true, frequency = Duration.ZERO)
+        val question = first.questions().first()
+        val question2 = first.questions().first()
+        val answer = answerNavQuestion(question, "detsombetyrnoe")
+        val answer2 = answerNavQuestion(question2, "nais")
+        second.handle(question)
+        second.handle(answer)
+        val assessment = second.events().first() as Assessment
+        assertEquals(answer.id(), assessment.answerId)
+        assertEquals(AssessmentStatus.SUCCESS, assessment.status)
+        second.handle(answer2)
+        assertEquals(0, second.events().size)
     }
 
 

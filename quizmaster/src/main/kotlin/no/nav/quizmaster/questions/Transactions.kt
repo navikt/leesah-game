@@ -2,6 +2,7 @@ package no.nav.quizmaster.questions
 
 import no.nav.quizrapid.Answer
 import no.nav.quizrapid.Question
+import java.lang.Exception
 import java.time.Duration
 import java.util.*
 
@@ -81,12 +82,25 @@ class Transactions(maxCount: Int = 20, active: Boolean = false, interval: Durati
     }
 
     override fun sync(question: Question): Boolean {
-        return false
+        return try {
+            val transaction = question.toTransaction()
+            storeSolution(question, transaction)
+            true
+        } catch (e: Exception) {
+            logger.error("Ignoring question due to error syncing: ${question.json()} to Transactions error: ${e.localizedMessage}", e)
+            false
+        }
     }
 
     private fun randomTransaction(): Transaction = Transaction(
         type = TransactionType.values().random(),
         amount = (10..10000).random()
     )
+
+    private fun Question.toTransaction() : Transaction {
+        val type = this.question.split(" ")[0]
+        val amount = this.question.split(" ")[1].toInt()
+        return Transaction(type = TransactionType.valueOf(type), amount = amount)
+    }
 
 }

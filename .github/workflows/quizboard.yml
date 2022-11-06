@@ -54,7 +54,7 @@ jobs:
           IMAGE: ${{ needs.set_version.outputs.image }}
 
   deployProd:
-    name: Deploy to dev
+    name: Deploy to prod
     needs: [ set_version, build ]
     runs-on: ubuntu-latest
     steps:

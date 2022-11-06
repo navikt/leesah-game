@@ -11,7 +11,7 @@ class Config(
     val bootstrapServers: List<String>,
     val quizTopic: String,
     private val consumerGroup: String,
-    private val autoCommit: Boolean,
+    val autoCommit: Boolean,
     private val kafkaTrustStorePath: String?,
     private val kafkaKeyStorePath: String?,
     private val credStorePassword: String?
@@ -25,7 +25,7 @@ class Config(
                 System.getenv("KAFKA_BROKERS").split(";"),
                 System.getenv("QUIZ_TOPIC") ?: "quiz-rapid",
                 System.getenv("QUIZRAPID_CONSUMER_GROUP") ?: "consumer-$appName-v1",
-                System.getenv("QUIZRAPID_AUTO_COMMIT").toBoolean(),
+                System.getenv("QUIZRAPID_AUTO_COMMIT") == "true",
                 System.getenv("KAFKA_TRUSTSTORE_PATH"),
                 System.getenv("KAFKA_KEYSTORE_PATH"),
                 System.getenv("KAFKA_CREDSTORE_PASSWORD")

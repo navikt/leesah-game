@@ -2,12 +2,9 @@ package no.nav.quizrapid
 
 
 import com.fasterxml.jackson.core.JacksonException
-import org.apache.kafka.clients.CommonClientConfigs
-import org.apache.kafka.clients.consumer.ConsumerConfig
 import org.apache.kafka.clients.consumer.ConsumerRecords
 import org.apache.kafka.clients.consumer.KafkaConsumer
 import org.apache.kafka.clients.producer.KafkaProducer
-import org.apache.kafka.clients.producer.ProducerConfig
 import org.apache.kafka.clients.producer.ProducerRecord
 import org.apache.kafka.common.errors.*
 import org.apache.kafka.common.serialization.StringDeserializer
@@ -46,7 +43,6 @@ class QuizRapid(
     private val consumer = KafkaConsumer(config.consumerConfig(clientId), StringDeserializer(), StringDeserializer())
     private val producer = KafkaProducer(config.producerConfig(clientId), StringSerializer(), StringSerializer())
     private val logger = LoggerFactory.getLogger(QuizRapid::class.java)
-    private var ajour = false
 
     private val running = AtomicBoolean(false)
 
@@ -79,11 +75,10 @@ class QuizRapid(
         try {
             consumer.subscribe(listOf(rapidTopic))
             while (running.get()) {
-                consumer.poll(Duration.ofSeconds(1)).also { records ->
-                    if (records.isEmpty) ajour = true
+                consumer.poll(Duration.ofSeconds(5)).also { records ->
                     records.forEach { participantHandle(it.value()) }
                     run(records)
-                    if (ajour) participant.messages().forEach { publish(it.json()) }
+                    participant.messages().forEach { publish(it.json()) }
                 }
             }
         } catch (err: WakeupException) {
@@ -121,7 +116,10 @@ class QuizRapid(
             // ugly, I know
             tryFromRaw<Question>(message) {
                 it.containsValue("type", MessageType.QUESTION.name)
-            }?.also { return participant.handle(it) }
+            }?.also {
+                logger.info("handling question: {}", message)
+                return participant.handle(it)
+            }
             tryFromRaw<Answer>(message) {
                 it.containsValue("type", MessageType.ANSWER.name)
             }?.also { return participant.handle(it) }

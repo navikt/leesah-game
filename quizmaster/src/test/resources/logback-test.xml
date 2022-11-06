@@ -5,6 +5,7 @@
 
     <logger name="org.apache" level="WARN" />
     <logger name="kafka" level="WARN" />
+    <logger name="QuizRapid" level="DEBUG" />
 
     <root level="INFO">
         <appender-ref ref="STDOUT_JSON"/>

@@ -6,9 +6,8 @@ import no.nav.quizmaster.questions.Transactions.Companion.calculateBalance
 import no.nav.quizrapid.Answer
 import no.nav.quizrapid.Assessment
 import no.nav.quizrapid.Question
-import org.junit.jupiter.api.BeforeEach
-
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import java.time.Duration
 
@@ -37,8 +36,9 @@ internal class TransactionsTest {
     fun `answering the second question uses only the first two transactions to calculate the balance`() {
         val transactionCategory = Transactions(interval = Duration.ZERO)
         transactionCategory.activate()
-        val questions = transactionCategory.questions()
-        val relevantQuestions = questions.subList(0, 2)
+        val question1 = transactionCategory.questions()
+        val question2 = transactionCategory.questions()
+        val relevantQuestions = question1 + question2
         val transactions = relevantQuestions.map { it.toTransaction() }
         val transactionSum = calculateBalance(transactions)
         val answerToFirstTwoMessages = Answer(
@@ -56,8 +56,9 @@ internal class TransactionsTest {
     fun `answering the first question uses only the first two transactions to calculate the balance`() {
         val transactionCategory = Transactions(interval = Duration.ZERO)
         transactionCategory.activate()
-        val questions = transactionCategory.questions()
-        val relevantQuestions = questions.subList(0, 2)
+        val question1 = transactionCategory.questions()
+        val question2 = transactionCategory.questions()
+        val relevantQuestions = question1 + question2
         val transactions = relevantQuestions.map { it.toTransaction() }
         val transactionSum = calculateBalance(transactions)
         val answerToCorrectMessage = Answer(
@@ -86,7 +87,7 @@ internal class TransactionsTest {
                 questionId = question.messageId,
                 answer = transactionSum.toString()
             )
-            transactionCategory.check(answer)
+            transactionCategory.handle(answer)
         }
         val assessments = transactionCategory.events().map { (it as Assessment).isOk() }
         assertEquals(assessments.size, transactions.size)

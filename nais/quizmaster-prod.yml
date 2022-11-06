@@ -35,9 +35,9 @@ spec:
     path: /metrics
   filesFrom:
     - secret: leesah-client-truststore
-      mountPath: /var/run/stores
+      mountPath: /var/run/trust
     - secret: leesah-client-keystore
-      mountPath: /var/run/stores
+      mountPath: /var/run/key
   env:
     - name: QUIZ_TOPIC
       value: quiz-rapid-test2
@@ -46,8 +46,8 @@ spec:
     - name: KAFKA_BROKERS
       value: "nav-integration-test-kafka-nav-integration-test.aivencloud.com:26484"
     - name: KAFKA_TRUSTSTORE_PATH
-      value: "/var/run/stores/client.truststore.jks"
+      value: "/var/trust/stores/client.truststore.jks"
     - name: KAFKA_KEYSTORE_PATH
-      value: "/var/run/stores/client.keystore.p12"
+      value: "/var/key/stores/client.keystore.p12"
     - name: KAFKA_CREDSTORE_PASSWORD
       value: "whatever"

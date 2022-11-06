@@ -1,6 +1,9 @@
 package no.nav.quizmaster.questions
 
 import no.nav.quizrapid.Answer
+import no.nav.quizrapid.Assessment
+import no.nav.quizrapid.AssessmentStatus
+import no.nav.quizrapid.Question
 import org.junit.jupiter.api.BeforeEach
 
 import org.junit.jupiter.api.Assertions.*
@@ -31,8 +34,7 @@ internal class ArithmeticTest {
         val art = Arithmetic(Duration.ZERO)
         art.activate()
         val questions = art.questions()
-        val exp = questions.first().question.split(" ")
-        val result = operatorMap[exp[1]]?.invoke(exp[0].toInt(), exp[2].toInt())
+        val result = arithmeticSolver(questions.first())
         assertNotNull(result)
         art.check(
             Answer(
@@ -56,4 +58,26 @@ internal class ArithmeticTest {
             assertTrue(it[1].json().contains("FAILURE"))
         }
     }
+
+    @Test
+    fun `event sourcing`() {
+        val first = Arithmetic(Duration.ZERO, active = true)
+        val question = first.questions().first()
+
+        val second = Arithmetic(Duration.ZERO, active = false)
+        second.handle(question)
+        val answer  = Answer(category = question.category, teamName = "tester", questionId = question.id(), answer = arithmeticSolver(question)!!.toString())
+        second.handle(answer)
+        val assessment = (second.events().first() as Assessment)
+        assertEquals(assessment.answerId, answer.id())
+        assertEquals(assessment.status, AssessmentStatus.SUCCESS)
+    }
+
+    private fun arithmeticSolver(question: Question): Int? {
+        val exp = question.question.split(" ")
+        val result = operatorMap[exp[1]]?.invoke(exp[0].toInt(), exp[2].toInt())
+        return result
+    }
+
+
 }

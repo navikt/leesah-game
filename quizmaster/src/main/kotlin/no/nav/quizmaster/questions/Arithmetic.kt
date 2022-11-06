@@ -10,11 +10,12 @@ class Arithmetic(private val frequency: Duration, active: Boolean = false): Ques
 
     private val operators = listOf(Operator.ADD, Operator.MULTI, Operator.SUB, Operator.DIV)
     private var nextQuestion = now() + frequency
-    private val publishedQuestions = mutableMapOf<String, Int>()
+    private val fasit = mutableMapOf<String, Int>()
 
     override fun check(answer: Answer) {
         try {
-            publishedQuestions[answer.questionId]?.checkAnswer(answer)
+            updateFasit()
+            fasit[answer.questionId]?.checkAnswer(answer)
         } catch (e: NumberFormatException ) {
             logger.warn("answer = $answer contains invalid data = ${answer.answer}")
             logger.debug(e.toString())
@@ -38,7 +39,16 @@ class Arithmetic(private val frequency: Duration, active: Boolean = false): Ques
     }
 
     private fun storeQuestion(newQuestion: Question, fasit: Int) {
-        publishedQuestions[newQuestion.messageId] = fasit
+        this.fasit[newQuestion.messageId] = fasit
+    }
+
+    // Update fasit with any arithmetic questions published by another Quizmaster
+    private fun updateFasit() {
+        sentQuestions
+            .filter { it.id() !in fasit.keys }
+            .map { Pair(it.id(), arithmeticSolver(it)) }
+            .filterNot { it.second == null }
+            .forEach { fasit[it.first] = it.second!! }
     }
 
     private fun generateExpression(): Pair<String, Int> {
@@ -55,5 +65,16 @@ class Arithmetic(private val frequency: Duration, active: Boolean = false): Ques
         MULTI("*", {first, last -> first * last}),
         SUB("-", {first, last -> first - last}),
         DIV("/", {first, last -> first / last}),
+    }
+
+    private fun arithmeticSolver(question: Question): Int? {
+        val operatorMap = mapOf<String, (Int, Int) -> Int>(
+            "+" to { first, last -> first + last },
+            "*" to { first, last -> first * last },
+            "-" to { first, last -> first - last },
+            "/" to { first, last -> first / last },
+        )
+        val exp = question.question.split(" ")
+        return operatorMap[exp[1]]?.invoke(exp[0].toInt(), exp[2].toInt())
     }
 }

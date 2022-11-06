@@ -46,8 +46,8 @@ spec:
     - name: KAFKA_BROKERS
       value: "nav-integration-test-kafka-nav-integration-test.aivencloud.com:26484"
     - name: KAFKA_TRUSTSTORE_PATH
-      value: "/var/trust/stores/client.truststore.jks"
+      value: "/var/run/trust/client.truststore.jks"
     - name: KAFKA_KEYSTORE_PATH
-      value: "/var/key/stores/client.keystore.p12"
+      value: "/var/run/key/client.keystore.p12"
     - name: KAFKA_CREDSTORE_PASSWORD
       value: "whatever"

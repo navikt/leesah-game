@@ -40,6 +40,7 @@ export default function Leaderboard() {
             {board.board.sort((a: TeamResultDto, b: TeamResultDto) => a.score < b.score ? 1 : -1)
                 .map((team: any, index: number) => (
                     <div key={index} className='leaderboard__team'>
+                        <p className='leaderboard__number'>{index}</p>
                         <div className='leaderboard__info'>
                             <h3 className='leaderboard__teamname'>{team.name}</h3>
                             <p className='leaderboard__score'>Total score: {team.score}</p>

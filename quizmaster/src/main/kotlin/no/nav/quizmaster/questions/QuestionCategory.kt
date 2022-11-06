@@ -33,7 +33,7 @@ abstract class QuestionCategory(
     internal fun handle(question: Question): Boolean {
         if (question.category != category) return false
         if (question.messageId in sentQuestions.map { it.messageId }) return false
-        sentQuestions.add(question)
+        if(sync(question)) sentQuestions.add(question)
         return true
     }
 
@@ -58,6 +58,10 @@ abstract class QuestionCategory(
     }
 
     protected abstract fun newQuestions(): List<Question>
+
+    // Sync questions published by another Quizmaster to the question category
+    // The QuestionCategory implementation decides if the question should be synced or discarded
+    protected open fun sync(question: Question): Boolean { return false }
 
     fun events(): List<Message> {
         val out = outEvents.toList()

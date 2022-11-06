@@ -17,4 +17,6 @@ class PingPong(maxCount: Int = 1, active: Boolean = true, interval: Duration) :
         val newQuestion = Question(category = category, question = "ping")
         return listOf(newQuestion)
     }
+
+    override fun sync(question: Question) = true
 }

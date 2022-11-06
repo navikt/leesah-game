@@ -1,6 +1,5 @@
 package no.nav.quizmaster.questions
 
-import io.ktor.util.*
 import no.nav.quizrapid.Answer
 import no.nav.quizrapid.Question
 import java.time.Duration
@@ -11,11 +10,11 @@ class Base64Echo(maxCount: Int = 1, active: Boolean = true, interval: Duration =
     QuestionCategory("base64", maxCount, active, interval) {
 
     val words = listOf("Python", "Golang", "Lisp", "Simula")
-    private val publishedQuestions = mutableMapOf<String, String>()
+    private val fasit = mutableMapOf<String, String>()
 
     override fun check(answer: Answer) {
-        if (answer.questionId !in publishedQuestions.keys) return
-        (publishedQuestions[answer.questionId] == answer.answer).publish(
+        if (answer.questionId !in fasit.keys) return
+        (fasit[answer.questionId] == answer.answer).publish(
             answer.teamName,
             answer.questionId,
             answer.messageId
@@ -35,7 +34,20 @@ class Base64Echo(maxCount: Int = 1, active: Boolean = true, interval: Duration =
         return listOf(newQuestion)
     }
 
-    private fun storeQuestion(newQuestion: Question, fasit: String) {
-        publishedQuestions[newQuestion.messageId] = fasit
+    override fun sync(question: Question): Boolean {
+        val answer = decode(question)
+        if(answer in words) {
+            storeQuestion(question, answer)
+            return true
+        }
+        return false
     }
+
+
+    private fun storeQuestion(newQuestion: Question, fasit: String) {
+        this.fasit[newQuestion.messageId] = fasit
+    }
+
+    private fun decode(question: Question): String =
+        String(Base64.getDecoder().decode(question.question.split(" ")[1]))
 }

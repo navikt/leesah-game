@@ -3,6 +3,7 @@ package no.nav.quizmaster.questions
 import no.nav.quizrapid.Answer
 import no.nav.quizrapid.Assessment
 import no.nav.quizrapid.AssessmentStatus
+import no.nav.quizrapid.Question
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import java.time.LocalDate
@@ -23,13 +24,13 @@ internal class GrunnbeløpTest {
         val questions = grunnbeløpQuestion.questions()
         val q = questions.first()
         for (i in 1..1000) {
-            val date = LocalDate.parse(q.question.split(":")[1].removePrefix(" "))
-            val answer = grunnbeløpQuestion.grunnbeløpFor(date)
+            val answer = grunnbeløpQuestion.grunnbeløpAnswer(q)
             grunnbeløpQuestion.handle(Answer(category = "grunnbeløp", teamName = "tester", questionId = q.id(), answer = answer.toString()))
             val assessment =  (grunnbeløpQuestion.events().first() as Assessment)
             assertEquals(AssessmentStatus.SUCCESS, assessment.status)
         }
     }
+
 
 
     @Test
@@ -51,5 +52,29 @@ internal class GrunnbeløpTest {
         assertEquals(106399, grunnbeløpQuestion.grunnbeløpFor(30.april(2022)))
         assertEquals(111477, grunnbeløpQuestion.grunnbeløpFor(1.mai(2022)))
         assertEquals(111477, grunnbeløpQuestion.grunnbeløpFor(2.mai(2022)))
+    }
+
+    @Test
+    fun `event sourcing`() {
+        val first = Grunnbeløp(active = true, maxCount = 1)
+        val second = Grunnbeløp(active = true, maxCount = 1)
+        val question = first.questions().first()
+        second.handle(question)
+        val answer = Answer(
+            category = question.category,
+            teamName = "tester",
+            questionId = question.id(),
+            answer = first.grunnbeløpAnswer(question).toString()
+        )
+        second.handle(answer)
+        val assessment = second.events().first() as Assessment
+        assertEquals(answer.id(), assessment.answerId)
+        assertEquals(AssessmentStatus.SUCCESS, assessment.status)
+    }
+
+    private fun Grunnbeløp.grunnbeløpAnswer(q: Question): Int? {
+        val date = LocalDate.parse(q.question.split(":")[1].removePrefix(" "))
+        val answer = this.grunnbeløpFor(date)
+        return answer
     }
 }

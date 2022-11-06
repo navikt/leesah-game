@@ -14,7 +14,6 @@ class Arithmetic(private val frequency: Duration, active: Boolean = false): Ques
 
     override fun check(answer: Answer) {
         try {
-            updateFasit()
             fasit[answer.questionId]?.checkAnswer(answer)
         } catch (e: NumberFormatException ) {
             logger.warn("answer = $answer contains invalid data = ${answer.answer}")
@@ -43,12 +42,13 @@ class Arithmetic(private val frequency: Duration, active: Boolean = false): Ques
     }
 
     // Update fasit with any arithmetic questions published by another Quizmaster
-    private fun updateFasit() {
-        sentQuestions
-            .filter { it.id() !in fasit.keys }
-            .map { Pair(it.id(), arithmeticSolver(it)) }
-            .filterNot { it.second == null }
-            .forEach { fasit[it.first] = it.second!! }
+    override fun sync(question: Question): Boolean {
+        val answer = arithmeticSolver(question)
+        if (answer != null) {
+            storeQuestion(question, answer)
+            return true
+        }
+        return false
     }
 
     private fun generateExpression(): Pair<String, Int> {

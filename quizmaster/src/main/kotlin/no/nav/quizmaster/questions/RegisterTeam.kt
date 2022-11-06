@@ -32,5 +32,7 @@ class RegisterTeam : QuestionCategory("team-registration") {
             listOf(question)
         } else emptyList()
     }
+
+    override fun sync(question: Question) = true
 }
 

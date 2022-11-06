@@ -11,10 +11,6 @@ class Grunnbeløp(active: Boolean = false, maxCount: Int = 1): QuestionCategory(
     val fasit = mutableMapOf<String, Int>()
 
     override fun check(answer: Answer) {
-        if (answer.questionId !in sentQuestions.map { it.id() }) {
-            logger.warn("answer received for a question that has not been published: answer: {}, questions: {}", answer.json(), sentQuestions.map { it.json() })
-            return
-        }
         (fasit[answer.questionId] == answer.answer.toInt()).publish(
             teamName = answer.teamName,
             questionId = answer.questionId,
@@ -28,9 +24,23 @@ class Grunnbeløp(active: Boolean = false, maxCount: Int = 1): QuestionCategory(
         val day = Random.nextInt(1, 28)
         val questionDate = LocalDate.of(year, month, day)
         val question = Question(category=category, question = "grunnbeløp på dato: ${questionDate.format(DateTimeFormatter.ISO_LOCAL_DATE)}")
-        fasit[question.id()] = grunnbeløpFor(questionDate)!!
+        storeFasit(question, grunnbeløpFor(questionDate)!!)
         return listOf(question)
     }
+
+    private fun storeFasit(question: Question, answer: Int) {
+        fasit[question.id()] = answer
+    }
+
+    override fun sync(question: Question): Boolean {
+        val date = questionDate(question) ?: return false
+        val answer = grunnbeløpFor(date) ?: return false
+        storeFasit(question, answer)
+        return true
+    }
+
+    private fun questionDate(question: Question): LocalDate? =
+        LocalDate.parse(question.question.split(":")[1].removePrefix(" "))
 
     fun grunnbeløpFor(date: LocalDate): Int? {
         return grunnbeløp.firstOrNull { date.isEqual(it.second) || date.isAfter(it.second) }?.first

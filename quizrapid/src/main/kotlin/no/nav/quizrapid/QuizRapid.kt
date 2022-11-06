@@ -45,6 +45,7 @@ class QuizRapid(
     private val logger = LoggerFactory.getLogger(QuizRapid::class.java)
 
     private val running = AtomicBoolean(false)
+    private var readUp = false
 
     internal fun isRunning() = running.get()
 
@@ -60,7 +61,7 @@ class QuizRapid(
 
     fun start() {
         logger.info("starting QuizRapid")
-        if (true == running.getAndSet(true)) return logger.info("QuizRapid already started")
+        if (running.getAndSet(true)) return logger.info("QuizRapid already started")
         consumeMessages()
     }
 
@@ -76,9 +77,13 @@ class QuizRapid(
             consumer.subscribe(listOf(rapidTopic))
             while (running.get()) {
                 consumer.poll(Duration.ofSeconds(5)).also { records ->
+                    if(records.isEmpty) {
+                        readUp = true
+                        logger.info("QuizRapid has read the end of the topic")
+                    }
                     records.forEach { participantHandle(it.value()) }
                     run(records)
-                    participant.messages().forEach { publish(it.json()) }
+                    if(readUp) participant.messages().forEach { publish(it.json()) }
                 }
             }
         } catch (err: WakeupException) {

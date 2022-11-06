@@ -1,6 +1,8 @@
 package no.nav.quizmaster.questions
 
 import no.nav.quizrapid.Answer
+import no.nav.quizrapid.Assessment
+import no.nav.quizrapid.AssessmentStatus
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import java.time.Duration
@@ -82,6 +84,20 @@ internal class DeduplicationTest {
         assertTrue(assessment3.contains("coolteam"))
         assertTrue(assessment3.contains("SUCCESS"))
 
+    }
+
+    @Test
+    fun `event sourced`() {
+        val first = Deduplication(Duration.ZERO, 3, true)
+        val second = Deduplication(Duration.ZERO, 3, true)
+        val question = first.questions().first()
+        val answer = answer("tester", question.id())
+        second.handle(question)
+        second.handle(answer)
+
+        val assessment = second.events().first() as Assessment
+        assertEquals(answer.id(), assessment.answerId)
+        assertEquals(AssessmentStatus.SUCCESS, assessment.status)
     }
 
     private fun answer(team: String, qId: String) = Answer(

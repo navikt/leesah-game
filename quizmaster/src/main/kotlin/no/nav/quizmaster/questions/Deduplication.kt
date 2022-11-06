@@ -3,55 +3,65 @@ package no.nav.quizmaster.questions
 import no.nav.quizrapid.Answer
 import no.nav.quizrapid.Question
 import java.time.Duration
-import java.time.LocalDateTime
 
 class Deduplication(
-    private val interval: Duration,
+    interval: Duration,
     maxCount: Int,
     active: Boolean
-) : QuestionCategory("deduplication", maxCount, active) {
+) : QuestionCategory("deduplication", maxCount, active, interval = interval) {
 
-    private var nextQuestion = LocalDateTime.now()
-    private val teamAnswers = mutableMapOf<String, List<String>>()
-    private val completed = mutableSetOf<String>()
     private var question: Question = Question(category = category, question = "answer this question only once with an <you wont dupe me!>. hjelp til oppgaven: https://navikt.github.io/leesah-game/oppgaver/deduplication")
+
+    private val questions = mutableMapOf<String, TeamSheet>()
     private val resetAnswer = "you duped me!"
     private val fasit = "you wont dupe me!"
 
+    data class TeamSheet(val completed: MutableSet<String> = mutableSetOf(), val teamAnswers: MutableMap<String, List<String>> = mutableMapOf())
+
+
     override fun check(answer: Answer) {
-        if(answer.questionId != question.messageId) return
+        val sheet = questions[answer.questionId]
+        if (sheet == null) {
+            logger.warn("answer: ${answer.json()} does not match a question")
+            return
+        }
+
         if(answer.answer == resetAnswer) {
-            teamAnswers[answer.teamName] = emptyList()
-            completed.remove(answer.teamName)
-            logger.info("team = ${answer.teamName} reset in deduplication")
+            sheet.teamAnswers[answer.teamName] = emptyList()
+            sheet.completed.remove(answer.teamName)
+            logger.info("team = ${answer.teamName} for question: ${answer.questionId} reset in deduplication")
             return
         }
         if(answer.answer != fasit) {
-            false.publish(answer.teamName, question.messageId, answer.messageId)
-            completed.remove(answer.teamName)
+            false.publish(answer.teamName, answer.questionId, answer.messageId)
+            sheet.completed.remove(answer.teamName)
         }
-        teamAnswers.compute(answer.teamName) { key, value, -> if(value == null)  listOf(answer.messageId) else value + answer.messageId }
+        sheet.teamAnswers.compute(answer.teamName) { key, value, -> if(value == null)  listOf(answer.messageId) else value + answer.messageId }
 
-        if (teamAnswers[answer.teamName]!!.size > 1) {
-            false.publish(answer.teamName, question.messageId, answer.messageId)
-            completed.remove(answer.teamName)
+        if (sheet.teamAnswers[answer.teamName]!!.size > 1) {
+            false.publish(answer.teamName, answer.questionId, answer.messageId)
+            sheet.completed.remove(answer.teamName)
             logger.info("team = ${answer.teamName} received failing assessment due to multiple answers")
         }
-        publishAssessments()
+        publishAssessments(answer.questionId, sheet)
     }
 
     override fun newQuestions(): List<Question> {
-
-        return if (LocalDateTime.now() > nextQuestion && active) listOf(question).also {
-            nextQuestion = LocalDateTime.now() + interval
+        if(questions[question.messageId] == null) {
+            questions[question.messageId] = TeamSheet()
         }
-        else emptyList()
+        return listOf(question)
     }
 
-    private fun publishAssessments() {
-        teamAnswers.filter { it.value.size == 1 && it.key !in completed }.forEach {
-            true.publish(it.key, question.messageId, it.value[0])
-            completed.add(it.key)
+    override fun sync(question: Question): Boolean {
+        questions[question.id()] = TeamSheet()
+        return true
+    }
+
+    private fun publishAssessments(questionId: String, sheet: TeamSheet) {
+        sheet.teamAnswers.filter { it.value.size == 1 && it.key !in sheet.completed }.forEach {
+            true.publish(it.key, questionId, it.value[0])
+            sheet.completed.add(it.key)
         }
     }
 }

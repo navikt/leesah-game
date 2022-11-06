@@ -11,6 +11,8 @@ import org.apache.kafka.common.serialization.StringDeserializer
 import org.apache.kafka.common.serialization.StringSerializer
 import org.slf4j.LoggerFactory
 import java.time.Duration
+import java.time.Instant
+import java.time.LocalDateTime
 import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
 
@@ -43,6 +45,7 @@ class QuizRapid(
     private val consumer = KafkaConsumer(config.consumerConfig(clientId), StringDeserializer(), StringDeserializer())
     private val producer = KafkaProducer(config.producerConfig(clientId), StringSerializer(), StringSerializer())
     private val logger = LoggerFactory.getLogger(QuizRapid::class.java)
+    private lateinit var startedAt: LocalDateTime
 
     private val running = AtomicBoolean(false)
     private var readUp = false
@@ -61,6 +64,7 @@ class QuizRapid(
 
     fun start() {
         logger.info("starting QuizRapid")
+        startedAt = LocalDateTime.now()
         if (running.getAndSet(true)) return logger.info("QuizRapid already started")
         consumeMessages()
     }
@@ -77,9 +81,9 @@ class QuizRapid(
             consumer.subscribe(listOf(rapidTopic))
             while (running.get()) {
                 consumer.poll(Duration.ofSeconds(5)).also { records ->
-                    if(records.isEmpty) {
+                    if(rapidHasReadUp(records)) {
                         readUp = true
-                        logger.info("QuizRapid has read the end of the topic")
+                        logger.info("QuizRapid has read to the end of the topic")
                     }
                     records.forEach { participantHandle(it.value()) }
                     run(records)
@@ -139,6 +143,13 @@ class QuizRapid(
         }
     }
 
+    private fun rapidHasReadUp(records: ConsumerRecords<String, String>): Boolean {
+        if(!records.isEmpty) logger.info("record received timestamp: {}", recordLocalDateTime(records.first().timestamp()))
+        return records.isEmpty
+                || records.any { recordLocalDateTime(it.timestamp())?.isAfter(startedAt) ?: false }
+                && !readUp
+    }
+
     companion object {
         private fun isFatalError(err: Exception) = when (err) {
             is InvalidTopicException,
@@ -147,6 +158,13 @@ class QuizRapid(
             is UnknownServerException,
             is AuthorizationException -> true
             else -> false
+        }
+
+        private fun recordLocalDateTime(timestamp: Long): LocalDateTime? {
+            return LocalDateTime.ofInstant(
+                Instant.ofEpochMilli(timestamp),
+                TimeZone.getDefault().toZoneId()
+            )
         }
     }
 

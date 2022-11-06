@@ -130,6 +130,7 @@ class QuizRapid(
                 return participant.handle(it)
             }
             tryFromRaw<Answer>(message) {
+                logger.info("handling answer: {}", message)
                 it.containsValue("type", MessageType.ANSWER.name)
             }?.also { return participant.handle(it) }
             tryFromRaw<Assessment>(message) {
@@ -144,9 +145,8 @@ class QuizRapid(
     }
 
     private fun rapidHasReadUp(records: ConsumerRecords<String, String>): Boolean {
-        if(!records.isEmpty) logger.info("record received timestamp: {}", recordLocalDateTime(records.first().timestamp()))
-        return records.isEmpty
-                || records.any { recordLocalDateTime(it.timestamp())?.isAfter(startedAt) ?: false }
+        return (records.isEmpty
+                || records.any { recordLocalDateTime(it.timestamp())?.isAfter(startedAt) ?: false })
                 && !readUp
     }
 

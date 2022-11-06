@@ -52,3 +52,16 @@ jobs:
           CLUSTER: dev-gcp
           RESOURCE: nais/quizmaster-dev.yml
           IMAGE: ${{ needs.set_version.outputs.image }}
+
+  deployProd:
+    name: Deploy to dev
+    needs: [ set_version, build ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: nais/deploy/actions/deploy@v1
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: prod-gcp
+          RESOURCE: nais/quizmaster-prod.yml
+          IMAGE: ${{ needs.set_version.outputs.image }}

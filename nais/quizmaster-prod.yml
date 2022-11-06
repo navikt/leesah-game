@@ -1,0 +1,53 @@
+apiVersion: nais.io/v1alpha1
+kind: Application
+metadata:
+  name: quizmaster
+  namespace: leesah-quiz
+  labels:
+    team: leesah-quiz
+spec:
+  image: {{image}}
+  port: 8080
+  ingresses:
+    - https://leesah-quizmaster.intern.nav.no
+  liveness:
+    failureThreshold: 10
+    initialDelay: 20
+    path: /alive
+    timeout: 1
+  readiness:
+    initialDelay: 20
+    path: /ready
+    timeout: 1
+  replicas:
+    cpuThresholdPercentage: 90
+    max: 1
+    min: 1
+  resources:
+    limits:
+      cpu: 2000m
+      memory: 5120Mi
+    requests:
+      cpu: 100m
+      memory: 1024Mi
+  prometheus:
+    enabled: true
+    path: /metrics
+  filesFrom:
+    - secret: leesah-client-truststore
+      mountPath: /var/run/stores
+    - secret: leesah-client-keystore
+      mountPath: /var/run/stores
+  env:
+    - name: QUIZ_TOPIC
+      value: quiz-rapid-test2
+    - name: QUIZRAPID_AUTO_COMMIT
+      value: "false"
+    - name: KAFKA_BROKERS
+      value: "nav-integration-test-kafka-nav-integration-test.aivencloud.com:26484"
+    - name: KAFKA_TRUSTSTORE_PATH
+      value: "/var/run/stores/client.truststore.jks"
+    - name: KAFKA_KEYSTORE_PATH
+      value: "/var/run/stores/client.keystore.p12"
+    - name: KAFKA_CREDSTORE_PASSWORD
+      value: "whatever"

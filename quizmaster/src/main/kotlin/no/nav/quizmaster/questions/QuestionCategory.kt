@@ -33,7 +33,10 @@ abstract class QuestionCategory(
     internal fun handle(question: Question): Boolean {
         if (question.category != category) return false
         if (question.messageId in sentQuestions.map { it.messageId }) return false
-        if(sync(question)) sentQuestions.add(question)
+        if(sync(question)) {
+            logger.info("syncing question: ${question.id()} to category: $category")
+            sentQuestions.add(question)
+        }
         return true
     }
 
@@ -50,7 +53,7 @@ abstract class QuestionCategory(
         }
 
         if (questionCounter + capped.size >= maxCount && active) {
-            logger.info("${this.javaClass} reached question limit = $maxCount")
+            logger.info("category: ${this.javaClass} reached question limit = $maxCount")
             active = false
         }
         sentQuestions += capped
@@ -78,7 +81,7 @@ abstract class QuestionCategory(
             questionId,
             answerId
         )
-        logger.debug("publishing assessment: {}", assessment)
+        logger.debug("publishing assessment: {}", assessment.json())
         outEvents.add(assessment)
     }
 

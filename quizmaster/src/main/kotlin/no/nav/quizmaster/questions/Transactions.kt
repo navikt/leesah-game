@@ -39,7 +39,7 @@ class Transactions(maxCount: Int = 20, active: Boolean = false, interval: Durati
     override fun check(answer: Answer) {
         val solution = solutions.firstOrNull { it.questionId == answer.questionId }
         if (solution == null) {
-            logger.warn("answer = $answer does not refer to a stored question = ${answer.answer}")
+            logger.warn("answer = $answer does not refer to a stored question = ${answer.questionId}")
             return
         }
         val isCorrect = solution.correctAnswer == answer.answer.toInt()

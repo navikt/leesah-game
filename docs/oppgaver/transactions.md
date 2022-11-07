@@ -1,10 +1,10 @@
 # transactions
 
-Denne oppgaven handler om å holde styr på innskudd og utrekk. En viktig oppgave både her og ellers i livet.
-Svar med korrekt sammenstilt saldo for hver oppgave-hendelse appen mottar.
+Denne oppgaven handler om å holde styr på innskudd og utrekk; en viktig oppgave både her og ellers i livet.
+Svar med korrekt sammenstilt saldo for hver oppgave-hendelse applikasjonen mottar.
 
 
-**Eksempel oppgave-hendelse**
+**Eksempel på oppgave-hendelse**
 
 
 ```json lines
@@ -25,7 +25,7 @@ Svar med korrekt sammenstilt saldo for hver oppgave-hendelse appen mottar.
 
 ```
 
-**Eksempel svar**
+**Eksempelsvar**
 
 
 ```json lines

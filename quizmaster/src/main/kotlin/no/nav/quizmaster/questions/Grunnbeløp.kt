@@ -2,11 +2,13 @@ package no.nav.quizmaster.questions
 
 import no.nav.quizrapid.Answer
 import no.nav.quizrapid.Question
+import java.time.Duration
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import kotlin.random.Random
 
-class Grunnbeløp(active: Boolean = false, maxCount: Int = 1): QuestionCategory("grunnbelop", active = active, maxCount = maxCount) {
+class Grunnbeløp(active: Boolean = false, maxCount: Int = 1, interval: Duration) :
+    QuestionCategory("grunnbelop", active = active, maxCount = maxCount, interval = interval) {
 
     val fasit = mutableMapOf<String, Int>()
 

@@ -64,7 +64,7 @@ abstract class QuestionCategory(
 
     // Sync questions published by another Quizmaster to the question category
     // The QuestionCategory implementation decides if the question should be synced or discarded
-    protected open fun sync(question: Question): Boolean { return false }
+    protected abstract fun sync(question: Question): Boolean
 
     fun events(): List<Message> {
         val out = outEvents.toList()

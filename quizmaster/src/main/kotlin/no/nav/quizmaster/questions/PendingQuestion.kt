@@ -41,4 +41,10 @@ class PendingQuestion(category: String, active: Boolean = false, private val que
 
     override fun newQuestions(): List<Question> =
         if (active) listOf(Question(category = category, question = question)) else emptyList()
+
+    override fun sync(question: Question): Boolean {
+        pending[question.id()] = emptyList()
+        accepted[question.id()] = emptyList()
+        return true
+    }
 }

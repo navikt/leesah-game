@@ -2,7 +2,7 @@ version: '3'
 services:
   zookeeper:
     container_name: zookeeper
-    image: "confluentinc/cp-zookeeper:7.0.1"
+    image: "confluentinc/cp-zookeeper:latest"
     environment:
       ZOOKEEPER_CLIENT_PORT: "2181"
       ZOOKEEPER_TICK_TIME: "2000"
@@ -14,7 +14,7 @@ services:
 
   kafka:
     container_name: kafka
-    image: "confluentinc/cp-kafka:7.0.1"
+    image: "confluentinc/cp-kafka:latest"
     ports:
       - "9092:9092"
       - "29092:29092"
@@ -27,7 +27,6 @@ services:
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: "0"
       KAFKA_ADVERTISED_LISTENERS: "PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092"
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: "PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT"
-    command: "sh -c '/etc/confluent/docker/run'"
 
   kafka-ui:
     container_name: kafka-ui
@@ -49,6 +48,7 @@ services:
     environment:
       NAIS_APP_NAME: "quizmaster"
       KAFKA_BROKERS: "kafka:9092"
+      QUIZRAPID_CONSUMER_GROUP: "new-group-v1"
     ports:
       - "8000:8080"
     depends_on:

@@ -3,7 +3,7 @@
 Base64 oppgaven handler om å svare tilbake med "noe" som forståelig tekst. Om du ikke er kjent med
 base64 encoding så er det nok lurt å google og lese litt på hva det er for noe.
 
-**Husk:** Se på `question` feltet til oppgave-hendelsen.
+**Husk:** Se på `question`-feltet til oppgave-hendelsen.
 
 **Eksempel oppgave-hendelse**
 

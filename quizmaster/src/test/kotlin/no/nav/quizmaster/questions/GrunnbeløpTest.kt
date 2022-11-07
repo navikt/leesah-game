@@ -6,13 +6,14 @@ import no.nav.quizrapid.AssessmentStatus
 import no.nav.quizrapid.Question
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import java.time.Duration
 import java.time.LocalDate
 
 internal class GrunnbeløpTest {
 
     @Test
     fun `generates questions`(){
-        val grunnbeløpQuestion = Grunnbeløp()
+        val grunnbeløpQuestion = Grunnbeløp(interval = Duration.ZERO)
         assertTrue(grunnbeløpQuestion.questions().isEmpty())
         grunnbeløpQuestion.activate()
         assertTrue(grunnbeløpQuestion.questions().isNotEmpty())
@@ -20,12 +21,12 @@ internal class GrunnbeløpTest {
 
     @Test
     fun `Answer OK`(){
-        val grunnbeløpQuestion = Grunnbeløp(active = true, maxCount = 1000)
+        val grunnbeløpQuestion = Grunnbeløp(active = true, maxCount = 1000, interval = Duration.ZERO)
         val questions = grunnbeløpQuestion.questions()
         val q = questions.first()
         for (i in 1..1000) {
             val answer = grunnbeløpQuestion.grunnbeløpAnswer(q)
-            grunnbeløpQuestion.handle(Answer(category = "grunnbeløp", teamName = "tester", questionId = q.id(), answer = answer.toString()))
+            grunnbeløpQuestion.handle(Answer(category = "grunnbelop", teamName = "tester", questionId = q.id(), answer = answer.toString()))
             val assessment =  (grunnbeløpQuestion.events().first() as Assessment)
             assertEquals(AssessmentStatus.SUCCESS, assessment.status)
         }
@@ -35,17 +36,17 @@ internal class GrunnbeløpTest {
 
     @Test
     fun `Wrong answer`(){
-        val grunnbeløpQuestion = Grunnbeløp(active = true, maxCount = 1000)
+        val grunnbeløpQuestion = Grunnbeløp(active = true, maxCount = 1000, interval = Duration.ZERO)
         val questions = grunnbeløpQuestion.questions()
         val q = questions.first()
-        grunnbeløpQuestion.handle(Answer(category = "grunnbeløp", teamName = "tester", questionId = q.id(), answer = 1000.toString()))
+        grunnbeløpQuestion.handle(Answer(category = "grunnbelop", teamName = "tester", questionId = q.id(), answer = 1000.toString()))
         val assessment =  (grunnbeløpQuestion.events().first() as Assessment)
         assertEquals(AssessmentStatus.FAILURE, assessment.status)
     }
 
     @Test
     fun `Right Grunnbeløp for date`(){
-        val grunnbeløpQuestion = Grunnbeløp(active = true, maxCount = 1000)
+        val grunnbeløpQuestion = Grunnbeløp(active = true, maxCount = 1000, interval = Duration.ZERO)
         assertEquals(null, grunnbeløpQuestion.grunnbeløpFor(1.januar(1966)))
         assertEquals(5400, grunnbeløpQuestion.grunnbeløpFor(1.januar(1967)))
         assertEquals(106399, grunnbeløpQuestion.grunnbeløpFor(30.april(2022)))
@@ -56,8 +57,8 @@ internal class GrunnbeløpTest {
 
     @Test
     fun `event sourcing`() {
-        val first = Grunnbeløp(active = true, maxCount = 1)
-        val second = Grunnbeløp(active = true, maxCount = 1)
+        val first = Grunnbeløp(active = true, maxCount = 1, interval = Duration.ZERO)
+        val second = Grunnbeløp(active = true, maxCount = 1, interval = Duration.ZERO)
         val question = first.questions().first()
         second.handle(question)
         val answer = Answer(

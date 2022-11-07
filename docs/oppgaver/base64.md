@@ -5,7 +5,7 @@ base64 encoding så er det nok lurt å google og lese litt på hva det er for no
 
 **Husk:** Se på `question`-feltet til oppgave-hendelsen.
 
-**Eksempel oppgave-hendelse**
+**Eksempel på oppgave-hendelse**
 
 ```json
 {

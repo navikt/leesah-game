@@ -6,7 +6,7 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import kotlin.random.Random
 
-class Grunnbeløp(active: Boolean = false, maxCount: Int = 1): QuestionCategory("grunnbeløp", active = active, maxCount = maxCount) {
+class Grunnbeløp(active: Boolean = false, maxCount: Int = 1): QuestionCategory("grunnbelop", active = active, maxCount = maxCount) {
 
     val fasit = mutableMapOf<String, Int>()
 
@@ -23,7 +23,7 @@ class Grunnbeløp(active: Boolean = false, maxCount: Int = 1): QuestionCategory(
         val month = Random.nextInt(1, 13)
         val day = Random.nextInt(1, 28)
         val questionDate = LocalDate.of(year, month, day)
-        val question = Question(category=category, question = "grunnbeløp på dato: ${questionDate.format(DateTimeFormatter.ISO_LOCAL_DATE)}")
+        val question = Question(category=category, question = "grunnbelop på dato: ${questionDate.format(DateTimeFormatter.ISO_LOCAL_DATE)}")
         storeFasit(question, grunnbeløpFor(questionDate)!!)
         return listOf(question)
     }

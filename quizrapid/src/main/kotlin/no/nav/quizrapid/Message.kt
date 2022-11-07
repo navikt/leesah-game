@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
+import java.time.LocalDateTime
 import java.util.*
 
 enum class MessageType {
@@ -17,6 +18,7 @@ enum class MessageType {
 interface Message {
     fun id(): String
     fun type(): MessageType
+    fun created(): LocalDateTime
     fun json(): String {
         return objectMapper.writeValueAsString(this)
     }
@@ -26,16 +28,18 @@ data class Question private constructor(
     val messageId: String = UUID.randomUUID().toString(),
     val type: MessageType,
     val category: String,
-    val question: String
+    val question: String,
+    val created: LocalDateTime
 ) : Message {
     override fun id() = messageId
     override fun type() = type
+    override fun created() = created
 
     constructor(
         messageId: String = UUID.randomUUID().toString(),
         category: String,
         question: String
-    ) : this(messageId, MessageType.QUESTION, category, question)
+    ) : this(messageId, MessageType.QUESTION, category, question, LocalDateTime.now())
 }
 
 data class Answer private constructor(
@@ -44,10 +48,12 @@ data class Answer private constructor(
     val category: String,
     val teamName: String,
     val questionId: String,
-    val answer: String
+    val answer: String,
+    val created: LocalDateTime
 ) : Message {
     override fun id() = messageId
     override fun type() = type
+    override fun created() = created
 
     constructor(
         messageId: String = UUID.randomUUID().toString(),
@@ -55,7 +61,7 @@ data class Answer private constructor(
         teamName: String,
         questionId: String,
         answer: String
-    ) : this(messageId, MessageType.ANSWER, category, teamName, questionId, answer)
+    ) : this(messageId, MessageType.ANSWER, category, teamName, questionId, answer, LocalDateTime.now())
 }
 
 enum class AssessmentStatus {
@@ -70,13 +76,16 @@ data class Assessment private constructor(
     val questionId: String,
     val answerId: String,
     val status: AssessmentStatus,
+    val created: LocalDateTime,
     val sign: String,
 ) : Message {
     override fun id() = messageId
     override fun type() = type
+    override fun created() = created
 
     @JsonIgnore
     fun isOk() = status == AssessmentStatus.SUCCESS
+
     @JsonIgnore
     fun isWrong() = status == AssessmentStatus.FAILURE
 
@@ -116,7 +125,17 @@ data class Assessment private constructor(
         questionId: String,
         answerId: String,
         status: AssessmentStatus,
-    ) : this(messageId, MessageType.ASSESSMENT, category, teamName, questionId, answerId, status, sign())
+    ) : this(
+        messageId,
+        MessageType.ASSESSMENT,
+        category,
+        teamName,
+        questionId,
+        answerId,
+        status,
+        LocalDateTime.now(),
+        sign()
+    )
 }
 
 val objectMapper: ObjectMapper

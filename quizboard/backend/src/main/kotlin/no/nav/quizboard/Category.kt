@@ -21,7 +21,7 @@ class Category(question: Question) {
     fun handle(question: Question) {
         if (question.category != name) return
         if (questions.contains(question.id())) return
-        questions.add(CategoryQuestion(question.id(), LocalDateTime.now()))
+        questions.add(CategoryQuestion(question.id(), question.created()))
     }
 
     fun handle(assessment: Assessment) {
@@ -79,7 +79,7 @@ private class CategoryQuestion(val id: String, val received: LocalDateTime) {
             )
             return
         }
-        val okAssessment = OkAssessment(name, LocalDateTime.now())
+        val okAssessment = OkAssessment(name, assessment.created())
         logger.info(
             "received ok assessment: category: {} qId: {} team: {} qReceived: {} aReceived: {} timeUsed: {}",
             assessment.category,

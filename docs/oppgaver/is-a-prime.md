@@ -1,9 +1,9 @@
 # is-a-prime
 
-Denne oppgaven handler om å finne ut om ett tall er primtall eller ikke. Svar med `true` eller `false` avhengig om
-tallet inne i `question` feltet i oppgave-hendelsen er et primtall eller ikke.
+Denne oppgaven handler om å finne ut om et tall er primtall eller ikke. Svar med `true` eller `false` avhengig av om
+tallet inne i `question`-feltet i oppgave-hendelsen er et primtall eller ikke.
 
-**Eksempel oppgave-hendelse**
+**Eksempel på oppgave-hendelse**
 
 ```json
  {
@@ -14,7 +14,7 @@ tallet inne i `question` feltet i oppgave-hendelsen er et primtall eller ikke.
 }
 ```
 
-**Eksempel svar**
+**Eksempelsvar**
 
 ```json
  {

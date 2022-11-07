@@ -1,6 +1,6 @@
 # ping-pong
 
-Oppgaven er å svare alle ping oppgave-meldinger.
+Oppgaven er å svare på alle ping oppgave-meldinger.
 
 
 **Eksempel oppgave-hendelse**

@@ -55,7 +55,7 @@ For å nullstille oppgaven for ditt team så må du sende følgende streng som s
 }
 ```
 
-**Eksempel svar**
+**Eksempelsvar**
 
 ```json
 {

@@ -1,13 +1,13 @@
 # arithmetic
 
-Aritmetikk oppgaver handler om å løse matteoppgaven som ligger i `question` feltet i oppgave-hendelsen.
+Aritmetikkoppgaver handler om å løse matteoppgaven som ligger i `question` feltet i oppgave-hendelsen.
 
-Feltet er bygd opp slik: `"<integer> <operator> <integer>"`hvor operatoren kan være +,-,* eller /.
+Feltet er bygd opp slik: `"<integer> <operator> <integer>"`hvor operatoren kan være `+`, `-`, `*` eller `/`.
 
 Oppgaven svares med riktig svar i heltall (integer).
 
 
-**Eksempel oppgave-hendelse**
+**Eksempel på oppgave-hendelse**
 ```json
 {
   "type": "QUESTION",
@@ -17,7 +17,7 @@ Oppgaven svares med riktig svar i heltall (integer).
 }
 ```
 
-**Eksempel svar**
+**Eksempelsvar**
 ```json
 {
   "type": "ANSWER",

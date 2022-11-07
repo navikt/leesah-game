@@ -1,9 +1,9 @@
 # NAV
 
 Denne oppgaven handler om å svare på noen helt vanlige quiz-spørsmål, altså ikke noe fancy programmering her. For å løse
-oppgaven må appen svare på spørsmålet i `question` feltet med riktig svar.
+oppgaven må appen svare på spørsmålet i `question`-feltet med riktig svar.
 
-**Eksempel oppgave-hendelse**
+**Eksempel på oppgave/hendelse**
 
 ```json
 {
@@ -14,7 +14,7 @@ oppgaven må appen svare på spørsmålet i `question` feltet med riktig svar.
 }
 ```
 
-**Eksempel svar**
+**Eksempelsvar**
 
 ```json
 {

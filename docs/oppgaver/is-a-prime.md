@@ -10,7 +10,8 @@ tallet inne i `question`-feltet i oppgave-hendelsen er et primtall eller ikke.
   "type": "QUESTION",
   "messageId": "444b1103-b8f5-4efc-8182-d71b7c2c9e5e",
   "question": "is it a prime number? 7",
-  "category": "is-a-prime"
+  "category": "is-a-prime",
+  "created": "2022-11-07T14:53:27.581147"
 }
 ```
 
@@ -23,6 +24,7 @@ tallet inne i `question`-feltet i oppgave-hendelsen er et primtall eller ikke.
   "questionId": "444b1103-b8f5-4efc-8182-d71b7c2c9e5e",
   "category": "is-a-prime",
   "teamName": "l33t team",
-  "answer": "true"
+  "answer": "true",
+  "created": "2022-11-07T14:53:27.581147"
 }
 ```

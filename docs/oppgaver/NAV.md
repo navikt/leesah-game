@@ -10,7 +10,8 @@ oppgaven må appen svare på spørsmålet i `question`-feltet med riktig svar.
   "type": "QUESTION",
   "messageId": "176cc8af-3f37-4659-9dac-29d3d5537ebe",
   "question": "Hvilken ytelse fra NAV har syke arbeidere i Norge som oftest rett på?",
-  "category": "NAV"
+  "category": "NAV",
+  "created": "2022-11-07T14:53:27.581147"
 }
 ```
 
@@ -23,6 +24,7 @@ oppgaven må appen svare på spørsmålet i `question`-feltet med riktig svar.
   "questionId": "176cc8af-3f37-4659-9dac-29d3d5537ebe",
   "category": "NAV",
   "teamName": "l33t team",
-  "answer": "sykepenger"
+  "answer": "sykepenger",
+  "created": "2022-11-07T14:53:27.581147"
 }
 ```

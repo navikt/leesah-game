@@ -9,7 +9,8 @@ Første oppgave alle team må løse er "team registration"-oppgaven. Oppgaven l�
   "type": "QUESTION",
   "messageId": "41fe30bd-4050-45cb-80b2-cb2e82ec4b84",
   "question": "Register a new team",
-  "category": "team-registration"
+  "category": "team-registration",
+  "created": "2022-11-07T14:53:27.581147"
 }
 ```
 
@@ -21,6 +22,7 @@ Første oppgave alle team må løse er "team registration"-oppgaven. Oppgaven l�
   "category": "team-registration",
   "teamName": "l33t team",
   "answer": "l33t team",
-  "messageId": "d36b4273-0571-42f2-b3bd-7b7987de43b0"
+  "messageId": "d36b4273-0571-42f2-b3bd-7b7987de43b0",
+  "created": "2022-11-07T14:53:27.581147"
 }
 ```

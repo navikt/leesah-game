@@ -13,7 +13,8 @@ Oppgaven svares med riktig svar i heltall (integer).
   "type": "QUESTION",
   "messageId": "96acb8f4-4b1e-4f0a-9d54-fcdda1223d9d",
   "question": "49 - 62",
-  "category": "arithmetic"
+  "category": "arithmetic",
+  "created": "2022-11-07T14:53:27.581147"
 }
 ```
 
@@ -25,6 +26,7 @@ Oppgaven svares med riktig svar i heltall (integer).
   "questionId": "96acb8f4-4b1e-4f0a-9d54-fcdda1223d9d",
   "category": "team-registration",
   "teamName": "l33t team",
-  "answer": "-13"
+  "answer": "-13",
+  "created": "2022-11-07T14:53:27.581147"
 }
 ```

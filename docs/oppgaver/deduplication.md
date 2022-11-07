@@ -40,7 +40,8 @@ For å nullstille oppgaven for ditt team så må du sende følgende streng som s
   "questionId": "0c8408aa-d592-47fa-aaef-eb8ee90993e5",
   "category": "deduplication",
   "teamName": "l33t team",
-  "answer": "you duped me!"
+  "answer": "you duped me!",
+  "created": "2022-11-07T14:53:27.581147"
 }
 ```
 
@@ -51,7 +52,8 @@ For å nullstille oppgaven for ditt team så må du sende følgende streng som s
   "type": "QUESTION",
   "messageId": "0c8408aa-d592-47fa-aaef-eb8ee90993e5",
   "question": "answer this question only once with an <you wont dupe me!>",
-  "category": "deduplication"
+  "category": "deduplication",
+  "created": "2022-11-07T14:53:27.581147"
 }
 ```
 
@@ -64,6 +66,7 @@ For å nullstille oppgaven for ditt team så må du sende følgende streng som s
   "questionId": "0c8408aa-d592-47fa-aaef-eb8ee90993e5",
   "category": "deduplication",
   "teamName": "l33t team",
-  "answer": "you wont dupe me!"
+  "answer": "you wont dupe me!",
+  "created": "2022-11-07T14:53:27.581147"
 }
 ```

@@ -12,6 +12,7 @@ base64 encoding så er det nok lurt å google og lese litt på hva det er for no
   "type": "QUESTION",
   "messageId": "608df513-96e1-4c4e-af26-ec81823aed1d",
   "question": "echo UHl0aG9u",
-  "category": "base64"
+  "category": "base64",
+  "created": "2022-11-07T14:53:27.581147"
 }
 ```

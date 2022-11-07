@@ -1,8 +1,8 @@
 # team-registration
 
-Første oppgave alle team må løse er team-registration oppgaven. Oppgaven løses med å publisere et svar med ditt team navn.
+Første oppgave alle team må løse er "team registration"-oppgaven. Oppgaven løses ved å publisere et svar med ditt teamnavn.
 
-**Eksempel oppgave-hendelse**
+**Eksempel på oppgave-hendelse**
 
 ```json
 {
@@ -13,7 +13,7 @@ Første oppgave alle team må løse er team-registration oppgaven. Oppgaven løs
 }
 ```
 
-**Eksempel svar**
+**Eksempelsvar**
 ```json
 {
   "type": "ANSWER",

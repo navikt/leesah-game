@@ -130,12 +130,17 @@ class QuizRapid(
                 return participant.handle(it)
             }
             tryFromRaw<Answer>(message) {
-                logger.info("handling answer: {}", message)
                 it.containsValue("type", MessageType.ANSWER.name)
-            }?.also { return participant.handle(it) }
+            }?.also {
+                logger.info("handling answer: {}", message)
+                return participant.handle(it)
+            }
             tryFromRaw<Assessment>(message) {
                 it.containsValue("type", MessageType.ASSESSMENT.name)
-            }?.also { return participant.handle(it) }
+            }?.also {
+                logger.info("handling assessment: {}", message)
+                return participant.handle(it)
+            }
             return false
         } catch (e: JacksonException) {
             logger.warn("failed to parse, skipping message = $message")

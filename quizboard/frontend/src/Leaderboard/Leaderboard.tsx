@@ -1,4 +1,4 @@
-import { Backend, BoardDto, CategoryResultDto, restBackend, TeamResultDto } from '../restBackend';
+import { Backend, BoardDto, restBackend, TeamResultDto } from '../restBackend';
 import React, { useState } from 'react';
 import { useInterval } from '../poller';
 import ErrorIkon from '../ikoner/Error.svg';
@@ -24,7 +24,6 @@ export default function Leaderboard() {
         update().then(() => console.log('Updating...'));
     }, 2000);
 
-
     const icon = (status: String) => {
         if (status === 'FAILURE') {
             return <img src={ErrorIkon} alt='Error icon' />;
@@ -39,21 +38,23 @@ export default function Leaderboard() {
         <div className='leaderboard'>
             {board.board.sort((a: TeamResultDto, b: TeamResultDto) => a.score < b.score ? 1 : -1)
                 .map((team: any, index: number) => (
-                    <div key={index} className='leaderboard__team'>
-                        <p className='leaderboard__number'>{index}</p>
-                        <div className='leaderboard__info'>
-                            <h3 className='leaderboard__teamname'>{team.name}</h3>
-                            <p className='leaderboard__score'>Total score: {team.score}</p>
-                        </div>
-                        {team.categoryResult.map((category: any, index: number) => (
-                            <div key={index} className='leaderboard__category'>
-                                <p className='leaderboard__category__name'>{category.name}</p>
-                                <div className='leaderboard__category__status'>
-                                    {icon(category.status)}
-                                    <p>{category.okCount}</p>
-                                </div>
+                    <div key={index} className='leaderboard__wrapper'>
+                        <p className='leaderboard__number'>{index}.</p>
+                        <div className='leaderboard__team'>
+                            <div className='leaderboard__info'>
+                                <h3 className='leaderboard__teamname'>{team.name}</h3>
+                                <p className='leaderboard__score'>Total score: {team.score}</p>
                             </div>
-                        ))}
+                            {team.categoryResult.map((category: any, index: number) => (
+                                <div key={index} className='leaderboard__category'>
+                                    <p className='leaderboard__category__name'>{category.name}</p>
+                                    <div className='leaderboard__category__status'>
+                                        {icon(category.status)}
+                                        <p>{category.okCount}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 ))}
         </div>

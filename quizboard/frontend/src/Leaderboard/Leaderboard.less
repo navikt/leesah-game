@@ -4,6 +4,11 @@
   flex-wrap: wrap;
   justify-content: center;
 
+  &__wrapper {
+    display: flex;
+    flex-direction: row;
+  }
+
   &__team {
     border: 1px solid black;
     display: flex;
@@ -70,6 +75,24 @@
       display: flex;
       width: 4rem;
       justify-content: space-between;
+
+      //TODO denne animasjonen skal kjøres når noen får poeng
+      //.icon_OK {
+      //  animation: icon_OK 2s ease-out infinite;
+      //  animation-iteration-count: 1;
+      //}
+      //
+      //@keyframes icon_OK {
+      //  0% {
+      //    transform: scale(1, 1);
+      //  }
+      //  50% {
+      //    transform: scale(1.5, 1.5);
+      //  }
+      //  100% {
+      //    transform: scale(1, 1);
+      //  }
+      //}
 
       img {
         width: 2rem;

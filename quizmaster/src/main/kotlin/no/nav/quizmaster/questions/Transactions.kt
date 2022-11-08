@@ -2,9 +2,9 @@ package no.nav.quizmaster.questions
 
 import no.nav.quizrapid.Answer
 import no.nav.quizrapid.Question
-import java.lang.Exception
 import java.time.Duration
 import java.util.*
+import kotlin.Exception
 
 enum class TransactionType {
     INNSKUDD,
@@ -42,7 +42,13 @@ class Transactions(maxCount: Int = 20, active: Boolean = false, interval: Durati
             logger.warn("answer = $answer does not refer to a stored question = ${answer.questionId}")
             return
         }
-        val isCorrect = solution.correctAnswer == answer.answer.toInt()
+        val isCorrect = try {
+                solution.correctAnswer == answer.answer.toInt()
+            } catch (e: Exception) {
+                logger.info("${answer.answer} with answerId ${answer.messageId} and questionId ${answer.questionId} throws error", e)
+                false
+        }
+
         if (!isCorrect) {
             logger.info("${answer.answer} with answerId ${answer.messageId} and questionId ${answer.questionId} is incorrect")
         }

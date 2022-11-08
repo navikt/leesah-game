@@ -40,7 +40,7 @@ spec:
       mountPath: /var/run/key
   env:
     - name: QUIZ_TOPIC
-      value: leesah-quiz-online-2
+      value: quiz-rapid
     - name: QUIZRAPID_AUTO_COMMIT
       value: "false"
     - name: QUIZRAPID_CONSUMER_GROUP

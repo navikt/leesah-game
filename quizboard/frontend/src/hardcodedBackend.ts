@@ -1,5 +1,4 @@
-import { Backend, BoardDto, errorWhenBadResponse, wrapNetworkErrors } from './restBackend';
-
+import { Backend, BoardDto } from './restBackend';
 
 export const testBackend = (): Backend => {
     return {
@@ -107,7 +106,7 @@ let testData = {
             'okCount': 10,
         }],
     }, {
-        'name': 'Team Anne',
+        'name': 'Team Berit',
         'score': 140,
         'categoryResult': [{
             'name': 'team-registration',
@@ -119,7 +118,7 @@ let testData = {
             'okCount': 10,
         }],
     }, {
-        'name': 'Team Anne',
+        'name': 'Team Sara',
         'score': 110,
         'categoryResult': [{
             'name': 'team-registration',

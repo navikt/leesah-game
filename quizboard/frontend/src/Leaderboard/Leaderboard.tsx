@@ -38,7 +38,7 @@ export default function Leaderboard() {
         <div className='leaderboard'>
             {board.board.sort((a: TeamResultDto, b: TeamResultDto) => a.score < b.score ? 1 : -1)
                 .map((team: any, index: number) => (
-                    <div key={index} className='leaderboard__wrapper'>
+                    <div key={index} className='leaderboard__wrapper' /*style={`backgroundColor: ${team.hex}`}*/>
                         <p className='leaderboard__number'>{index}.</p>
                         <div className='leaderboard__team'>
                             <div className='leaderboard__info'>

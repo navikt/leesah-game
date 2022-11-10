@@ -108,6 +108,7 @@ let testData = {
     }, {
         'name': 'Team Berit',
         'score': 140,
+        'hex': "#FF0000",
         'categoryResult': [{
             'name': 'team-registration',
             'status': 'OK',

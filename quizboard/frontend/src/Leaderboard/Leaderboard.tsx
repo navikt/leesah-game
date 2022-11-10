@@ -43,8 +43,10 @@ export default function Leaderboard() {
                         <div className='leaderboard__team'>
                             <div className='leaderboard__info'>
                                 <h3 className='leaderboard__teamname'>{team.name}</h3>
-                                <p className='leaderboard__score'>Total score: {team.score}</p>
+                                <p className='leaderboard__score'>Score: {team.score}</p>
                             </div>
+                            <div className='leaderboard__categories'>
+
                             {team.categoryResult.map((category: any, index: number) => (
                                 <div key={index} className='leaderboard__category'>
                                     <p className='leaderboard__category__name'>{category.name}</p>
@@ -54,6 +56,7 @@ export default function Leaderboard() {
                                     </div>
                                 </div>
                             ))}
+                            </div>
                         </div>
                     </div>
                 ))}

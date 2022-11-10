@@ -10,7 +10,7 @@ export const testBackend = (): Backend => {
 
 let testData = {
     'board': [{
-        'name': 'Team SoloPolo Pølsedalt',
+        'name': 'Pølsedalt',
         'score': 60,
         'categoryResult': [{
             'name': 'team-registration',
@@ -20,8 +20,13 @@ let testData = {
             'name': 'arithmetic',
             'status': 'PENDING',
             'okCount': 5,
+        }, {
+            'name': 'arithmetic',
+            'status': 'PENDING',
+            'okCount': 5,
         }],
-    }, {
+    },
+        {
         'name': 'Team Vera',
         'score': 10,
         'categoryResult': [{
@@ -32,6 +37,10 @@ let testData = {
             'name': 'arithmetic',
             'status': 'FAILURE',
             'okCount': 0,
+        }, {
+            'name': 'arithmetic',
+            'status': 'PENDING',
+            'okCount': 5,
         }],
     }, {
         'name': 'Team Anne',
@@ -44,6 +53,10 @@ let testData = {
             'name': 'arithmetic',
             'status': 'OK',
             'okCount': 10,
+        }, {
+            'name': 'arithmetic',
+            'status': 'PENDING',
+            'okCount': 5,
         }],
     }, {
         'name': 'HEUHEUHUEE',
@@ -56,6 +69,10 @@ let testData = {
             'name': 'arithmetic',
             'status': 'OK',
             'okCount': 10,
+        }, {
+            'name': 'arithmetic',
+            'status': 'PENDING',
+            'okCount': 5,
         }],
     }, {
         'name': 'Norefjell blir superkult',
@@ -68,6 +85,10 @@ let testData = {
             'name': 'arithmetic',
             'status': 'OK',
             'okCount': 10,
+        }, {
+            'name': 'arithmetic',
+            'status': 'PENDING',
+            'okCount': 5,
         }],
     }, {
         'name': 'ØAHGJANØKGJNDHAERHSDFHSFJFHJLYAETKJLKHFITDUR',
@@ -80,6 +101,10 @@ let testData = {
             'name': 'arithmetic',
             'status': 'OK',
             'okCount': 10,
+        }, {
+            'name': 'arithmetic',
+            'status': 'PENDING',
+            'okCount': 5,
         }],
     }, {
         'name': 'Flåklypa Grand Prix',
@@ -92,6 +117,10 @@ let testData = {
             'name': 'arithmetic',
             'status': 'OK',
             'okCount': 10,
+        }, {
+            'name': 'arithmetic',
+            'status': 'PENDING',
+            'okCount': 5,
         }],
     }, {
         'name': 'HEI SONDRE OG ULRIK',
@@ -104,9 +133,13 @@ let testData = {
             'name': 'arithmetic',
             'status': 'OK',
             'okCount': 10,
+        }, {
+            'name': 'arithmetic',
+            'status': 'PENDING',
+            'okCount': 5,
         }],
     }, {
-        'name': 'Team Berit',
+        'name': 'SoloPolo',
         'score': 140,
         'categoryResult': [{
             'name': 'team-registration',
@@ -116,9 +149,41 @@ let testData = {
             'name': 'arithmetic',
             'status': 'OK',
             'okCount': 10,
+        }, {
+            'name': 'arithmetic',
+            'status': 'PENDING',
+            'okCount': 5,
+        }, {
+            'name': 'arithmetic',
+            'status': 'PENDING',
+            'okCount': 5,
+        }, {
+            'name': 'arithmetic',
+            'status': 'PENDING',
+            'okCount': 5,
+        }, {
+            'name': 'arithmetic',
+            'status': 'PENDING',
+            'okCount': 5,
+        }, {
+            'name': 'arithmetic',
+            'status': 'PENDING',
+            'okCount': 5,
+        }, {
+            'name': 'arithmetic',
+            'status': 'PENDING',
+            'okCount': 5,
+        }, {
+            'name': 'arithmetic',
+            'status': 'PENDING',
+            'okCount': 5,
+        }, {
+            'name': 'arithmetic',
+            'status': 'PENDING',
+            'okCount': 5,
         }],
     }, {
-        'name': 'Team Sara',
+        'name': 'Test',
         'score': 110,
         'categoryResult': [{
             'name': 'team-registration',
@@ -128,6 +193,10 @@ let testData = {
             'name': 'arithmetic',
             'status': 'OK',
             'okCount': 10,
+        }, {
+            'name': 'arithmetic',
+            'status': 'PENDING',
+            'okCount': 5,
         }],
     }],
 };

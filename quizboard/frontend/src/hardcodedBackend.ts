@@ -107,7 +107,7 @@ let testData = {
         }],
     }, {
         'name': 'Team Berit',
-        'score': 140,
+        'score': 120,
         'categoryResult': [{
             'name': 'team-registration',
             'status': 'OK',

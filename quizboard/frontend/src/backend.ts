@@ -1,14 +1,7 @@
-import { Backend, BoardDto } from './restBackend';
+import {BoardDto} from "./types";
+import {Environment} from "./environment";
 
-export const testBackend = (): Backend => {
-    return {
-        board(): Promise<BoardDto> {
-            return Promise.resolve(testData);
-        },
-    };
-};
-
-let testData = {
+const testData: BoardDto = {
     'board': [{
         'name': 'Team SoloPolo Pølsedalt',
         'score': 60,
@@ -131,3 +124,27 @@ let testData = {
         }],
     }],
 };
+
+const baseurl = Environment.isDevelopment ? "http://localhost:8081" : ""
+
+export function hentBoard(setBoard: (value: (((prevState: BoardDto) => BoardDto) | BoardDto)) => void) {
+    return () => {
+        if (Environment.isDevelopment) {
+            setBoard(testData)
+            return
+        }
+
+        const eventSource = new EventSource(`${baseurl}/sse`)
+
+        eventSource.addEventListener("message", (e) => {
+            setBoard(JSON.parse(e.data))
+        })
+        eventSource.addEventListener("error", (e) => {
+            console.error("Received error event:")
+        })
+
+        return () => {
+            return eventSource.close()
+        }
+    };
+}

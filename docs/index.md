@@ -35,4 +35,5 @@ Oppgavene du kan møte i Leesah-game er som følger, og de kommer ikke nødvendi
 - [is-a-prime](oppgaver/is-a-prime)
 - [transactions](oppgaver/transactions)
 - [deduplication](oppgaver/deduplication)
+- [min-max-int](oppgaver/min-max-int)
 

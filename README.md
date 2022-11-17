@@ -23,9 +23,9 @@ Leesah-game er et hendelsedrevet applikasjonsutviklingspill laget for å utfordr
 
 ### Build
 
-Prosjektet bruker Java 16. En praktisk måte å installere det på er med [`sdkman`](https://sdkman.io/):
+Prosjektet bruker Java 17. En praktisk måte å installere det på er med [`sdkman`](https://sdkman.io/):
 - Installer `sdkman`
-- Installer Java 16 med sdkman: `sdk install java 16.0.2-tem`
+- Installer Java 16 med sdkman: `sdk install java 17.0.3-tem`
 
 Start opp Docker Desktop og sørg for at det kjører.
 
@@ -51,9 +51,10 @@ Meldinger som skrives inn i dette shellet blir sendt på topicet og forhåpentli
 
 ### Frontend
 
-Frontenden er plassert i en egen mappe under `/quizboard`. For lokal frontend-utvikling er det raskere å hoste frontend i utviklingsmodus med:
+Frontenden er plassert i en egen mappe `/quizboard/frontend`. For lokal frontend-utvikling er det raskest å hoste frontend i utviklingsmodus med:
 
 `npm install`
+
 `npm run dev`
 
 Merk at dette er en helt frikoblet versjon av frontend, så all testdata må mockes.

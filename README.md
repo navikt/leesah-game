@@ -49,6 +49,13 @@ og deretter åpne et "producer-shell" mot topicet med
 
 Meldinger som skrives inn i dette shellet blir sendt på topicet og forhåpentligvis mottatt av appen.
 
+**Localhost url**
+
+`Admin panel: localhost:8000`
+
+`Leader board: localhost:8081`
+
+
 ### Frontend
 
 Frontenden er plassert i en egen mappe `/quizboard/frontend`. For lokal frontend-utvikling er det raskest å hoste frontend i utviklingsmodus med:

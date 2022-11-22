@@ -40,7 +40,7 @@ spec:
       mountPath: /var/run/key
   env:
     - name: QUIZ_TOPIC
-      value: quiz-rapid-test2
+      value: quiz-rapid
     - name: QUIZRAPID_AUTO_COMMIT
       value: "false"
     - name: KAFKA_BROKERS

@@ -30,6 +30,9 @@ spec:
     requests:
       cpu: 100m
       memory: 1024Mi
+  prometheus:
+    enabled: true
+    path: /metrics
   filesFrom:
     - secret: leesah-client-truststore
       mountPath: /var/run/trust
@@ -37,7 +40,7 @@ spec:
       mountPath: /var/run/key
   env:
     - name: QUIZ_TOPIC
-      value: "quiz-rapid-test2"
+      value: quiz-rapid
     - name: QUIZRAPID_AUTO_COMMIT
       value: "false"
     - name: QUIZRAPID_CONSUMER_GROUP

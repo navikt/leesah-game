@@ -1,36 +1,24 @@
-import { Backend, BoardDto, restBackend, TeamResultDto } from '../restBackend';
-import React, { useState } from 'react';
-import { useInterval } from '../poller';
+import React, {useEffect, useState} from 'react';
 import ErrorIkon from '../ikoner/Error.svg';
 import WarningIkon from '../ikoner/Warning.svg';
 import OkIkon from '../ikoner/Success.svg';
-import { Environment } from '../environment';
-import { testBackend } from '../hardcodedBackend';
 import './Leaderboard.less';
-
-const backend: Backend = Environment.isDevelopment
-    ? testBackend()
-    : restBackend(false);
+import {BoardDto, TeamResultDto} from "../types";
+import {hentBoard} from "../backend";
 
 export default function Leaderboard() {
-    const nullBoard: BoardDto = { board: [] };
+    const nullBoard: BoardDto = {board: []};
     const [board, setBoard] = useState(nullBoard);
 
-    useInterval(() => {
-        const update = async () => {
-            const response = backend.board();
-            setBoard(await response);
-        };
-        update().then(() => console.log('Updating...'));
-    }, 2000);
+    useEffect(hentBoard(setBoard), [])
 
     const icon = (status: String) => {
         if (status === 'FAILURE') {
-            return <img src={ErrorIkon} alt='Error icon' />;
+            return <img src={ErrorIkon} alt='Error icon'/>;
         } else if (status === 'PENDING') {
-            return <img src={WarningIkon} alt='Warning icon' />;
+            return <img src={WarningIkon} alt='Warning icon'/>;
         } else if (status === 'OK') {
-            return <img src={OkIkon} alt='Ok icon' />;
+            return <img src={OkIkon} alt='Ok icon'/>;
         }
     };
 

@@ -23,9 +23,9 @@ Leesah-game er et hendelsedrevet applikasjonsutviklingspill laget for å utfordr
 
 ### Build
 
-Prosjektet bruker Java 17. En praktisk måte å installere det på er med [`sdkman`](https://sdkman.io/):
+Prosjektet bruker Java 16. En praktisk måte å installere det på er med [`sdkman`](https://sdkman.io/):
 - Installer `sdkman`
-- Installer Java 16 med sdkman: `sdk install java 17.0.3-tem`
+- Installer Java 16 med sdkman: `sdk install java 16.0.2-tem`
 
 Start opp Docker Desktop og sørg for at det kjører.
 
@@ -66,35 +66,36 @@ Frontenden er plassert i en egen mappe `/quizboard/frontend`. For lokal frontend
 
 Merk at dette er en helt frikoblet versjon av frontend, så all testdata må mockes.
 
-## Development
+## Utvikling
 
-**Modules**
+**Moduler**
 
 - **Quizmaster**
   
-  Handles the flow of the game. Reads and writes on the game topic
+  Håndterer flyten i spillet. Leser og skriver på topicet.
 
 - **Quizboard** (Leaderboard)
 
-  Handles showing the state of the game as a webpage
+  Håndterer visning av tilstanden til spillet på en nettside. 
+
 
 ### TODO
 
-- [x] Start new game
-- [x] Accept team registration
-- [x] Issue challenges
-  - [x] Challenge 1 ("\<number\> + \<number\>")
+- [x] Start nytt spill
+- [x] Aksepter team registrering
+- [x] Aktiver utfordringer i Quizmaster Admin 
+  - [x] Utfordring 1 "Arithmetic" ("\<number\> + \<number\>")
 
-### Data Model
+### Data Modell
 
 TODO
 
 
 ### Testdata
 
-**Team registration answer**
+**Team registration svar**
 `{"messageId": "b29175a7-059a-4a46-b274-94sd9f165473", "questionId": "b29175a7-059a-4a46-b274-947a9f165473", "type": "ANSWER", "category": "team-registration", "teamName": "", "answer": "coolteam"}`
 
-**Arithmetic answer**
+**Arithmetic svar**
 `{"messageId": "b30175a7-059a-4a46-b274-947a9f165473", "questionId": "cc07eb49-3454-4bdf-91f2-475d6e9d855e", "type": "ANSWER", "teamName": "coolteam", "category": "arithmetic", "answer": "7"}`
 

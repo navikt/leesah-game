@@ -54,9 +54,9 @@ strukturert/nøstet json over flere linjer bør disse gjøres om til én linje f
 
 **Localhost url**
 
-`Admin panel: localhost:8000`
+Admin panel: `localhost:8000`
 
-`Leader board: localhost:8081`
+Leader board: `localhost:8081`
 
 
 ### Frontend

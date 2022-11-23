@@ -101,5 +101,3 @@ TODO
 
 **Arithmetic answer**
 `{"messageId": "b30175a7-059a-4a46-b274-947a9f165473", "questionId": "cc07eb49-3454-4bdf-91f2-475d6e9d855e", "type": "ANSWER", "teamName": "coolteam", "category": "arithmetic", "answer": "7", "created": "2022-11-22T16:36:59.155512"}`
->>>>>>> 3ee886171c309c194272176a047f19417b1c155a
-

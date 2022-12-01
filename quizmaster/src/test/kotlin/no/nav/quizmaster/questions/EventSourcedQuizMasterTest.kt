@@ -13,7 +13,7 @@ class EventSourcedQuizMasterTest {
 
     @Test
     fun `quizmaster handles previously published questions`() {
-        val question = RegisterTeam().questions()[0]
+        val question = RegisterTeam(true).questions()[0]
         val qm = QuizMaster()
         qm.handle(question)
         qm.handle(Answer(category = question.category, teamName = "new-team", answer = "new-team", questionId = question.id()))

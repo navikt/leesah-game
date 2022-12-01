@@ -1,28 +1,31 @@
 package no.nav.quizmaster.questions
 
 import no.nav.quizrapid.Answer
-import org.junit.jupiter.api.BeforeEach
-
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 
 internal class RegisterTeamTest {
 
-    @BeforeEach
-    fun setUp() {
-    }
 
     @Test
     fun onlyOnce() {
-        val registerQuestion = RegisterTeam()
+        val registerQuestion = RegisterTeam(true)
 
         assertTrue(registerQuestion.questions().isNotEmpty())
         assertTrue(registerQuestion.questions().isEmpty())
     }
 
     @Test
+    fun `must be activated`() {
+        val registerQuestion = RegisterTeam(false)
+        assertTrue(registerQuestion.questions().isEmpty())
+        registerQuestion.activate()
+        assertTrue(registerQuestion.questions().isNotEmpty())
+    }
+
+    @Test
     fun events() {
-        val registerQuestion = RegisterTeam()
+        val registerQuestion = RegisterTeam(true)
         val q = registerQuestion.questions().first()
         registerQuestion.check(answer(q.id(), "team1"))
         registerQuestion.check(answer(q.id(), "team2"))
@@ -32,7 +35,7 @@ internal class RegisterTeamTest {
 
     @Test
     fun `wrong question id`() {
-        val registerQuestion = RegisterTeam()
+        val registerQuestion = RegisterTeam(true)
         val question = registerQuestion.questions()
         val qId = question.first().id()
 
@@ -44,9 +47,6 @@ internal class RegisterTeamTest {
         assertTrue(assessments.first().json().contains("team1"))
         assertTrue(assessments[1].json().contains("team3"))
     }
-
-    private fun answer() =
-        Answer(category = "team-registration", teamName = "", questionId = "question1", answer = "coolteam")
 
     private fun answer(qid: String, teamName: String) =
         Answer(category = "team-registration", teamName = "", questionId = qid, answer = teamName)

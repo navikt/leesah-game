@@ -7,7 +7,7 @@ import java.time.Duration
 
 class QuizMaster : QuizParticipant {
     private val questions = listOf(
-        RegisterTeam(),
+        RegisterTeam(false),
         Arithmetic(Duration.ofMinutes(1), false),
         NAV(Duration.ofMinutes(5), false),
         Deduplication(Duration.ofMinutes(1), 10, false),

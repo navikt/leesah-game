@@ -23,18 +23,6 @@ class QuizMaster : QuizParticipant {
         PendingQuestion("setup-wonderwall", question = "[NAIS Oppgave] Sett opp Wonderwall OIDC Autentisering over /secure endepunktet. Send link til /secure endepunktet på din app som svar.")
     )
 
-    fun events(): List<String> {
-        val outQuestions: List<String> = questions
-            .fold(emptyList()) { list, question ->
-                list + question.questions().json()
-            }
-
-        val outEvents: List<String> = questions
-            .fold(emptyList()) { list, question ->
-                list + question.events().json()
-            }
-        return outEvents + outQuestions
-    }
 
     override fun handle(question: Question) = questions.any { it.handle(question) }
 

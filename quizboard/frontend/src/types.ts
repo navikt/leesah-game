@@ -5,6 +5,7 @@ export type BoardDto = {
 export type TeamResultDto ={
     name: string
     score: number,
+    hex: string,
     categoryResult: CategoryResultDto[]
 }
 

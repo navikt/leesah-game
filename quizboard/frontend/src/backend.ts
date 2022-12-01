@@ -5,6 +5,7 @@ const testData: BoardDto = {
     'board': [{
         'name': 'Team SoloPolo Pølsedalt',
         'score': 60,
+        'hex': '000000',
         'categoryResult': [{
             'name': 'team-registration',
             'status': 'OK',
@@ -17,6 +18,7 @@ const testData: BoardDto = {
     }, {
         'name': 'Team Vera',
         'score': 10,
+        'hex': '079E40',
         'categoryResult': [{
             'name': 'team-registration',
             'status': 'OK',
@@ -29,6 +31,7 @@ const testData: BoardDto = {
     }, {
         'name': 'Team Anne',
         'score': 110,
+        'hex': '1430CA',
         'categoryResult': [{
             'name': 'team-registration',
             'status': 'OK',
@@ -41,6 +44,7 @@ const testData: BoardDto = {
     }, {
         'name': 'HEUHEUHUEE',
         'score': 110,
+        'hex': 'CA14CA',
         'categoryResult': [{
             'name': 'team-registration',
             'status': 'OK',
@@ -53,6 +57,7 @@ const testData: BoardDto = {
     }, {
         'name': 'Norefjell blir superkult',
         'score': 110,
+        'hex': '14CA5C',
         'categoryResult': [{
             'name': 'team-registration',
             'status': 'OK',
@@ -65,6 +70,7 @@ const testData: BoardDto = {
     }, {
         'name': 'ØAHGJANØKGJNDHAERHSDFHSFJFHJLYAETKJLKHFITDUR',
         'score': 110,
+        'hex': 'CA6F14',
         'categoryResult': [{
             'name': 'team-registration',
             'status': 'OK',
@@ -77,6 +83,7 @@ const testData: BoardDto = {
     }, {
         'name': 'Flåklypa Grand Prix',
         'score': 110,
+        'hex': '9014CA',
         'categoryResult': [{
             'name': 'team-registration',
             'status': 'OK',
@@ -89,6 +96,7 @@ const testData: BoardDto = {
     }, {
         'name': 'HEI SONDRE OG ULRIK',
         'score': 110,
+        'hex': 'CA14B7',
         'categoryResult': [{
             'name': 'team-registration',
             'status': 'OK',
@@ -101,7 +109,7 @@ const testData: BoardDto = {
     }, {
         'name': 'Team Berit',
         'score': 140,
-        'hex': "#FF0000",
+        'hex': '14CA1A',
         'categoryResult': [{
             'name': 'team-registration',
             'status': 'OK',
@@ -114,6 +122,7 @@ const testData: BoardDto = {
     }, {
         'name': 'Team Sara',
         'score': 110,
+        'hex': '0BEEDD',
         'categoryResult': [{
             'name': 'team-registration',
             'status': 'OK',

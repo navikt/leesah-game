@@ -13,11 +13,11 @@ class RegisterTeam(active: Boolean) : QuestionCategory(category = "team-registra
 
     override fun check(answer: Answer) {
         if (answer.answer !in teams) {
-            logger.info("new quiz team created: team = ${answer.answer}")
+            logger.info("New quiz team created with representation code #${answer.answer}")
             teams.add(answer.answer)
             true.publish(answer.answer, sentQuestions[0].id(), answer.messageId)
         } else {
-            logger.debug("Incorrect team registration: answer = ${answer.json()}")
+            logger.debug("Incorrect team registration: answer = #${answer.json()}")
         }
     }
 
@@ -26,7 +26,7 @@ class RegisterTeam(active: Boolean) : QuestionCategory(category = "team-registra
         return if (active) {
             val question = Question(
                 category = category,
-                question = "Register a new team"
+                question = "Choose a color in hex-code to represent your team (withoug #)."
             )
             listOf(question)
         } else emptyList()

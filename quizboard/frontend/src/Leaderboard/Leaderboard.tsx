@@ -26,11 +26,11 @@ export default function Leaderboard() {
         <div className='leaderboard'>
             {board.board.sort((a: TeamResultDto, b: TeamResultDto) => a.score < b.score ? 1 : -1)
                 .map((team: any, index: number) => (
-                    <div key={index} className='leaderboard__wrapper' /*style={`backgroundColor: ${team.hex}`}*/>
+                    <div key={index} className='leaderboard__wrapper'>
                         <p className='leaderboard__number'>{index}.</p>
                         <div className='leaderboard__team'>
-                            <div className='leaderboard__info'>
-                                <h3 className='leaderboard__teamname'>{team.name}</h3>
+                            <div className='leaderboard__info' style={{backgroundColor: `#${team.hex}`}}>
+                                <h3 className='leaderboard__teamname' >{team.name}</h3>
                                 <p className='leaderboard__score'>Total score: {team.score}</p>
                             </div>
                             {team.categoryResult.map((category: any, index: number) => (

@@ -38,13 +38,10 @@ class MinMaxInt(private val frequency: Duration, active: Boolean = false):
 
     override fun sync(question: Question): Boolean {
         val split = question.question.split(' ')
-
         val answer = solution(MinMaxType.valueOf(split[0]), split[2].chars().toList())
-        if (answer != null) {
-            storeQuestion(question, answer)
-            return true
-        }
-        return false
+
+        storeQuestion(question, answer)
+        return true
     }
 
     private fun newQuestion(): Question {
@@ -74,11 +71,15 @@ class MinMaxInt(private val frequency: Duration, active: Boolean = false):
         var fasit = 0;
 
         if(type === MinMaxType.HOYESTE) {
+            println("HØYESTE")
             fasit = list.maxOrNull()!!
         }
         else if(type === MinMaxType.LAVESTE) {
+            println("LAVESTE")
             fasit = list.minOrNull()!!
         }
+        println("solution$fasit")
+
         return fasit
     }
 

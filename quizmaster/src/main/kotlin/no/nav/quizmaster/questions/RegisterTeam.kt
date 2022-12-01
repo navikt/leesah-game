@@ -6,7 +6,7 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 
-class RegisterTeam : QuestionCategory("team-registration") {
+class RegisterTeam(active: Boolean) : QuestionCategory(category = "team-registration", active = active) {
 
     override val logger: Logger = LoggerFactory.getLogger(this.javaClass.name)
     private val teams = mutableListOf<String>()

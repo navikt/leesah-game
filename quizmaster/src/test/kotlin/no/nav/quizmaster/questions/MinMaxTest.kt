@@ -26,24 +26,12 @@ internal class MinMaxTest {
     }
 
     @Test
-    fun question() {
+    fun questionIsNotEmpty() {
         val minMaxInt = MinMaxInt(Duration.ZERO)
         minMaxInt.activate()
         assertTrue(minMaxInt.questions().isNotEmpty())
         assertTrue(MinMaxInt(Duration.ofHours(1)).questions().isEmpty())
-        val question = minMaxInt.questions().first()
 
-        println("QUESTION $question")
-
-        val result = answer(question)
-
-        minMaxInt.handle(Answer(category = "min-max-int", questionId = question.messageId, teamName = "Tandis", answer = result.toString()))
-
-        println("SVARET$result")
-        val assessment1 = minMaxInt.events().first().json()
-        println("ASSESMENT $assessment1")
-        assertTrue(assessment1.contains("Tandis"))
-        assertTrue(assessment1.contains("SUCCESS"))
 
 //        val art = Arithmetic(Duration.ZERO)
 //        art.activate()
@@ -71,6 +59,25 @@ internal class MinMaxTest {
 //            assertTrue(it[0].json().contains("SUCCESS"))
 //            assertTrue(it[1].json().contains("FAILURE"))
 //        }
+    }
+
+    @Test
+    fun questionIsAnsweredSuccess() {
+        val minMaxInt = MinMaxInt(Duration.ZERO)
+        minMaxInt.activate()
+        val question = minMaxInt.questions().first()
+
+        println("QUESTION $question")
+
+        val result = answer(question)
+
+        minMaxInt.handle(Answer(category = "min-max-int", questionId = question.messageId, teamName = "Tandis", answer = result.toString()))
+
+        println("SVARET$result")
+        val assessment1 = minMaxInt.events().first().json()
+        println("ASSESMENT $assessment1")
+        assertTrue(assessment1.contains("Tandis"))
+        assertTrue(assessment1.contains("SUCCESS"))
     }
 
 //    @Test

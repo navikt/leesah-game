@@ -3,7 +3,7 @@ package no.nav.quizmaster.questions
 import no.nav.quizrapid.Answer
 import no.nav.quizrapid.Question
 import java.time.Duration
-import java.time.LocalDateTime
+import java.time.LocalDateTime.now
 import kotlin.random.Random
 import kotlin.streams.toList
 
@@ -15,7 +15,7 @@ enum class MinMaxType {
 class MinMaxInt(private val frequency: Duration, active: Boolean = false):
     QuestionCategory("min-max-int", 10, active) {
     private val numbersList = ArrayList<Int>()
-    private var nextQuestion = LocalDateTime.now() + frequency
+    private var nextQuestion = now() + frequency
     private val fasit = mutableMapOf<String, Int>()
 
     override fun check(answer: Answer) {
@@ -32,16 +32,8 @@ class MinMaxInt(private val frequency: Duration, active: Boolean = false):
     }
 
     override fun newQuestions(): List<Question> {
-        return if (LocalDateTime.now() > nextQuestion && active) listOf(newQuestion()).also { nextQuestion = LocalDateTime.now() + frequency }
+        return if (now() > nextQuestion && active) listOf(newQuestion()).also { nextQuestion = now() + frequency }
         else emptyList()
-    }
-
-    override fun sync(question: Question): Boolean {
-        val split = question.question.split(' ')
-        val answer = solution(MinMaxType.valueOf(split[0]), split[2].chars().toList())
-
-        storeQuestion(question, answer)
-        return true
     }
 
     private fun newQuestion(): Question {
@@ -55,6 +47,16 @@ class MinMaxInt(private val frequency: Duration, active: Boolean = false):
         this.fasit[newQuestion.messageId] = fasit
     }
 
+    override fun sync(question: Question): Boolean {
+        //val split = question.question.split(' ')
+        //val answer = solution(MinMaxType.valueOf(split[0]), split[2].chars().toList())
+        val answer = solver(question)
+        storeQuestion(question, answer)
+        return true
+    }
+
+
+
     private fun generateExpression(): Pair<String, Int> {
         numbersList.clear()
         val randomType = MinMaxType.values().toList().shuffled().first()
@@ -64,6 +66,7 @@ class MinMaxInt(private val frequency: Duration, active: Boolean = false):
         }
         val exp = "$randomType i $numbersList"
         val fasit = solution(randomType, numbersList);
+        println("fasit $fasit")
         return (Pair(exp, fasit))
     }
 
@@ -81,6 +84,23 @@ class MinMaxInt(private val frequency: Duration, active: Boolean = false):
         println("solution$fasit")
 
         return fasit
+    }
+
+    private fun solver(question: Question): Int {
+        println("kommer inn hit")
+        val questionString = question.question
+        val minmaxValue = questionString.split(' ')[0]
+
+        val stringList = questionString.split("i")[1].replace(" ", "").replace("[","").replace("]","").split(",")
+        val intList = stringList.map { it.toInt() }
+
+        println("minMaxValue$minmaxValue")
+        println("questionString$questionString")
+        return if(minmaxValue == "LAVESTE") {
+            intList.minOf { it }
+        } else {
+            intList.maxOf { it }
+        }
     }
 
 }

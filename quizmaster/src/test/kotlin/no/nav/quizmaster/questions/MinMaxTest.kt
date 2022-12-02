@@ -16,9 +16,11 @@ internal class MinMaxTest {
 
         println("minMaxValue$minmaxValue")
         println("questionString$questionString")
-        return if(minmaxValue === "LAVESTE") {
+        return if(minmaxValue == "LAVESTE") {
+            println( intList.minOf { it })
             intList.minOf { it }
         } else {
+            println( intList.maxOf { it })
             intList.maxOf { it }
         }
     }
@@ -31,14 +33,17 @@ internal class MinMaxTest {
         assertTrue(MinMaxInt(Duration.ofHours(1)).questions().isEmpty())
         val question = minMaxInt.questions().first()
 
+        println("QUESTION $question")
+
         val result = answer(question)
 
         minMaxInt.handle(Answer(category = "min-max-int", questionId = question.messageId, teamName = "Tandis", answer = result.toString()))
 
         println("SVARET$result")
         val assessment1 = minMaxInt.events().first().json()
+        println("ASSESMENT $assessment1")
         assertTrue(assessment1.contains("Tandis"))
-        assertTrue(assessment1.contains(result.toString()))
+        assertTrue(assessment1.contains("SUCCESS"))
 
 //        val art = Arithmetic(Duration.ZERO)
 //        art.activate()

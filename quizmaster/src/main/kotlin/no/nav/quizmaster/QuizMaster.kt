@@ -16,6 +16,7 @@ class QuizMaster : QuizParticipant {
         Base64Echo(5, false, Duration.ofMinutes(1)),
         IsAPrime(maxCount = 10, interval = Duration.ofMinutes(1)),
         Grunnbeløp(maxCount = 10, interval = Duration.ofMinutes(1)),
+        MinMax(Duration.ofMinutes(1), false),
         PendingQuestion("make-ingress", question = "[NAIS Oppgave] Lag en NAIS ingress for appen din i formatet: <app navn>.dev.intern.nav.no. Send link til ingress som svar "),
         PendingQuestion("check-app-log", question = "[NAIS Oppgave] Søk opp applikasjon loggen for /hello endpunktet for din app. Send short link til søket som svar."),
         PendingQuestion("make-grafana-board", question = "[NAIS Oppgave] Lag et Grafana board for applikasjonen. Boardet skal inneholder Counters for  /hello endepunktet og antall Kafka meldinger applikasjonen har mottatt. Send link til boardet som svar."),
@@ -23,18 +24,6 @@ class QuizMaster : QuizParticipant {
         PendingQuestion("setup-wonderwall", question = "[NAIS Oppgave] Sett opp Wonderwall OIDC Autentisering over /secure endepunktet. Send link til /secure endepunktet på din app som svar.")
     )
 
-    fun events(): List<String> {
-        val outQuestions: List<String> = questions
-            .fold(emptyList()) { list, question ->
-                list + question.questions().json()
-            }
-
-        val outEvents: List<String> = questions
-            .fold(emptyList()) { list, question ->
-                list + question.events().json()
-            }
-        return outEvents + outQuestions
-    }
 
     override fun handle(question: Question) = questions.any { it.handle(question) }
 

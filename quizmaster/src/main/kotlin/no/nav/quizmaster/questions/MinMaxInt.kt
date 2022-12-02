@@ -5,14 +5,13 @@ import no.nav.quizrapid.Question
 import java.time.Duration
 import java.time.LocalDateTime.now
 import kotlin.random.Random
-import kotlin.streams.toList
 
 enum class MinMaxType {
     LAVESTE,
     HOYESTE
 }
 
-class MinMaxInt(private val frequency: Duration, active: Boolean = false):
+class MinMaxInt(private val frequency: Duration, active: Boolean = false) :
     QuestionCategory("min-max-int", 10, active) {
     private val numbersList = ArrayList<Int>()
     private var nextQuestion = now() + frequency
@@ -21,7 +20,7 @@ class MinMaxInt(private val frequency: Duration, active: Boolean = false):
     override fun check(answer: Answer) {
         try {
             fasit[answer.questionId]?.checkAnswer(answer)
-        } catch (e: NumberFormatException ) {
+        } catch (e: NumberFormatException) {
             logger.warn("answer = $answer contains invalid data = ${answer.answer}")
             logger.debug(e.toString())
         }
@@ -48,14 +47,10 @@ class MinMaxInt(private val frequency: Duration, active: Boolean = false):
     }
 
     override fun sync(question: Question): Boolean {
-        //val split = question.question.split(' ')
-        //val answer = solution(MinMaxType.valueOf(split[0]), split[2].chars().toList())
         val answer = solver(question)
         storeQuestion(question, answer)
         return true
     }
-
-
 
     private fun generateExpression(): Pair<String, Int> {
         numbersList.clear()
@@ -66,37 +61,28 @@ class MinMaxInt(private val frequency: Duration, active: Boolean = false):
         }
         val exp = "$randomType i $numbersList"
         val fasit = solution(randomType, numbersList);
-        println("fasit $fasit")
         return (Pair(exp, fasit))
     }
 
     private fun solution(type: MinMaxType, list: List<Int>): Int {
         var fasit = 0;
 
-        if(type === MinMaxType.HOYESTE) {
-            println("HØYESTE")
+        if (type === MinMaxType.HOYESTE) {
             fasit = list.maxOrNull()!!
-        }
-        else if(type === MinMaxType.LAVESTE) {
-            println("LAVESTE")
+        } else if (type === MinMaxType.LAVESTE) {
             fasit = list.minOrNull()!!
         }
-        println("solution$fasit")
-
         return fasit
     }
 
     private fun solver(question: Question): Int {
-        println("kommer inn hit")
         val questionString = question.question
         val minmaxValue = questionString.split(' ')[0]
 
-        val stringList = questionString.split("i")[1].replace(" ", "").replace("[","").replace("]","").split(",")
+        val stringList = questionString.split("i")[1].replace(" ", "").replace("[", "").replace("]", "").split(",")
         val intList = stringList.map { it.toInt() }
 
-        println("minMaxValue$minmaxValue")
-        println("questionString$questionString")
-        return if(minmaxValue == "LAVESTE") {
+        return if (minmaxValue == "LAVESTE") {
             intList.minOf { it }
         } else {
             intList.maxOf { it }

@@ -7,7 +7,7 @@ import java.time.Duration
 
 class QuizMaster : QuizParticipant {
     private val questions = listOf(
-        RegisterTeam(),
+        RegisterTeam(false),
         Arithmetic(Duration.ofMinutes(1), false),
         NAV(Duration.ofMinutes(5), false),
         Deduplication(Duration.ofMinutes(1), 10, false),
@@ -24,18 +24,6 @@ class QuizMaster : QuizParticipant {
         PendingQuestion("setup-wonderwall", question = "[NAIS Oppgave] Sett opp Wonderwall OIDC Autentisering over /secure endepunktet. Send link til /secure endepunktet på din app som svar.")
     )
 
-    fun events(): List<String> {
-        val outQuestions: List<String> = questions
-            .fold(emptyList()) { list, question ->
-                list + question.questions().json()
-            }
-
-        val outEvents: List<String> = questions
-            .fold(emptyList()) { list, question ->
-                list + question.events().json()
-            }
-        return outEvents + outQuestions
-    }
 
     override fun handle(question: Question) = questions.any { it.handle(question) }
 

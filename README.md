@@ -18,7 +18,10 @@ Leesah-game er et hendelsedrevet applikasjonsutviklingspill laget for å utfordr
 
 
 
-## Setup
+## Kjøre Leesah Game
+
+- [Spillerene er på Nais]()
+- [Spillerene er ikke på Nais](leesah-game-outside-nais.md)
 
 
 ### Build
@@ -87,7 +90,8 @@ Merk at dette er en helt frikoblet versjon av frontend, så all testdata må moc
 - [x] Start nytt spill
 - [x] Aksepter team registrering
 - [x] Aktiver utfordringer i Quizmaster Admin 
-  - [x] Utfordring 1 "Arithmetic" ("\<number\> + \<number\>")
+- [x] Utfordring 1 "Arithmetic" ("\<number\> + \<number\>")
+
 
 ### Data Modell
 

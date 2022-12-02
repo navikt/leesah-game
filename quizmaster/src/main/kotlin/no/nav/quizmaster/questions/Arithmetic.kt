@@ -53,7 +53,7 @@ class Arithmetic(private val frequency: Duration, active: Boolean = false): Ques
 
     private fun generateExpression(): Pair<String, Int> {
         val first = Random.nextInt(101)
-        val last = Random.nextInt(101)
+        val last = Random.nextInt(1,101)
         val op = operators[Random.nextInt(operators.size)]
         val exp = "$first ${op.symbol} $last"
         val fasit = op.operation(first, last)

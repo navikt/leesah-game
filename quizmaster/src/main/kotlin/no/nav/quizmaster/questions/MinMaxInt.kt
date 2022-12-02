@@ -11,8 +11,8 @@ enum class MinMaxType {
     HOYESTE
 }
 
-class MinMaxInt(private val frequency: Duration, active: Boolean = false) :
-    QuestionCategory("min-max-int", 10, active) {
+class MinMax(private val frequency: Duration, active: Boolean = false) :
+    QuestionCategory("min-max", 10, active) {
     private val numbersList = ArrayList<Int>()
     private var nextQuestion = now() + frequency
     private val fasit = mutableMapOf<String, Int>()

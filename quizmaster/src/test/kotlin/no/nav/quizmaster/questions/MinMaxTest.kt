@@ -23,29 +23,29 @@ internal class MinMaxTest {
 
     @Test
     fun question() {
-        val minMaxInt = MinMaxInt(Duration.ZERO)
-        minMaxInt.activate()
-        assertTrue(minMaxInt.questions().isNotEmpty())
-        assertTrue(MinMaxInt(Duration.ofHours(1)).questions().isEmpty())
+        val minMax = MinMax(Duration.ZERO)
+        minMax.activate()
+        assertTrue(minMax.questions().isNotEmpty())
+        assertTrue(MinMax(Duration.ofHours(1)).questions().isEmpty())
     }
 
     @Test
     fun questionIsAnsweredSuccess() {
-        val minMaxInt = MinMaxInt(Duration.ZERO)
-        minMaxInt.activate()
-        val question = minMaxInt.questions().first()
+        val minMax = MinMax(Duration.ZERO)
+        minMax.activate()
+        val question = minMax.questions().first()
         val result = answer(question)
 
-        minMaxInt.handle(
+        minMax.handle(
             Answer(
-                category = "min-max-int",
+                category = "min-max",
                 questionId = question.messageId,
                 teamName = "Tandis",
                 answer = result.toString()
             )
         )
 
-        val assessment1 = minMaxInt.events().first().json()
+        val assessment1 = minMax.events().first().json()
         assertTrue(assessment1.contains("Tandis"))
         assertTrue(assessment1.contains("SUCCESS"))
     }

@@ -36,7 +36,14 @@ internal class MinMaxTest {
         val question = minMaxInt.questions().first()
         val result = answer(question)
 
-        minMaxInt.handle(Answer(category = "min-max-int", questionId = question.messageId, teamName = "Tandis", answer = result.toString()))
+        minMaxInt.handle(
+            Answer(
+                category = "min-max-int",
+                questionId = question.messageId,
+                teamName = "Tandis",
+                answer = result.toString()
+            )
+        )
 
         val assessment1 = minMaxInt.events().first().json()
         assertTrue(assessment1.contains("Tandis"))

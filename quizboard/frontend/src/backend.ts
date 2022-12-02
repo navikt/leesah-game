@@ -134,7 +134,7 @@ export function hentBoard(setBoard: (value: (((prevState: BoardDto) => BoardDto)
             return
         }
 
-        const eventSource = new EventSource(`${baseurl}/sse`)
+        const eventSource = new EventSource(`${baseurl}/board`)
 
         eventSource.addEventListener("message", (e) => {
             setBoard(JSON.parse(e.data))

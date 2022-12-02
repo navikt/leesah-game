@@ -100,8 +100,10 @@ TODO
 
 ### Testdata
 
+(PS!! Husk å bytte messageId)
+
 **Team registration answer**
-`{"messageId": "b29175a7-059a-4a46-b274-94sd9f165473", "questionId": "b29175a7-059a-4a46-b274-947a9f165473", "type": "ANSWER", "category": "team-registration", "teamName": "", "answer": "coolteam", "created": "2022-11-22T16:36:59.155512"}`
+`{"messageId": "b29175a7-059a-4a46-b274-94sd9f165473", "questionId": "44e186db-4d82-454b-b41b-e748865f6582", "type": "ANSWER", "category": "team-registration", "teamName": "", "answer": "test", "created": "2022-11-22T16:36:59.155512"}`
 
 **Arithmetic answer**
 `{"messageId": "b30175a7-059a-4a46-b274-947a9f165473", "questionId": "cc07eb49-3454-4bdf-91f2-475d6e9d855e", "type": "ANSWER", "teamName": "coolteam", "category": "arithmetic", "answer": "7", "created": "2022-11-22T16:36:59.155512"}`

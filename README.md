@@ -28,7 +28,7 @@ Leesah-game er et hendelsedrevet applikasjonsutviklingspill laget for å utfordr
 
 Prosjektet bruker Java 17. En praktisk måte å installere det på er med [`sdkman`](https://sdkman.io/):
 - Installer `sdkman`
-- Installer Java 16 med sdkman: `sdk install java 17.0.3-tem`
+- Installer Java 17 med sdkman: `sdk install java 17.0.2-tem`
 
 Start opp Docker Desktop og sørg for at det kjører.
 
@@ -55,6 +55,13 @@ Meldinger som skrives inn i dette shellet blir sendt på topicet og forhåpentli
 NB! `kafka-console-producer` tolker hver linje som en separat melding og publiserer disse deretter, slik at hvis du skal sende
 strukturert/nøstet json over flere linjer bør disse gjøres om til én linje før du sender meldingen.
 
+**Localhost url**
+
+Quizmaster Admin panel: `localhost:8000`
+
+Leaderboard: `localhost:8081`
+
+
 ### Frontend
 
 Frontenden er plassert i en egen mappe `/quizboard/frontend`. For lokal frontend-utvikling er det raskest å hoste frontend i utviklingsmodus med:
@@ -65,29 +72,38 @@ Frontenden er plassert i en egen mappe `/quizboard/frontend`. For lokal frontend
 
 Merk at dette er en helt frikoblet versjon av frontend, så all testdata må mockes.
 
-## Development
+## Utvikling
 
-**Modules**
+**Moduler**
 
 - **Quizmaster**
   
-  Handles the flow of the game. Reads and writes on the game topic
+  Håndterer flyten i spillet. Leser og skriver på topicet.
 
 - **Quizboard** (Leaderboard)
 
-  Handles showing the state of the game as a webpage
+  Håndterer visning av tilstanden til spillet på en nettside. 
 
 
-### Data Model
+### TODO
+
+- [x] Start nytt spill
+- [x] Aksepter team registrering
+- [x] Aktiver utfordringer i Quizmaster Admin 
+- [x] Utfordring 1 "Arithmetic" ("\<number\> + \<number\>")
+
+
+### Data Modell
 
 TODO
 
 
 ### Testdata
 
+(PS!! Husk å bytte messageId)
+
 **Team registration answer**
-`{"messageId": "b29175a7-059a-4a46-b274-94sd9f165473", "questionId": "b29175a7-059a-4a46-b274-947a9f165473", "type": "ANSWER", "category": "team-registration", "teamName": "", "answer": "coolteam", "created": "2022-11-22T16:36:59.155512"}`
+`{"messageId": "b29175a7-059a-4a46-b274-94sd9f165473", "questionId": "44e186db-4d82-454b-b41b-e748865f6582", "type": "ANSWER", "category": "team-registration", "teamName": "", "answer": "test", "created": "2022-11-22T16:36:59.155512"}`
 
 **Arithmetic answer**
 `{"messageId": "b30175a7-059a-4a46-b274-947a9f165473", "questionId": "cc07eb49-3454-4bdf-91f2-475d6e9d855e", "type": "ANSWER", "teamName": "coolteam", "category": "arithmetic", "answer": "7", "created": "2022-11-22T16:36:59.155512"}`
-

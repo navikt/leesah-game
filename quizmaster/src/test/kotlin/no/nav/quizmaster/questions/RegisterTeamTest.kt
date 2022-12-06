@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test
 
 internal class RegisterTeamTest {
 
-
     @Test
     fun onlyOnce() {
         val registerQuestion = RegisterTeam(true)
@@ -24,9 +23,24 @@ internal class RegisterTeamTest {
     }
 
     @Test
+    fun `is not a hex`() {
+        val registerQuestion = RegisterTeam(true)
+        val question = registerQuestion.questions()
+        val qId = question.first().id()
+
+        registerQuestion.handle(answer(qId, "003f"))
+        val assessments = registerQuestion.events()
+
+        assertTrue(assessments.size == 2)
+        assertTrue(assessments.first().json().contains("003f"))
+        assertTrue(assessments[1].json().contains("003f"))
+    }
+
+    @Test
     fun events() {
         val registerQuestion = RegisterTeam(true)
         val q = registerQuestion.questions().first()
+
         registerQuestion.check(answer(q.id(), "ffffff"))
         registerQuestion.check(answer(q.id(), "000000"))
         assertTrue(registerQuestion.events().size == 2)
@@ -49,6 +63,6 @@ internal class RegisterTeamTest {
         assertTrue(assessments[1].json().contains("000000"))
     }
 
-    private fun answer(qid: String, hexCode: String) =
-        Answer(category = "team-registration", teamName = "", questionId = qid, answer = hexCode)
+    private fun answer(qid: String, answer: String) =
+        Answer(category = "team-registration", teamName = "Tandis", questionId = qid, answer = answer)
 }

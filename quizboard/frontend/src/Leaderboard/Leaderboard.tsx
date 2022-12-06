@@ -22,6 +22,28 @@ export default function Leaderboard() {
         }
     };
 
+    function hexToRgb(hex: string) {
+        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? {
+            r: parseInt(result[1], 16),
+            g: parseInt(result[2], 16),
+            b: parseInt(result[3], 16)
+        } : null;
+    }
+
+    function colorPicker(hex: string) {
+        const red = hexToRgb(hex)?.r!;
+        const green = hexToRgb(hex)?.g!;
+        const blue = hexToRgb(hex)?.b!;
+
+        const brightness = ((red * 299) + (green * 587) + (blue * 114)) / 1000;
+
+        if (brightness < 127.5) {
+            return 'white';
+        }
+            return 'black';
+    }
+
     return (
         <div className='leaderboard'>
             {board.board.sort((a: TeamResultDto, b: TeamResultDto) => a.score < b.score ? 1 : -1)
@@ -29,8 +51,9 @@ export default function Leaderboard() {
                     <div key={index} className='leaderboard__wrapper'>
                         <p className='leaderboard__number'>{index}.</p>
                         <div className='leaderboard__team'>
-                            <div className='leaderboard__info' style={{backgroundColor: `#${team.hex}`}}>
-                                <h3 className='leaderboard__teamname' >{team.name}</h3>
+                            <div className='leaderboard__info'
+                                 style={{backgroundColor: `#${team.hex}`, color: colorPicker(team.hex)}}>
+                                <h3 className='leaderboard__teamname'>{team.name}</h3>
                                 <p className='leaderboard__score'>Total score: {team.score}</p>
                             </div>
                             {team.categoryResult.map((category: any, index: number) => (

@@ -44,7 +44,7 @@ const testData: BoardDto = {
     }, {
         'name': 'HEUHEUHUEE',
         'score': 110,
-        'hex': 'CA14CA',
+        'hex': '1410CA',
         'categoryResult': [{
             'name': 'team-registration',
             'status': 'OK',

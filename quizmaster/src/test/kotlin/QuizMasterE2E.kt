@@ -84,7 +84,7 @@ internal class QuizMasterE2E {
         val teamRegistrationQuestion = recordsOfType<Question>(testTopic).first { it.category == "team-registration" }
         val pingPongQuestion = recordsOfType<Question>(testTopic).first { it.category == "ping-pong" }
 
-        assertAssessmentIsPublished("team-registration", sendAnswer(teamRegistrationQuestion, TEST_TEAM))
+        assertAssessmentIsPublished("team-registration", sendAnswer(teamRegistrationQuestion, "000000"))
         assertAssessmentIsPublished("ping-pong", sendAnswer(pingPongQuestion, "pong"))
 
         secondQuizMaster.cancel()

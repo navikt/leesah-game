@@ -38,6 +38,7 @@ class Category(question: Question) {
     fun okCount(teamName: String) = questions.okCount(teamName)
 
     fun score(teamName: String) = questions.score(teamName)
+
 }
 
 
@@ -115,6 +116,7 @@ private class CategoryQuestion(val id: String, val received: LocalDateTime) {
 
 internal fun Iterable<Category>.score(teamName: String) =
     fold(0) { sum, cat -> sum + cat.score(teamName)} // 10 points per ok question
+
 
 internal fun Iterable<Category>.result(teamName: String) =
     map { CategoryResult(it.name, it.status(teamName), it.okCount(teamName)) }

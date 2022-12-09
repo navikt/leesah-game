@@ -22,9 +22,10 @@ class Quizboard : QuizParticipant {
 
     fun result(): BoardResult {
         val teams = categories.teams()
-        return BoardResult(teams.map { TeamResult(it, categories.score(it), categories.result(it)) })
+        return BoardResult(teams.map { TeamResult(it, categories.score(it), , categories.result(it)) })
     }
 }
+
 
 data class BoardResult(
     val board: List<TeamResult>
@@ -33,6 +34,7 @@ data class BoardResult(
 data class TeamResult(
     val name: String,
     val score: Int,
+    val hex: String,
     val categoryResult: List<CategoryResult>
 )
 

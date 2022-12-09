@@ -13,7 +13,7 @@ class RegisterTeam(active: Boolean) : QuestionCategory(category = "team-registra
     private val fasit = mutableMapOf<String, Int>()
 
     fun newTeam(team: Answer) {
-        if (team.teamName !in teams) {
+        if (team.teamName !in teams && team.answer.length == 6) {
             logger.info("New quiz team created with teamname ${team.teamName}")
             teams.add(team.teamName)
             true.publish(team.teamName, sentQuestions[0].id(), team.messageId)

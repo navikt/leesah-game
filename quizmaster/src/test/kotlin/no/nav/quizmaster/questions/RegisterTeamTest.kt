@@ -36,20 +36,18 @@ internal class RegisterTeamTest {
     }
 
     @Test
-    @Disabled
-    fun events() {
+    fun `max count 1 question`() {
         val registerQuestion = RegisterTeam(true)
         val q = registerQuestion.questions().first()
 
         registerQuestion.check(answer(q.id(), "test","ffffff"))
         registerQuestion.check(answer(q.id(), "test","000000"))
-        assertTrue(registerQuestion.events().size == 2)
+        assertTrue(registerQuestion.events().size == 1)
         assertTrue(registerQuestion.events().isEmpty())
     }
 
     @Test
-    @Disabled
-    fun `wrong question id`() {
+    fun `right question id`() {
         val registerQuestion = RegisterTeam(true)
         val question = registerQuestion.questions()
         val qId = question.first().id()
@@ -59,9 +57,11 @@ internal class RegisterTeamTest {
         registerQuestion.handle(answer(qId, "test","000000"))
 
         val assessments = registerQuestion.events()
-        assertTrue(assessments.size == 2)
-        assertTrue(assessments.first().json().contains("ffffff"))
-        assertTrue(assessments[1].json().contains("000000"))
+        assertTrue(assessments.size == 1)
+        println(assessments.first().json())
+        assertTrue(assessments.first().json().contains("SUCCESS"))
+        assertTrue(assessments.first().json().contains(qId))
+        assertFalse(assessments.first().json().contains("wrongid"))
     }
 
     private fun answer(qid: String, teamName: String, answer: String) =

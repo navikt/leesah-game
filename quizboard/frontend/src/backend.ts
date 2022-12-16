@@ -1,17 +1,11 @@
-import { Backend, BoardDto } from './restBackend';
+import {BoardDto} from "./types";
+import {Environment} from "./environment";
 
-export const testBackend = (): Backend => {
-    return {
-        board(): Promise<BoardDto> {
-            return Promise.resolve(testData);
-        },
-    };
-};
-
-let testData = {
+const testData: BoardDto = {
     'board': [{
         'name': 'Pølsedalt',
         'score': 60,
+        'hex': '000000',
         'categoryResult': [{
             'name': 'team-registration',
             'status': 'OK',
@@ -29,6 +23,7 @@ let testData = {
         {
         'name': 'Team Vera',
         'score': 10,
+        'hex': '079E40',
         'categoryResult': [{
             'name': 'team-registration',
             'status': 'OK',
@@ -45,6 +40,7 @@ let testData = {
     }, {
         'name': 'Team Anne',
         'score': 110,
+        'hex': '1430CA',
         'categoryResult': [{
             'name': 'team-registration',
             'status': 'OK',
@@ -61,6 +57,7 @@ let testData = {
     }, {
         'name': 'HEUHEUHUEE',
         'score': 110,
+        'hex': '1410CA',
         'categoryResult': [{
             'name': 'team-registration',
             'status': 'OK',
@@ -77,6 +74,7 @@ let testData = {
     }, {
         'name': 'Norefjell blir superkult',
         'score': 110,
+        'hex': '14CA5C',
         'categoryResult': [{
             'name': 'team-registration',
             'status': 'OK',
@@ -93,6 +91,7 @@ let testData = {
     }, {
         'name': 'ØAHGJANØKGJNDHAERHSDFHSFJFHJLYAETKJLKHFITDUR',
         'score': 110,
+        'hex': 'CA6F14',
         'categoryResult': [{
             'name': 'team-registration',
             'status': 'OK',
@@ -109,6 +108,7 @@ let testData = {
     }, {
         'name': 'Flåklypa Grand Prix',
         'score': 110,
+        'hex': '9014CA',
         'categoryResult': [{
             'name': 'team-registration',
             'status': 'OK',
@@ -125,6 +125,7 @@ let testData = {
     }, {
         'name': 'HEI SONDRE OG ULRIK',
         'score': 110,
+        'hex': 'CA14B7',
         'categoryResult': [{
             'name': 'team-registration',
             'status': 'OK',
@@ -141,6 +142,7 @@ let testData = {
     }, {
         'name': 'SoloPolo',
         'score': 140,
+        'hex': '14CA1A',
         'categoryResult': [{
             'name': 'team-registration',
             'status': 'OK',
@@ -185,6 +187,7 @@ let testData = {
     }, {
         'name': 'Test',
         'score': 110,
+        'hex': '0BEEDD',
         'categoryResult': [{
             'name': 'team-registration',
             'status': 'OK',
@@ -200,3 +203,27 @@ let testData = {
         }],
     }],
 };
+
+const baseurl = Environment.isDevelopment ? "http://localhost:8081" : ""
+
+export function hentBoard(setBoard: (value: (((prevState: BoardDto) => BoardDto) | BoardDto)) => void) {
+    return () => {
+        if (Environment.isDevelopment) {
+            setBoard(testData)
+            return
+        }
+
+        const eventSource = new EventSource(`${baseurl}/board`)
+
+        eventSource.addEventListener("message", (e) => {
+            setBoard(JSON.parse(e.data))
+        })
+        eventSource.addEventListener("error", (e) => {
+            console.error("Received error event:")
+        })
+
+        return () => {
+            return eventSource.close()
+        }
+    };
+}

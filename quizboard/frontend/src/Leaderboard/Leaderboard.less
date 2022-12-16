@@ -22,7 +22,6 @@
     grid-template-columns: auto auto;
     grid-template-rows: auto;
     margin: 1rem;
-    background-color: #e8f4f8;
     width: fit-content;
     //gap-border? grid-border?
 
@@ -32,6 +31,7 @@
     padding: 0;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     margin: auto 0;
     grid-column-start: 1;
     grid-column-end: 3;
@@ -64,6 +64,15 @@
     margin: 0;
   }
 
+  &__number {
+    align-self: center;
+    text-align: left;
+    font-family: 'Architects Daughter', serif;
+    font-size: 30px;
+    padding-left: 1em;
+    padding-right: 0;
+  }
+
   &__category {
     display: grid;
     align-items: center;
@@ -72,6 +81,7 @@
     text-align: center;
     place-items: center;
     grid-template-rows: 50% 50%;
+    background-color: #e8f4f8;
 
     &__name {
       margin: 0

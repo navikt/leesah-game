@@ -3,9 +3,6 @@ import './index.less';
 import Leaderboard from './Leaderboard/Leaderboard';
 
 const App = () => {
-    // fetch("http://localhost:8081/teams")
-    //     .then(response => console.log(response))
-
     return (
         <div className='app'>
             <h1 className='header'>Leaderboard</h1>
@@ -15,7 +12,7 @@ const App = () => {
                 </span>
                 {' '}questions
             </h2>
-            <Leaderboard />
+            <Leaderboard/>
         </div>
     );
 };

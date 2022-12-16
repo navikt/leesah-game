@@ -30,23 +30,13 @@ spec:
     requests:
       cpu: 100m
       memory: 1024Mi
-  filesFrom:
-    - secret: leesah-client-truststore
-      mountPath: /var/run/trust
-    - secret: leesah-client-keystore
-      mountPath: /var/run/key
+  prometheus:
+    enabled: true
+    path: /metrics
+  kafka:
+    pool: nav-prod
   env:
     - name: QUIZ_TOPIC
-      value: "quiz-rapid-test2"
+      value: leesah-quiz.leesah-rapid-v2
     - name: QUIZRAPID_AUTO_COMMIT
       value: "false"
-    - name: QUIZRAPID_CONSUMER_GROUP
-      value: "consumer-leesah-quizboard-v1"
-    - name: KAFKA_BROKERS
-      value: "nav-integration-test-kafka-nav-integration-test.aivencloud.com:26484"
-    - name: KAFKA_TRUSTSTORE_PATH
-      value: "/var/run/trust/client.truststore.jks"
-    - name: KAFKA_KEYSTORE_PATH
-      value: "/var/run/key/client.keystore.p12"
-    - name: KAFKA_CREDSTORE_PASSWORD
-      value: "whatever"

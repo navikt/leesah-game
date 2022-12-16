@@ -12,10 +12,6 @@ import java.time.Duration
 
 internal class NAVTest {
 
-    @BeforeEach
-    fun setUp() {
-    }
-
     @Test
     fun `vi rekrutterer på detsombetyrnoe`() {
         val navQuestions = NAV(Duration.ZERO)

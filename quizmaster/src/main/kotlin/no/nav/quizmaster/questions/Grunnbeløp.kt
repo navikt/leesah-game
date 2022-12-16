@@ -13,7 +13,7 @@ class Grunnbeløp(active: Boolean = false, maxCount: Int = 1, interval: Duration
     val fasit = mutableMapOf<String, Int>()
 
     override fun check(answer: Answer) {
-        (fasit[answer.questionId] == answer.answer.toInt()).publish(
+        (fasit[answer.questionId] == answer.answer.toIntOrNull()).publish(
             teamName = answer.teamName,
             questionId = answer.questionId,
             answerId = answer.id()

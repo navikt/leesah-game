@@ -20,18 +20,14 @@ import io.micrometer.prometheus.PrometheusConfig
 import io.micrometer.prometheus.PrometheusMeterRegistry
 import io.prometheus.client.CollectorRegistry
 import io.prometheus.client.exporter.common.TextFormat
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.ObsoleteCoroutinesApi
+import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.ReceiveChannel
 import kotlinx.coroutines.channels.broadcast
 import kotlinx.coroutines.channels.produce
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.withContext
 import no.nav.quizrapid.Config
 import no.nav.quizrapid.RapidServer
 import no.nav.quizrapid.objectMapper
-import java.util.UUID
+import java.util.*
 
 val collectorRegistry: CollectorRegistry = CollectorRegistry.defaultRegistry
 

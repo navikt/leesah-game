@@ -2,14 +2,14 @@ export type BoardDto = {
     board: TeamResultDto[]
 }
 
-export type TeamResultDto ={
+export type TeamResultDto = {
     name: string
     score: number,
     hex: string,
     categoryResult: CategoryResultDto[]
 }
 
-export type CategoryResultDto ={
+export type CategoryResultDto = {
     name: string,
     status: string
     okCount: number

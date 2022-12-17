@@ -5,7 +5,7 @@ import no.nav.quizrapid.*
 class Quizboard : QuizParticipant {
 
     private val categories = mutableListOf<Category>()
-    private var hex = ""
+    private val hexcodes = mutableMapOf<String, String>()
 
     override fun handle(question: Question): Boolean {
         categories.handle(question)
@@ -14,7 +14,7 @@ class Quizboard : QuizParticipant {
 
     override fun handle(answer: Answer): Boolean {
         if (answer.category == "team-registration") {
-            hex = answer.answer
+            hexcodes[answer.teamName] = answer.answer
         }
         return true
     }
@@ -24,14 +24,17 @@ class Quizboard : QuizParticipant {
         return true
     }
 
+    private fun handleHex(teamName: String): String {
+        return hexcodes[teamName]!!
+    }
+
     override fun messages(): List<Message> = emptyList()
 
     fun result(): BoardResult {
         val teams = categories.teams()
-        return BoardResult(teams.map { TeamResult(it, categories.score(it), hex, categories.result(it)) })
+        return BoardResult(teams.map { TeamResult(it, categories.score(it), handleHex(it), categories.result(it)) })
     }
 }
-
 
 data class BoardResult(
     val board: List<TeamResult>

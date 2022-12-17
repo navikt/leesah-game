@@ -41,7 +41,7 @@ export default function Leaderboard() {
         if (brightness < 127.5) {
             return 'white';
         }
-            return 'black';
+        return 'black';
     }
 
     return (

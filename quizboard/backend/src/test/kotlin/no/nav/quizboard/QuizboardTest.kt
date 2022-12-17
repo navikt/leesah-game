@@ -9,7 +9,10 @@ import org.apache.kafka.clients.producer.KafkaProducer
 import org.apache.kafka.clients.producer.Producer
 import org.apache.kafka.common.serialization.StringDeserializer
 import org.apache.kafka.common.serialization.StringSerializer
-import org.junit.jupiter.api.*
+import org.junit.jupiter.api.AfterAll
+import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.TestInstance
 import java.util.*
 
 
@@ -34,6 +37,7 @@ internal class QuizboardTest {
         kafkaConsumer = KafkaConsumer(consumerProperties(), StringDeserializer(), StringDeserializer())
         kafkaConsumer.subscribe(listOf(testTopic))
     }
+
     @AfterAll
     internal fun teardown() {
         kafkaConsumer.close()
@@ -42,7 +46,7 @@ internal class QuizboardTest {
     }
 
     @Test
-    fun `tester en test`(){
+    fun `tester en test`() {
         assert(true)
     }
 

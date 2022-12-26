@@ -14,17 +14,12 @@
     font-family: 'Architects Daughter', serif;
     font-size: 30px;
     width: 1rem;
+    padding-right: 15px;
   }
 
   &__team {
     border: 1px solid black;
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto;
     margin: 1rem;
-    width: fit-content;
-    //gap-border? grid-border?
-
   }
 
   &__info {
@@ -48,7 +43,7 @@
     text-align: center;
     font-size: 36px;
     font-family: 'Architects Daughter', cursive;
-    margin: 0 .5rem;
+    margin: 0 0.5rem;
     width: 200px;
     white-space: nowrap;
     overflow: hidden;
@@ -64,27 +59,17 @@
     margin: 0;
   }
 
-  &__number {
-    align-self: center;
-    text-align: left;
-    font-family: 'Architects Daughter', serif;
-    font-size: 30px;
-    padding-left: 1em;
-    padding-right: 0;
-  }
-
   &__category {
     display: grid;
     align-items: center;
-    padding: .5rem;
-    //border: 1px solid grey;
+    padding: 0.5rem;
     text-align: center;
     place-items: center;
     grid-template-rows: 50% 50%;
     background-color: #e8f4f8;
 
     &__name {
-      margin: 0
+      margin: 0;
     }
 
     &__status {
@@ -117,4 +102,3 @@
     }
   }
 }
-

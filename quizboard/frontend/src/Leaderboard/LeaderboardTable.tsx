@@ -12,17 +12,17 @@ import { useLocalStorageState } from '../Hooks/useLocalStorageState';
 export default function LeaderboardTable() {
   const nullBoard: BoardDto = { board: [] };
   const [board, setBoard] = useState(nullBoard);
-  const [sort, setSort] = useLocalStorageState('sortState', { orderBy: 'MOTTATT', direction: 'ascending' });
+  const [sort, setSort] = useLocalStorageState('sortState', { orderBy: 'score', direction: 'descending' });
+  let sortData = board.board;
 
   useEffect(hentBoard(setBoard), []);
 
-  //Todo fikse sorteringen, skal alltid være sortert på score
   useEffect(() => {
     setSort({
       orderBy: 'score',
-      direction: 'ascending',
+      direction: 'descending',
     });
-  }, []);
+  }, [sortData]);
 
   const icon = (status: String) => {
     if (status === 'FAILURE') {
@@ -58,32 +58,55 @@ export default function LeaderboardTable() {
     return 'black';
   }
 
+  sortData = sortData.slice().sort((a, b) => {
+    if (sort) {
+      const comparator = ({ a, b, orderBy }: { a: any; b: any; orderBy: any }) => {
+        if (b[orderBy] < a[orderBy] || b[orderBy] === undefined) {
+          return -1;
+        }
+        if (b[orderBy] > a[orderBy]) {
+          return 1;
+        }
+        return 0;
+      };
+
+      return sort.direction === 'descending'
+        ? comparator({ a: a, b: b, orderBy: sort.orderBy })
+        : comparator({ a: b, b: a, orderBy: sort.orderBy });
+    }
+    return 1;
+  });
+
   return (
     <Table
       size="small"
       zebraStripes
       className="leaderboard"
       sort={sort}
-      // onSortChange={() => {
-      //   setSort({
-      //     orderBy: 'score',
-      //     direction: sort.direction === 'ascending' ? 'descending' : 'ascending',
-      //   });
-      // }}
+      onSortChange={() => {
+        setSort(
+          sort && 'score' === sort.orderBy && sort.direction === 'descending'
+            ? undefined
+            : {
+                orderBy: 'score',
+                direction: 'descending',
+              }
+        );
+      }}
     >
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell scope="col" className="leaderboard__plassering">
-            {}
+            🏆
           </Table.HeaderCell>
           <Table.HeaderCell scope="col" className="leaderboard__teamnavn">
-            Teamnavn
+            Team
           </Table.HeaderCell>
           <Table.ColumnHeader scope="col" className="leaderboard__score" sortKey="score">
             Score
           </Table.ColumnHeader>
-          {board.board[0]?.categoryResult.map((category: any, index: number) => (
-            <Table.HeaderCell key={index} scope="col" className="leaderboard__kategori">
+          {board.board[0]?.categoryResult.map((category: any) => (
+            <Table.HeaderCell key={category.name} scope="col" className="leaderboard__kategori">
               {category.name}
             </Table.HeaderCell>
           ))}
@@ -91,8 +114,8 @@ export default function LeaderboardTable() {
       </Table.Header>
 
       <Table.Body>
-        {board.board.map((team: any, index: number) => (
-          <Table.Row key={index}>
+        {sortData.map((team: any, index: number) => (
+          <Table.Row key={team.name}>
             <Table.HeaderCell scope="row" className="leaderboard__plassering">
               {index}.
             </Table.HeaderCell>
@@ -110,7 +133,7 @@ export default function LeaderboardTable() {
               {team.score}
             </Table.DataCell>
             {team.categoryResult.map((category: any, index: number) => (
-              <Table.DataCell key={index} className="leaderboard__icon">
+              <Table.DataCell key={index} className="leaderboard__kategori">
                 {icon(category.status)}
               </Table.DataCell>
             ))}

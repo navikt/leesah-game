@@ -12,7 +12,7 @@ const App = () => {
                 </span>
                 {' '}questions
             </h2>
-            <Leaderboard />
+            <Leaderboard/>
         </div>
     );
 };

@@ -10,23 +10,42 @@ class RegisterTeam(active: Boolean) : QuestionCategory(category = "team-registra
 
     override val logger: Logger = LoggerFactory.getLogger(this.javaClass.name)
     private val teams = mutableListOf<String>()
+    private val fasit = mutableMapOf<String, Int>()
 
-    override fun check(answer: Answer) {
-        if (answer.answer !in teams) {
-            logger.info("new quiz team created: team = ${answer.answer}")
-            teams.add(answer.answer)
-            true.publish(answer.answer, sentQuestions[0].id(), answer.messageId)
+    fun newTeam(team: Answer) {
+        if (team.teamName !in teams && team.answer.length == 6) {
+            logger.info("New quiz team created with teamname ${team.teamName}")
+            teams.add(team.teamName)
+            true.publish(team.teamName, sentQuestions[0].id(), team.messageId)
         } else {
-            logger.debug("Incorrect team registration: answer = ${answer.json()}")
+            logger.debug("Incorrect team registration: hex = #${team.json()}")
         }
     }
 
-    override fun newQuestions(): List<Question> {
+    override fun check(answer: Answer) {
+        if (answer.answer.length == 6) {
+            try {
+                newTeam(answer)
+                fasit[answer.questionId]?.checkAnswer(answer)
+                logger.info("New team hex color #${answer.answer}")
+            } catch (e: NumberFormatException) {
+                logger.warn("answer = $answer contains invalid data = ${answer.answer}")
+                logger.debug(e.toString())
+            }
+        } else {
+            logger.debug("Incorrect answer = $answer must be a 6-character hex-code, not '${answer.answer}'")
+        }
+    }
 
+    private fun Int.checkAnswer(answer: Answer) {
+        (this == answer.answer.toInt()).publish(answer.teamName, answer.questionId, answer.messageId)
+    }
+
+    override fun newQuestions(): List<Question> {
         return if (active) {
             val question = Question(
                 category = category,
-                question = "Register a new team"
+                question = "Choose a 6-character hex-code to represent your team (without #)."
             )
             listOf(question)
         } else emptyList()

@@ -38,6 +38,7 @@ class Category(question: Question) {
     fun okCount(teamName: String) = questions.okCount(teamName)
 
     fun score(teamName: String) = questions.score(teamName)
+
 }
 
 
@@ -58,13 +59,15 @@ private class CategoryQuestion(val id: String, val received: LocalDateTime) {
     fun handle(assessment: Assessment) {
         if (assessment.questionId != id) return
         val name = assessment.teamName
-        if (!assessment.isOk()){
+        if (!assessment.isOk()) {
             failure.add(name)
-            logger.info("received failing assessment: category: {} qId: {} team: {} qReceived: {}",
+            logger.info(
+                "received failing assessment: category: {} qId: {} team: {} qReceived: {}",
                 assessment.category,
                 assessment.questionId,
                 assessment.teamName,
-                received)
+                received
+            )
             return
         }
 
@@ -103,18 +106,19 @@ private class CategoryQuestion(val id: String, val received: LocalDateTime) {
     fun teams() = failure + ok.map { it.teamName }
     fun ok(teamName: String) = status(teamName) == Status.OK
     fun score(teamName: String): Int {
-        if(status(teamName) != Status.OK) return 0
+        if (status(teamName) != Status.OK) return 0
         val assessment = ok.first { it.teamName == teamName }
         val timeUsed = ChronoUnit.MINUTES.between(this.received, assessment.acceptedAt)
         return scoreAlgorithm(timeUsed)
     }
 
     // base score of 5 for right answer plus between 0 and 5 extra point weighted by time used to solve the question
-    private fun scoreAlgorithm(time: Long) = 5 + max((5 -((time.toDouble() / 60.0) * 5.0).toInt()), 0)
+    private fun scoreAlgorithm(time: Long) = 5 + max((5 - ((time.toDouble() / 60.0) * 5.0).toInt()), 0)
 }
 
 internal fun Iterable<Category>.score(teamName: String) =
-    fold(0) { sum, cat -> sum + cat.score(teamName)} // 10 points per ok question
+    fold(0) { sum, cat -> sum + cat.score(teamName) } // 10 points per ok question
+
 
 internal fun Iterable<Category>.result(teamName: String) =
     map { CategoryResult(it.name, it.status(teamName), it.okCount(teamName)) }

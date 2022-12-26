@@ -19,7 +19,7 @@ services:
       KAFKA_TRUSTSTORE_PATH: "/var/creds/client.truststore.jks"
       KAFKA_KEYSTORE_PATH: "/var/creds/client.keystore.p12"
       KAFKA_CREDSTORE_PASSWORD: "whatever"
-      QUIZ_TOPIC: "quiz-rapid-test1"
+      QUIZ_TOPIC: "quiz-rapid"
     ports:
       - "8000:8080"
     volumes:
@@ -34,7 +34,7 @@ services:
       KAFKA_TRUSTSTORE_PATH: "creds/client.truststore.jks"
       KAFKA_KEYSTORE_PATH: "creds/client.keystore.p12"
       KAFKA_CREDSTORE_PASSWORD: "whatever"
-      QUIZ_TOPIC: "quiz-rapid-test1"
+      QUIZ_TOPIC: "quiz-rapid"
     ports:
       - "8081:8080"
     volumes:

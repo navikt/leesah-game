@@ -3,8 +3,8 @@ package no.nav.quizboard
 import no.nav.quizrapid.Assessment
 import no.nav.quizrapid.AssessmentStatus
 import no.nav.quizrapid.Question
-
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import java.util.*
 

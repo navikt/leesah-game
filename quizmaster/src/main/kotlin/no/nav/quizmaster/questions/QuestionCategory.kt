@@ -27,7 +27,6 @@ abstract class QuestionCategory(
         if (answer.questionId !in sentQuestions.map { it.messageId }) return false
         answerCounter++
         check(answer)
-        println(answer)
         return true
     }
 

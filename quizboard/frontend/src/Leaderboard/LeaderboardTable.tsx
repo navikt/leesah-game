@@ -26,11 +26,11 @@ export default function LeaderboardTable() {
 
   const icon = (status: String) => {
     if (status === 'FAILURE') {
-      return <img src={ErrorIkon} alt="Error icon" className="icon_FAILURE" />;
+      return <img src={ErrorIkon} alt="Error icon" />;
     } else if (status === 'PENDING') {
-      return <img src={WarningIkon} alt="Warning icon" className="icon_PENDING" />;
+      return <img src={WarningIkon} alt="Warning icon" />;
     } else if (status === 'OK') {
-      return <img src={OkIkon} alt="Ok icon" className="icon_OK" />;
+      return <img src={OkIkon} alt="Ok icon" />;
     }
   };
 
@@ -77,38 +77,29 @@ export default function LeaderboardTable() {
     return 1;
   });
 
-  return (
-    <Table
-      size="small"
-      zebraStripes
-      className="leaderboard"
-      sort={sort}
-      onSortChange={() => {
-        setSort(
-          sort && 'score' === sort.orderBy && sort.direction === 'descending'
-            ? undefined
-            : {
-                orderBy: 'score',
-                direction: 'descending',
-              }
-        );
-      }}
-    >
+  return board.board.length === 0 ? (
+    <></>
+  ) : (
+    <Table size="small" zebraStripes className="leaderboard" sort={sort}>
       <Table.Header>
         <Table.Row>
-          <Table.HeaderCell scope="col" className="leaderboard__plassering">
+          <Table.HeaderCell scope="col" className="leaderboard__header">
             🏆
           </Table.HeaderCell>
-          <Table.HeaderCell scope="col" className="leaderboard__teamnavn">
+          <Table.HeaderCell scope="col" className="leaderboard__header">
             Team
           </Table.HeaderCell>
-          <Table.ColumnHeader scope="col" className="leaderboard__score" sortKey="score">
+          <Table.ColumnHeader scope="col" className="leaderboard__header" sortKey="score">
             Score
           </Table.ColumnHeader>
           {board.board[0]?.categoryResult.map((category: any) => (
-            <Table.HeaderCell key={category.name} scope="col" className="leaderboard__kategori">
+            <Table.ColumnHeader
+              key={category.name}
+              scope="col"
+              className="leaderboard__header__kategori leaderboard__header"
+            >
               {category.name}
-            </Table.HeaderCell>
+            </Table.ColumnHeader>
           ))}
         </Table.Row>
       </Table.Header>

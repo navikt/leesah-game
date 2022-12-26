@@ -23,52 +23,12 @@ const testData: BoardDto = {
           status: 'PENDING',
           okCount: 5,
         },
-        // {
-        //   name: 'deduplication',
-        //   status: 'FAILURE',
-        //   okCount: 0,
-        // },
-        // {
-        //   name: 'deduplication',
-        //   status: 'FAILURE',
-        //   okCount: 0,
-        // },
-        // {
-        //   name: 'deduplication',
-        //   status: 'FAILURE',
-        //   okCount: 0,
-        // },
-        // {
-        //   name: 'deduplication',
-        //   status: 'FAILURE',
-        //   okCount: 0,
-        // },
-        // {
-        //   name: 'deduplication',
-        //   status: 'FAILURE',
-        //   okCount: 0,
-        // },
-        // {
-        //   name: 'deduplication',
-        //   status: 'FAILURE',
-        //   okCount: 0,
-        // },
-        // {
-        //   name: 'deduplication',
-        //   status: 'FAILURE',
-        //   okCount: 0,
-        // },
-        // {
-        //   name: 'deduplication',
-        //   status: 'FAILURE',
-        //   okCount: 0,
-        // },
       ],
     },
     {
       name: 'Team Vera',
       score: 10,
-      hex: '079E40',
+      hex: 'FFFFFF',
       categoryResult: [
         {
           name: 'team-registration',
@@ -104,7 +64,7 @@ const testData: BoardDto = {
         },
         {
           name: 'min-max',
-          status: 'PENDING',
+          status: 'FAILURE',
           okCount: 5,
         },
       ],
@@ -170,7 +130,7 @@ const testData: BoardDto = {
         },
         {
           name: 'min-max',
-          status: 'PENDING',
+          status: 'FAILURE',
           okCount: 5,
         },
       ],
@@ -214,7 +174,7 @@ const testData: BoardDto = {
         },
         {
           name: 'min-max',
-          status: 'PENDING',
+          status: 'FAILURE',
           okCount: 5,
         },
       ],
@@ -236,7 +196,7 @@ const testData: BoardDto = {
         },
         {
           name: 'min-max',
-          status: 'PENDING',
+          status: 'FAILURE',
           okCount: 5,
         },
       ],
@@ -302,7 +262,7 @@ const testData: BoardDto = {
         },
         {
           name: 'min-max',
-          status: 'PENDING',
+          status: 'OK',
           okCount: 5,
         },
       ],
@@ -324,7 +284,7 @@ const testData: BoardDto = {
         },
         {
           name: 'min-max',
-          status: 'PENDING',
+          status: 'OK',
           okCount: 5,
         },
       ],
@@ -509,138 +469,6 @@ const testData: BoardDto = {
       name: 'Sommerferie',
       score: 110,
       hex: '234789',
-      categoryResult: [
-        {
-          name: 'team-registration',
-          status: 'OK',
-          okCount: 1,
-        },
-        {
-          name: 'arithmetic',
-          status: 'OK',
-          okCount: 10,
-        },
-        {
-          name: 'min-max',
-          status: 'PENDING',
-          okCount: 5,
-        },
-      ],
-    },
-    {
-      name: 'Ribbefett',
-      score: 110,
-      hex: 'FFAACC',
-      categoryResult: [
-        {
-          name: 'team-registration',
-          status: 'OK',
-          okCount: 1,
-        },
-        {
-          name: 'arithmetic',
-          status: 'OK',
-          okCount: 10,
-        },
-        {
-          name: 'min-max',
-          status: 'PENDING',
-          okCount: 5,
-        },
-      ],
-    },
-    {
-      name: 'Hello World',
-      score: 110,
-      hex: 'B700FF',
-      categoryResult: [
-        {
-          name: 'team-registration',
-          status: 'OK',
-          okCount: 1,
-        },
-        {
-          name: 'arithmetic',
-          status: 'OK',
-          okCount: 10,
-        },
-        {
-          name: 'min-max',
-          status: 'PENDING',
-          okCount: 5,
-        },
-      ],
-    },
-    {
-      name: 'Quizzatrengt',
-      score: 110,
-      hex: 'CACACA',
-      categoryResult: [
-        {
-          name: 'team-registration',
-          status: 'OK',
-          okCount: 1,
-        },
-        {
-          name: 'arithmetic',
-          status: 'OK',
-          okCount: 10,
-        },
-        {
-          name: 'min-max',
-          status: 'PENDING',
-          okCount: 5,
-        },
-      ],
-    },
-    {
-      name: 'Tandis4Evah',
-      score: 10,
-      hex: 'FF00FF',
-      categoryResult: [
-        {
-          name: 'team-registration',
-          status: 'OK',
-          okCount: 1,
-        },
-        {
-          name: 'arithmetic',
-          status: 'OK',
-          okCount: 10,
-        },
-        {
-          name: 'min-max',
-          status: 'PENDING',
-          okCount: 5,
-        },
-      ],
-    },
-    {
-      name: 'SoloPolo',
-      score: 140,
-      hex: '14CA1A',
-      categoryResult: [
-        {
-          name: 'team-registration',
-          status: 'OK',
-          okCount: 1,
-        },
-        {
-          name: 'arithmetic',
-          status: 'OK',
-          okCount: 10,
-        },
-        {
-          name: 'min-max',
-          status: 'PENDING',
-          okCount: 5,
-        },
-      ],
-    },
-    {
-      name: 'Test',
-      score: 124,
-      hex: '0BEEDD',
       categoryResult: [
         {
           name: 'team-registration',

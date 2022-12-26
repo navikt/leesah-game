@@ -1,4 +1,19 @@
 .leaderboard {
+  border: 1px solid #928686;
+
+  &__header {
+    font-size: 20px !important;
+
+    &__kategori {
+      width: fit-content;
+      max-width: 3rem;
+      text-align: center !important;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
   th,
   td {
     border-left: 1px solid #928686;
@@ -8,8 +23,8 @@
     width: 1rem;
   }
   &__teamnavn {
-    max-width: 15rem;
-    width: 9rem;
+    max-width: 18rem;
+    width: 5rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -17,18 +32,16 @@
 
   &__score {
     width: 2rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: 18px !important;
+    font-weight: bold !important;
   }
 
   &__kategori {
-    width: fit-content;
-    max-width: 3rem;
     text-align: center !important;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  }
+
+  img {
+    width: 20px;
   }
 
   //TODO denne animasjonen skal kjøres når noen får poeng

@@ -26,11 +26,11 @@ export default function LeaderboardTable() {
 
   const icon = (status: String) => {
     if (status === 'FAILURE') {
-      return <img src={ErrorIkon} alt="Error icon" />;
+      return <img src={ErrorIkon} alt="Error icon" className="icon__failure" />;
     } else if (status === 'PENDING') {
-      return <img src={WarningIkon} alt="Warning icon" />;
+      return <img src={WarningIkon} alt="Warning icon" className="icon__pending" />;
     } else if (status === 'OK') {
-      return <img src={OkIkon} alt="Ok icon" />;
+      return <img src={OkIkon} alt="Ok icon" className="icon__ok" />;
     }
   };
 

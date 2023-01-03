@@ -24,13 +24,13 @@ export default function LeaderboardTable() {
     });
   }, [sortData]);
 
-  const icon = (status: String) => {
+  const icon = (status: String, index: number) => {
     if (status === 'FAILURE') {
-      return <img src={ErrorIkon} alt="Error icon" className="icon__failure" />;
+      return <img key={index} src={ErrorIkon} alt="Error icon" className="icon__failure" />;
     } else if (status === 'PENDING') {
-      return <img src={WarningIkon} alt="Warning icon" className="icon__pending" />;
+      return <img key={index} src={WarningIkon} alt="Warning icon" className="icon__pending" />;
     } else if (status === 'OK') {
-      return <img src={OkIkon} alt="Ok icon" className="icon__ok" />;
+      return <img key={index} src={OkIkon} alt="Ok icon" className="icon__ok" />;
     }
   };
 
@@ -125,7 +125,8 @@ export default function LeaderboardTable() {
             </Table.DataCell>
             {team.categoryResult.map((category: any, index: number) => (
               <Table.DataCell key={index} className="leaderboard__kategori">
-                {icon(category.status)}
+                {icon(category.status, index)}
+                {category.okCount} / ?
               </Table.DataCell>
             ))}
           </Table.Row>

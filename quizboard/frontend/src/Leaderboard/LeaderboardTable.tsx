@@ -126,7 +126,6 @@ export default function LeaderboardTable() {
             {team.categoryResult.map((category: any, index: number) => (
               <Table.DataCell key={index} className="leaderboard__kategori">
                 {icon(category.status, index)}
-                {category.okCount} / ?
               </Table.DataCell>
             ))}
           </Table.Row>

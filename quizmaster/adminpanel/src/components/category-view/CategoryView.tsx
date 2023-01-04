@@ -17,17 +17,32 @@ const CategoryView = (props: { categories: CategoriesDto[]; backend: any }) => {
         );
     };
 
+    const status = (maxCount: number, questionCount: number, status: string) => {
+        if (maxCount === questionCount && status === 'INACTIVE') {
+            return 'DONE';
+        }
+        return status;
+    };
+
     return (
         <div className="container">
             {props.categories.map(category => (
                 <div className="card">
-                    <h3>{category.name}</h3>
-                    <CategoryDetail label="status" value={category.status} />
-                    <CategoryDetail label="maxCount" value={category.maxCount} />
+                    <h3>
+                        {category.maxCount === category.questionCount && category.status === 'INACTIVE' ? (
+                            <>
+                                {category.name} <img src={OkIkon} alt="Ok icon" className="icon__ok" />{' '}
+                            </>
+                        ) : (
+                            category.name
+                        )}
+                    </h3>
                     <CategoryDetail
-                        label="questionCount"
-                        value={questionValue(category.maxCount, category.questionCount)}
+                        label="status"
+                        value={status(category.maxCount, category.questionCount, category.status)}
                     />
+                    <CategoryDetail label="maxCount" value={category.maxCount} />
+                    <CategoryDetail label="questionCount" value={category.questionCount} />
                     <CategoryDetail label="answerCount" value={category.answerCount} />
                     <CategoryDetail label="correctAnswerCount" value={category.correctAnswerCount} />
                     {category.pendingAnswers.length > 0 && (

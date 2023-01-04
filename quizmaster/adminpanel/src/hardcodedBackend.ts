@@ -22,7 +22,7 @@ let testData = {
     categories: [
         {
             name: 'team-registration',
-            status: 'ACTIVE',
+            status: 'INACTIVE',
             maxCount: 1,
             questionCount: 1,
             answerCount: 0,
@@ -31,9 +31,9 @@ let testData = {
         },
         {
             name: 'arithmetic',
-            status: 'INACTIVE',
+            status: 'ACTIVE',
             maxCount: 10,
-            questionCount: 10,
+            questionCount: 8,
             answerCount: 0,
             correctAnswerCount: 0,
             pendingAnswers: [],
@@ -42,7 +42,7 @@ let testData = {
             name: 'NAV',
             status: 'INACTIVE',
             maxCount: 2,
-            questionCount: 0,
+            questionCount: 2,
             answerCount: 0,
             correctAnswerCount: 0,
             pendingAnswers: [],

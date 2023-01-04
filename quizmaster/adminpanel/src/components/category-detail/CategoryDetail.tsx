@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import './CategoryDetail.scss';
 
-const CategoryDetail = (props: { label: string; value: any }) => (
+interface CategoryDetailProps {
+    label: string;
+    value: ReactNode;
+}
+
+const CategoryDetail = ({ label, value }: CategoryDetailProps) => (
     <div className="category-view">
-        <p className="status-label">{props.label + ':'} </p>
-        <p className={props.value === 'ACTIVE' ? 'active-font' : ''}>{props.value}</p>
+        <p className="status-label">{label + ':'} </p>
+        <p className={value === 'ACTIVE' ? 'active-font' : ''}>{value}</p>
     </div>
 );
 

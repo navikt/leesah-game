@@ -1,20 +1,24 @@
 import React from 'react';
 import './index.less';
-import Leaderboard from './Leaderboard/Leaderboard';
+import { Heading, Ingress } from '@navikt/ds-react';
+import LeaderboardTable from './Leaderboard/LeaderboardTable';
 
 const App = () => {
-    return (
-        <div className='app'>
-            <h1 className='header'>Leaderboard</h1>
-            <h2 className='sub-header'>Life is a stream of {' '}
-                <span className='strikethrough-line'>
-                    <span className='strikethrough-header'>events</span>
-                </span>
-                {' '}questions
-            </h2>
-            <Leaderboard/>
-        </div>
-    );
+  return (
+    <div className="app">
+      <Heading size="xlarge" level="1" className="header">
+        Leaderboard
+      </Heading>
+      <Ingress className="sub-header">
+        Livet er en strøm av{' '}
+        <span className="strikethrough-line">
+          <span className="strikethrough-header">hendelser</span>
+        </span>{' '}
+        spørsmål
+      </Ingress>
+      <LeaderboardTable />
+    </div>
+  );
 };
 
 export default App;

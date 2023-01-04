@@ -40,6 +40,8 @@ Sett opp hele sulamitten i docker med:
 
 `docker compose up`
 
+Dersom du ikke er like rutta på Docker som Sondre, så er det også kjekt å vite at du kanskje må kjøre `docker compose build` om du har gjort noen endringer i koden før du kjører `docker compose up` :) :) :) 
+
 **Sende meldinger på Kafka**
 
 For å produsere (test)meldinger til kafka-topicet kan man laste ned kafka:

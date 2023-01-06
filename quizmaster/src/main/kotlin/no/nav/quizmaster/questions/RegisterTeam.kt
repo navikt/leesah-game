@@ -18,7 +18,7 @@ class RegisterTeam(active: Boolean) : QuestionCategory(category = "team-registra
             teams.add(team.teamName)
             true.publish(team.teamName, sentQuestions[0].id(), team.messageId)
         } else {
-            logger.debug("Feil team registrering: hex = #${team.json()}")
+            logger.debug("Ugyldig team registrering: hex = #${team.json()}")
         }
     }
 
@@ -29,7 +29,7 @@ class RegisterTeam(active: Boolean) : QuestionCategory(category = "team-registra
                 fasit[answer.questionId]?.checkAnswer(answer)
                 logger.info("Ny hex-farge #${answer.answer}")
             } catch (e: NumberFormatException) {
-                logger.warn("Svar = $answer inneholder feil data = ${answer.answer}")
+                logger.warn("Svar = $answer inneholder ugyldig data = ${answer.answer}")
                 logger.debug(e.toString())
             }
         } else {

@@ -14,7 +14,7 @@ export default function LeaderboardTable() {
   const [board, setBoard] = useState(nullBoard);
   const [sort, setSort] = useLocalStorageState('sortState', { orderBy: 'score', direction: 'descending' });
   let sortData = board.board;
-
+  let pos=0;
   useEffect(hentBoard(setBoard), []);
 
   useEffect(() => {
@@ -108,7 +108,9 @@ export default function LeaderboardTable() {
         {sortData.map((team: any, index: number) => (
           <Table.Row key={team.name}>
             <Table.HeaderCell scope="row" className="leaderboard__plassering">
-              {index}.
+              {
+                index==0?pos:team.score==sortData[index-1].score?pos:pos=index
+              }.
             </Table.HeaderCell>
             <Table.HeaderCell
               scope="row"

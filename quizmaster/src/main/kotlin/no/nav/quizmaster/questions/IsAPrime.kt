@@ -28,7 +28,7 @@ class IsAPrime(maxCount: Int = 10, active: Boolean = false, interval: Duration =
 
         val newQuestion = Question(
             category = category,
-            question = "is it a prime number? ${number.key}"
+            question = "Er det et primtall? ${number.key}"
         )
         fasit[newQuestion.id()] = number.value
         return listOf(newQuestion)

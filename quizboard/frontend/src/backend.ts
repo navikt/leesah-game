@@ -492,6 +492,14 @@ const testData: BoardDto = {
 
 const baseurl = Environment.isDevelopment ? 'http://localhost:8081' : '';
 
+export async function isBackendAlive() {
+  return fetch(`${baseurl}/alive`).then((res) => res.ok).catch(() => false);
+}
+
+export async function isBackendReady() {
+  return fetch(`${baseurl}/ready`).then((res) => res.ok).catch(() => false);
+}
+
 export function hentBoard(setBoard: (value: ((prevState: BoardDto) => BoardDto) | BoardDto) => void) {
   return () => {
     if (Environment.isDevelopment) {

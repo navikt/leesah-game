@@ -8,26 +8,25 @@ Det er sjeldent at et distribuert system kan garantere "once-and-only-once-deliv
 "at-most-once-delivery" eller "at-least-once-delivery", som oftest velger man da "at-least-once-delivery" og derfor er det
 viktig å bygge systemer som håndterer at samme melding kan komme flere ganger.
 
-[Interessant artikkel om problemet med *
-exactly-once-delivery*](https://www.confluent.io/blog/exactly-once-semantics-are-possible-heres-how-apache-kafka-does-it/)
+[Interessant artikkel om problemet med _
+exactly-once-delivery_](https://www.confluent.io/blog/exactly-once-semantics-are-possible-heres-how-apache-kafka-does-it/)
 
 ## Oppgaven
 
-I denne oppgaven vil Quizmaster sende ut samme melding flere ganger, og det er appen din sin oppgave å bare svare på meldingen
-én gang. Det finnes nok flere måter man kan jukse seg til poeng her, men oppfordringen er å løse problemet på en
+I denne oppgaven vil Quizmaster sende ut samme melding flere ganger, og det er din applikasjon oppgave å svare på meldingen kun
+én gang. Det finnes flere måter å jukse seg til poeng her, men oppfordringen er å løse problemet på en
 ordentlig måte.
 
-### Om du mislykkes, altså sender svar mer en en gang
+### Om du mislykkes, altså sender svar mer enn en gang:
 
-Da vil du se at du har fått underkjent løsningen din på leaderboardet. Da er oppgaven låst som underkjent til du 
-nullstiller oppgaven.
+Du vil se at du har fått underkjent løsningen din på leaderboardet, som betyr at oppgaven blir låst som underkjent til du
+nullstiller den.
 
 <img src="/leesah-game/assets/deduplication-failed.png" style="width: 25%;padding: 1em" alt="deduplication failed showed on leaderboard">
 
-
 ### Nullstille oppgaven
 
-For å nullstille oppgaven for ditt team så må du sende følgende streng som svar på oppgaven: `you duped me!`
+For å nullstille oppgaven for ditt team må du sende følgende streng som svar på oppgaven: `you duped me!`
 
 ### Eksempler
 

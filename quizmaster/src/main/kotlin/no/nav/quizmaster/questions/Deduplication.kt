@@ -10,7 +10,7 @@ class Deduplication(
     active: Boolean
 ) : QuestionCategory("deduplication", maxCount, active, interval = interval) {
 
-    private var question: Question = Question(category = category, question = "answer this question only once with an <you wont dupe me!>. hjelp til oppgaven: https://navikt.github.io/leesah-game/oppgaver/deduplication")
+    private var question: Question = Question(category = category, question = "Svar på dette spørsmålet kun én gang, med en <you wont dupe me!>. Hjelp til oppgaven: https://navikt.github.io/leesah-game/oppgaver/deduplication")
 
     private val questions = mutableMapOf<String, TeamSheet>()
     private val resetAnswer = "you duped me!"
@@ -22,14 +22,14 @@ class Deduplication(
     override fun check(answer: Answer) {
         val sheet = questions[answer.questionId]
         if (sheet == null) {
-            logger.warn("answer: ${answer.json()} does not match a question")
+            logger.warn("Svar: ${answer.json()} samsvarer ikke med et spørsmål")
             return
         }
 
         if(answer.answer == resetAnswer) {
             sheet.teamAnswers[answer.teamName] = emptyList()
             sheet.completed.remove(answer.teamName)
-            logger.info("team = ${answer.teamName} for question: ${answer.questionId} reset in deduplication")
+            logger.info("Team '${answer.teamName}' for spørsmål: ${answer.questionId} tilbakestilt i deduplication")
             return
         }
         if(answer.answer != fasit) {
@@ -41,7 +41,7 @@ class Deduplication(
         if (sheet.teamAnswers[answer.teamName]!!.size > 1) {
             false.publish(answer.teamName, answer.questionId, answer.messageId)
             sheet.completed.remove(answer.teamName)
-            logger.info("team = ${answer.teamName} received failing assessment due to multiple answers")
+            logger.info("Team '${answer.teamName}' mislyktes i oppgaven grunnet for mange svar.")
         }
         publishAssessments(answer.questionId, sheet)
     }

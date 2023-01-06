@@ -14,11 +14,11 @@ class RegisterTeam(active: Boolean) : QuestionCategory(category = "team-registra
 
     fun newTeam(team: Answer) {
         if (team.teamName !in teams && team.answer.length == 6) {
-            logger.info("New quiz team created with teamname ${team.teamName}")
+            logger.info("Nytt team opprettet med teamnavn ${team.teamName}")
             teams.add(team.teamName)
             true.publish(team.teamName, sentQuestions[0].id(), team.messageId)
         } else {
-            logger.debug("Incorrect team registration: hex = #${team.json()}")
+            logger.debug("Feil team registrering: hex = #${team.json()}")
         }
     }
 
@@ -27,13 +27,13 @@ class RegisterTeam(active: Boolean) : QuestionCategory(category = "team-registra
             try {
                 newTeam(answer)
                 fasit[answer.questionId]?.checkAnswer(answer)
-                logger.info("New team hex color #${answer.answer}")
+                logger.info("Ny hex-farge #${answer.answer}")
             } catch (e: NumberFormatException) {
-                logger.warn("answer = $answer contains invalid data = ${answer.answer}")
+                logger.warn("Svar = $answer inneholder feil data = ${answer.answer}")
                 logger.debug(e.toString())
             }
         } else {
-            logger.debug("Incorrect answer = $answer must be a 6-character hex-code, not '${answer.answer}'")
+            logger.debug("Feil svar = $answer må være en hex-kode på 6 tegn, ikke '${answer.answer}'")
         }
     }
 
@@ -45,7 +45,7 @@ class RegisterTeam(active: Boolean) : QuestionCategory(category = "team-registra
         return if (active) {
             val question = Question(
                 category = category,
-                question = "Choose a 6-character hex-code to represent your team (without #)."
+                question = "Velg en hex-code med 6 tegn (uten #) for å representere ditt team."
             )
             listOf(question)
         } else emptyList()

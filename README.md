@@ -16,13 +16,10 @@ Leesah-game er et hendelsedrevet applikasjonsutviklingspill laget for å utfordr
 <img style="height:20em;" src="/leesah-game-board.png">
 </p>
 
-
-
 ## Kjøre Leesah Game
 
 - [Spillerene er på Nais]()
 - [Spillerene er ikke på Nais](leesah-game-outside-nais.md)
-
 
 ### Build
 
@@ -62,7 +59,6 @@ strukturert/nøstet json over flere linjer bør disse gjøres om til én linje f
 Quizmaster Admin panel: `localhost:8000`
 
 Leaderboard: `localhost:8081`
-
 
 ### Frontend
 
@@ -104,8 +100,8 @@ TODO
 
 (PS!! Husk å bytte questionId)
 
-**Team registration answer**
+**Team-registration svar**
 `{"messageId": "b29175a7-059a-4a46-b274-94sd9f165473", "questionId": "4c28d7db-2f24-4ef2-8393-eb6a5c5adfe8", "type": "ANSWER", "category": "team-registration", "teamName": "Solo", "answer": "ff0024", "created": "2022-11-22T16:36:59.155512"}`
 
-**Arithmetic answer**
+**Arithmetic svar**
 `{"messageId": "b30175a7-059a-4a46-b274-947a9f165473", "questionId": "cc07eb49-3454-4bdf-91f2-475d6e9d855e", "type": "ANSWER", "teamName": "coolteam", "category": "arithmetic", "answer": "7", "created": "2022-11-22T16:36:59.155512"}`

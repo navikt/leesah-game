@@ -13,20 +13,12 @@ class Base64Echo(maxCount: Int = 1, active: Boolean = true, interval: Duration =
     private val fasit = mutableMapOf<String, String>()
 
     override fun check(answer: Answer) {
-        if (answer.questionId !in fasit.keys) {
-            try {
-                (fasit[answer.questionId] == answer.answer).publish(
-                    answer.teamName,
-                    answer.questionId,
-                    answer.messageId
-                )
-            } catch (e: NumberFormatException) {
-                logger.warn("Svar = $answer inneholder ugyldig data = ${answer.answer}")
-                logger.debug(e.toString())
-            }
-        } else {
-          logger.debug("Feil svar")
-        }
+        if (answer.questionId !in fasit.keys) return
+            (fasit[answer.questionId] == answer.answer).publish(
+                answer.teamName,
+                answer.questionId,
+                answer.messageId
+            )
     }
 
     override fun newQuestions(): List<Question> {

@@ -13,9 +13,8 @@ exactly-once-delivery_](https://www.confluent.io/blog/exactly-once-semantics-are
 
 ## Oppgaven
 
-I denne oppgaven vil Quizmaster sende ut samme melding flere ganger, og det er din applikasjon oppgave å svare på meldingen kun
-én gang. Det finnes flere måter å jukse seg til poeng her, men oppfordringen er å løse problemet på en
-ordentlig måte.
+I denne oppgaven vil Quizmaster sende ut samme melding flere ganger, og det er din applikasjons oppgave å svare på meldingen kun
+én gang. Det finnes flere måter å jukse seg til poeng her, men oppfordringen er å løse problemet på en ordentlig måte.
 
 ### Om du mislykkes, altså sender svar mer enn en gang:
 

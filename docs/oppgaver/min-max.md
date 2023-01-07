@@ -1,6 +1,6 @@
 # min-max
 
-Oppgaven spør deg om det høyeste eller laveste tallet i listen. Dersom den spør etter høyeste, skal du returnere det
+Oppgaven spør deg om det høyeste eller laveste tallet i en liste. Dersom den spør etter høyeste, skal du returnere det
 høyeste tallet, dersom det spør etter det laveste skal du returnere det laveste tallet.
 
 **Eksempel oppgave-hendelse**

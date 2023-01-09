@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import ErrorIkon from '../ikoner/Error.svg';
-import WarningIkon from '../ikoner/Warning.svg';
-import OkIkon from '../ikoner/Success.svg';
+import ErrorIkon from '../../ikoner/Error.svg';
+import WarningIkon from '../../ikoner/Warning.svg';
+import OkIkon from '../../ikoner/Success.svg';
 import './LeaderboardTable.less';
-import { BoardDto } from '../types';
-import { hentBoard } from '../backend';
+import { BoardDto } from '../../types';
+import { hentBoard } from '../../backend';
 import { Table } from '@navikt/ds-react';
 import '@navikt/ds-css';
-import { useLocalStorageState } from '../Hooks/useLocalStorageState';
+import { useLocalStorageState } from '../../hooks/useLocalStorageState';
 
 export default function LeaderboardTable() {
   const nullBoard: BoardDto = { board: [] };

@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './index.less';
-import { Alert, BodyShort, Heading, Ingress, Modal } from '@navikt/ds-react';
+import { Heading, Ingress } from '@navikt/ds-react';
 import LeaderboardTable from './components/leaderboard/LeaderboardTable';
-import { hentBoard, isBackendAlive, isBackendReady } from './backend';
-import { useInterval } from './poller';
-import { Environment } from './environment';
 import { ErrorModal } from './components/modal/ErrorModal';
 
 const App = () => {

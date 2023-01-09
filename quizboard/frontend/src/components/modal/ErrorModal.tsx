@@ -1,7 +1,7 @@
 import { Alert, Modal } from '@navikt/ds-react';
 import { Environment } from '../../environment';
 import React, { useState } from 'react';
-import { useInterval } from '../../poller';
+import { useInterval } from '../../hooks/useInterval';
 import { isBackendReady } from '../../backend';
 
 export const ErrorModal = () => {
@@ -16,11 +16,9 @@ export const ErrorModal = () => {
   }, 10000);
 
   return (
-    <Modal open={!Environment.isDevelopment && !backendGood} onClose={() => backendGood} closeButton={false}>
+    <Modal open={Environment.isDevelopment && !backendGood} onClose={() => backendGood} closeButton={false}>
       <Modal.Content>
-        <Alert variant="error" fullWidth={true}>
-          ERROR: Backend is not ready or not alive
-        </Alert>
+        <Alert variant="error">ERROR: Backend is not ready or not alive</Alert>
       </Modal.Content>
     </Modal>
   );

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import ErrorIkon from '../ikoner/Error.svg';
-import WarningIkon from '../ikoner/Warning.svg';
-import OkIkon from '../ikoner/Success.svg';
+import ErrorIkon from '../../ikoner/Error.svg';
+import WarningIkon from '../../ikoner/Warning.svg';
+import OkIkon from '../../ikoner/Success.svg';
 import './Leaderboard.less';
-import { BoardDto, TeamResultDto } from '../types';
-import { hentBoard } from '../backend';
+import { BoardDto, TeamResultDto } from '../../types';
+import { hentBoard } from '../../backend';
 
 export default function Leaderboard() {
   const nullBoard: BoardDto = { board: [] };

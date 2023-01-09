@@ -16,7 +16,7 @@ export const ErrorModal = () => {
   }, 10000);
 
   return (
-    <Modal open={Environment.isDevelopment && !backendGood} onClose={() => backendGood} closeButton={false}>
+    <Modal open={!Environment.isDevelopment && !backendGood} onClose={() => backendGood} closeButton={false}>
       <Modal.Content>
         <Alert variant="error">ERROR: Backend is not ready or not alive</Alert>
       </Modal.Content>

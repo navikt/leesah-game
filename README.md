@@ -82,6 +82,11 @@ Merk at dette er en helt frikoblet versjon av frontend, så all testdata må moc
 - [x] Aktiver utfordringer i Quizmaster Admin 
 - [x] Utfordring 1 "Arithmetic" ("\<number\> + \<number\>")
 
+### Leaderboard:
+https://leesah-quizboard.intern.nav.no/
+
+### Quizmaster:
+https://leesah-quizmaster.intern.nav.no/
 
 ### Data Modell
 

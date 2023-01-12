@@ -12,11 +12,7 @@ Leesah-game er et hendelsedrevet applikasjonsutviklingspill laget for å utfordr
 
 ## Eksempel leaderboardet som vises under spillet
 
-<p align="center">
 <img style="height:20em;" src="/leesah-game-board.png">
-</p>
-
-
 
 ## Kjøre Leesah Game
 

@@ -24,7 +24,7 @@ Oppgaven svares med riktig svar i heltall (integer).
   "type": "ANSWER",
   "messageId": "d36b4273-0571-42f2-b3bd-7b7987de43b0",
   "questionId": "96acb8f4-4b1e-4f0a-9d54-fcdda1223d9d",
-  "category": "team-registration",
+  "category": "arithmetic",
   "teamName": "l33t team",
   "answer": "-13",
   "created": "2022-11-07T14:53:27.581147"

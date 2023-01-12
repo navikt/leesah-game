@@ -39,18 +39,18 @@ class Transactions(maxCount: Int = 20, active: Boolean = false, interval: Durati
     override fun check(answer: Answer) {
         val solution = solutions.firstOrNull { it.questionId == answer.questionId }
         if (solution == null) {
-            logger.warn("answer = $answer does not refer to a stored question = ${answer.questionId}")
+            logger.warn("svar = $answer refererer ikke til et lagres spørsmål = ${answer.questionId}")
             return
         }
         val isCorrect = try {
                 solution.correctAnswer == answer.answer.toInt()
             } catch (e: Exception) {
-                logger.info("${answer.answer} with answerId ${answer.messageId} and questionId ${answer.questionId} throws error", e)
+                logger.info("${answer.answer} med answerId ${answer.messageId} og questionId ${answer.questionId} gir error", e)
                 false
         }
 
         if (!isCorrect) {
-            logger.info("${answer.answer} with answerId ${answer.messageId} and questionId ${answer.questionId} is incorrect")
+            logger.info("${answer.answer} med answerId ${answer.messageId} og questionId ${answer.questionId} er feil")
         }
         isCorrect.publish(answer.teamName, questionId = solution.questionId, answerId = answer.id())
 

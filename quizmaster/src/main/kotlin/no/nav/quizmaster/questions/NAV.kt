@@ -21,6 +21,10 @@ class NAV(private val frequency: Duration, active: Boolean = false) : QuestionCa
         Pair(
             "Hva står NAV for?",
             "nav"
+        ),
+        Pair(
+            "Hva heter NAV-direktøren?",
+            "Hans Christian Holte"
         )
     )
 

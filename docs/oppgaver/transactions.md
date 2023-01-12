@@ -3,7 +3,6 @@
 Denne oppgaven handler om å holde styr på innskudd og utrekk; en viktig oppgave både her og ellers i livet.
 Svar med korrekt sammenstilt saldo for hver oppgave-hendelse applikasjonen mottar.
 
-
 **Eksempel på oppgave-hendelse**
 
 

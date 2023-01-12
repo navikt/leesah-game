@@ -1,7 +1,8 @@
 import React from 'react';
 import './index.less';
 import { Heading, Ingress } from '@navikt/ds-react';
-import LeaderboardTable from './Leaderboard/LeaderboardTable';
+import LeaderboardTable from './components/leaderboard/LeaderboardTable';
+import { ErrorModal } from './components/modal/ErrorModal';
 
 const App = () => {
   return (
@@ -14,9 +15,10 @@ const App = () => {
         <span className="strikethrough-line">
           <span className="strikethrough-header">hendelser</span>
         </span>{' '}
-        spørsmål
+        spørsmål!
       </Ingress>
       <LeaderboardTable />
+      <ErrorModal />
     </div>
   );
 };

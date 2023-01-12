@@ -1,8 +1,4 @@
-
-<p align="center">
 <img style="height:40em;" src="/leesah.png">
-</p>
-
 
 # 🏞️ Life is a Stream of Events | the game
 

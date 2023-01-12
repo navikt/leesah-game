@@ -67,6 +67,8 @@ internal class NAVTest {
             "nais",
             "NAIS",
             "N A I S",
+            "NAVs Application Infrastructure Service",
+            "NAVsApplicationInfrastructureService",
         )
         correctAnswers.forEach {
             navQuestions.check(answerNavQuestion(q, it))

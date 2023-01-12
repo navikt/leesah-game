@@ -16,7 +16,7 @@ class NAV(private val frequency: Duration, active: Boolean = false) : QuestionCa
         ),
         Pair(
             "Hva heter applikasjonsplattformen til NAV?",
-            listOf("nais","NAVs Application Infrastructure Service","NAV Application Infrastructure Service")
+            listOf("nais","NAVsApplicationInfrastructureService","NAVApplicationInfrastructureService")
         ),
         Pair(
             "Hva står NAV for?",

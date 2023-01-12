@@ -7,20 +7,20 @@ import java.time.LocalDateTime
 
 class NAV(private val frequency: Duration, active: Boolean = false) : QuestionCategory("NAV", 2, active) {
     private var nextQuestionAt = LocalDateTime.now()
-    private val fasit = mutableMapOf<String, String>()
+    private val fasit = mutableMapOf<String, List<String>>()
     private var questionIndex = 0
     private val navQuestions = mapOf(
         Pair(
             "På hvilken nettside finner man informasjon om rekruttering til NAV IT?",
-            "detsombetyrnoe"
+            listOf("detsombetyrnoe")
         ),
         Pair(
             "Hva heter applikasjonsplattformen til NAV?",
-            "nais"
+            listOf("nais","NAVs Application Infrastructure Service","NAV Application Infrastructure Service")
         ),
         Pair(
             "Hva står NAV for?",
-            "nav"
+            listOf("nav","ingenting")
         )
     )
 
@@ -31,14 +31,17 @@ class NAV(private val frequency: Duration, active: Boolean = false) : QuestionCa
     }
 
     // TODO: accept a list of correct answers, evt. a function (String) -> Boolean
-    private fun String.checkAnswer(answer: Answer) {
-        val validation = answer.answer
-            .replace("\\s".toRegex(), "")
-            .contains(this, true)
-        validation.publish(answer.teamName, answer.questionId, answer.messageId)
+    private fun List<String>.checkAnswer(answer: Answer) {
+        this.forEach {
+            if (answer.answer.replace("\\s".toRegex(), "").contains(it, true)) {
+                true.publish(answer.teamName, answer.questionId, answer.messageId)
+                return
+            }
+        }
+        false.publish(answer.teamName, answer.questionId, answer.messageId)
     }
 
-    private fun storeFasit(newQuestion: Question, fasit: String) {
+    private fun storeFasit(newQuestion: Question, fasit: List<String>) {
         this.fasit[newQuestion.messageId] = fasit
     }
 

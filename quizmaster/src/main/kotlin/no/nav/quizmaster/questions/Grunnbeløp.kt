@@ -25,7 +25,7 @@ class Grunnbeløp(active: Boolean = false, maxCount: Int = 1, interval: Duration
         val month = Random.nextInt(1, 13)
         val day = Random.nextInt(1, 28)
         val questionDate = LocalDate.of(year, month, day)
-        val question = Question(category=category, question = "grunnbelop for dato: ${questionDate.format(DateTimeFormatter.ISO_LOCAL_DATE)}")
+        val question = Question(category=category, question = "Grunnbeløp for dato: ${questionDate.format(DateTimeFormatter.ISO_LOCAL_DATE)}")
         storeFasit(question, grunnbeløpFor(questionDate)!!)
         return listOf(question)
     }
@@ -45,10 +45,10 @@ class Grunnbeløp(active: Boolean = false, maxCount: Int = 1, interval: Duration
         LocalDate.parse(question.question.split(":")[1].removePrefix(" "))
 
     fun grunnbeløpFor(date: LocalDate): Int? {
-        return grunnbeløp.firstOrNull { date.isEqual(it.second) || date.isAfter(it.second) }?.first
+        return grunnbelop.firstOrNull { date.isEqual(it.second) || date.isAfter(it.second) }?.first
     }
 
-    private val grunnbeløp = listOf(
+    private val grunnbelop = listOf(
         Pair(111477, 1.mai(2022)),
         Pair(106399, 1.mai(2021)),
         Pair(101351, 1.mai(2020)),

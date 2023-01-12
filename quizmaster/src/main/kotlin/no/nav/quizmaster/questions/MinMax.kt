@@ -21,7 +21,7 @@ class MinMax(private val frequency: Duration, active: Boolean = false) :
         try {
             fasit[answer.questionId]?.checkAnswer(answer)
         } catch (e: NumberFormatException) {
-            logger.warn("answer = $answer contains invalid data = ${answer.answer}")
+            logger.warn("Svar = $answer inneholder ugyldig data = ${answer.answer}")
             logger.debug(e.toString())
         }
     }

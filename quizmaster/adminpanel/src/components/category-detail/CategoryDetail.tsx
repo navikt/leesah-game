@@ -3,13 +3,13 @@ import './CategoryDetail.scss';
 
 interface CategoryDetailProps {
     label: string;
-    value: ReactNode;
+    children: ReactNode;
 }
 
-const CategoryDetail = ({ label, value }: CategoryDetailProps) => (
+const CategoryDetail = ({ label, children }: CategoryDetailProps) => (
     <div className="category-view">
         <p className="status-label">{label + ':'} </p>
-        <p className={value === 'ACTIVE' ? 'active-font' : ''}>{value}</p>
+        <p className={children === 'ACTIVE' ? 'active-font' : ''}>{children}</p>
     </div>
 );
 

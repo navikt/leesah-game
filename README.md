@@ -1,9 +1,3 @@
-
-<p align="center">
-<img style="height:40em;" src="/leesah.png">
-</p>
-
-
 # 🏞️ Life is a Stream of Events | the game
 
 ## Beskrivelse
@@ -12,17 +6,12 @@ Leesah-game er et hendelsedrevet applikasjonsutviklingspill laget for å utfordr
 
 ## Eksempel leaderboardet som vises under spillet
 
-<p align="center">
 <img style="height:20em;" src="/leesah-game-board.png">
-</p>
-
-
 
 ## Kjøre Leesah Game
 
 - [Spillerene er på Nais]()
 - [Spillerene er ikke på Nais](leesah-game-outside-nais.md)
-
 
 ### Build
 
@@ -63,7 +52,6 @@ Quizmaster Admin panel: `localhost:8000`
 
 Leaderboard: `localhost:8081`
 
-
 ### Frontend
 
 Frontenden er plassert i en egen mappe `/quizboard/frontend`. For lokal frontend-utvikling er det raskest å hoste frontend i utviklingsmodus med:
@@ -94,6 +82,11 @@ Merk at dette er en helt frikoblet versjon av frontend, så all testdata må moc
 - [x] Aktiver utfordringer i Quizmaster Admin 
 - [x] Utfordring 1 "Arithmetic" ("\<number\> + \<number\>")
 
+### Leaderboard:
+https://leesah-quizboard.intern.nav.no/
+
+### Quizmaster:
+https://leesah-quizmaster.intern.nav.no/
 
 ### Data Modell
 
@@ -104,8 +97,8 @@ TODO
 
 (PS!! Husk å bytte questionId)
 
-**Team registration answer**
+**Team-registration svar**
 `{"messageId": "b29175a7-059a-4a46-b274-94sd9f165473", "questionId": "4c28d7db-2f24-4ef2-8393-eb6a5c5adfe8", "type": "ANSWER", "category": "team-registration", "teamName": "Solo", "answer": "ff0024", "created": "2022-11-22T16:36:59.155512"}`
 
-**Arithmetic answer**
+**Arithmetic svar**
 `{"messageId": "b30175a7-059a-4a46-b274-947a9f165473", "questionId": "cc07eb49-3454-4bdf-91f2-475d6e9d855e", "type": "ANSWER", "teamName": "coolteam", "category": "arithmetic", "answer": "7", "created": "2022-11-22T16:36:59.155512"}`

@@ -5,7 +5,7 @@ import { useInterval } from '../../hooks/useInterval';
 import { isBackendReady } from '../../backend';
 
 export const ErrorModal = () => {
-  const [backendGood, setbackendGood] = useState(false);
+  const [backendGood, setbackendGood] = useState(true);
 
   useInterval(async () => {
     const update = async () => {

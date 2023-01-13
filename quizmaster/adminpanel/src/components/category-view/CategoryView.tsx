@@ -28,16 +28,13 @@ const CategoryView = ({ categories, backend }: CategoryViewProps) => {
                             category.name
                         )}
                     </h3>
-                    <CategoryDetail
-                        label="status"
-                        value={
-                            done(category.maxCount, category.questionCount, category.status) ? 'DONE' : category.status
-                        }
-                    />
-                    <CategoryDetail label="maxCount" value={category.maxCount} />
-                    <CategoryDetail label="questionCount" value={category.questionCount} />
-                    <CategoryDetail label="answerCount" value={category.answerCount} />
-                    <CategoryDetail label="correctAnswerCount" value={category.correctAnswerCount} />
+                    <CategoryDetail label="status">
+                        {done(category.maxCount, category.questionCount, category.status) ? 'DONE' : category.status}
+                    </CategoryDetail>
+                    <CategoryDetail label="maxCount">{category.maxCount}</CategoryDetail>
+                    <CategoryDetail label="questionCount">{category.questionCount}</CategoryDetail>
+                    <CategoryDetail label="answerCount">{category.answerCount}</CategoryDetail>
+                    <CategoryDetail label="correctAnswerCount">{category.correctAnswerCount}</CategoryDetail>
                     {category.pendingAnswers.length > 0 && (
                         <PendingAnswers category={category.name} answers={category.pendingAnswers} backend={backend} />
                     )}

@@ -14,11 +14,11 @@ class Base64Echo(maxCount: Int = 1, active: Boolean = true, interval: Duration =
 
     override fun check(answer: Answer) {
         if (answer.questionId !in fasit.keys) return
-        (fasit[answer.questionId] == answer.answer).publish(
-            answer.teamName,
-            answer.questionId,
-            answer.messageId
-        )
+            (fasit[answer.questionId] == answer.answer).publish(
+                answer.teamName,
+                answer.questionId,
+                answer.messageId
+            )
     }
 
     override fun newQuestions(): List<Question> {
@@ -42,7 +42,6 @@ class Base64Echo(maxCount: Int = 1, active: Boolean = true, interval: Duration =
         }
         return false
     }
-
 
     private fun storeQuestion(newQuestion: Question, fasit: String) {
         this.fasit[newQuestion.messageId] = fasit

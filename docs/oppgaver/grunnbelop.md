@@ -31,7 +31,7 @@ Det finnes et åpent API for Grunnbeløp: [https://g.nav.no/](https://g.nav.no/)
   "type": "ANSWER",
   "questionId": "3cf7a835-cd5e-4a40-baf9-844119f52ac6",
   "category": "grunnbelop",
-  "teamName": "Team mcTeam",
+  "teamName": "l33t team",
   "answer": "5400",
   "messageId": "55927c13-891f-446f-a579-3801ef6e444c",
   "created": "2022-11-07T14:53:27.581147"

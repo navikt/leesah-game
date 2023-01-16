@@ -9,14 +9,14 @@ class NAV(private val frequency: Duration, active: Boolean = false) : QuestionCa
     private var nextQuestionAt = LocalDateTime.now()
     private val fasit = mutableMapOf<String, List<String>>()
     private var questionIndex = 0
-    private val navQuestions = mapOf(
+    private val navQuestions:Map<String,List<String>> = mapOf(
         Pair(
             "På hvilken nettside finner man informasjon om rekruttering til NAV IT?",
-            listOf("detsombetyrnoe")
+            listOf("det som betyr noe")
         ),
         Pair(
             "Hva heter applikasjonsplattformen til NAV?",
-            listOf("nais","NAVsApplicationInfrastructureService","NAVApplicationInfrastructureService")
+            listOf("nais","NAVs Application Infrastructure Service","NAV Application Infrastructure Service")
         ),
         Pair(
             "Hva står NAV for?",
@@ -25,7 +25,7 @@ class NAV(private val frequency: Duration, active: Boolean = false) : QuestionCa
         ),
         Pair(
             "Hva heter NAV-direktøren?",
-            "Hans Christian Holte"
+            listOf("Hans Christian Holte")
         )
     )
 
@@ -38,7 +38,7 @@ class NAV(private val frequency: Duration, active: Boolean = false) : QuestionCa
     // TODO: accept a list of correct answers, evt. a function (String) -> Boolean
     private fun List<String>.checkAnswer(answer: Answer) {
         this.forEach {
-            if (answer.answer.replace("\\s".toRegex(), "").contains(it, true)) {
+            if (answer.answer.replace("\\s".toRegex(), "").contains(it.replace("\\s".toRegex(),""), true)) {
                 true.publish(answer.teamName, answer.questionId, answer.messageId)
                 return
             }
@@ -78,7 +78,7 @@ class NAV(private val frequency: Duration, active: Boolean = false) : QuestionCa
 
 
     override fun sync(question: Question): Boolean {
-        val fasit = navQuestions[question.question]
+        val fasit:List<String>? = navQuestions[question.question]
         if(fasit != null) {
             storeFasit(question, fasit)
             return true

@@ -47,6 +47,21 @@ internal class RegisterTeamTest {
     }
 
     @Test
+    fun `max lenght teamname`(){
+        val registerQuestion = RegisterTeam(true)
+        val q = registerQuestion.questions()
+        val qId = q.first().id()
+
+        registerQuestion.check(answer(qId, "12345678901234567890123451","000000"))
+        registerQuestion.check(answer(qId, "12346789012345678901234","000000"))
+
+        val assessments = registerQuestion.events()
+
+        assertTrue(assessments.size == 1)
+    }
+
+
+    @Test
     fun `right question id`() {
         val registerQuestion = RegisterTeam(true)
         val question = registerQuestion.questions()

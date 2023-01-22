@@ -39,7 +39,7 @@ spec:
     - secret: leesah-client-keystore
       mountPath: /var/run/key
   env:
-    - name: QUIZ_TOPIC
+    - name: VITE_QUIZ_TOPIC
       value: quiz-rapid-test1
     - name: QUIZRAPID_AUTO_COMMIT
       value: "false"

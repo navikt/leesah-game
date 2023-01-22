@@ -47,12 +47,12 @@ internal class RegisterTeamTest {
     }
 
     @Test
-    fun `max lenght teamname`(){
+    fun `max length teamname`(){
         val registerQuestion = RegisterTeam(true)
         val q = registerQuestion.questions()
         val qId = q.first().id()
 
-        registerQuestion.check(answer(qId, "12345678901234567890123451","000000"))
+        registerQuestion.check(answer(qId, "1234567890123456789012345123456","000000"))
         registerQuestion.check(answer(qId, "12346789012345678901234","000000"))
 
         val assessments = registerQuestion.events()

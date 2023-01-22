@@ -158,7 +158,7 @@ const testData: BoardDto = {
       ],
     },
     {
-      name: 'Jeg er lei av å lage tullete navn til team',
+      name: 'Tullete teamnavn',
       score: 110,
       hex: '285557',
       categoryResult: [
@@ -312,7 +312,7 @@ const testData: BoardDto = {
       ],
     },
     {
-      name: 'ØAHGJANØKGJNDHAERHSDFHSFJFHJLYAETKJLKHFITDUR',
+      name: 'ØAHGJANØKGJNDHAERHSDFHSFJ',
       score: 110,
       hex: 'CA6F14',
       categoryResult: [
@@ -493,11 +493,15 @@ const testData: BoardDto = {
 const baseurl = Environment.isDevelopment ? 'http://localhost:8081' : '';
 
 export async function isBackendAlive() {
-  return fetch(`${baseurl}/alive`).then((res) => res.ok).catch(() => false);
+  return fetch(`${baseurl}/alive`)
+    .then(res => res.ok)
+    .catch(() => false);
 }
 
 export async function isBackendReady() {
-  return fetch(`${baseurl}/ready`).then((res) => res.ok).catch(() => false);
+  return fetch(`${baseurl}/ready`)
+    .then(res => res.ok)
+    .catch(() => false);
 }
 
 export function hentBoard(setBoard: (value: ((prevState: BoardDto) => BoardDto) | BoardDto) => void) {

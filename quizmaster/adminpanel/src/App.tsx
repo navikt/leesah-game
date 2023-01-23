@@ -8,9 +8,8 @@ import { useInterval } from './poller';
 
 const App = () => {
     const backend: Backend = Environment.isDevelopment ? testBackend() : restBackend(false);
-    const nullBoard: QuizStatsDto = { status: 'INACTIVE', categories: [] };
+    const nullBoard: QuizStatsDto = { topicName: '', status: 'INACTIVE', categories: [] };
     const [quizStats, setQuizStats] = useState(nullBoard);
-    const QUIZ_TOPIC = import.meta.env.VITE_QUIZ_TOPIC;
 
     useInterval(() => {
         const update = async () => {
@@ -31,7 +30,7 @@ const App = () => {
                 ) : (
                     <button onClick={() => backend.quiz('stop')}>Start</button>
                 )}
-                <p>Topic name: {QUIZ_TOPIC}</p>
+                <p>Topic name: {quizStats.topicName}</p>
             </div>
             <CategoryView categories={quizStats.categories} backend={backend} />
         </>

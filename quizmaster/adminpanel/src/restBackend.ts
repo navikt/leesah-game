@@ -1,4 +1,5 @@
 export type QuizStatsDto = {
+    topicName: string;
     status: string;
     categories: CategoriesDto[];
 };

@@ -18,6 +18,7 @@ export const testBackend = (): Backend => {
 };
 
 let testData = {
+    topicName: 'topic-name',
     status: 'ACTIVE',
     categories: [
         {

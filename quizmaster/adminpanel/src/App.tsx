@@ -5,11 +5,14 @@ import { testBackend } from './hardcodedBackend';
 import './index.scss';
 import CategoryView from './components/category-view/CategoryView';
 import { useInterval } from './poller';
+import { ToggleNais } from './components/toggle/ToggleNais';
+import { useToggle } from './hooks/useToggle';
 
 const App = () => {
     const backend: Backend = Environment.isDevelopment ? testBackend() : restBackend(false);
     const nullBoard: QuizStatsDto = { status: 'INACTIVE', categories: [] };
     const [quizStats, setQuizStats] = useState(nullBoard);
+    const toggle = useToggle();
 
     useInterval(() => {
         const update = async () => {
@@ -30,6 +33,7 @@ const App = () => {
                 ) : (
                     <button onClick={() => backend.quiz('stop')}>Start</button>
                 )}
+                <ToggleNais />
             </div>
             <CategoryView categories={quizStats.categories} backend={backend} />
         </>

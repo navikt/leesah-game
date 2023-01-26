@@ -13,7 +13,7 @@ Leesah-game er et hendelsedrevet applikasjonsutviklingspill laget for å utfordr
 - [Spillerene er på Nais]()
 - [Spillerene er ikke på Nais](leesah-game-outside-nais.md)
 
-### Build
+### Build 
 
 Prosjektet bruker Java 17. En praktisk måte å installere det på er med [`sdkman`](https://sdkman.io/):
 - Installer `sdkman`

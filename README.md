@@ -1,20 +1,17 @@
-# 🏞️ Life is a Stream of Events | the game
+# 🏞️ Livet er en strøm av oppgaver
 
 ## Beskrivelse
-
 Leesah-game er et hendelsedrevet applikasjonsutviklingspill laget for å utfordre spilleren til å utvikle en applikasjon som kan håndtere et diverst utvalg av utfordrende hendelser som den mottar på eller utenfor NAIS-plattformen.
 
 ## Eksempel leaderboardet som vises under spillet
-
 <img style="height:20em;" src="/leesah-game-board.png">
 
 ## Kjøre Leesah Game
 
-- [Spillerene er på Nais]()
-- [Spillerene er ikke på Nais](leesah-game-outside-nais.md)
+[//]: # (- [Spillerene er på Nais]&#40;&#41;)
+[//]: # (- [Spillerene er ikke på Nais]&#40;leesah-game-outside-nais.md&#41;)
 
-### Build 
-
+### Build
 Prosjektet bruker Java 17. En praktisk måte å installere det på er med [`sdkman`](https://sdkman.io/):
 - Installer `sdkman`
 - Installer Java 17 med sdkman: `sdk install java 17.0.2-tem`
@@ -41,19 +38,22 @@ og deretter åpne et "producer-shell" mot topicet med
 
 `kafka-console-producer --topic quiz-rapid --bootstrap-server localhost:29092`
 
-Meldinger som skrives inn i dette shellet blir sendt på topicet og forhåpentligvis mottatt av appen.
+Meldinger som skrives inn i dette shellet blir sendt på topicet og (forhåpentligvis) mottatt av appen.
 
 NB! `kafka-console-producer` tolker hver linje som en separat melding og publiserer disse deretter, slik at hvis du skal sende
 strukturert/nøstet json over flere linjer bør disse gjøres om til én linje før du sender meldingen.
 
 **Localhost url**
-
 Quizmaster Admin panel: `localhost:8000`
 
 Leaderboard: `localhost:8081`
 
-### Frontend
+**Hosted Url**
+Quizmaster Admin panel: `https://leesah-quizmaster.intern.nav.no/`
 
+Leaderboard: `https://leesah-quizboard.intern.nav.no/`
+
+### Frontend
 Frontenden er plassert i en egen mappe `/quizboard/frontend`. For lokal frontend-utvikling er det raskest å hoste frontend i utviklingsmodus med:
 
 `npm install`
@@ -62,9 +62,12 @@ Frontenden er plassert i en egen mappe `/quizboard/frontend`. For lokal frontend
 
 Merk at dette er en helt frikoblet versjon av frontend, så all testdata må mockes.
 
+## Endring av topic
+Endre verdi for `QUIZ_TOPIC` i `./nais/quizmaster-prod.yaml` og `./nais/quizboard-prod.yaml` 
+
 ## Utvikling
 
-**Moduler**
+### Moduler
 
 - **Quizmaster**
   
@@ -74,27 +77,24 @@ Merk at dette er en helt frikoblet versjon av frontend, så all testdata må moc
 
   Håndterer visning av tilstanden til spillet på en nettside. 
 
-
 ### TODO
-
 - [x] Start nytt spill
 - [x] Aksepter team registrering
 - [x] Aktiver utfordringer i Quizmaster Admin 
 - [x] Utfordring 1 "Arithmetic" ("\<number\> + \<number\>")
 
-### Leaderboard:
-https://leesah-quizboard.intern.nav.no/
+### Sjekking av logger
+Bytt til kontekst prod-gcp: `kubectx prod-gcp`
 
-### Quizmaster:
-https://leesah-quizmaster.intern.nav.no/
+Logg inn i Gcloud (med nav-mail!): `gCloud auth login`
 
-### Data Modell
+Bytt namespace til leesah-quiz: `kubens leesah-quiz`
 
-TODO
+Sjekk at poddene kjører (quizboard og quizmaster) `kubectl get pods`
 
+Følg loggene: `kubectl logs quizmaster-{kode} -f`
 
 ### Testdata
-
 (PS!! Husk å bytte questionId)
 
 **Team-registration svar**

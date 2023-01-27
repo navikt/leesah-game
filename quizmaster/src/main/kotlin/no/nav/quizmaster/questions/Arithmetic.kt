@@ -32,7 +32,7 @@ class Arithmetic(private val frequency: Duration, active: Boolean = false): Ques
 
     private fun newQuestion(): Question {
         val (exp, fasit) = generateExpression()
-        val newQuestion = Question(category = category, question = exp)
+        val newQuestion = Question(category = category, question =  exp + " (svaret må rundes til int)" )
         storeQuestion(newQuestion, fasit)
         return newQuestion
     }
@@ -74,7 +74,8 @@ class Arithmetic(private val frequency: Duration, active: Boolean = false): Ques
             "-" to { first, last -> first - last },
             "/" to { first, last -> first / last },
         )
-        val exp = question.question.split(" ")
+        val removeText = question.question.split("(")
+        val exp = removeText[0].split(" ")
         return operatorMap[exp[1]]?.invoke(exp[0].toInt(), exp[2].toInt())
     }
 }

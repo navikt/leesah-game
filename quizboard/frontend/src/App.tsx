@@ -15,7 +15,7 @@ const App = () => {
         <span className="strikethrough-line">
           <span className="strikethrough-header">hendelser</span>
         </span>{' '}
-        spørsmål!
+        oppgaver!
       </Ingress>
       <LeaderboardTable />
       <ErrorModal />

@@ -1,6 +1,5 @@
 import './ToggleNais.scss';
 import React from 'react';
-import { BodyShort } from '@navikt/ds-react';
 // @ts-ignore
 import NaisLogo from '../../ikoner/naislogo.svg';
 

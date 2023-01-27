@@ -12,7 +12,7 @@ const App = () => {
     const backend: Backend = Environment.isDevelopment ? testBackend() : restBackend(false);
     const nullBoard: QuizStatsDto = { status: 'INACTIVE', categories: [] };
     const [quizStats, setQuizStats] = useState(nullBoard);
-    const [nais, setNais] = useToggle(true); //TODO legg til variabel for å lese om vi bruker NAIS eller ikke (f.eks ved å lese hvilket topic vi bruker?)
+    const [nais, setNais] = useToggle(false); //TODO legg til variabel for å lese om vi bruker NAIS eller ikke (f.eks ved å lese hvilket topic vi bruker?)
 
     useInterval(() => {
         const update = async () => {

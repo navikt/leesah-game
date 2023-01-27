@@ -30,7 +30,6 @@ internal class ArithmeticTest {
         assertTrue(art0.questions().isNotEmpty())
         assertTrue(Arithmetic(Duration.ofHours(1)).questions().isEmpty())
 
-
         val art = Arithmetic(Duration.ZERO)
         art.activate()
         val questions = art.questions()
@@ -78,6 +77,4 @@ internal class ArithmeticTest {
         val result = operatorMap[exp[1]]?.invoke(exp[0].toInt(), exp[2].toInt())
         return result
     }
-
-
 }

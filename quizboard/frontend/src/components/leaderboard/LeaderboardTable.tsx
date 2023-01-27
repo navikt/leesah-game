@@ -8,6 +8,7 @@ import { hentBoard } from '../../backend';
 import { Table } from '@navikt/ds-react';
 import '@navikt/ds-css';
 import { useLocalStorageState } from '../../hooks/useLocalStorageState';
+import { kebabCase } from '../../utils';
 
 export default function LeaderboardTable() {
   const nullBoard: BoardDto = { board: [] };
@@ -125,7 +126,7 @@ export default function LeaderboardTable() {
               {team.score}
             </Table.DataCell>
             {team.categoryResult.map((category: any, index: number) => (
-              <Table.DataCell key={index} className="leaderboard__kategori">
+              <Table.DataCell key={kebabCase(team.name) + index} className="leaderboard__kategori">
                 {icon(category.status, index)}
               </Table.DataCell>
             ))}

@@ -5,7 +5,6 @@ import PendingAnswers from '../PendingAnswers';
 import './CategoryView.scss';
 // @ts-ignore
 import OkIkon from '../../ikoner/Success.svg';
-import { useToggle } from '../../hooks/useToggle';
 
 interface CategoryViewProps {
     categories: CategoriesDto[];
@@ -15,8 +14,6 @@ const CategoryView = ({ categories, backend }: CategoryViewProps) => {
     const done = (maxCount: number, questionCount: number, status: string) => {
         return maxCount === questionCount && status === 'INACTIVE';
     };
-
-    console.log(categories);
 
     return (
         <div className="container">

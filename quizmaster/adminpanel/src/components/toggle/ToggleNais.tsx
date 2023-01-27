@@ -1,16 +1,24 @@
-import { useToggle } from '../../hooks/useToggle';
 import './ToggleNais.scss';
+import React from 'react';
+import { BodyShort } from '@navikt/ds-react';
+// @ts-ignore
+import NaisLogo from '../../ikoner/naislogo.svg';
 
-export const ToggleNais = () => {
-    const [toggle, setToggle] = useToggle();
-    console.log(toggle);
+interface ToggleNaisProps {
+    setToggle: () => void;
+}
+
+export const ToggleNais = ({ setToggle }: ToggleNaisProps) => {
     return (
-        <div className="toggle-switch">
-            <input type="checkbox" className="toggle-switch-checkbox" name="nais" id="nais" onClick={setToggle} />
-            <label className="toggle-switch-label" htmlFor="nais">
-                <span className="toggle-switch-inner" />
-                <span className="toggle-switch-switch" />
-            </label>
-        </div>
+        <>
+            <img src={NaisLogo} alt="Nais Logo" className="naislogo" />
+            <div className="toggle-switch">
+                <div className="button r" id="button-1">
+                    <input type="checkbox" className="checkbox" onClick={setToggle} />
+                    <div className="knobs"></div>
+                    <div className="layer"></div>
+                </div>
+            </div>
+        </>
     );
 };

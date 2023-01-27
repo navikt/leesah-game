@@ -12,7 +12,7 @@ const App = () => {
     const backend: Backend = Environment.isDevelopment ? testBackend() : restBackend(false);
     const nullBoard: QuizStatsDto = { status: 'INACTIVE', categories: [] };
     const [quizStats, setQuizStats] = useState(nullBoard);
-    const toggle = useToggle();
+    const [nais, setNais] = useToggle(true); //TODO legg til variabel for å lese om vi bruker NAIS eller ikke (f.eks ved å lese hvilket topic vi bruker?)
 
     useInterval(() => {
         const update = async () => {
@@ -21,6 +21,20 @@ const App = () => {
         };
         update().then(r => console.log('Updating...'));
     }, 1000);
+
+    const toggleCategories = () => {
+        if (nais) {
+            return quizStats.categories;
+        } else
+            return quizStats.categories.filter(
+                category =>
+                    category.name !== 'make-ingress' &&
+                    category.name !== 'check-app-log' &&
+                    category.name !== 'make-grafana-board' &&
+                    category.name !== 'make-alert' &&
+                    category.name !== 'setup-wonderwall'
+            );
+    };
 
     return (
         <>
@@ -33,9 +47,9 @@ const App = () => {
                 ) : (
                     <button onClick={() => backend.quiz('stop')}>Start</button>
                 )}
-                <ToggleNais />
+                <ToggleNais setToggle={setNais} />
             </div>
-            <CategoryView categories={quizStats.categories} backend={backend} />
+            <CategoryView categories={toggleCategories()} backend={backend} />
         </>
     );
 };

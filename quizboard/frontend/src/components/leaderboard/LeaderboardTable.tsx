@@ -127,7 +127,7 @@ export default function LeaderboardTable() {
             </Table.DataCell>
             {team.categoryResult.map((category: any, index: number) => (
               <Table.DataCell key={kebabCase(team.name) + index} className="leaderboard__kategori">
-                {icon(category.status, index)}
+                {icon(category.status, index)} {category.okCount} / {category.totalCount}
               </Table.DataCell>
             ))}
           </Table.Row>

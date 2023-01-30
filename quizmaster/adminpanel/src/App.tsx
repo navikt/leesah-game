@@ -47,7 +47,7 @@ const App = () => {
                 ) : (
                     <button onClick={() => backend.quiz('stop')}>Start</button>
                 )}
-                <ToggleNais setToggle={setNais} />
+                <ToggleNais setToggle={setNais} toggle={nais} />
             </div>
             <CategoryView categories={toggleCategories()} backend={backend} />
         </>

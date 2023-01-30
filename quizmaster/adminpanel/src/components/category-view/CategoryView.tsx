@@ -39,7 +39,11 @@ const CategoryView = ({ categories, backend }: CategoryViewProps) => {
                         <PendingAnswers category={category.name} answers={category.pendingAnswers} backend={backend} />
                     )}
                     <button onClick={() => backend.toggle(category.name)}>
-                        {category.status === 'ACTIVE' ? 'Disable' : 'Activate'}
+                        {category.status === 'ACTIVE'
+                            ? 'Disable'
+                            : done(category.maxCount, category.questionCount, category.status)
+                            ? 'Reactivate'
+                            : 'Activate'}
                     </button>
                 </div>
             ))}

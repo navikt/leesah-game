@@ -1,5 +1,5 @@
 import React from 'react';
-import './index.less';
+import './index.scss';
 import { Heading, Ingress } from '@navikt/ds-react';
 import LeaderboardTable from './components/leaderboard/LeaderboardTable';
 import { ErrorModal } from './components/modal/ErrorModal';

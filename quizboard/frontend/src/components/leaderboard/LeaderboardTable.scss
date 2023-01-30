@@ -1,6 +1,5 @@
 .leaderboard {
   border: 1px solid #928686;
-
   &__header {
     font-size: 24px !important;
 
@@ -43,9 +42,12 @@
   }
 
   &__kategori {
-    text-align: center !important;
+    vertical-align: center;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 5%;
   }
-
   img {
     width: 25px;
     vertical-align: top;
@@ -69,15 +71,43 @@
   }
 
   .icon__failure {
-    animation: icon__failure 0.35s infinite;
+    animation: icon__failure 1s infinite;
     animation-iteration-count: 1;
   }
 
   @keyframes icon__failure {
-    0% { transform: translateX(0) }
-    25% { transform: translateX(5px) }
-    50% { transform: translateX(-5px) }
-    75% { transform: translateX(5px) }
-    100% { transform: translateX(0) }
+    0% {
+      transform: translateX(0);
+    }
+    10% {
+      transform: translateX(10px);
+    }
+    20% {
+      transform: translateX(-10px);
+    }
+    30% {
+      transform: translateX(10px);
+    }
+    40% {
+      transform: translateX(-10px);
+    }
+    50% {
+      transform: translateX(10px);
+    }
+    60% {
+      transform: translateX(-10px);
+    }
+    70% {
+      transform: translateX(10px);
+    }
+    80% {
+      transform: translateX(-10px);
+    }
+    90% {
+      transform: translateX(10px);
+    }
+    100% {
+      transform: translateX(0);
+    }
   }
 }

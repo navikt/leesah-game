@@ -13,5 +13,5 @@ export type CategoryResultDto = {
   name: string;
   status: string;
   okCount: number;
-  totalCount: number;
+  maxCount: number;
 };

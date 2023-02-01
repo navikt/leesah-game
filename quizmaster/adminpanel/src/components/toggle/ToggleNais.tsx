@@ -14,9 +14,9 @@ export const ToggleNais = ({ setToggle, toggle }: ToggleNaisProps) => {
             <img src={NaisLogo} alt="Nais Logo" className="naislogo" />
             <div className="toggle-switch">
                 <div className="button r" id="button-1">
-                    <input type="checkbox" className="checkbox" onClick={setToggle} value={toggle} />
-                    <div className="knobs" />
-                    <div className="layer" />
+                    <input type="checkbox" className="checkbox" onClick={setToggle} checked={toggle} />
+                    <span className="knobs" />
+                    <span className="layer" />
                 </div>
             </div>
         </>

@@ -19,14 +19,22 @@ class NAV(private val frequency: Duration, active: Boolean = false) : QuestionCa
             listOf("nais","NAVs Application Infrastructure Service","NAV Application Infrastructure Service")
         ),
         Pair(
-            "Hva står NAV for?",
-
-            listOf("nav","ingenting")
-        ),
-        Pair(
             "Hva heter NAV-direktøren?",
             listOf("Hans Christian Holte")
-        )
+        ),
+        Pair(
+            "Hvor har vi kontorer?",
+            listOf("Helsfyr", "Oslo")
+        ),
+        Pair(
+            "Hva heter designsystemet vårt?",
+            listOf("Aksel")
+        ),
+        Pair(
+            "Hvor mye er 1G per 1. mai 2022?",
+            listOf("111477", "111477 kr", "111477 kroner")
+        ),
+
     )
 
     override fun check(answer: Answer) {

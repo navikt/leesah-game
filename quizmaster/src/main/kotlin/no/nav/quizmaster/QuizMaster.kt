@@ -9,7 +9,7 @@ class QuizMaster : QuizParticipant {
     private val questions = listOf(
         RegisterTeam(false),
         PingPong(10, false, Duration.ofMinutes(1)),
-        Arithmetic(Duration.ofMinutes(1), false),
+        Arithmetic(Duration.ofSeconds(2), false),
         NAV(Duration.ofMinutes(5), false),
         IsAPrime(maxCount = 10, interval = Duration.ofMinutes(1)),
         Transactions(20, false, Duration.ofMinutes(1)),
@@ -24,11 +24,9 @@ class QuizMaster : QuizParticipant {
         PendingQuestion("setup-wonderwall", question = "[NAIS Oppgave] Sett opp Wonderwall OIDC Autentisering over /secure endepunktet. Send link til /secure endepunktet på din app som svar.")
     )
 
-
     override fun handle(question: Question) = questions.any { it.handle(question) }
 
     override fun handle(answer: Answer) = questions.any { question -> question.handle(answer) }
-
 
     override fun handle(assessment: Assessment) = false
 

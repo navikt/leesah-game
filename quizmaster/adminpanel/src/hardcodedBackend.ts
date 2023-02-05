@@ -41,8 +41,8 @@ let testData = {
         {
             name: 'arithmetic',
             status: 'ACTIVE',
-            maxCount: 10,
-            questionCount: 8,
+            maxCount: 100,
+            questionCount: 84,
             answerCount: 0,
             correctAnswerCount: 0,
             pendingAnswers: [],

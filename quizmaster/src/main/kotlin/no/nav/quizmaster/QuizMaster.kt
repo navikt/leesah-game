@@ -8,9 +8,9 @@ import java.time.Duration
 class QuizMaster : QuizParticipant {
     private val questions = listOf(
         RegisterTeam(false),
-        NAV(Duration.ofMinutes(5), false),
         PingPong(10, false, Duration.ofMinutes(1)),
         Arithmetic(Duration.ofMinutes(1), false),
+        NAV(Duration.ofMinutes(5), false),
         IsAPrime(maxCount = 10, interval = Duration.ofMinutes(1)),
         Transactions(20, false, Duration.ofMinutes(1)),
         Base64Echo(5, false, Duration.ofMinutes(1)),

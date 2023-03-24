@@ -1,17 +1,17 @@
 export type BoardDto = {
-    board: TeamResultDto[]
-}
+  board: TeamResultDto[];
+};
 
 export type TeamResultDto = {
-    name: string
-    score: number,
-    hex: string,
-    categoryResult: CategoryResultDto[]
-}
+  name: string;
+  score: number;
+  hex: string;
+  categoryCount: { [key: string]: Number };
+  categoryResult: CategoryResultDto[];
+};
 
 export type CategoryResultDto = {
-    name: string,
-    status: string
-    okCount: number
-}
-
+  name: string;
+  status: string;
+  okCount: number;
+};

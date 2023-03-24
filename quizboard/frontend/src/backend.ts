@@ -7,6 +7,7 @@ const testData: BoardDto = {
       name: 'Pølsedalt',
       score: 60,
       hex: '000000',
+      categoryCount: { 'team-registration': 1, arithmetic: 5, 'min-max': 4 },
       categoryResult: [
         {
           name: 'team-registration',
@@ -29,6 +30,7 @@ const testData: BoardDto = {
       name: 'Team Vera',
       score: 10,
       hex: 'FFFFFF',
+      categoryCount: { 'team-registration': 1, arithmetic: 0, 'min-max': 4 },
       categoryResult: [
         {
           name: 'team-registration',
@@ -51,6 +53,7 @@ const testData: BoardDto = {
       name: 'Team Anne',
       score: 145,
       hex: '1430CA',
+      categoryCount: { 'team-registration': 1, arithmetic: 4, 'min-max': 6 },
       categoryResult: [
         {
           name: 'team-registration',
@@ -60,7 +63,7 @@ const testData: BoardDto = {
         {
           name: 'arithmetic',
           status: 'OK',
-          okCount: 10,
+          okCount: 4,
         },
         {
           name: 'min-max',
@@ -73,6 +76,7 @@ const testData: BoardDto = {
       name: 'HEUHEUHUEE',
       score: 90,
       hex: '1410CA',
+      categoryCount: { 'team-registration': 1, arithmetic: 5, 'min-max': 4 },
       categoryResult: [
         {
           name: 'team-registration',
@@ -82,7 +86,7 @@ const testData: BoardDto = {
         {
           name: 'arithmetic',
           status: 'OK',
-          okCount: 10,
+          okCount: 4,
         },
         {
           name: 'min-max',
@@ -95,6 +99,7 @@ const testData: BoardDto = {
       name: 'O jul med din glede',
       score: 110,
       hex: 'C13555',
+      categoryCount: { 'team-registration': 1, arithmetic: 4, 'min-max': 4 },
       categoryResult: [
         {
           name: 'team-registration',
@@ -104,7 +109,7 @@ const testData: BoardDto = {
         {
           name: 'arithmetic',
           status: 'OK',
-          okCount: 10,
+          okCount: 4,
         },
         {
           name: 'min-max',
@@ -117,6 +122,7 @@ const testData: BoardDto = {
       name: 'Speidern',
       score: 110,
       hex: 'CA14B7',
+      categoryCount: { 'team-registration': 1, arithmetic: 4, 'min-max': 6 },
       categoryResult: [
         {
           name: 'team-registration',
@@ -126,7 +132,7 @@ const testData: BoardDto = {
         {
           name: 'arithmetic',
           status: 'OK',
-          okCount: 10,
+          okCount: 4,
         },
         {
           name: 'min-max',
@@ -139,6 +145,7 @@ const testData: BoardDto = {
       name: 'Pipeleke',
       score: 110,
       hex: 'FF018F',
+      categoryCount: { 'team-registration': 1, arithmetic: 4, 'min-max': 4 },
       categoryResult: [
         {
           name: 'team-registration',
@@ -148,7 +155,7 @@ const testData: BoardDto = {
         {
           name: 'arithmetic',
           status: 'OK',
-          okCount: 10,
+          okCount: 4,
         },
         {
           name: 'min-max',
@@ -161,6 +168,7 @@ const testData: BoardDto = {
       name: 'Tullete teamnavn',
       score: 110,
       hex: '285557',
+      categoryCount: { 'team-registration': 1, arithmetic: 4, 'min-max': 4 },
       categoryResult: [
         {
           name: 'team-registration',
@@ -170,7 +178,7 @@ const testData: BoardDto = {
         {
           name: 'arithmetic',
           status: 'OK',
-          okCount: 10,
+          okCount: 4,
         },
         {
           name: 'min-max',
@@ -183,6 +191,7 @@ const testData: BoardDto = {
       name: 'MamaaaaaOOOOOOOO',
       score: 110,
       hex: '292444',
+      categoryCount: { 'team-registration': 1, arithmetic: 4, 'min-max': 4 },
       categoryResult: [
         {
           name: 'team-registration',
@@ -192,7 +201,7 @@ const testData: BoardDto = {
         {
           name: 'arithmetic',
           status: 'OK',
-          okCount: 10,
+          okCount: 4,
         },
         {
           name: 'min-max',
@@ -205,6 +214,7 @@ const testData: BoardDto = {
       name: 'Elton John',
       score: 110,
       hex: '195228',
+      categoryCount: { 'team-registration': 1, arithmetic: 4, 'min-max': 4 },
       categoryResult: [
         {
           name: 'team-registration',
@@ -214,7 +224,7 @@ const testData: BoardDto = {
         {
           name: 'arithmetic',
           status: 'OK',
-          okCount: 10,
+          okCount: 4,
         },
         {
           name: 'min-max',
@@ -227,6 +237,7 @@ const testData: BoardDto = {
       name: 'Spice Girls',
       score: 110,
       hex: 'FFFF00',
+      categoryCount: { 'team-registration': 1, arithmetic: 4, 'min-max': 4 },
       categoryResult: [
         {
           name: 'team-registration',
@@ -236,7 +247,7 @@ const testData: BoardDto = {
         {
           name: 'arithmetic',
           status: 'OK',
-          okCount: 10,
+          okCount: 4,
         },
         {
           name: 'min-max',
@@ -249,6 +260,7 @@ const testData: BoardDto = {
       name: 'Viva Forever',
       score: 110,
       hex: 'FF00FF',
+      categoryCount: { 'team-registration': 1, arithmetic: 4, 'min-max': 5 },
       categoryResult: [
         {
           name: 'team-registration',
@@ -258,7 +270,7 @@ const testData: BoardDto = {
         {
           name: 'arithmetic',
           status: 'OK',
-          okCount: 10,
+          okCount: 4,
         },
         {
           name: 'min-max',
@@ -271,6 +283,7 @@ const testData: BoardDto = {
       name: 'Spice Up Your Life',
       score: 110,
       hex: 'FF1122',
+      categoryCount: { 'team-registration': 1, arithmetic: 4, 'min-max': 5 },
       categoryResult: [
         {
           name: 'team-registration',
@@ -280,7 +293,7 @@ const testData: BoardDto = {
         {
           name: 'arithmetic',
           status: 'OK',
-          okCount: 10,
+          okCount: 4,
         },
         {
           name: 'min-max',
@@ -293,6 +306,7 @@ const testData: BoardDto = {
       name: 'Norefjell blir superkult',
       score: 110,
       hex: '14CA5C',
+      categoryCount: { 'team-registration': 1, arithmetic: 4, 'min-max': 6 },
       categoryResult: [
         {
           name: 'team-registration',
@@ -302,7 +316,7 @@ const testData: BoardDto = {
         {
           name: 'arithmetic',
           status: 'OK',
-          okCount: 10,
+          okCount: 4,
         },
         {
           name: 'min-max',
@@ -315,6 +329,7 @@ const testData: BoardDto = {
       name: 'ØAHGJANØKGJNDHAERHSDFHSFJ',
       score: 110,
       hex: 'CA6F14',
+      categoryCount: { 'team-registration': 1, arithmetic: 4, 'min-max': 6 },
       categoryResult: [
         {
           name: 'team-registration',
@@ -324,7 +339,7 @@ const testData: BoardDto = {
         {
           name: 'arithmetic',
           status: 'OK',
-          okCount: 10,
+          okCount: 4,
         },
         {
           name: 'min-max',
@@ -337,6 +352,7 @@ const testData: BoardDto = {
       name: 'Flåklypa Grand Prix',
       score: 110,
       hex: '9014CA',
+      categoryCount: { 'team-registration': 1, arithmetic: 4, 'min-max': 6 },
       categoryResult: [
         {
           name: 'team-registration',
@@ -346,7 +362,7 @@ const testData: BoardDto = {
         {
           name: 'arithmetic',
           status: 'OK',
-          okCount: 10,
+          okCount: 4,
         },
         {
           name: 'min-max',
@@ -359,6 +375,7 @@ const testData: BoardDto = {
       name: 'Støvsuger',
       score: 110,
       hex: '00FF11',
+      categoryCount: { 'team-registration': 1, arithmetic: 4, 'min-max': 6 },
       categoryResult: [
         {
           name: 'team-registration',
@@ -368,7 +385,7 @@ const testData: BoardDto = {
         {
           name: 'arithmetic',
           status: 'OK',
-          okCount: 10,
+          okCount: 4,
         },
         {
           name: 'min-max',
@@ -381,6 +398,7 @@ const testData: BoardDto = {
       name: 'Lønahorgi',
       score: 110,
       hex: 'FF0099',
+      categoryCount: { 'team-registration': 1, arithmetic: 4, 'min-max': 6 },
       categoryResult: [
         {
           name: 'team-registration',
@@ -390,7 +408,7 @@ const testData: BoardDto = {
         {
           name: 'arithmetic',
           status: 'OK',
-          okCount: 10,
+          okCount: 4,
         },
         {
           name: 'min-max',
@@ -403,6 +421,7 @@ const testData: BoardDto = {
       name: 'Prokrastinering',
       score: 110,
       hex: 'F875CA',
+      categoryCount: { 'team-registration': 1, arithmetic: 4, 'min-max': 6 },
       categoryResult: [
         {
           name: 'team-registration',
@@ -412,7 +431,7 @@ const testData: BoardDto = {
         {
           name: 'arithmetic',
           status: 'OK',
-          okCount: 10,
+          okCount: 4,
         },
         {
           name: 'min-max',
@@ -425,6 +444,7 @@ const testData: BoardDto = {
       name: 'Juletre',
       score: 110,
       hex: '0000F8',
+      categoryCount: { 'team-registration': 1, arithmetic: 4, 'min-max': 6 },
       categoryResult: [
         {
           name: 'team-registration',
@@ -434,7 +454,7 @@ const testData: BoardDto = {
         {
           name: 'arithmetic',
           status: 'OK',
-          okCount: 10,
+          okCount: 4,
         },
         {
           name: 'min-max',
@@ -447,6 +467,7 @@ const testData: BoardDto = {
       name: 'Birra🍻',
       score: 110,
       hex: '00FFFF',
+      categoryCount: { 'team-registration': 1, arithmetic: 2, 'min-max': 6 },
       categoryResult: [
         {
           name: 'team-registration',
@@ -456,7 +477,7 @@ const testData: BoardDto = {
         {
           name: 'arithmetic',
           status: 'OK',
-          okCount: 10,
+          okCount: 2,
         },
         {
           name: 'min-max',
@@ -469,6 +490,7 @@ const testData: BoardDto = {
       name: 'Sommerferie',
       score: 110,
       hex: '234789',
+      categoryCount: { 'team-registration': 1, arithmetic: 1, 'min-max': 6 },
       categoryResult: [
         {
           name: 'team-registration',
@@ -478,7 +500,7 @@ const testData: BoardDto = {
         {
           name: 'arithmetic',
           status: 'OK',
-          okCount: 10,
+          okCount: 1,
         },
         {
           name: 'min-max',

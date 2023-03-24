@@ -11,8 +11,6 @@ class Quizboard : QuizParticipant {
     override fun handle(question: Question): Boolean {
         categories.handle(question)
 
-        println("QUESTON ===== $question")
-
         if(categoryCount.containsKey(question.category)) {
             categoryCount[question.category] = categoryCount[question.category]!!.plus(1)
         } else {
@@ -37,7 +35,7 @@ class Quizboard : QuizParticipant {
     private fun handleHex(teamName: String): String {
         return hexcodes[teamName]!!
     }
-    private fun handleCount(teamName: String): Map<String, Int> {
+    private fun handleCount(): Map<String, Int> {
         return categoryCount
     }
 
@@ -45,7 +43,7 @@ class Quizboard : QuizParticipant {
 
     fun result(): BoardResult {
         val teams = categories.teams()
-        return BoardResult(teams.map { TeamResult(it, categories.score(it), handleHex(it), handleCount(it), categories.result(it)) })
+        return BoardResult(teams.map { TeamResult(it, categories.score(it), handleHex(it), handleCount(), categories.result(it)) })
     }
 }
 

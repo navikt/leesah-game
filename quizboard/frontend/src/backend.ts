@@ -1,6 +1,6 @@
 import { BoardDto } from './types';
 import { Environment } from './environment';
-/*
+
 
 const testData: BoardDto = {
   board: [
@@ -8,7 +8,7 @@ const testData: BoardDto = {
       name: 'Pølsedalt',
       score: 60,
       hex: '000000',
-      categoryCount: [{ key : 'team-registration', value : 1}],
+      categoryCount: {"team-registration" : 1, "arithmetic" : 5, "min-max" : 5},
       categoryResult: [
         {
           name: 'team-registration',
@@ -491,7 +491,7 @@ const testData: BoardDto = {
     },
   ],
 };
-*/
+
 
 const baseurl = Environment.isDevelopment ? 'http://localhost:8081' : '';
 

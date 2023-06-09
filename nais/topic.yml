@@ -32,8 +32,6 @@ metadata:
   namespace: leesah-quiz
   labels:
     team: leesah-quiz
-  annotations:
-    kafka.nais.io/removeDataWhenResourceIsDeleted: "true"
 spec:
   pool: nav-dev
   config:  # optional; all fields are optional too; defaults shown

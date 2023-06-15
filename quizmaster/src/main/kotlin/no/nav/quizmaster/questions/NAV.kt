@@ -23,7 +23,7 @@ class NAV(private val frequency: Duration, active: Boolean = false) : QuestionCa
             listOf("Hans Christian Holte")
         ),
         Pair(
-            "Hvor har vi kontorer?",
+            "Hvor har vi kontor?",
             listOf("Helsfyr", "Oslo")
         ),
         Pair(

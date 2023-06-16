@@ -32,8 +32,6 @@ metadata:
   namespace: leesah-quiz
   labels:
     team: leesah-quiz
-  annotations:
-    kafka.nais.io/removeDataWhenResourceIsDeleted: "true"
 spec:
   pool: nav-dev
   config:  # optional; all fields are optional too; defaults shown
@@ -41,8 +39,8 @@ spec:
     minimumInSyncReplicas: 3
     partitions: 1
     replication: 3  # see min/max requirements
-    retentionBytes: 0  # -1 means unlimited
-    retentionHours: 0  # -1 means unlimited
+    retentionBytes: -1  # -1 means unlimited
+    retentionHours: 48  # -1 means unlimited
     segmentHours: 10
   acl:
     - team: leesah-quiz

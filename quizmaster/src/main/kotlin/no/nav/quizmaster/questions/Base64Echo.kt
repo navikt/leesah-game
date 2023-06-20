@@ -31,7 +31,6 @@ class Base64Echo(maxCount: Int = 1, active: Boolean = true, interval: Duration =
             question = "echo ${Base64.getEncoder().encodeToString(fasit.toByteArray())}"
         )
         storeQuestion(newQuestion, fasit)
-
         return listOf(newQuestion)
     }
 

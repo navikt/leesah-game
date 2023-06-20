@@ -31,7 +31,7 @@ internal class Base64EchoTest {
     }
 
     private fun decode(question: Question): String {
-        val result = String(Base64.getDecoder().decode(question.question.split(" ")[2]))
+        val result = String(Base64.getDecoder().decode(question.question.split(" ")[1]))
         return result
     }
 

@@ -19,6 +19,19 @@
   flex-direction: column;
   width: 12rem;
 
+  .card-header {
+    display: grid;
+    grid-template-columns: 8rem auto;
+
+    h3 {
+      width: 8rem;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+    }
+  }
+
   img {
     vertical-align: top;
   }

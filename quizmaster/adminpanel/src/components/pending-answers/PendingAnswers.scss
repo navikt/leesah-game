@@ -1,0 +1,32 @@
+.pending-answer-container {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0 !important;
+  gap: .5rem;
+
+  p {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .pending-answer {
+    display: grid;
+    grid-template-columns: 6rem auto;
+
+    button {
+      border-color: green;
+      min-height: 2.5rem;
+      width: 6rem;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+    }
+
+    a {
+      text-align: center;
+      align-self: center;
+    }
+
+  }
+}

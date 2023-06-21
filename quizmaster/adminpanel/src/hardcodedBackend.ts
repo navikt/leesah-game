@@ -1,4 +1,4 @@
-import { Backend, CategoriesDto, QuizStatsDto } from './restBackend';
+import {Backend, CategoriesDto, QuizStatsDto} from './restBackend';
 
 export const testBackend = (): Backend => {
     return {
@@ -120,7 +120,25 @@ let testData = {
             questionCount: 0,
             answerCount: 0,
             correctAnswerCount: 0,
-            pendingAnswers: [],
+            pendingAnswers: [{teamName: "et veldig langt teamnacn", answer: "www.vg.no"}, {
+                teamName: "Helene",
+                answer: "www.testeesteetsset.ntern.dev.no"
+            }, {teamName: "et veldig langt teamnacn", answer: "www.vg.no"}, {
+                teamName: "Helene",
+                answer: "www.testeesteetsset.ntern.dev.no"
+            }, {teamName: "et veldig langt teamnacn", answer: "www.vg.no"}, {
+                teamName: "Helene",
+                answer: "www.testeesteetsset.ntern.dev.no"
+            }, {teamName: "et veldig langt teamnacn", answer: "www.vg.no"}, {
+                teamName: "Helene",
+                answer: "www.testeesteetsset.ntern.dev.no"
+            }, {teamName: "et veldig langt teamnacn", answer: "www.vg.no"}, {
+                teamName: "Helene",
+                answer: "www.testeesteetsset.ntern.dev.no"
+            }, {teamName: "et veldig langt teamnacn", answer: "www.vg.no"}, {
+                teamName: "Helene",
+                answer: "www.testeesteetsset.ntern.dev.no"
+            }],
         },
         {
             name: 'check-app-log',
@@ -129,16 +147,22 @@ let testData = {
             questionCount: 0,
             answerCount: 0,
             correctAnswerCount: 0,
-            pendingAnswers: [],
+            pendingAnswers: [{teamName: "Øydis", answer: "www.vg.no"}, {
+                teamName: "Helene",
+                answer: "www.testeesteetsset.ntern.dev.no"
+            }],
         },
         {
             name: 'make-grafana-board',
             status: 'INACTIVE',
             maxCount: 1,
-            questionCount: 0,
+            questionCount: 1,
             answerCount: 0,
             correctAnswerCount: 0,
-            pendingAnswers: [],
+            pendingAnswers: [{teamName: "Øydis", answer: "www.vg.no"}, {
+                teamName: "Helene",
+                answer: "www.testeesteetsset.ntern.dev.no"
+            }],
         },
         {
             name: 'make-alert',
@@ -147,7 +171,10 @@ let testData = {
             questionCount: 0,
             answerCount: 0,
             correctAnswerCount: 0,
-            pendingAnswers: [],
+            pendingAnswers: [{teamName: "Øydis", answer: "www.vg.no"}, {
+                teamName: "Helene",
+                answer: "www.testeesteetsset.ntern.dev.no"
+            }],
         },
         {
             name: 'setup-wonderwall',
@@ -156,8 +183,12 @@ let testData = {
             questionCount: 0,
             answerCount: 0,
             correctAnswerCount: 0,
-            pendingAnswers: [],
+            pendingAnswers: [{teamName: "Øydis", answer: "www.vg.no"}, {
+                teamName: "Helene",
+                answer: "www.testeesteetsset.ntern.dev.no"
+            }],
         },
+
         // {
         //     name: 'pending-question',
         //     status: 'INACTIVE',

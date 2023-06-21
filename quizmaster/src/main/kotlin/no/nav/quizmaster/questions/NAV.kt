@@ -5,7 +5,7 @@ import no.nav.quizrapid.Question
 import java.time.Duration
 import java.time.LocalDateTime
 
-class NAV(private val frequency: Duration, active: Boolean = false) : QuestionCategory("NAV", 4, active) {
+class NAV(private val frequency: Duration, active: Boolean = false) : QuestionCategory("NAV", 7, active) {
     private var nextQuestionAt = LocalDateTime.now()
     private val fasit = mutableMapOf<String, List<String>>()
     private var questionIndex = 0
@@ -31,8 +31,8 @@ class NAV(private val frequency: Duration, active: Boolean = false) : QuestionCa
             listOf("Aksel")
         ),
         Pair(
-            "Hvor mye er 1G per 1. mai 2022?",
-            listOf("111477", "111477 kr", "111477 kroner")
+            "Hvor mye er 1G per 1. mai 2023?",
+            listOf("118620", "118620 kr", "118620 kroner")
         ),
 
     )

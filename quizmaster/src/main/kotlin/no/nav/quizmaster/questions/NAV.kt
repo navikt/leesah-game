@@ -5,18 +5,18 @@ import no.nav.quizrapid.Question
 import java.time.Duration
 import java.time.LocalDateTime
 
-class NAV(private val frequency: Duration, active: Boolean = false) : QuestionCategory("NAV", 4, active) {
+class NAV(private val frequency: Duration, active: Boolean = false) : QuestionCategory("NAV", 7, active) {
     private var nextQuestionAt = LocalDateTime.now()
     private val fasit = mutableMapOf<String, List<String>>()
     private var questionIndex = 0
-    private val navQuestions:Map<String,List<String>> = mapOf(
+    private val navQuestions: Map<String, List<String>> = mapOf(
         Pair(
             "På hvilken nettside finner man informasjon om rekruttering til NAV IT?",
             listOf("det som betyr noe")
         ),
         Pair(
             "Hva heter applikasjonsplattformen til NAV?",
-            listOf("nais","NAVs Application Infrastructure Service","NAV Application Infrastructure Service")
+            listOf("nais", "NAVs Application Infrastructure Service", "NAV Application Infrastructure Service")
         ),
         Pair(
             "Hva heter NAV-direktøren?",
@@ -31,10 +31,9 @@ class NAV(private val frequency: Duration, active: Boolean = false) : QuestionCa
             listOf("Aksel")
         ),
         Pair(
-            "Hvor mye er 1G per 1. mai 2022?",
-            listOf("111477", "111477 kr", "111477 kroner")
+            "Hvor mye er 1G per 1. mai 2023?",
+            listOf("118620", "118620 kr", "118620 kroner")
         ),
-
     )
 
     override fun check(answer: Answer) {
@@ -46,7 +45,7 @@ class NAV(private val frequency: Duration, active: Boolean = false) : QuestionCa
     // TODO: accept a list of correct answers, evt. a function (String) -> Boolean
     private fun List<String>.checkAnswer(answer: Answer) {
         this.forEach {
-            if (answer.answer.replace("\\s".toRegex(), "").contains(it.replace("\\s".toRegex(),""), true)) {
+            if (answer.answer.replace("\\s".toRegex(), "").contains(it.replace("\\s".toRegex(), ""), true)) {
                 true.publish(answer.teamName, answer.questionId, answer.messageId)
                 return
             }
@@ -86,8 +85,8 @@ class NAV(private val frequency: Duration, active: Boolean = false) : QuestionCa
 
 
     override fun sync(question: Question): Boolean {
-        val fasit:List<String>? = navQuestions[question.question]
-        if(fasit != null) {
+        val fasit: List<String>? = navQuestions[question.question]
+        if (fasit != null) {
             storeFasit(question, fasit)
             return true
         }

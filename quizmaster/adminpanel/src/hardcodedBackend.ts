@@ -120,25 +120,7 @@ let testData = {
             questionCount: 0,
             answerCount: 0,
             correctAnswerCount: 0,
-            pendingAnswers: [{teamName: "et veldig langt teamnacn", answer: "www.vg.no"}, {
-                teamName: "Helene",
-                answer: "www.testeesteetsset.ntern.dev.no"
-            }, {teamName: "et veldig langt teamnacn", answer: "www.vg.no"}, {
-                teamName: "Helene",
-                answer: "www.testeesteetsset.ntern.dev.no"
-            }, {teamName: "et veldig langt teamnacn", answer: "www.vg.no"}, {
-                teamName: "Helene",
-                answer: "www.testeesteetsset.ntern.dev.no"
-            }, {teamName: "et veldig langt teamnacn", answer: "www.vg.no"}, {
-                teamName: "Helene",
-                answer: "www.testeesteetsset.ntern.dev.no"
-            }, {teamName: "et veldig langt teamnacn", answer: "www.vg.no"}, {
-                teamName: "Helene",
-                answer: "www.testeesteetsset.ntern.dev.no"
-            }, {teamName: "et veldig langt teamnacn", answer: "www.vg.no"}, {
-                teamName: "Helene",
-                answer: "www.testeesteetsset.ntern.dev.no"
-            }],
+            pendingAnswers: [],
         },
         {
             name: 'check-app-log',
@@ -147,10 +129,7 @@ let testData = {
             questionCount: 0,
             answerCount: 0,
             correctAnswerCount: 0,
-            pendingAnswers: [{teamName: "Øydis", answer: "www.vg.no"}, {
-                teamName: "Helene",
-                answer: "www.testeesteetsset.ntern.dev.no"
-            }],
+            pendingAnswers: [],
         },
         {
             name: 'make-grafana-board',
@@ -159,10 +138,7 @@ let testData = {
             questionCount: 1,
             answerCount: 0,
             correctAnswerCount: 0,
-            pendingAnswers: [{teamName: "Øydis", answer: "www.vg.no"}, {
-                teamName: "Helene",
-                answer: "www.testeesteetsset.ntern.dev.no"
-            }],
+            pendingAnswers: [],
         },
         {
             name: 'make-alert',
@@ -171,10 +147,11 @@ let testData = {
             questionCount: 0,
             answerCount: 0,
             correctAnswerCount: 0,
-            pendingAnswers: [{teamName: "Øydis", answer: "www.vg.no"}, {
-                teamName: "Helene",
-                answer: "www.testeesteetsset.ntern.dev.no"
-            }],
+            pendingAnswers: [],
+           // pendingAnswers: [{teamName: "Øydis", answer: "www.vg.no"}, {
+           //     teamName: "Helene",
+           //     answer: "www.testeesteetsset.ntern.dev.no"
+           // }],
         },
         {
             name: 'setup-wonderwall',
@@ -183,10 +160,7 @@ let testData = {
             questionCount: 0,
             answerCount: 0,
             correctAnswerCount: 0,
-            pendingAnswers: [{teamName: "Øydis", answer: "www.vg.no"}, {
-                teamName: "Helene",
-                answer: "www.testeesteetsset.ntern.dev.no"
-            }],
+            pendingAnswers: [],
         },
 
         // {

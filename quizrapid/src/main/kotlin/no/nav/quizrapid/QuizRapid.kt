@@ -85,9 +85,14 @@ class QuizRapid(
                         readUp = true
                         logger.info("QuizRapid has read to the end of the topic")
                     }
-                    records.forEach { participantHandle(it.value()) }
-                    run(records)
-                    if(readUp) participant.messages().forEach { publish(it.json()) }
+                    try {
+                        records.forEach {
+                            participantHandle(it.value()) }
+                        run(records)
+                        if(readUp) participant.messages().forEach { publish(it.json()) }
+                    } catch (err: NullPointerException){
+                        throw err
+                    }
                 }
             }
         } catch (err: WakeupException) {

@@ -149,6 +149,10 @@ class QuizRapid(
             logger.warn("failed to parse, skipping message = $message")
             logger.warn(e.toString())
             return false
+        } catch (e: NullPointerException) {
+            logger.warn("failed to parse, skipping message = $message")
+            logger.warn(e.toString())
+            return false
         }
     }
 

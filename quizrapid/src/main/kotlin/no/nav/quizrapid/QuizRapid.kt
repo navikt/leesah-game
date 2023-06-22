@@ -96,6 +96,9 @@ class QuizRapid(
         } catch (err: Exception) {
             lastException = err
             throw err
+        } catch (err: NullPointerException) {
+            lastException = err
+            throw err
         } finally {
             closeResources(lastException)
         }

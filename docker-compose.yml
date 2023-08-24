@@ -1,48 +1,32 @@
 version: '3'
 services:
-  broker1:
-    image: confluentinc/cp-kafka:7.2.1
-    container_name: broker1
+  zookeeper:
+    container_name: zookeeper
+    image: "confluentinc/cp-zookeeper:latest"
     environment:
-      KAFKA_NODE_ID: 1
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
-      KAFKA_LISTENERS: PLAINTEXT://broker1:9092,CONTROLLER://broker1:9093
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker1:9092
-      KAFKA_CONTROLLER_LISTENER_NAMES: 'CONTROLLER'
-      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@broker1:9093,2@broker2:9093,3@broker3:9093'
-      KAFKA_PROCESS_ROLES: 'broker,controller'
-    volumes:
-      - ./init.sh:/tmp/init.sh
-    command: "bash -c '/tmp/init.sh && /etc/confluent/docker/run'"
+      ZOOKEEPER_CLIENT_PORT: "2181"
+      ZOOKEEPER_TICK_TIME: "2000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://zookeeper:2181"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
 
-  broker2:
-    image: confluentinc/cp-kafka:7.2.1
-    container_name: broker2
+  kafka:
+    container_name: kafka
+    image: "confluentinc/cp-kafka:latest"
+    ports:
+      - "9092:9092"
+      - "29092:29092"
+    depends_on:
+      - zookeeper
+    restart: on-failure
     environment:
-      KAFKA_NODE_ID: 2
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
-      KAFKA_LISTENERS: PLAINTEXT://broker2:9092,CONTROLLER://broker2:9093
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker2:9092
-      KAFKA_CONTROLLER_LISTENER_NAMES: 'CONTROLLER'
-      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@broker1:9093,2@broker2:9093,3@broker3:9093'
-      KAFKA_PROCESS_ROLES: 'broker,controller'
-    volumes:
-      - ./init.sh:/tmp/init.sh
-    command: "bash -c '/tmp/init.sh && /etc/confluent/docker/run'"
-  broker3:
-    image: confluentinc/cp-kafka:7.2.1
-    container_name: broker3
-    environment:
-      KAFKA_NODE_ID: 3
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
-      KAFKA_LISTENERS: PLAINTEXT://broker3:9092,CONTROLLER://broker3:9093
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker3:9092
-      KAFKA_CONTROLLER_LISTENER_NAMES: 'CONTROLLER'
-      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@broker1:9093,2@broker2:9093,3@broker3:9093'
-      KAFKA_PROCESS_ROLES: 'broker,controller'
-    volumes:
-      - ./init.sh:/tmp/init.sh
-    command: "bash -c '/tmp/init.sh && /etc/confluent/docker/run'"
+      KAFKA_ZOOKEEPER_CONNECT: "zookeeper:2181"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: "1"
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: "0"
+      KAFKA_ADVERTISED_LISTENERS: "PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092"
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: "PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT"
 
   kafka-ui:
     container_name: kafka-ui
@@ -50,34 +34,34 @@ services:
     ports:
       - "9000:9000"
     environment:
-      KAFKA_BROKERCONNECT: "broker1:9092,broker2:9092,broker3:9092"
+      KAFKA_BROKERCONNECT: "kafka:9092"
       JVM_OPTS: "-Xms32M -Xmx64M"
       SERVER_SERVLET_CONTEXTPATH: "/"
     restart: on-failure
     depends_on:
-      - broker1
+      - zookeeper
+      - kafka
 
   quizmaster:
     container_name: quizmaster
     build: quizmaster
     environment:
       NAIS_APP_NAME: "quizmaster"
-      KAFKA_BROKERS: "broker1:9092,broker2:9092,broker3:9092"
+      KAFKA_BROKERS: "kafka:9092"
       QUIZRAPID_CONSUMER_GROUP: "new-group-v1"
     ports:
       - "8000:8080"
     depends_on:
-      - broker1
+      - kafka
 
   quizboard:
     container_name: quizboard
     build: quizboard
     environment:
       NAIS_APP_NAME : "quizboard"
-      KAFKA_BROKERS : "broker1:9092,broker2:9092,broker3:9092"
+      KAFKA_BROKERS : "kafka:9092"
     ports:
       - "8081:8080"
     depends_on:
-      - broker1
+      - kafka
       - quizmaster
-

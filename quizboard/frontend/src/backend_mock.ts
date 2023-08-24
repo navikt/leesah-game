@@ -6,7 +6,7 @@ const testData: BoardDto = {
     {
       name: 'Pølsedalt',
       score: 60,
-      hex: '000000',
+      hex: '#000000',
       categoryCount: { 'team-registration': 1, arithmetic: 5, 'min-max': 4 },
       categoryResult: [
         {
@@ -98,7 +98,7 @@ const testData: BoardDto = {
     {
       name: 'O jul med din glede',
       score: 110,
-      hex: 'C13555',
+      hex: '#C13555',
       categoryCount: { 'team-registration': 1, arithmetic: 4, 'min-max': 4 },
       categoryResult: [
         {
@@ -121,7 +121,7 @@ const testData: BoardDto = {
     {
       name: 'Speidern',
       score: 110,
-      hex: 'CA14B7',
+      hex: '#CA14B7',
       categoryCount: { 'team-registration': 1, arithmetic: 4, 'min-max': 6 },
       categoryResult: [
         {

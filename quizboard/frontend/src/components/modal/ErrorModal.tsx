@@ -2,7 +2,7 @@ import { Alert, Modal } from '@navikt/ds-react';
 import { Environment } from '../../environment';
 import React, { useState } from 'react';
 import { useInterval } from '../../hooks/useInterval';
-import { isBackendReady } from '../../backend';
+import { isBackendReady } from '../../backend_mock';
 
 export const ErrorModal = () => {
   const [backendGood, setbackendGood] = useState(true);

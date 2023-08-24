@@ -24,7 +24,7 @@ class NAV(private val frequency: Duration, active: Boolean = false) : QuestionCa
         ),
         Pair(
             "Hvor har vi kontor?",
-            listOf("Helsfyr", "Oslo")
+            listOf("Helsfyr", "Oslo", "Fyrstikkalleen", "Fyrstikkalleen 1", "Fyrstikkalléen 1")
         ),
         Pair(
             "Hva heter designsystemet vårt?",

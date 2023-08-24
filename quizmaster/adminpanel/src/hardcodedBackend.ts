@@ -1,4 +1,4 @@
-import { Backend, CategoriesDto, QuizStatsDto } from './restBackend';
+import {Backend, CategoriesDto, QuizStatsDto} from './restBackend';
 
 export const testBackend = (): Backend => {
     return {
@@ -30,15 +30,6 @@ let testData = {
             pendingAnswers: [],
         },
         {
-            name: 'NAV',
-            status: 'INACTIVE',
-            maxCount: 2,
-            questionCount: 2,
-            answerCount: 0,
-            correctAnswerCount: 0,
-            pendingAnswers: [],
-        },
-        {
             name: 'ping-pong',
             status: 'INACTIVE',
             maxCount: 10,
@@ -50,8 +41,17 @@ let testData = {
         {
             name: 'arithmetic',
             status: 'ACTIVE',
-            maxCount: 10,
-            questionCount: 8,
+            maxCount: 100,
+            questionCount: 84,
+            answerCount: 0,
+            correctAnswerCount: 0,
+            pendingAnswers: [],
+        },
+        {
+            name: 'NAV',
+            status: 'INACTIVE',
+            maxCount: 2,
+            questionCount: 2,
             answerCount: 0,
             correctAnswerCount: 0,
             pendingAnswers: [],
@@ -135,7 +135,7 @@ let testData = {
             name: 'make-grafana-board',
             status: 'INACTIVE',
             maxCount: 1,
-            questionCount: 0,
+            questionCount: 1,
             answerCount: 0,
             correctAnswerCount: 0,
             pendingAnswers: [],
@@ -148,6 +148,10 @@ let testData = {
             answerCount: 0,
             correctAnswerCount: 0,
             pendingAnswers: [],
+           // pendingAnswers: [{teamName: "Øydis", answer: "www.vg.no"}, {
+           //     teamName: "Helene",
+           //     answer: "www.testeesteetsset.ntern.dev.no"
+           // }],
         },
         {
             name: 'setup-wonderwall',
@@ -158,6 +162,7 @@ let testData = {
             correctAnswerCount: 0,
             pendingAnswers: [],
         },
+
         // {
         //     name: 'pending-question',
         //     status: 'INACTIVE',

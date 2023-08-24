@@ -65,4 +65,3 @@ services:
     depends_on:
       - kafka
       - quizmaster
-

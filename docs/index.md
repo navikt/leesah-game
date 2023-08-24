@@ -22,18 +22,18 @@ Lykke til!
 **Start her**
 
 - Python 🐍
-  - [Oppsett og Installasjon](oppsett)
-  - [Hvordan spille](hvordan-spille-spillet)
+  - [Oppsett og Installasjon](oppsett.md)
+  - [Hvordan spille](hvordan-spille-spillet.md)
 
 Oppgavene du kan møte i Leesah-game er som følger, og de kommer ikke nødvendigvis i rekkefølgen til listen.
 
-- [team-registration](oppgaver/team-registration) (Første oppgaven som alltid må gjøres før man kan løse andre oppgaver)
-- [ping-pong](oppgaver/ping-pong)
-- [arithmetic](oppgaver/arithmetic)
-- [NAV](oppgaver/nav)
-- [base64](oppgaver/base64)
-- [is-a-prime](oppgaver/is-a-prime)
-- [transactions](oppgaver/transactions)
-- [deduplication](oppgaver/deduplication)
-- [min-max](oppgaver/min-max)
+- [team-registration](oppgaver/team-registration.md) (Første oppgaven som alltid må gjøres før man kan løse andre oppgaver)
+- [ping-pong](oppgaver/ping-pong.md)
+- [arithmetic](oppgaver/arithmetic.md)
+- [NAV](oppgaver/nav.md)
+- [base64](oppgaver/base64.md)
+- [is-a-prime](oppgaver/is-a-prime.md)
+- [transactions](oppgaver/transactions.md)
+- [deduplication](oppgaver/deduplication.md)
+- [min-max](oppgaver/min-max.md)
 

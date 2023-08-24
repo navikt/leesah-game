@@ -21,3 +21,5 @@ gradle-app.setting
 *.key
 creds/client.keystore.p12
 creds/client.truststore.jks
+
+.DS_Store

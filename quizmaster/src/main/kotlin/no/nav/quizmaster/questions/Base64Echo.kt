@@ -28,7 +28,7 @@ class Base64Echo(maxCount: Int = 1, active: Boolean = true, interval: Duration =
         val fasit = words[Random.nextInt(words.size)]
         val newQuestion = Question(
             category = category,
-            question = "echo ${Base64.getEncoder().encodeToString(fasit.toByteArray())}"
+            question = "Dekrypter: echo ${Base64.getEncoder().encodeToString(fasit.toByteArray())}"
         )
         storeQuestion(newQuestion, fasit)
         return listOf(newQuestion)
@@ -48,5 +48,5 @@ class Base64Echo(maxCount: Int = 1, active: Boolean = true, interval: Duration =
     }
 
     private fun decode(question: Question): String =
-        String(Base64.getDecoder().decode(question.question.split(" ")[1]))
+        String(Base64.getDecoder().decode(question.question.split(" ")[2]))
 }

@@ -85,15 +85,23 @@ class QuizRapid(
                         readUp = true
                         logger.info("QuizRapid has read to the end of the topic")
                     }
-                    records.forEach { participantHandle(it.value()) }
-                    run(records)
-                    if(readUp) participant.messages().forEach { publish(it.json()) }
+                    try {
+                        records.forEach {
+                            participantHandle(it.value()) }
+                        run(records)
+                        if(readUp) participant.messages().forEach { publish(it.json()) }
+                    } catch (err: NullPointerException){
+                        throw err
+                    }
                 }
             }
         } catch (err: WakeupException) {
             // throw exception if we have not been told to stop
             if (running.get()) throw err
         } catch (err: Exception) {
+            lastException = err
+            throw err
+        } catch (err: NullPointerException) {
             lastException = err
             throw err
         } finally {
@@ -120,29 +128,39 @@ class QuizRapid(
         }
     }
 
-    private fun participantHandle(message: String): Boolean {
+    private fun participantHandle(message: String?): Boolean {
         try {
             // ugly, I know
-            tryFromRaw<Question>(message) {
-                it.containsValue("type", MessageType.QUESTION.name)
-            }?.also {
-                logger.info("handling question: {}", message)
-                return participant.handle(it)
+            if (message != null) {
+                tryFromRaw<Question>(message) {
+                    it.containsValue("type", MessageType.QUESTION.name)
+                }?.also {
+                    logger.info("handling question: {}", message)
+                    return participant.handle(it)
+                }
             }
-            tryFromRaw<Answer>(message) {
-                it.containsValue("type", MessageType.ANSWER.name)
-            }?.also {
-                logger.info("handling answer: {}", message)
-                return participant.handle(it)
+            if (message != null) {
+                tryFromRaw<Answer>(message) {
+                    it.containsValue("type", MessageType.ANSWER.name)
+                }?.also {
+                    logger.info("handling answer: {}", message)
+                    return participant.handle(it)
+                }
             }
-            tryFromRaw<Assessment>(message) {
-                it.containsValue("type", MessageType.ASSESSMENT.name)
-            }?.also {
-                logger.info("handling assessment: {}", message)
-                return participant.handle(it)
+            if (message != null) {
+                tryFromRaw<Assessment>(message) {
+                    it.containsValue("type", MessageType.ASSESSMENT.name)
+                }?.also {
+                    logger.info("handling assessment: {}", message)
+                    return participant.handle(it)
+                }
             }
             return false
         } catch (e: JacksonException) {
+            logger.warn("failed to parse, skipping message = $message")
+            logger.warn(e.toString())
+            return false
+        } catch (e: NullPointerException) {
             logger.warn("failed to parse, skipping message = $message")
             logger.warn(e.toString())
             return false

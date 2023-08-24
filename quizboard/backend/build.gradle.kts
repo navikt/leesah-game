@@ -1,4 +1,5 @@
 import java.nio.file.Paths
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm")
@@ -9,6 +10,7 @@ version = "0.0.1"
 
 dependencies {
     implementation(project(":quizrapid"))
+    implementation(kotlin("stdlib-jdk8"))
 }
 
 tasks {
@@ -54,4 +56,15 @@ tasks {
             }
         }
     }
+}
+repositories {
+    mavenCentral()
+}
+val compileKotlin: KotlinCompile by tasks
+compileKotlin.kotlinOptions {
+    jvmTarget = "1.8"
+}
+val compileTestKotlin: KotlinCompile by tasks
+compileTestKotlin.kotlinOptions {
+    jvmTarget = "1.8"
 }

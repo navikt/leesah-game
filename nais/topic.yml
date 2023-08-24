@@ -41,6 +41,7 @@ spec:
     replication: 3  # see min/max requirements
     retentionBytes: -1  # -1 means unlimited
     retentionHours: 48  # -1 means unlimited
+    segmentHours: 10
   acl:
     - team: leesah-quiz
       application: quizboard

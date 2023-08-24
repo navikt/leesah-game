@@ -12,7 +12,7 @@ Oppgaven svares med riktig svar i heltall (integer).
 {
   "type": "QUESTION",
   "messageId": "96acb8f4-4b1e-4f0a-9d54-fcdda1223d9d",
-  "question": "49 - 62",
+  "question": "49 - 62 (svaret må rundes til int)",
   "category": "arithmetic",
   "created": "2022-11-07T14:53:27.581147"
 }

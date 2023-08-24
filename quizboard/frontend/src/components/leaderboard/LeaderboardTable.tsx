@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import ErrorIkon from '../../ikoner/Error.svg';
 import WarningIkon from '../../ikoner/Warning.svg';
 import OkIkon from '../../ikoner/Success.svg';
-import './LeaderboardTable.less';
+import './LeaderboardTable.scss';
 import { BoardDto } from '../../types';
-import { hentBoard } from '../../backend';
-import { Table } from '@navikt/ds-react';
+import { hentBoard } from '../../backend_mock';
+import { BodyShort, Table } from '@navikt/ds-react';
 import '@navikt/ds-css';
 import { useLocalStorageState } from '../../hooks/useLocalStorageState';
 import { kebabCase } from '../../utils';
@@ -48,6 +48,7 @@ export default function LeaderboardTable() {
   }
 
   function colorPicker(hex: string) {
+    hex.includes("#") ? hex.replace("#","") : null;
     const red = hexToRgb(hex)?.r!;
     const green = hexToRgb(hex)?.g!;
     const blue = hexToRgb(hex)?.b!;
@@ -125,11 +126,18 @@ export default function LeaderboardTable() {
             >
               {team.score}
             </Table.DataCell>
-            {team.categoryResult.map((category: any, index: number) => (
-              <Table.DataCell key={kebabCase(team.name) + index} className="leaderboard__kategori">
-                {icon(category.status, index)}
-              </Table.DataCell>
-            ))}
+            {team.categoryResult.map((category: any, index: number) => {
+              return (
+                <Table.DataCell key={kebabCase(team.name) + index}>
+                  <div className="leaderboard__kategori">
+                    {icon(category.status, index)}
+                    <BodyShort>
+                      {category.okCount} / {team.categoryCount[category.name]}
+                    </BodyShort>
+                  </div>
+                </Table.DataCell>
+              );
+            })}
           </Table.Row>
         ))}
       </Table.Body>

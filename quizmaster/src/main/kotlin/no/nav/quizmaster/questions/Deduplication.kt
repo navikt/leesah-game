@@ -36,7 +36,7 @@ class Deduplication(
             false.publish(answer.teamName, answer.questionId, answer.messageId)
             sheet.completed.remove(answer.teamName)
         }
-        sheet.teamAnswers.compute(answer.teamName) { key, value, -> if(value == null)  listOf(answer.messageId) else value + answer.messageId }
+        sheet.teamAnswers.compute(answer.teamName) { _, value, -> if(value == null)  listOf(answer.messageId) else value + answer.messageId }
 
         if (sheet.teamAnswers[answer.teamName]!!.size > 1) {
             false.publish(answer.teamName, answer.questionId, answer.messageId)

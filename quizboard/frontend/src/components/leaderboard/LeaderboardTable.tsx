@@ -4,7 +4,7 @@ import WarningIkon from '../../ikoner/Warning.svg';
 import OkIkon from '../../ikoner/Success.svg';
 import './LeaderboardTable.scss';
 import { BoardDto } from '../../types';
-import { hentBoard } from '../../backend';
+import { hentBoard } from '../../backend_mock';
 import { BodyShort, Table } from '@navikt/ds-react';
 import '@navikt/ds-css';
 import { useLocalStorageState } from '../../hooks/useLocalStorageState';
@@ -48,6 +48,7 @@ export default function LeaderboardTable() {
   }
 
   function colorPicker(hex: string) {
+    hex.includes("#") ? hex.replace("#","") : null;
     const red = hexToRgb(hex)?.r!;
     const green = hexToRgb(hex)?.g!;
     const blue = hexToRgb(hex)?.b!;

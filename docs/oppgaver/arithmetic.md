@@ -6,8 +6,8 @@ Feltet er bygd opp slik: `"<integer> <operator> <integer>"`hvor operatoren kan v
 
 Oppgaven svares med riktig svar i heltall (integer).
 
-
 **Eksempel på oppgave-hendelse**
+
 ```json
 {
   "type": "QUESTION",
@@ -19,6 +19,7 @@ Oppgaven svares med riktig svar i heltall (integer).
 ```
 
 **Eksempelsvar**
+
 ```json
 {
   "type": "ANSWER",

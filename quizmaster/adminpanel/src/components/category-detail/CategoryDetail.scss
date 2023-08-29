@@ -1,10 +1,10 @@
 .category-view {
-  display: grid;
-  grid-template-columns: 8rem auto;
+    display: grid;
+    grid-template-columns: 8rem auto;
 
-  p {
-    display: flex;
-    flex-direction: row;
-    gap: 4px;
-  }
+    p {
+        display: flex;
+        flex-direction: row;
+        gap: 4px;
+    }
 }

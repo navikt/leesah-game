@@ -1,14 +1,14 @@
-version: '3'
+version: "3"
 services:
-#  kafka-ui:
-#    container_name: kafka-ui
-#    image: "obsidiandynamics/kafdrop"
-#    ports:
-#      - "9000:9000"
-#    environment:
-#      KAFKA_BROKERCONNECT: "kafka:9092"
-#      JVM_OPTS: "-Xms32M -Xmx64M"
-#      SERVER_SERVLET_CONTEXTPATH: "/"
+  #  kafka-ui:
+  #    container_name: kafka-ui
+  #    image: "obsidiandynamics/kafdrop"
+  #    ports:
+  #      - "9000:9000"
+  #    environment:
+  #      KAFKA_BROKERCONNECT: "kafka:9092"
+  #      JVM_OPTS: "-Xms32M -Xmx64M"
+  #      SERVER_SERVLET_CONTEXTPATH: "/"
 
   quizmaster:
     container_name: quizmaster
@@ -29,8 +29,8 @@ services:
     container_name: quizboard
     image: ghcr.io/navikt/leesah-game/leesah-quizboard:59f38c4
     environment:
-      NAIS_APP_NAME : "quizboard"
-      KAFKA_BROKERS : "nav-integration-test-kafka-nav-integration-test.aivencloud.com:26484"
+      NAIS_APP_NAME: "quizboard"
+      KAFKA_BROKERS: "nav-integration-test-kafka-nav-integration-test.aivencloud.com:26484"
       KAFKA_TRUSTSTORE_PATH: "creds/client.truststore.jks"
       KAFKA_KEYSTORE_PATH: "creds/client.keystore.p12"
       KAFKA_CREDSTORE_PASSWORD: "whatever"
@@ -39,4 +39,3 @@ services:
       - "8081:8080"
     volumes:
       - $PWD/creds:/app/creds
-

@@ -1,7 +1,7 @@
 # team-registration
 
-Første oppgave alle team må løse er "team-registration"-oppgaven. Oppgaven løses ved å publisere et svar med en farge i 
-form av hex-kode som skal representere deres team i `answer`, i tillegg til et teamnavn i `teamName`. Teamnavnet må være 
+Første oppgave alle team må løse er "team-registration"-oppgaven. Oppgaven løses ved å publisere et svar med en farge i
+form av hex-kode som skal representere deres team i `answer`, i tillegg til et teamnavn i `teamName`. Teamnavnet må være
 det samme gjennom hele spillet.
 
 **Eksempel på oppgave-hendelse**

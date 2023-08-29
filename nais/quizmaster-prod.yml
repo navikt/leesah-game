@@ -6,7 +6,7 @@ metadata:
   labels:
     team: leesah-quiz
 spec:
-  image: {{image}}
+  image: { { image } }
   port: 8080
   ingresses:
     - https://leesah-quizmaster.intern.nav.no

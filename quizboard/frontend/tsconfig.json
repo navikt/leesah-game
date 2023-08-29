@@ -19,8 +19,7 @@
     "removeComments": true,
     "preserveConstEnums": true,
     "strictPropertyInitialization": false,
-    "noFallthroughCasesInSwitch": true,
-
+    "noFallthroughCasesInSwitch": true
   },
   "exclude": ["node_modules", "build", "scripts", "acceptance-tests", "webpack", "src/setupTests.ts"],
   "include": ["src", "mock", "custom.d.ts"]

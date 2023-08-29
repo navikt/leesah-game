@@ -5,7 +5,6 @@ Svar med korrekt sammenstilt saldo for hver oppgave-hendelse applikasjonen motta
 
 **Eksempel på oppgave-hendelse**
 
-
 ```json lines
 
 {
@@ -27,7 +26,6 @@ Svar med korrekt sammenstilt saldo for hver oppgave-hendelse applikasjonen motta
 ```
 
 **Eksempelsvar**
-
 
 ```json lines
 

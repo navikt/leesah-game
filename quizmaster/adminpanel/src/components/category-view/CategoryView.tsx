@@ -1,4 +1,4 @@
-import {Backend, CategoriesDto} from '../../restBackend';
+import { Backend, CategoriesDto } from '../../restBackend';
 import React from 'react';
 import CategoryDetail from '../category-detail/CategoryDetail';
 import PendingAnswers from '../pending-answers/PendingAnswers';
@@ -11,7 +11,7 @@ interface CategoryViewProps {
     backend: Backend;
 }
 
-const CategoryView = ({categories, backend}: CategoryViewProps) => {
+const CategoryView = ({ categories, backend }: CategoryViewProps) => {
     const done = (maxCount: number, questionCount: number, status: string) => {
         return maxCount === questionCount && status === 'INACTIVE';
     };
@@ -23,9 +23,7 @@ const CategoryView = ({categories, backend}: CategoryViewProps) => {
                     <div className="card-header">
                         <h3>{category.name}</h3>
                         {done(category.maxCount, category.questionCount, category.status) ? (
-                            <>
-                                <img src={OkIkon} alt="Ok icon" className="icon__ok"/>
-                            </>
+                            <img src={OkIkon} alt="Ok icon" className="icon__ok" />
                         ) : null}
                     </div>
                     <CategoryDetail label="status">
@@ -36,14 +34,14 @@ const CategoryView = ({categories, backend}: CategoryViewProps) => {
                     <CategoryDetail label="answerCount">{category.answerCount}</CategoryDetail>
                     <CategoryDetail label="correctAnswerCount">{category.correctAnswerCount}</CategoryDetail>
                     {category.pendingAnswers.length > 0 && (
-                        <PendingAnswers category={category.name} answers={category.pendingAnswers} backend={backend}/>
+                        <PendingAnswers category={category.name} answers={category.pendingAnswers} backend={backend} />
                     )}
                     <button onClick={() => backend.toggle(category.name)}>
                         {category.status === 'ACTIVE'
                             ? 'Disable'
                             : done(category.maxCount, category.questionCount, category.status)
-                                ? 'Reactivate'
-                                : 'Activate'}
+                            ? 'Reactivate'
+                            : 'Activate'}
                     </button>
                 </div>
             ))}

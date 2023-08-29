@@ -7,17 +7,17 @@ metadata:
     team: leesah-quiz
 spec:
   pool: nav-dev
-  config: # optional; all fields are optional too; defaults shown
-    cleanupPolicy: delete # delete, compact, compact,delete
+  config:  # optional; all fields are optional too; defaults shown
+    cleanupPolicy: delete  # delete, compact, compact,delete
     minimumInSyncReplicas: 3
     partitions: 1
-    replication: 3 # see min/max requirements
-    retentionBytes: -1 # -1 means unlimited
-    retentionHours: 48 # -1 means unlimited
+    replication: 3  # see min/max requirements
+    retentionBytes: -1  # -1 means unlimited
+    retentionHours: 48  # -1 means unlimited
   acl:
     - team: leesah-quiz
       application: quizboard
-      access: readwrite # read, write, readwrite
+      access: readwrite   # read, write, readwrite
     - team: leesah-quiz
       application: quizmaster
       access: readwrite
@@ -34,18 +34,18 @@ metadata:
     team: leesah-quiz
 spec:
   pool: nav-dev
-  config: # optional; all fields are optional too; defaults shown
-    cleanupPolicy: delete # delete, compact, compact,delete
+  config:  # optional; all fields are optional too; defaults shown
+    cleanupPolicy: delete  # delete, compact, compact,delete
     minimumInSyncReplicas: 3
     partitions: 1
-    replication: 3 # see min/max requirements
-    retentionBytes: -1 # -1 means unlimited
-    retentionHours: 48 # -1 means unlimited
+    replication: 3  # see min/max requirements
+    retentionBytes: -1  # -1 means unlimited
+    retentionHours: 48  # -1 means unlimited
     segmentHours: 10
   acl:
     - team: leesah-quiz
       application: quizboard
-      access: readwrite # read, write, readwrite
+      access: readwrite   # read, write, readwrite
     - team: leesah-quiz
       application: quizmaster
       access: readwrite

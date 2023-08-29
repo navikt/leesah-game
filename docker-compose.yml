@@ -1,4 +1,4 @@
-version: "3"
+version: '3'
 services:
   zookeeper:
     container_name: zookeeper
@@ -58,8 +58,8 @@ services:
     container_name: quizboard
     build: quizboard
     environment:
-      NAIS_APP_NAME: "quizboard"
-      KAFKA_BROKERS: "kafka:9092"
+      NAIS_APP_NAME : "quizboard"
+      KAFKA_BROKERS : "kafka:9092"
     ports:
       - "8081:8080"
     depends_on:

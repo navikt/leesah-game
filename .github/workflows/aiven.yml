@@ -1,3 +1,4 @@
+
 name: Aiven Kafka config
 
 on:
@@ -5,7 +6,7 @@ on:
     branches:
       - main
     paths:
-      - "nais/topic.yml"
+      - 'nais/topic.yml'
 
 jobs:
   deployDev:

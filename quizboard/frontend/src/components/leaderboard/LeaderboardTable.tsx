@@ -48,13 +48,20 @@ export default function LeaderboardTable() {
   }
 
   function colorPicker(hex: string) {
-    hex.includes("#") ? hex.replace("#","") : null;
-    const red = hexToRgb(hex)?.r!;
-    const green = hexToRgb(hex)?.g!;
-    const blue = hexToRgb(hex)?.b!;
+
+    const hexUtenHash = () => {
+      if(hex.includes("#")) {
+        return hex.replace("#", "")}
+      else {
+        return hex
+      }
+    }
+
+    const red = hexToRgb(hexUtenHash())?.r!;
+    const green = hexToRgb(hexUtenHash())?.g!;
+    const blue = hexToRgb(hexUtenHash())?.b!;
 
     const brightness = (red * 299 + green * 587 + blue * 114) / 1000;
-
     if (brightness < 127.5) {
       return 'white';
     }
@@ -116,13 +123,13 @@ export default function LeaderboardTable() {
             <Table.HeaderCell
               scope="row"
               className="leaderboard__teamnavn"
-              style={{ backgroundColor: `#${team.hex}`, color: colorPicker(team.hex) }}
+              style={{ backgroundColor: `#${team.hex.includes("#") ? team.hex.replace("#", "") : team.hex}`, color: colorPicker(team.hex) }}
             >
               {team.name}
             </Table.HeaderCell>
             <Table.DataCell
               className="leaderboard__score"
-              style={{ backgroundColor: `#${team.hex}`, color: colorPicker(team.hex) }}
+              style={{ backgroundColor: `#${team.hex.includes("#") ? team.hex.replace("#", "") : team.hex}`, color: colorPicker(team.hex) }}
             >
               {team.score}
             </Table.DataCell>

@@ -9,17 +9,16 @@ export const ErrorModal = () => {
 
   useInterval(async () => {
     const update = async () => {
-      const ready = isBackendReady();
-      setbackendGood(await ready);
+      setbackendGood(await isBackendReady());
     };
-    update().then(r => console.log('Updating...'));
+    update().then(() => console.log('Updating...'));
   }, 10000);
 
   return (
-    <Modal open={!Environment.isDevelopment && !backendGood} onClose={() => backendGood} closeButton={false}>
-      <Modal.Content>
+    <Modal open={!Environment.isDevelopment && !backendGood} onClose={() => backendGood} header={{heading:"",closeButton:false }}>
+      <Modal.Body>
         <Alert variant="error">ERROR: Backend is not ready or not alive</Alert>
-      </Modal.Content>
+      </Modal.Body>
     </Modal>
   );
 };

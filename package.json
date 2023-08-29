@@ -1,8 +1,5 @@
 {
   "dependencies": {
     "prettier": "^3.0.2"
-  },
-  "devDependencies": {
-    "@types/react-modal": "^3.16.0"
   }
 }

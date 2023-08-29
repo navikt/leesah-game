@@ -8,8 +8,8 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "@navikt/ds-css": "^2.1.1",
-    "@navikt/ds-react": "^2.1.1",
+    "@navikt/ds-css": "^5.2.1",
+    "@navikt/ds-react": "^5.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",

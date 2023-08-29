@@ -1,4 +1,4 @@
-import {Backend, CategoriesDto, QuizStatsDto} from './restBackend';
+import { Backend, CategoriesDto, QuizStatsDto } from './restBackend';
 
 export const testBackend = (): Backend => {
     return {
@@ -148,10 +148,10 @@ let testData = {
             answerCount: 0,
             correctAnswerCount: 0,
             pendingAnswers: [],
-           // pendingAnswers: [{teamName: "Øydis", answer: "www.vg.no"}, {
-           //     teamName: "Helene",
-           //     answer: "www.testeesteetsset.ntern.dev.no"
-           // }],
+            // pendingAnswers: [{teamName: "Øydis", answer: "www.vg.no"}, {
+            //     teamName: "Helene",
+            //     answer: "www.testeesteetsset.ntern.dev.no"
+            // }],
         },
         {
             name: 'setup-wonderwall',

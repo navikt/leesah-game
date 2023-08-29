@@ -48,14 +48,13 @@ export default function LeaderboardTable() {
   }
 
   function colorPicker(hex: string) {
-
     const hexUtenHash = () => {
-      if(hex.includes("#")) {
-        return hex.replace("#", "")}
-      else {
-        return hex
+      if (hex.includes('#')) {
+        return hex.replace('#', '');
+      } else {
+        return hex;
       }
-    }
+    };
 
     const red = hexToRgb(hexUtenHash())?.r!;
     const green = hexToRgb(hexUtenHash())?.g!;
@@ -123,13 +122,19 @@ export default function LeaderboardTable() {
             <Table.HeaderCell
               scope="row"
               className="leaderboard__teamnavn"
-              style={{ backgroundColor: `#${team.hex.includes("#") ? team.hex.replace("#", "") : team.hex}`, color: colorPicker(team.hex) }}
+              style={{
+                backgroundColor: `#${team.hex.includes('#') ? team.hex.replace('#', '') : team.hex}`,
+                color: colorPicker(team.hex),
+              }}
             >
               {team.name}
             </Table.HeaderCell>
             <Table.DataCell
               className="leaderboard__score"
-              style={{ backgroundColor: `#${team.hex.includes("#") ? team.hex.replace("#", "") : team.hex}`, color: colorPicker(team.hex) }}
+              style={{
+                backgroundColor: `#${team.hex.includes('#') ? team.hex.replace('#', '') : team.hex}`,
+                color: colorPicker(team.hex),
+              }}
             >
               {team.score}
             </Table.DataCell>

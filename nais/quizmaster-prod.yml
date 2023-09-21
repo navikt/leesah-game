@@ -48,6 +48,6 @@ spec:
     - name: KAFKA_TRUSTSTORE_PATH
       value: "/var/run/trust/truststore.jks"
     - name: KAFKA_KEYSTORE_PATH
-      value: "/var/run/key/userkeystore.jks"
+      value: "/var/run/key/userkeystore.p12"
     - name: KAFKA_CREDSTORE_PASSWORD
       value: "whatever"

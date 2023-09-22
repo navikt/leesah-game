@@ -19,7 +19,7 @@ gradle-app.setting
 *.pem
 *.cert
 *.key
-creds/client.keystore.p12
-creds/client.truststore.jks
+*.p12
+certs/
 
 .DS_Store

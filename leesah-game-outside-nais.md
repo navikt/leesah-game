@@ -1,10 +1,5 @@
 # Running a Leesah Game with participants running outside the NAIS platform
 
-
-
-
-
-
 ## Quizmaster nais.yml 
 
 **env**

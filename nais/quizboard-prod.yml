@@ -34,8 +34,8 @@ spec:
     enabled: true
     path: /metrics
   filesFrom:
-    - secret: leesah-client-truststore
-      mountPath: /var/run/trust
+    - secret: leesah-certs
+      mountPath: /var/run/certs
     - secret: leesah-client-keystore
       mountPath: /var/run/key
   env:
@@ -46,8 +46,14 @@ spec:
     - name: KAFKA_BROKERS
       value: "nav-integration-test-kafka-nav-integration-test.aivencloud.com:26484"
     - name: KAFKA_TRUSTSTORE_PATH
-      value: "/var/run/trust/truststore.jks"
+      value: "/var/run/certs/truststore.jks"
     - name: KAFKA_KEYSTORE_PATH
-      value: "/var/run/key/userkeystore.jks"
+      value: "/var/run/certs/keystore.p12"
     - name: KAFKA_CREDSTORE_PASSWORD
-      value: "whatever"
+      value: "changeit"
+  accessPolicy:
+    outbound:
+      external:
+        - host: nav-integration-test-kafka-nav-integration-test.aivencloud.com
+          ports:
+            - port: 26484

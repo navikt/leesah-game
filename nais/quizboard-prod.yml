@@ -36,8 +36,6 @@ spec:
   filesFrom:
     - secret: leesah-certs
       mountPath: /var/run/certs
-    - secret: leesah-client-keystore
-      mountPath: /var/run/key
   env:
     - name: QUIZ_TOPIC
       value: leesah-quiz-abakus-5

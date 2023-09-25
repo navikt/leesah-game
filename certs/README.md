@@ -1,5 +1,11 @@
 # Credentials for LEESAH
 
+Det er kun medlemmer av NAIS som har tilgang til Aiven console som kan lage sertifikater.
+For å få et nytt sertifikat så kan man ta kontakt med en i NAIS og peke de på dette repoet.
+Enkleste er kanskje å ta kontakt med Kyrre eller Morten som har kjennskap til dette prosjektet.
+
+For dokumentasjon så finnes det et Python-script i [nais/kafkarator](https://github.com/nais/kafkarator/blob/master/scripts/leesah_quiz_creds.py) som oppretter topics, ACL, og creds.
+
 ## Using AVN
 
 ```bash

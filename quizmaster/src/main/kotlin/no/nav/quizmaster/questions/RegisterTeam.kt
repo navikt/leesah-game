@@ -45,7 +45,7 @@ class RegisterTeam(active: Boolean) : QuestionCategory(category = "team-registra
         return if (active) {
             val question = Question(
                 category = category,
-                question = "Velg en hex-code med 6 tegn (uten #) for å representere ditt team."
+                question = "Velg en hex-code med 6 tegn for å representere ditt team."
             )
             listOf(question)
         } else emptyList()

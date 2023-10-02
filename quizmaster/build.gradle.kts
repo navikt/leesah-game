@@ -1,8 +1,8 @@
 import java.nio.file.Paths
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-val ktorVersion = "1.6.4"
-val kafkaVersion = "2.8.0"
+val ktorVersion = "2.3.4"
+val kafkaVersion = "3.5.1"
 val junitJupiterVersion = "5.8.1"
 
 plugins {
@@ -16,7 +16,7 @@ version = "0.0.1"
 
 dependencies {
     implementation(project(":quizrapid"))
-    implementation(kotlin("stdlib-jdk8"))
+    implementation("org.jetbrains.kotlin:kotlin-stdlib")
 
 }
 
@@ -33,7 +33,7 @@ tasks {
             }
         }
 
-        from({ Paths.get(project(":quizmaster:adminpanel").buildDir.path) }) {
+        from({ Paths.get(project(":quizmaster:adminpanel").layout.buildDirectory.get().toString()) }) {
             into("static")
         }
 
@@ -41,7 +41,7 @@ tasks {
             configurations.runtimeClasspath.get()
                 .filter { it.name != "app.jar" }
                 .forEach {
-                    val file = File("$buildDir/libs/${it.name}")
+                    val file = layout.buildDirectory.dir("/libs/${it.name}").get().asFile
                     if (!file.exists())
                         it.copyTo(file)
                 }
@@ -53,9 +53,9 @@ repositories {
 }
 val compileKotlin: KotlinCompile by tasks
 compileKotlin.kotlinOptions {
-    jvmTarget = "1.8"
+    jvmTarget = "17"
 }
 val compileTestKotlin: KotlinCompile by tasks
 compileTestKotlin.kotlinOptions {
-    jvmTarget = "1.8"
+    jvmTarget = "17"
 }

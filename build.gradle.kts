@@ -1,11 +1,17 @@
-val ktorVersion = "1.6.4"
-val kafkaVersion = "2.8.0"
-val junitJupiterVersion = "5.8.1"
-val kotlinVersion = "1.6.20"
-
+val ktorVersion = "2.3.4"
+val kafkaVersion = "3.5.1"
+val junitJupiterVersion = "5.10.0"
+val kotlinVersion = "1.9.10"
+val jacksonVersion = "2.15.2"
+val slf4jApiVersion = "1.7.32"
+val logbackVersion = "1.4.11"
+val logstashEncoderVersion = "7.4"
+val awaitilityVersion = "4.1.0"
+val kafkaEmbeddedEnvVersion = "2.8.0"
+val micrometerVersion = "1.7.4"
 
 plugins {
-    kotlin("jvm") version "1.6.20"
+    kotlin("jvm") version "1.9.10"
 }
 allprojects {
     repositories {
@@ -26,7 +32,7 @@ subprojects {
         compileTestKotlin {
             kotlinOptions.jvmTarget = "17"
         }
-        withType<Test> {
+       test {
             useJUnitPlatform()
             testLogging {
                 events("skipped", "failed")
@@ -41,25 +47,26 @@ subprojects {
         implementation("io.ktor:ktor-server-core:$ktorVersion")
         implementation("io.ktor:ktor-server-cio:$ktorVersion")
         implementation("io.ktor:ktor-client-cio:$ktorVersion")
-        implementation("io.ktor:ktor-jackson:$ktorVersion")
+        implementation("io.ktor:ktor-server-content-negotiation:$ktorVersion")
+        implementation("io.ktor:ktor-serialization-jackson:$ktorVersion")
 
-        implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.2")
-        implementation("com.fasterxml.jackson.core:jackson-core:2.13.2")
-        implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.2")
-
-
-        implementation("org.slf4j:slf4j-api:1.7.32")
-        implementation("ch.qos.logback:logback-classic:1.2.6")
-        implementation("net.logstash.logback:logstash-logback-encoder:6.6")
+        implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion")
+        implementation("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
+        implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion")
 
 
-        api("io.ktor:ktor-metrics-micrometer:$ktorVersion")
-        api("io.micrometer:micrometer-registry-prometheus:1.7.4")
+        implementation("org.slf4j:slf4j-api:$slf4jApiVersion")
+        implementation("ch.qos.logback:logback-classic:$logbackVersion")
+        implementation("net.logstash.logback:logstash-logback-encoder:$logstashEncoderVersion")
 
-        testImplementation("no.nav:kafka-embedded-env:2.8.0")
+
+        api("io.ktor:ktor-server-metrics-micrometer:$ktorVersion")
+        api("io.micrometer:micrometer-registry-prometheus:$micrometerVersion")
+
+        testImplementation("no.nav:kafka-embedded-env:$kafkaEmbeddedEnvVersion")
         testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
         testImplementation("org.junit.jupiter:junit-jupiter-params:$junitJupiterVersion")
         testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
-        testImplementation("org.awaitility:awaitility:4.1.0")
+        testImplementation("org.awaitility:awaitility:$awaitilityVersion")
     }
 }

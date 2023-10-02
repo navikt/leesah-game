@@ -1,0 +1,35 @@
+name: Build and test
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: Checkout code and test, clean build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - uses: actions/cache@v3
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-cache-${{ hashFiles('build.gradle.kts') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-cache-
+      - uses: actions/cache@v3
+        with:
+          path: ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-wrapper-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-wrapper-
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+      - name: Run tests
+        run: |
+          ./gradlew test
+      - name: Run clean build
+        run: |
+          ./gradlew clean build

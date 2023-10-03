@@ -33,7 +33,7 @@ tasks {
             }
         }
 
-        from({ Paths.get(project(":quizmaster:adminpanel").layout.buildDirectory.get().toString()) }) {
+        from({ Paths.get(project(":quizmaster:adminpanel").buildDir.path) }) {
             into("static")
         }
 

@@ -7,4 +7,8 @@ tasks.assemble {
     dependsOn("npm_run_build")
 }
 
-project.buildDir = File("dist")
+node {
+    download = true
+}
+
+project.layout.buildDirectory = File("dist")

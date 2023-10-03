@@ -1,5 +1,6 @@
 package no.nav.quizrapid
 
+import kotlinx.coroutines.DelicateCoroutinesApi
 import no.nav.common.KafkaEnvironment
 import org.apache.kafka.clients.CommonClientConfigs
 import org.apache.kafka.clients.consumer.Consumer
@@ -59,6 +60,7 @@ internal class QuizRapidTest {
     }
 
 
+    @OptIn(DelicateCoroutinesApi::class)
     @Test
     fun `publish a quiz message`() {
 

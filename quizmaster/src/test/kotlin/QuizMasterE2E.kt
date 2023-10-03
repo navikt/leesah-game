@@ -1,4 +1,5 @@
 import com.fasterxml.jackson.module.kotlin.readValue
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import no.nav.common.KafkaEnvironment
@@ -56,6 +57,7 @@ internal class QuizMasterE2E {
     }
 
 
+    @OptIn(DelicateCoroutinesApi::class)
     @Test
     fun `questions published by an earlier Quizmaster that crashes are assessed by the new Quizmaster`() {
         val config = Config.local("testApp", listOf(embeddedKafkaEnvironment.brokersURL), testTopic)

@@ -66,6 +66,7 @@ subprojects {
         testImplementation("no.nav:kafka-embedded-env:$kafkaEmbeddedEnvVersion")
         testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
         testImplementation("org.junit.jupiter:junit-jupiter-params:$junitJupiterVersion")
+        testRuntimeOnly("org.junit.platform:junit-platform-launcher")
         testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
         testImplementation("org.awaitility:awaitility:$awaitilityVersion")
     }

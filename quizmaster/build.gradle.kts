@@ -33,7 +33,7 @@ tasks {
             }
         }
 
-        from({ Paths.get(project(":quizmaster:adminpanel").buildDir.path) }) {
+        from({ Paths.get(project(":quizmaster:adminpanel").layout.buildDirectory.get().toString()) }) {
             into("static")
         }
 
@@ -41,7 +41,7 @@ tasks {
             configurations.runtimeClasspath.get()
                 .filter { it.name != "app.jar" }
                 .forEach {
-                    val file = File("$buildDir/libs/${it.name}")
+                    val file = layout.buildDirectory.dir("libs/${it.name}").get().asFile
                     if (!file.exists())
                         it.copyTo(file)
                 }

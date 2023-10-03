@@ -7,4 +7,4 @@ tasks.assemble {
     dependsOn("npm_run_build")
 }
 
-project.layout.buildDirectory.dir("dist").get().asFile
+project.buildDir = File("dist")

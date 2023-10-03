@@ -27,7 +27,7 @@ tasks {
             }
         }
 
-        from({ Paths.get(project(":quizboard:frontend").layout.buildDirectory.get().toString()) }) {
+        from({ Paths.get(project(":quizboard:frontend").buildDir.path) }) {
             into("static")
         }
 
@@ -35,7 +35,7 @@ tasks {
             configurations.runtimeClasspath.get()
                 .filter { it.name != "app.jar" }
                 .forEach {
-                    val file = layout.buildDirectory.dir("/libs/${it.name}").get().asFile
+                    val file = File("$buildDir/libs/${it.name}")
                     if (!file.exists())
                         it.copyTo(file)
                 }

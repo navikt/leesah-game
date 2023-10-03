@@ -1,15 +1,16 @@
 package no.nav.quizboard
 
-import io.ktor.application.*
-import io.ktor.features.*
+
 import io.ktor.http.*
-import io.ktor.http.content.*
-import io.ktor.jackson.*
-import io.ktor.metrics.micrometer.*
-import io.ktor.response.*
-import io.ktor.routing.*
+import io.ktor.serialization.jackson.*
+import io.ktor.server.application.*
 import io.ktor.server.cio.*
 import io.ktor.server.engine.*
+import io.ktor.server.http.content.*
+import io.ktor.server.metrics.micrometer.*
+import io.ktor.server.plugins.contentnegotiation.*
+import io.ktor.server.response.*
+import io.ktor.server.routing.*
 import io.micrometer.core.instrument.Clock
 import io.micrometer.core.instrument.binder.jvm.ClassLoaderMetrics
 import io.micrometer.core.instrument.binder.jvm.JvmGcMetrics
@@ -74,9 +75,7 @@ fun ktorServer(quizboard: Quizboard): ApplicationEngine = embeddedServer(CIO, ap
                     ContentType.Text.Html
                 )
             }
-            static("/") {
-                resources("static")
-            }
+            staticResources("/", "static")
 
             get("/alive") {
                 call.respond("OK")

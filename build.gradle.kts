@@ -7,7 +7,7 @@ val slf4jApiVersion = "1.7.32"
 val logbackVersion = "1.4.11"
 val logstashEncoderVersion = "7.4"
 val awaitilityVersion = "4.1.0"
-val kafkaEmbeddedEnvVersion = "2.8.0"
+val kafkaEmbeddedEnvVersion = "3.2.3"
 val micrometerVersion = "1.7.4"
 
 plugins {

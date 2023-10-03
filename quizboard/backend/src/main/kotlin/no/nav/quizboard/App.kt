@@ -22,9 +22,9 @@ import io.micrometer.prometheus.PrometheusMeterRegistry
 import io.prometheus.client.CollectorRegistry
 import io.prometheus.client.exporter.common.TextFormat
 import kotlinx.coroutines.*
-import kotlinx.coroutines.channels.ReceiveChannel
-import kotlinx.coroutines.channels.broadcast
-import kotlinx.coroutines.channels.produce
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.toList
 import no.nav.quizrapid.Config
 import no.nav.quizrapid.RapidServer
 import no.nav.quizrapid.objectMapper
@@ -37,7 +37,6 @@ fun main() {
     RapidServer(Config.fromEnv(), ktorServer(quizboard), quizboard).startBlocking()
 }
 
-@OptIn(ExperimentalCoroutinesApi::class, ObsoleteCoroutinesApi::class)
 fun ktorServer(quizboard: Quizboard): ApplicationEngine = embeddedServer(CIO, applicationEngineEnvironment {
 
     connector {
@@ -61,12 +60,12 @@ fun ktorServer(quizboard: Quizboard): ApplicationEngine = embeddedServer(CIO, ap
         }
         install(ContentNegotiation) { register(ContentType.Application.Json, JacksonConverter(objectMapper)) }
 
-        val channel = produce {
+        val flow: Flow<SseEvent<BoardResult>> = flow {
             while (true) {
-                send(SseEvent(data = quizboard.result()))
+                emit(SseEvent(data = quizboard.result()))
                 delay(2000)
             }
-        }.broadcast()
+        }
 
         routing {
             get("/") {
@@ -85,11 +84,10 @@ fun ktorServer(quizboard: Quizboard): ApplicationEngine = embeddedServer(CIO, ap
             }
 
             get("/board") {
-                val events = channel.openSubscription()
+                val events = flow.toList()
                 try {
                     call.respondSse(events)
                 } finally {
-                    events.cancel()
                 }
                 call.respond(quizboard.result())
             }
@@ -107,7 +105,7 @@ fun ktorServer(quizboard: Quizboard): ApplicationEngine = embeddedServer(CIO, ap
 
 data class SseEvent<T>(val data: T, val id: String? = UUID.randomUUID().toString())
 
-suspend fun ApplicationCall.respondSse(events: ReceiveChannel<SseEvent<BoardResult>>) {
+suspend fun ApplicationCall.respondSse(events: List<SseEvent<BoardResult>>) {
     response.header(HttpHeaders.AccessControlAllowOrigin, "http://localhost:3000")
     response.cacheControl(CacheControl.NoCache(null))
     respondTextWriter(contentType = ContentType.Text.EventStream) {

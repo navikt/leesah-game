@@ -1,11 +1,11 @@
-val ktorVersion = "1.6.4"
-val kafkaVersion = "2.8.0"
-val junitJupiterVersion = "5.8.1"
-val kotlinVersion = "1.6.20"
+val ktorVersion = "1.6.8"
+val kafkaVersion = "7.5.0-ce"
+val junitJupiterVersion = "5.10.0"
+val kotlinVersion = "1.9.10"
 
 
 plugins {
-    kotlin("jvm") version "1.6.20"
+    kotlin("jvm") version "1.9.10"
 }
 allprojects {
     repositories {
@@ -43,23 +43,23 @@ subprojects {
         implementation("io.ktor:ktor-client-cio:$ktorVersion")
         implementation("io.ktor:ktor-jackson:$ktorVersion")
 
-        implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.2")
-        implementation("com.fasterxml.jackson.core:jackson-core:2.13.2")
-        implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.2")
+        implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.15.2")
+        implementation("com.fasterxml.jackson.core:jackson-core:2.15.2")
+        implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.15.2")
 
 
-        implementation("org.slf4j:slf4j-api:1.7.32")
-        implementation("ch.qos.logback:logback-classic:1.2.6")
-        implementation("net.logstash.logback:logstash-logback-encoder:6.6")
+        implementation("org.slf4j:slf4j-api:2.0.9")
+        implementation("ch.qos.logback:logback-classic:1.4.11")
+        implementation("net.logstash.logback:logstash-logback-encoder:7.4")
 
 
         api("io.ktor:ktor-metrics-micrometer:$ktorVersion")
-        api("io.micrometer:micrometer-registry-prometheus:1.7.4")
+        api("io.micrometer:micrometer-registry-prometheus:1.11.4")
 
-        testImplementation("no.nav:kafka-embedded-env:2.8.0")
+        testImplementation("no.nav:kafka-embedded-env:3.2.3")
         testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
         testImplementation("org.junit.jupiter:junit-jupiter-params:$junitJupiterVersion")
         testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
-        testImplementation("org.awaitility:awaitility:4.1.0")
+        testImplementation("org.awaitility:awaitility:4.2.0")
     }
 }

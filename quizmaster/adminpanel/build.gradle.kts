@@ -1,6 +1,6 @@
 plugins {
     base
-    id("com.github.node-gradle.node") version "3.0.1"
+    id("com.github.node-gradle.node") version "7.0.1"
 }
 
 tasks.assemble {

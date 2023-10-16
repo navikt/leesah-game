@@ -1,5 +1,5 @@
 val ktorVersion = "1.6.8"
-val kafkaVersion = "7.5.0-ce"
+val kafkaVersion = "7.5.1-ce"
 val junitJupiterVersion = "5.10.0"
 val kotlinVersion = "1.9.10"
 
@@ -43,9 +43,9 @@ subprojects {
         implementation("io.ktor:ktor-client-cio:$ktorVersion")
         implementation("io.ktor:ktor-jackson:$ktorVersion")
 
-        implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.15.2")
-        implementation("com.fasterxml.jackson.core:jackson-core:2.15.2")
-        implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.15.2")
+        implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.15.3")
+        implementation("com.fasterxml.jackson.core:jackson-core:2.15.3")
+        implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.15.3")
 
 
         implementation("org.slf4j:slf4j-api:2.0.9")
@@ -54,7 +54,7 @@ subprojects {
 
 
         api("io.ktor:ktor-metrics-micrometer:$ktorVersion")
-        api("io.micrometer:micrometer-registry-prometheus:1.11.4")
+        api("io.micrometer:micrometer-registry-prometheus:1.11.5")
 
         testImplementation("no.nav:kafka-embedded-env:3.2.3")
         testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")

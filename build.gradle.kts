@@ -7,7 +7,7 @@ val slf4jApiVersion = "2.0.9"
 val logbackClassicVersion = "1.4.11"
 val logbackEncoderVersion = "7.4"
 val prometheusVerison = "1.11.5"
-val kafkaEmbeddedEnvVersion = "2.8.0"
+val kafkaEmbeddedEnvVersion = "2.8.2"
 val awaitilityVerison = "4.2.0"
 
 plugins {

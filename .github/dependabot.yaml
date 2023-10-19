@@ -10,6 +10,10 @@ updates:
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 10
+    ignore:
+      - dependency-name: "no.nav:kafka-embedded-env"
+        update-types: [ "version-update:semver-major" ]
+      - dependency-name: "org.apache.kafka:kafka-clients"
     groups:
       gradle:
         patterns:

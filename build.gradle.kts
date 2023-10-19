@@ -2,7 +2,13 @@ val ktorVersion = "1.6.8"
 val kafkaVersion = "7.5.0-ce"
 val junitJupiterVersion = "5.10.0"
 val kotlinVersion = "1.9.10"
-
+val jacksonVersion = "2.15.2"
+val slf4jApiVersion = "2.0.9"
+val logbackClassicVersion = "1.4.11"
+val logbackEncoderVersion = "7.4"
+val prometheusVerison = "1.11.5"
+val kafkaEmbeddedEnvVersion = "2.8.0"
+val awaitilityVerison = "4.2.0"
 
 plugins {
     kotlin("jvm") version "1.9.10"
@@ -19,13 +25,6 @@ subprojects {
     apply(plugin = "org.jetbrains.kotlin.jvm")
 
     tasks {
-        compileKotlin {
-            kotlinOptions.jvmTarget = "17"
-        }
-
-        compileTestKotlin {
-            kotlinOptions.jvmTarget = "17"
-        }
         withType<Test> {
             useJUnitPlatform()
             testLogging {
@@ -43,23 +42,23 @@ subprojects {
         implementation("io.ktor:ktor-client-cio:$ktorVersion")
         implementation("io.ktor:ktor-jackson:$ktorVersion")
 
-        implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.15.2")
-        implementation("com.fasterxml.jackson.core:jackson-core:2.15.2")
-        implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.15.2")
+        implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion")
+        implementation("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
+        implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion")
 
 
-        implementation("org.slf4j:slf4j-api:2.0.9")
-        implementation("ch.qos.logback:logback-classic:1.4.11")
-        implementation("net.logstash.logback:logstash-logback-encoder:7.4")
+        implementation("org.slf4j:slf4j-api:$slf4jApiVersion")
+        implementation("ch.qos.logback:logback-classic:$logbackClassicVersion")
+        implementation("net.logstash.logback:logstash-logback-encoder:$logbackEncoderVersion")
 
 
         api("io.ktor:ktor-metrics-micrometer:$ktorVersion")
-        api("io.micrometer:micrometer-registry-prometheus:1.11.4")
+        api("io.micrometer:micrometer-registry-prometheus:$prometheusVerison")
 
-        testImplementation("no.nav:kafka-embedded-env:3.2.3")
+        testImplementation("no.nav:kafka-embedded-env:$kafkaEmbeddedEnvVersion")
         testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
         testImplementation("org.junit.jupiter:junit-jupiter-params:$junitJupiterVersion")
         testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
-        testImplementation("org.awaitility:awaitility:4.2.0")
+        testImplementation("org.awaitility:awaitility:$awaitilityVerison")
     }
 }

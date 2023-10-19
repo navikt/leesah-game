@@ -1,31 +1,42 @@
 .pending-answer-container {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0 !important;
+  gap: 0.5rem;
+
+  .pending-answer {
     display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    padding: 0 0.5rem 0.5rem;
     flex-direction: column;
-    margin: 1rem 0 !important;
-    gap: 0.5rem;
 
-    p {
-        display: flex;
-        flex-direction: row;
+    .teamname-header {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
     }
 
-    .pending-answer {
-        display: grid;
-        grid-template-columns: 6rem auto;
-
-        button {
-            border-color: green;
-            min-height: 2.5rem;
-            width: 6rem;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            overflow: hidden;
-            display: inline-block;
-        }
-
-        a {
-            text-align: center;
-            align-self: center;
-        }
+    &__check {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
     }
+
+    button {
+      svg {
+        margin: 0 -5px -5px;
+      }
+    }
+
+    &__text {
+      font-size: 14px;
+    }
+
+    a {
+      text-align: center;
+      align-self: center;
+    }
+  }
 }

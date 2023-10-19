@@ -1,0 +1,42 @@
+.header-card {
+  display: flex;
+  gap: 1rem;
+  flex-direction: row;
+  margin: 1rem 0;
+  padding: 0.5rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  color: #181717;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  &__left {
+    flex-wrap: wrap;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  &__right {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-direction: row;
+
+    .delete-team__textfield {
+      display: flex;
+      gap: 1rem;
+    }
+  }
+
+  button {
+    height: 3rem;
+    padding: 0 1rem;
+    align-self: center;
+  }
+
+  p {
+    align-self: center;
+  }
+}

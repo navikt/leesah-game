@@ -1,5 +1,5 @@
 val ktorVersion = "1.6.8"
-val kafkaVersion = "7.5.0-ce"
+val kafkaVersion = "3.6.0"
 val junitJupiterVersion = "5.10.0"
 val kotlinVersion = "1.9.10"
 val jacksonVersion = "2.15.2"
@@ -7,7 +7,7 @@ val slf4jApiVersion = "2.0.9"
 val logbackClassicVersion = "1.4.11"
 val logbackEncoderVersion = "7.4"
 val prometheusVerison = "1.11.5"
-val kafkaEmbeddedEnvVersion = "2.8.0"
+val kafkaEmbeddedEnvVersion = "3.2.3"
 val awaitilityVerison = "4.2.0"
 
 plugins {

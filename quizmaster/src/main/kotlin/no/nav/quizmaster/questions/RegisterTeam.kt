@@ -16,10 +16,15 @@ class RegisterTeam(active: Boolean) : QuestionCategory(category = "team-registra
         if (team.teamName !in teams && team.teamName.length<=30 && team.answer.length == 6) {
             logger.info("Nytt team opprettet med teamnavn ${team.teamName}")
             teams.add(team.teamName)
+            logHemmeligNøkkel(team.teamName)
             true.publish(team.teamName, sentQuestions[0].id(), team.messageId)
         } else {
             logger.debug("Ugyldig team registrering: hex = #${team.json()}")
         }
+    }
+
+    private fun logHemmeligNøkkel(teamName: String) {
+        logger.info("Den hemmelige nøkkelen for $teamName er ditt teamnavn! 🎉🎉🎉")
     }
 
     override fun check(answer: Answer) {

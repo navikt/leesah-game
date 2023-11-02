@@ -19,7 +19,7 @@ class QuizMaster : QuizParticipant {
         Deduplication(Duration.ofMinutes(1), 10, false),
         NaisIngress(maxCount = 1, false),
         NaisServiceDiscovery(maxCount = 1, false),
-        PendingQuestion("check-app-log", question = "[NAIS Oppgave] Søk opp applikasjon loggen for /hello endpunktet for din app. Send short link til søket som svar."),
+        NaisLogger(maxCount = 1, false),
         PendingQuestion("make-grafana-board", question = "[NAIS Oppgave] Lag et Grafana board for applikasjonen. Boardet skal inneholder Counters for  /hello endepunktet og antall Kafka meldinger applikasjonen har mottatt. Send link til boardet som svar."),
         PendingQuestion("make-alert", question = "[NAIS Oppgave] Lag en Alert for applikasjonen. Alarmen skal skrive en Slack melding i quiz-kanalen når /hello endepunktet har mottatt akkurat 10 kall. Send link til slack-meldingen som svar."),
         PendingQuestion("setup-wonderwall", question = "[NAIS Oppgave] Sett opp Wonderwall OIDC Autentisering over /secure endepunktet. Send link til /secure endepunktet på din app som svar.")

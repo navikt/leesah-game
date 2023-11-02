@@ -18,7 +18,7 @@ class QuizMaster : QuizParticipant {
         MinMax(Duration.ofMinutes(1), false),
         Deduplication(Duration.ofMinutes(1), 10, false),
         NaisIngress(maxCount = 1, false),
-        PendingQuestion("make-ingress", question = "[NAIS Oppgave] Lag en NAIS ingress for appen din i formatet: <app navn>.intern.dev.nav.no. Send link til ingress som svar "),
+        NaisServiceDiscovery(maxCount = 1, false),
         PendingQuestion("check-app-log", question = "[NAIS Oppgave] Søk opp applikasjon loggen for /hello endpunktet for din app. Send short link til søket som svar."),
         PendingQuestion("make-grafana-board", question = "[NAIS Oppgave] Lag et Grafana board for applikasjonen. Boardet skal inneholder Counters for  /hello endepunktet og antall Kafka meldinger applikasjonen har mottatt. Send link til boardet som svar."),
         PendingQuestion("make-alert", question = "[NAIS Oppgave] Lag en Alert for applikasjonen. Alarmen skal skrive en Slack melding i quiz-kanalen når /hello endepunktet har mottatt akkurat 10 kall. Send link til slack-meldingen som svar."),

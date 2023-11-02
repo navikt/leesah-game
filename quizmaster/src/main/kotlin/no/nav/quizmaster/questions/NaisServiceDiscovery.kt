@@ -12,7 +12,7 @@ import no.nav.quizrapid.Question
 class NaisServiceDiscovery(maxCount: Int = 1, active: Boolean = true): QuestionCategory("nais-service-discovery", maxCount, active) {
     override fun check(answer: Answer) {
 
-        val client = HttpClient(CIO) {
+        /*val client = HttpClient(CIO) {
             install(HttpTimeout) {
                 requestTimeoutMillis = 2000
             }
@@ -25,7 +25,8 @@ class NaisServiceDiscovery(maxCount: Int = 1, active: Boolean = true): QuestionC
         }
 
         (statusCode == 200).publish(answer.teamName, answer.questionId, answer.messageId)
-
+*/
+        true.publish(answer.teamName, answer.questionId, answer.messageId)
     }
 
     override fun newQuestions(): List<Question> {

@@ -5,7 +5,7 @@ import no.nav.quizrapid.Question
 
 class NaisIngress(maxCount: Int = 1, active: Boolean = true): QuestionCategory("nais-ingress", maxCount, active) {
     override fun check(answer: Answer) {
-        (answer.answer.matches(("\\.intern\\.dev\\.nav\\.no\\/?$").toRegex()).publish(answer.teamName, answer.questionId, answer.messageId))
+        (("\\.intern\\.dev\\.nav\\.no\\/?$").toRegex().containsMatchIn(answer.answer)).publish(answer.teamName, answer.questionId, answer.messageId)
     }
 
     override fun newQuestions(): List<Question> {

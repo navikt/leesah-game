@@ -54,7 +54,7 @@ jobs:
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: dev-gcp
-          RESOURCE: nais/quizmaster-dev.yml
+          RESOURCE: nais/quizmaster-dev.yml,nais/quizmaster-dev-netpol.yaml
           IMAGE: ${{ needs.set_version.outputs.image }}
 
   deployProd:

@@ -11,7 +11,7 @@ val kafkaEmbeddedEnvVersion = "3.2.3"
 val awaitilityVerison = "4.2.0"
 
 plugins {
-    kotlin("jvm") version "1.9.10"
+    kotlin("jvm") version "1.9.20"
 }
 allprojects {
     repositories {

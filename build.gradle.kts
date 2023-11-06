@@ -1,6 +1,6 @@
 val ktorVersion = "1.6.8"
 val kafkaVersion = "3.6.0"
-val junitJupiterVersion = "5.10.0"
+val junitJupiterVersion = "5.10.1"
 val kotlinVersion = "1.9.10"
 val jacksonVersion = "2.15.2"
 val slf4jApiVersion = "2.0.9"

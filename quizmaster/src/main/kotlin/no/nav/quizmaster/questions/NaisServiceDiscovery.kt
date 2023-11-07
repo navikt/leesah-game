@@ -24,14 +24,17 @@ class NaisServiceDiscovery(maxCount: Int = 1, active: Boolean = true): QuestionC
         var statusCode: Int
         val hostUrl = "http://${answer.answer}"
 
-        GlobalScope.launch {
+        runBlocking {
             try {
+                logger.info("henter response")
                 val response: HttpResponse = HttpClient().use {
+                    logger.info("http clienten: $it")
                     it.get(hostUrl)
                 }
                 statusCode = response.status.value
                 (statusCode == 200).publish(answer.teamName, answer.questionId, answer.messageId)
             } catch (e: Exception){
+                logger.info("kaster exception")
                 throw e
             }
         }

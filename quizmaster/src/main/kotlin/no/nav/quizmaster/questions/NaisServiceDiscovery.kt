@@ -22,7 +22,7 @@ class NaisServiceDiscovery(maxCount: Int = 1, active: Boolean = true): QuestionC
 
  */
         var statusCode: Int
-        val hostUrl = "http://${answer.answer}.intern.dev.nav.no"
+        val hostUrl = "http://${answer.answer}"
 
         GlobalScope.launch {
             try {

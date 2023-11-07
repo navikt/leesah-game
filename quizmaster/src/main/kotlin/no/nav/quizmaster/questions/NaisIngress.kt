@@ -29,7 +29,7 @@ class NaisIngress(maxCount: Int = 1, active: Boolean = true): QuestionCategory("
                 statusCode = response.status.value
                 (statusCode == 200).publish(answer.teamName, answer.questionId, answer.messageId)
             } catch (e: Exception){
-                logger.info("kaster exception")
+                logger.info("kaster exception $e")
             }
         }
     }

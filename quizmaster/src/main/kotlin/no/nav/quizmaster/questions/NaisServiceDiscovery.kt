@@ -32,7 +32,7 @@ class NaisServiceDiscovery(maxCount: Int = 1, active: Boolean = true): QuestionC
                 statusCode = response.status.value
                 (statusCode == 200).publish(answer.teamName, answer.questionId, answer.messageId)
             } catch (e: Exception){
-                throw e
+                logger.info("kaster exception $e")
             }
         }
     }

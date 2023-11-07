@@ -5,7 +5,7 @@ import no.nav.quizrapid.Question
 
 class NaisLogger(maxCount: Int = 1, active: Boolean = true): QuestionCategory("nais-log", maxCount, active) {
     override fun check(answer: Answer) {
-        (answer.answer == answer.teamName).publish(answer.teamName, answer.questionId, answer.messageId)
+        (answer.answer.lowercase() in LoggOrd.loggOrd).publish(answer.teamName, answer.questionId, answer.messageId)
     }
 
     override fun newQuestions(): List<Question> {

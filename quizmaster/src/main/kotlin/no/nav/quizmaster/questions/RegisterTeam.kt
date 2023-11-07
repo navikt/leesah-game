@@ -24,7 +24,8 @@ class RegisterTeam(active: Boolean) : QuestionCategory(category = "team-registra
     }
 
     private fun logHemmeligNøkkel(teamName: String) {
-        logger.info("Den hemmelige nøkkelen for $teamName er ditt teamnavn! 🎉🎉🎉")
+        val nøkkel = LoggOrd.loggOrd.random()
+        logger.info("Den hemmelige nøkkelen for $teamName er ditt $nøkkel! 🎉🎉🎉")
     }
 
     override fun check(answer: Answer) {

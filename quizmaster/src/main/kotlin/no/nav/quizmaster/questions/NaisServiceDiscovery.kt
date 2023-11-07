@@ -5,28 +5,36 @@ import io.ktor.client.engine.cio.*
 import io.ktor.client.features.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import no.nav.quizrapid.Answer
 import no.nav.quizrapid.Question
 
 class NaisServiceDiscovery(maxCount: Int = 1, active: Boolean = true): QuestionCategory("nais-service-discovery", maxCount, active) {
     override fun check(answer: Answer) {
-
-        /*val client = HttpClient(CIO) {
+/*
+        val client = HttpClient(CIO) {
             install(HttpTimeout) {
                 requestTimeoutMillis = 2000
             }
         }
+
+ */
         var statusCode: Int
+        val hostUrl = "http://${answer.answer}.intern.dev.nav.no"
 
-        runBlocking {
-            val response: HttpResponse = client.get("http://${answer.answer}")
-            statusCode = response.status.value
+        GlobalScope.launch {
+            try {
+                val response: HttpResponse = HttpClient().use {
+                    it.get(hostUrl)
+                }
+                statusCode = response.status.value
+                (statusCode == 200).publish(answer.teamName, answer.questionId, answer.messageId)
+            } catch (e: Exception){
+                throw e
+            }
         }
-
-        (statusCode == 200).publish(answer.teamName, answer.questionId, answer.messageId)
-*/
-        true.publish(answer.teamName, answer.questionId, answer.messageId)
     }
 
     override fun newQuestions(): List<Question> {

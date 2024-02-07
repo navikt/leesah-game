@@ -44,11 +44,8 @@ class RegisterTeam(active: Boolean) : QuestionCategory(category = "team-registra
     }
 
     fun checkHex(answer: String): Boolean {
-        val hexPattern = "^#?[0-9a-fA-F]+$".toRegex()
-        if(answer.length in 6..7) {
-            return answer.matches(hexPattern)
-        }
-        return false
+        val hexPattern = "^#?[0-9a-fA-F]{6,7}$".toRegex()
+        return answer.matches(hexPattern)
     }
 
     private fun Int.checkAnswer(answer: Answer) {

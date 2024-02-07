@@ -29,7 +29,7 @@ class RegisterTeam(active: Boolean) : QuestionCategory(category = "team-registra
     }
 
     override fun check(answer: Answer) {
-        if (answer.answer.length == 6) {
+        if (checkHex(answer.answer)) {
             try {
                 newTeam(answer)
                 fasit[answer.questionId]?.checkAnswer(answer)
@@ -41,6 +41,14 @@ class RegisterTeam(active: Boolean) : QuestionCategory(category = "team-registra
         } else {
             logger.debug("Feil svar = $answer må være en hex-kode på 6 tegn, ikke '${answer.answer}'")
         }
+    }
+
+    fun checkHex(answer: String): Boolean {
+        val hexPattern = "^#?[0-9a-fA-F]+$".toRegex()
+        if(answer.length in 6..7) {
+            return answer.matches(hexPattern)
+        }
+        return false
     }
 
     private fun Int.checkAnswer(answer: Answer) {

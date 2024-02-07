@@ -20,4 +20,3 @@ spec:
       app: quizmaster
   policyTypes:
   - Egress
-status: {}

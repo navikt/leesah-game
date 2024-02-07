@@ -1,9 +1,7 @@
 package no.nav.quizmaster.questions
 
 import no.nav.quizrapid.Answer
-import org.junit.jupiter.api.Assertions.assertFalse
-import org.junit.jupiter.api.Assertions.assertTrue
-import org.junit.jupiter.api.Disabled
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
 internal class RegisterTeamTest {
@@ -44,6 +42,14 @@ internal class RegisterTeamTest {
         registerQuestion.check(answer(q.id(), "test","000000"))
         assertTrue(registerQuestion.events().size == 1)
         assertTrue(registerQuestion.events().isEmpty())
+    }
+
+    @Test
+    fun `registrer team med hashtag`() {
+        val registerQuestion = RegisterTeam(true)
+        assertTrue(registerQuestion.checkHex("#ffffff"))
+        assertTrue(registerQuestion.checkHex("ffffff"))
+        assertFalse(registerQuestion.checkHex("fffff"))
     }
 
     @Test

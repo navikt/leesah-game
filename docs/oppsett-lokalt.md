@@ -32,4 +32,4 @@ Hvert bibliotek vil ha sin egen dokumentasjon for hvordan man kommer i gang.
 
 - [Python 🐍](https://github.com/navikt/leesah-game-starter-python)
 - [Go](https://github.com/navikt/go-leesah)
-- [Javascript](TBA)
+- [Typescript](https://github.com/navikt/leesah-game-starter-ts)

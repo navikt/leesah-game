@@ -38,7 +38,7 @@ spec:
       mountPath: /var/run/certs
   env:
     - name: QUIZ_TOPIC
-      value: leesah-quiz-fagtorsdag-1
+      value: leesah-quiz-uio-1
     - name: QUIZRAPID_AUTO_COMMIT
       value: "false"
     - name: KAFKA_BROKERS

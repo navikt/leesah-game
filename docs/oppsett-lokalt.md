@@ -30,6 +30,6 @@ export QUIZ_TOPIC=leesah-quiz-fagtorsdag-1
 Vi har laget biblioteker i flere forskjellige språk, så her er det bare å velge det du liker best.
 Hvert bibliotek vil ha sin egen dokumentasjon for hvordan man kommer i gang.
 
-- [Python 🐍](https://github.com/navikt/leesah-game-starter-python)
+- [Python 🐍](https://github.com/navikt/leesah-game-python)
 - [Go](https://github.com/navikt/go-leesah)
 - [Typescript](https://github.com/navikt/leesah-game-starter-ts)

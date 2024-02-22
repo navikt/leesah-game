@@ -11,7 +11,7 @@ class IsAPrime(maxCount: Int = 10, active: Boolean = false, interval: Duration =
     val fasit = mutableMapOf<String, Boolean>()
 
     companion object {
-        internal fun questionNumber(question: Question) = question.question.split("?")[1].removePrefix(" ").toInt()
+        internal fun questionNumber(question: Question) = question.question.split(" ")[4].removePrefix(" ").toInt()
     }
 
     override fun check(answer: Answer) {

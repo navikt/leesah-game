@@ -14,7 +14,7 @@ class EventSourcedQuizMasterTest {
         val question = RegisterTeam(true).questions()[0]
         val qm = QuizMaster()
         qm.handle(question)
-        qm.handle(Answer(category = question.category, teamName = "new-team", answer = "ff2400", questionId = question.id()))
+        qm.handle(Answer(category = question.category, teamName = "new-team", answer = "#ff2400", questionId = question.id()))
         val events = qm.messages()
         assertEquals(1, events.size)
         val assessment = events.first() as Assessment

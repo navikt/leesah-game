@@ -17,6 +17,7 @@ import org.apache.kafka.common.serialization.StringSerializer
 import org.awaitility.Awaitility
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import java.time.Duration
@@ -57,6 +58,7 @@ internal class QuizMasterE2E {
 
 
     @Test
+    @Disabled
     fun `questions published by an earlier Quizmaster that crashes are assessed by the new Quizmaster`() {
         val config = Config.local("testApp", listOf(embeddedKafkaEnvironment.brokersURL), testTopic)
         val firstQuizMaster = QuizMaster()

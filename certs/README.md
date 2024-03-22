@@ -8,30 +8,85 @@ Skal man opprette nye topics så anbefaler vi at man bruker et Python-script i [
 Denne vil opprette topics, og ACL, i tilegg vil den lage en Yaml-fil med sertifikater, topics, og egen student-bruker.
 Yaml-filen blir brukt av [navikt/leesah-game-cert-server](https://github.com/navikt/leesah-game-cert-server).
 
-## Using AVN
+## Guide for operatorer i NAIS
 
-```bash
-# Log in
+(til nestemann: lag et script som samler sammen alt i én kommando 😇)
+
+### Steg 0. Skru på Kafka servicen i Aiven Console
+
+```shell
 avn user login <you@example.com>
-
-# Create certs
-avn service user-kafka-java-creds nav-integration-test-kafka --username leesah-quiz-master -d .
+avn project switch nav-integration-test
+avn service update nav-integration-test-kafka --power-on
 ```
 
-## Create k8s secret
+### Steg 1. Kjør script fra `nais/kafkarator` for å opprette topics og klientsertifikater for `leesah-game-cert-server`
 
-```bash
-kubectl --context prod-gcp --namespace leesah-quiz create secret generic leesah-certs --from-file=keystore.p12=client.keystore.p12 --from-file=truststore.jks=client.truststore.jks
+Scriptet ligger her: <https://github.com/nais/kafkarator/blob/master/scripts/leesah_quiz_creds.py>.
+
+Denne outputter en YAML-fil med prefiks `leesah-quiz-cert`:
+
+```shell
+# python leesah_quiz_creds.py oslomet 5
+python leesah_quiz_creds.py $EVENT_NAME $NUMBER_OF_TOPICS
+...
+Packet saved to /var/folders/4c/4f248mj91qv4pj5dnlynm5yr0000gn/T/leesah-quiz-cert6uo2vvi7.yaml
 ```
 
-Hvis hemmeligheten finnes (som den nok gjør), så må den slettes først.
+Filen må renames til `student-certs.yaml`:
 
-```bash
-kubectl --context prod-gcp --namespace leesah-quiz delete secret leesah-certs
+```shell
+mv <path/to/leesah-quiz-cert.yaml> student-certs.yaml
 ```
 
-Og så må appene rulleres (vi bare dreper alt i namespace leesah-quiz).
+Og deretter zippes til `leesah-creds.zip`:
 
-```bash
-kubectl --context prod-gcp --namespace leesah-quiz delete pods --all
+```shell
+zip leesah-creds.zip <path/to/student-certs.yaml>
+```
+
+### Steg 2. Tilgjengeliggjør sertifikater for `leesah-game-cert-server`
+
+```shell
+kubectl delete secret creds-server-student-certs \
+  --context dev-gcp \
+  --namespace leesah-quiz
+
+kubectl create secret generic creds-server-student-certs \
+  --context dev-gcp \
+  --namespace leesah-quiz \
+  --from-file=leesah-creds.zip
+```
+
+### Steg 3. Lag sertifikater for `quizmaster` og `quizboard`
+
+```shell
+avn service user-kafka-java-creds nav-integration-test-kafka \
+  --username leesah-quiz-master \
+  -d .
+```
+
+### Steg 4. Tilgjengeliggjør sertifikater for `quizmaster` og `quizboard`
+
+```shell
+kubectl delete secret leesah-certs \
+  --context prod-gcp \
+  --namespace leesah-quiz
+
+kubectl create secret generic leesah-certs \
+  --context prod-gcp \
+  --namespace leesah-quiz \
+  --from-file=keystore.p12=client.keystore.p12 \
+  --from-file=truststore.jks=client.truststore.jks
+```
+
+### Steg 5. Restart alle appene
+
+```shell
+kubectl rollout restart deploy \
+  --context dev-gcp \
+  --namespace leesah-quiz 
+kubectl rollout restart deploy \
+  --context prod-gcp \
+  --namespace leesah-quiz
 ```

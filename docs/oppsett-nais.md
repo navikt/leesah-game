@@ -31,7 +31,9 @@ metadata:
   labels:
     team: leesah-quiz
 spec:
+  {%- raw -%}
   image: {{image}}
+  {% endraw %}
   replicas:
     max: 1
     min: 1
@@ -48,7 +50,7 @@ spec:
   - Du kan gå til [docs.nav.cloud.nais.io](https://doc.nav.cloud.nais.io/how-to-guides/github-action/) for å lese en oppdatert guide for å sette opp workflow for deploy til Nais.
 
 ```yaml
-on: [push, workflow_dispatch]
+on: [push]
 
 jobs:
   build_and_push:
@@ -58,7 +60,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
@@ -69,14 +71,18 @@ jobs:
         id: docker-push
         with:
           team: leesah-quiz
-          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }} # required, but is defined as an organization variable
-          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }} # required, but is defined as an organization secret
+          {%- raw -%}
+          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
+          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
+          {% endraw %}
       - name: Deploy
         uses: nais/deploy/actions/deploy@v2
         env:
-          CLUSTER: dev-gcp # Replace
-          RESOURCE: nais.yaml #, topic.yaml, statefulset.yaml, etc.
-          IMAGE: ${{ steps.docker-push.outputs.image }}
+          CLUSTER: dev-gcp
+          RESOURCE: nais.yaml
+          {%- raw -%}
+          IMAGE: ${{ steps.docker-push.outputs.image }}"
+          {% endraw %}
 ```
 
 Hvis du vil trigge en workflow manuelt, kan du legge til `workflow_dispatch` til `on`-arrayet.
@@ -89,7 +95,9 @@ Du kan også fremskynde deployment ved å avbryte nåværende kjøringer når du
 
 ```yaml
 concurrency:
+  {%- raw -%}
   group: ${{ github.workflow }}-${{ github.ref }}
+  {% endraw %}
   cancel-in-progress: true
 ```
 

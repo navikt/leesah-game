@@ -8,9 +8,13 @@
 - [Go](https://github.com/navikt/leesah-game-template-go)
 
 1. Click the _Use this template_ button located at the top of the repo
-2. Create a new public repository from the template with your team name with the navikt organisation as owner.
-3. Clone your repository to your local machine
-    - `git clone https://github.com/navikt/<YOUR_REPOSITORY_NAME>-leesah-quiz.git`
+2. Create a new public repository from the template with your team name with the navikt organisation as owner
+3. In your new repository add the team `leesah-quiz` with at least `write` access for the repo
+4. Then go to [NAIS Console](https://console.nav.cloud.nais.io/team/leesah-quiz/repositories) and `Authorize` your repo
+   - If your repo is not in the list you can try to manually trigger the sync via `Synchronize team` under [NAIS Console > settings](https://console.nav.cloud.nais.io/team/leesah-quiz/settings)
+5. Clone your repository to your local machine
+    - `git clone https://github.com/navikt/<YOUR_REPOSITORY_NAME>.git`
+6. Continue with the guide below
 
 ### Nais & deploy
 You will have to deploy your app to answer questions and play the game, and therefore you will need a `nais.yaml` file in root.

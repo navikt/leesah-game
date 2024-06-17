@@ -79,8 +79,6 @@ Når du er "inne" i Kibana, må du endre `<YOUR TEAM NAME>` til ditt lagnavn.
 
 ## Utvikle din quiz-deltaker 🤖
 
-Din utfordring er å implementere en QuizParticipant som svarer på alle spørsmålene som publiseres av quizmasteren 🧙.
-
 Koden du trenger å endre ligger i `main.go`/`QuizApplication.kt`.
 
 Fra kommandolinjen i prosjektets rotmappe kjører du:

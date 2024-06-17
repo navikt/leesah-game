@@ -80,7 +80,7 @@ When "inside" Kibana you need to change `<YOUR TEAM NAME>` to your team name.
 
 Your challenge is to implement a QuizParticipant that answers all the questions that are published by the quizmaster 🧙.
 
-The code you need to modify is all located in `main.go`/`main.kt`.
+The code you need to modify is all located in `main.go`/`QuizApplication.kt`.
 
 From the command-line in the project root run:
 

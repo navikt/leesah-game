@@ -7,8 +7,8 @@
 - [Kotlin](https://github.com/navikt/leesah-game-template)
 - [Go](https://github.com/navikt/leesah-game-template-go)
 
-1. Click the _Use this template_ button located at the top of this repo
-2. Create a new public repository from the template with your team name with the navikt organisation as owner (Remember `-leesah-quiz` after your repository name).
+1. Click the _Use this template_ button located at the top of the repo
+2. Create a new public repository from the template with your team name with the navikt organisation as owner.
 3. Clone your repository to your local machine
     - `git clone https://github.com/navikt/<YOUR_REPOSITORY_NAME>-leesah-quiz.git`
 
@@ -35,11 +35,12 @@ spec:
       value: <CHANGE_ME>
 ```
 
-Remember to change the name on line 4 to your team name. Lowercase letters and do not add `-leesah-quiz`.
-You also need to change topic value on the last line, he should be on the slide/whiteboard/blackboard.
+- Remember to change the name on line 4 to your team name with lowercase letters.
+- You also need to change topic value on the last line, he should be on the slide/whiteboard/blackboard.
+- You also need to create a GitHub workflow-file. Start by creating folders `.github/workflows` on root.
+Then go to [docs.nav.cloud.nais.io](https://doc.nav.cloud.nais.io/how-to-guides/github-action/) to read an updated guide for setting up the workflow for deploying to Nais.
+    - Remember to change the team name on line 19 and the cluster on line 25 
 
-You also need to create a GitHub workflow file (the are in the `.github/workflows` folder).
-There is always an update guide for setting up the workflow for deploying to Nais at [docs.nav.cloud.nais.io](https://doc.nav.cloud.nais.io/how-to-guides/github-action/)
 
 If you would like to manually trigger a workflow you can add `workflow_dispatch` to the `on` array.
 
@@ -55,7 +56,7 @@ concurrency:
   cancel-in-progress: true
 ```
 
-### Observability
+## Observability
 
 Use the following command to observe the running status of your app
 
@@ -77,25 +78,33 @@ When "inside" Kibana you need to change `<YOUR TEAM NAME>` to your team name.
 
 ## Developing your quiz participant 🤖
 
-Your challenge is to implement a QuizParticipant that answers all the question messages that are published by the quizmaster 🧙.
-You are free to develop your application any way you want, but this starter project comes with som useful boilerplate to help you quickly get to the fun part; answering questions! 🎉
+Your challenge is to implement a QuizParticipant that answers all the questions that are published by the quizmaster 🧙.
 
-The code you need to modify is all located in `main.go`.
+The code you need to modify is all located in `main.go`/`main.kt`.
 
 From the command-line in the project root run:
 
 **To build the app locally**
+
+Kotlin
 ```bash
- go build .
+./gradlew clean build
 ```
 
-**To run the app locally**
+GO
+```bash
+go build .
+```
+
+**To run the app locally (only with GO)**
+
+GO
 ```bash
 go run .
 ```
 
 ### First task
 
-Answer the team question with a hex-color (6 characters, without #) in `Answer()` and deploy the application to NAIS!
+Answer the team question with a hex-color (6 characters) in `Answer()` and deploy the application to NAIS!
 
 Good luck! Remember to ask questions! ❤️

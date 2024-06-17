@@ -1,29 +1,32 @@
 # Nais Leesah
 
-## Kom i gang 📝
+Din utfordring er å implementere en QuizParticipant som svarer på alle spørsmålene som 
+publiseres av Quizmaster 🧙. Du står fritt til å utvikle applikasjonen din slik du vil, 
+men dette startprosjektet kommer med nyttig grunnstruktur som hjelper deg raskt å komme i gang med 
+det morsomme; å svare på spørsmål og å vinne quizen! 🎉
 
 ### Velg ditt språk
 
 - [Kotlin](https://github.com/navikt/leesah-game-template)
 - [Go](https://github.com/navikt/leesah-game-template-go)
 
-1. Click the _Use this template_ button located at the top of the repo
-2. Create a new public repository from the template with your team name with the navikt organisation as owner
-3. In your new repository add the team `leesah-quiz` with at least `write` access for the repo
-4. Then go to [NAIS Console](https://console.nav.cloud.nais.io/team/leesah-quiz/repositories) and `Authorize` your repo
-   - If your repo is not in the list you can try to manually trigger the sync via `Synchronize team` under [NAIS Console > settings](https://console.nav.cloud.nais.io/team/leesah-quiz/settings)
-5. Clone your repository to your local machine
-    - `git clone https://github.com/navikt/<YOUR_REPOSITORY_NAME>.git`
-6. Continue with the guide below
+1. Klikk på knappen _Use this template_ som er plassert øverst i repoet
+2. Opprett et nytt offentlig repository fra malen med ditt lagnavn og navikt-organisasjonen som eier
+3. I ditt nye repository legger du til teamet _leesah-quiz_ med adming-tilgang for repoet
+4. Gå deretter til [NAIS Console](https://console.nav.cloud.nais.io/) og autoriser repoet ditt ved å klikke på _leesah-quiz_ under _My Teams_, deretter Repositories, finn ditt repo og klikk _Authorize_  
+   - Hvis repoet ditt ikke er på listen, kan du prøve å trigge synkroniseringen manuelt via _Synchronize team_ under _Settings_
+5. Klon ditt repository til din lokale maskin
+   - `git clone https://github.com/navikt/<DITT_REPOSITORY_NAVN>.git`
+6. Fortsett med guiden nedenfor
 
-### Nais & deploy
-You will have to deploy your app to answer questions and play the game, and therefore you will need a `nais.yaml` file in root.
+### Deploy
+Du må deploye appen din for å svare på spørsmål og spille spillet, og til det trenger du en `nais.yaml`-fil i root.
 
 ```yaml
 apiVersion: nais.io/v1alpha1
 kind: Application
 metadata:
-  name: <YOUR_TEAM_NAME> # CHANGE THIS! This will be the name of your application
+  name: <YOUR_TEAM_NAME> # ENDRE DETTE! Dette vil være navnet på applikasjonen din
   namespace: leesah-quiz
   labels:
     team: leesah-quiz
@@ -39,20 +42,18 @@ spec:
       value: <CHANGE_ME>
 ```
 
-- Remember to change the name on line 4 to your team name with lowercase letters.
-- You also need to change topic value on the last line, he should be on the slide/whiteboard/blackboard.
-- You also need to create a GitHub workflow-file. Start by creating folders `.github/workflows` on root.
-Then go to [docs.nav.cloud.nais.io](https://doc.nav.cloud.nais.io/how-to-guides/github-action/) to read an updated guide for setting up the workflow for deploying to Nais.
-    - Remember to change the team name on line 19 and the cluster on line 25 
+- Husk å endre navnet på linje 4 til ditt teamnavn med små bokstaver.
+- Du må også endre verdien av topic på siste linje, det får du av QuizMasterne.
+- Du må også lage en GitHub workflow-fil. Start med å legge mappene `.github/workflows` i root. Deretter går du til [docs.nav.cloud.nais.io](https://doc.nav.cloud.nais.io/how-to-guides/github-action/) for å lese en oppdatert guide for å sette opp workflow for deploy til Nais.
+  - Husk å endre lagnavnet på linje 19 og cluster på linje 25.
 
-
-If you would like to manually trigger a workflow you can add `workflow_dispatch` to the `on` array.
+Hvis du vil trigge en workflow manuelt, kan du legge til `workflow_dispatch` til `on`-arrayet.
 
 ```yaml
 on: [push, workflow_dispatch]
 ```
 
-You can also speed up deployment by aborint current runs when deploying a new version:
+Du kan også fremskynde deployment ved å avbryte nåværende kjøringer når du deployerer en ny versjon:
 
 ```yaml
 concurrency:
@@ -60,35 +61,31 @@ concurrency:
   cancel-in-progress: true
 ```
 
-## Observability
+## Logger️
 
-Use the following command to observe the running status of your app
+Gå til [logs.adeo.no](https://logs.adeo.no/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-90d%2Fd,to:now))&_a=(columns:!(level,message,envclass,application,pod),filters:!(),index:'96e648c0-980a-11e9-830a-e17bbd64b4db',interval:auto,query:(language:kuery,query:'application:%20%22<YOUR_TEAM_NAME>%22%20and%20%22QUESTION%22'),sort:!(!('@timestamp',desc)))) for å se applikasjonsloggene dine i Kibana.
+Når du er "inne" i Kibana, må du endre `<YOUR TEAM NAME>` til ditt lagnavn.
 
-### Logs in Kibana
+### Nyttige kubectl-kommandoer
 
-Go to [logs.adeo.no](https://logs.adeo.no/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-90d%2Fd,to:now))&_a=(columns:!(level,message,envclass,application,pod),filters:!(),index:'96e648c0-980a-11e9-830a-e17bbd64b4db',interval:auto,query:(language:kuery,query:'application:%20%22<YOUR_TEAM_NAME>%22%20and%20%22QUESTION%22'),sort:!(!('@timestamp',desc)))) to see your application logs in Kibana.
-When "inside" Kibana you need to change `<YOUR TEAM NAME>` to your team name.
-
-### Useful kubectl-commands
-
-* See name and status of pods of your app:
+* Se navn og status på pods for appen din:
     * `kubectl get pod -n leesah-quiz -l app=<APP_NAME>`
-    * if you wish to continuously trace the status of pods of your app, you can add the flag `-w`
-* View logs of pods of your app:
-    * Too see logs for all your pods: `kubectl logs -n leesah-quiz -l app=<APP_NAME>` 
-    * To see logs for one specifig pod: `kubectl logs -n leesah-quiz <POD_NAME>`
-    * You can find name(s) of your pod(s) with the previous command
-    * If you wish to continuously trace logs, you can add the flag `-f`
+    * Hvis du ønsker å kontinuerlig spore statusen til pods for appen din, kan du legge til flagget `-w`
+* Se logger for pods for appen din:
+    * For å se logger for alle pods: `kubectl logs -n leesah-quiz -l app=<APP_NAME>`
+    * For å se logger for en spesifikk pod: `kubectl logs -n leesah-quiz <POD_NAME>`
+    * Du kan finne navnene på dine pods med den forrige kommandoen
+    * Hvis du ønsker å kontinuerlig spore logger, kan du legge til flagget `-f`
 
-## Developing your quiz participant 🤖
+## Utvikle din quiz-deltaker 🤖
 
-Your challenge is to implement a QuizParticipant that answers all the questions that are published by the quizmaster 🧙.
+Din utfordring er å implementere en QuizParticipant som svarer på alle spørsmålene som publiseres av quizmasteren 🧙.
 
-The code you need to modify is all located in `main.go`/`QuizApplication.kt`.
+Koden du trenger å endre ligger i `main.go`/`QuizApplication.kt`.
 
-From the command-line in the project root run:
+Fra kommandolinjen i prosjektets rotmappe kjører du:
 
-**To build the app locally**
+**For å bygge appen lokalt**
 
 Kotlin
 ```bash
@@ -100,15 +97,15 @@ GO
 go build .
 ```
 
-**To run the app locally (only with GO)**
+**For å kjøre appen lokalt (kun med GO)**
 
 GO
 ```bash
 go run .
 ```
 
-### First task
+### Første oppgave
 
-Answer the team question with a hex-color (6 characters) in `Answer()` and deploy the application to NAIS!
+Svar på lagspørsmålet med en hex-farge (6 tegn) i `Answer()` og deploy applikasjonen til NAIS!
 
-Good luck! Remember to ask questions! ❤️
+Lykke til! Husk å stille spørsmål! ❤️

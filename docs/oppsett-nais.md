@@ -44,8 +44,40 @@ spec:
 
 - Husk å endre navnet på linje 4 til ditt teamnavn med små bokstaver.
 - Du må også endre verdien av topic på siste linje, det får du av QuizMasterne.
-- Du må også lage en GitHub workflow-fil. Start med å legge mappene `.github/workflows` i root. Deretter går du til [docs.nav.cloud.nais.io](https://doc.nav.cloud.nais.io/how-to-guides/github-action/) for å lese en oppdatert guide for å sette opp workflow for deploy til Nais.
-  - Husk å endre lagnavnet på linje 19 og cluster på linje 25.
+- Du må også lage en GitHub workflow-fil. Start med å legge mappene `.github/workflows` i root. Deretter limer du inn følgende kode i `nais.yml`-filen. 
+  - Du kan gå til [docs.nav.cloud.nais.io](https://doc.nav.cloud.nais.io/how-to-guides/github-action/) for å lese en oppdatert guide for å sette opp workflow for deploy til Nais.
+
+```yaml
+on: [push, workflow_dispatch]
+
+jobs:
+  build_and_push:
+    permissions:
+      contents: "read"
+      id-token: "write"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+      - name: test and build
+        run: gradle build
+      - uses: nais/docker-build-push@v0
+        id: docker-push
+        with:
+          team: leesah-quiz
+          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }} # required, but is defined as an organization variable
+          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }} # required, but is defined as an organization secret
+      - name: Deploy
+        uses: nais/deploy/actions/deploy@v2
+        env:
+          CLUSTER: dev-gcp # Replace
+          RESOURCE: nais.yaml #, topic.yaml, statefulset.yaml, etc.
+          IMAGE: ${{ steps.docker-push.outputs.image }}
+```
 
 Hvis du vil trigge en workflow manuelt, kan du legge til `workflow_dispatch` til `on`-arrayet.
 

@@ -44,7 +44,7 @@ spec:
 
 - Husk å endre navnet på linje 4 til ditt teamnavn med små bokstaver.
 - Du må også endre verdien av topic på siste linje, det får du av QuizMasterne.
-- Du må også lage en GitHub workflow-fil. Start med å legge mappene `.github/workflows` i root. Deretter limer du inn følgende kode i `nais.yml`-filen. 
+- Du må også lage en GitHub workflow-fil. Start med å legge mappene `.github/workflows` i root. Deretter limer du inn følgende kode i `main.yaml`-filen. 
   - Du kan gå til [docs.nav.cloud.nais.io](https://doc.nav.cloud.nais.io/how-to-guides/github-action/) for å lese en oppdatert guide for å sette opp workflow for deploy til Nais.
 
 ```yaml

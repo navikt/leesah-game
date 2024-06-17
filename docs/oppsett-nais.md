@@ -39,7 +39,7 @@ spec:
     pool: nav-dev
   env:
     - name: QUIZ_TOPIC
-      value: <CHANGE_ME>
+      value: <CHANGE_ME> # ENDRE DETTE!
 ```
 
 - Husk å endre navnet på linje 4 til ditt teamnavn med små bokstaver.
@@ -117,19 +117,17 @@ Fra kommandolinjen i prosjektets rotmappe kjører du:
 
 **For å bygge appen lokalt**
 
-Kotlin
+Kotlin:
 ```bash
 ./gradlew clean build
 ```
 
-GO
+GO:
 ```bash
 go build .
 ```
 
 **For å kjøre appen lokalt (kun med GO)**
-
-GO
 ```bash
 go run .
 ```

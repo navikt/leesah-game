@@ -41,7 +41,7 @@ spec:
     pool: nav-dev
   env:
     - name: QUIZ_TOPIC
-      value: <CHANGE_ME> # ENDRE DETTE!
+      value: leesah-quiz.leesah-rapid-v2
 ```
 
 - Husk å endre navnet på linje 4 til ditt teamnavn med små bokstaver.

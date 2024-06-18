@@ -22,7 +22,7 @@ det morsomme; å svare på spørsmål og å vinne quizen! 🎉
 ## Deploy
 
 ### nais.yaml
-Du må deploye appen din for å svare på spørsmål og spille spillet, og til det trenger du en `nais.yaml`-fil i root.
+Du må deploye appen din for å svare på spørsmål og spille spillet, og til det trenger du å legge inn ditt team navn i `nais.yaml`.
 
 ```yaml
 apiVersion: nais.io/v1alpha1
@@ -46,11 +46,10 @@ spec:
       value: leesah-quiz.leesah-rapid-v2
 ```
 
-- Husk å endre navnet på linje 4 til ditt teamnavn med små bokstaver.
-- Du må også endre verdien av topic på siste linje, det får du av QuizMasterne.
+- Husk å endre navnet på linje 4 til ditt teamnavn med små bokstaver og bindestrek istedenfor mellomrom.
 
-### main.yaml
-Du må også lage en GitHub workflow-fil. Start med å legge mappene `.github/workflows` i root. Deretter limer du inn følgende kode i `main.yaml`-filen. 
+### deploy.yaml
+Du må også konfigurere en GitHub workflow-fil. Lim inn følgende kode i  `.github/workflows/deploy.yaml`-filen
 - Du kan gå til [docs.nav.cloud.nais.io](https://doc.nav.cloud.nais.io/how-to-guides/github-action/) for å lese en oppdatert guide for å sette opp workflow for deploy til Nais.
 
 ```yaml

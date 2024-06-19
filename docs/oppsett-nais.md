@@ -84,7 +84,7 @@ jobs:
           CLUSTER: dev-gcp
           RESOURCE: nais.yaml
           {%- raw %}
-          IMAGE: ${{ steps.docker-push.outputs.image }}"
+          IMAGE: ${{ steps.docker-push.outputs.image }}
           {% endraw %}
 ```
 

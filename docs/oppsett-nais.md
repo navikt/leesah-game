@@ -147,6 +147,6 @@ go run .
 
 ## Første oppgave
 
-Svar på lagspørsmålet med en hex-farge (6 tegn) i `Answer()` og deploy applikasjonen til NAIS!
+Svar på lagspørsmålet med en hex-farge (6 tegn) i `Answer()` og deploy applikasjonen til NAIS! PS: husk '#', eksempel: #FFFFFF
 
 Lykke til! Husk å stille spørsmål! ❤️

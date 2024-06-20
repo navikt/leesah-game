@@ -1,7 +1,7 @@
 val ktorVersion = "1.6.8"
 val kafkaVersion = "3.6.0"
 val junitJupiterVersion = "5.10.1"
-val kotlinVersion = "1.9.20"
+val kotlinVersion = "1.9.24"
 val jacksonVersion = "2.15.3"
 val slf4jApiVersion = "2.0.9"
 val logbackClassicVersion = "1.4.11"
@@ -11,8 +11,13 @@ val kafkaEmbeddedEnvVersion = "3.2.4"
 val awaitilityVerison = "4.2.0"
 
 plugins {
-    kotlin("jvm") version "1.9.20"
+    kotlin("jvm") version "1.9.24"
 }
+
+kotlin {
+    jvmToolchain(21)
+}
+
 allprojects {
     repositories {
         mavenCentral()
@@ -46,11 +51,9 @@ subprojects {
         implementation("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
         implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion")
 
-
         implementation("org.slf4j:slf4j-api:$slf4jApiVersion")
         implementation("ch.qos.logback:logback-classic:$logbackClassicVersion")
         implementation("net.logstash.logback:logstash-logback-encoder:$logbackEncoderVersion")
-
 
         api("io.ktor:ktor-metrics-micrometer:$ktorVersion")
         api("io.micrometer:micrometer-registry-prometheus:$prometheusVerison")

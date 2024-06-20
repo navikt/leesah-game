@@ -16,6 +16,7 @@ jobs:
     permissions:
       contents: read
       packages: write
+      id-token: write
     outputs:
       image: ${{ steps.docker-build-push.outputs.image }}
     steps:
@@ -39,6 +40,9 @@ jobs:
     name: Deploy to dev
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v4
       - uses: nais/login@v0
@@ -56,6 +60,9 @@ jobs:
     name: Deploy to prod
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v4
       - uses: nais/login@v0

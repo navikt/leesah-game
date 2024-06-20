@@ -2,29 +2,18 @@ name: Quizboard-build
 
 on:
   push:
-    branches: [ main ]
+    branches: main
     paths-ignore:
-      - '**/README.md'
+      - '*.md'
       - 'docker-compose.yml'
       - 'quizmaster'
       - 'docs/**'
 
 jobs:
-  set_version:
-    name: set image name
-    runs-on: ubuntu-latest
-    steps:
-      - name: create docker tag
-        run: echo "TAG=$(echo ${{ github.sha }} | cut -c1-7)" >> $GITHUB_ENV
-    outputs:
-      image: ghcr.io/${{ github.repository }}/leesah-quizboard:${{ env.TAG }}
-
-
   build:
     name: build docker image
     runs-on: ubuntu-latest
-    needs: set_version
-    permissions:
+      permissions:
       contents: read
       packages: write
     steps:
@@ -36,36 +25,44 @@ jobs:
       - name: test and build
         run: ../gradlew build
         working-directory: quizboard
-      - name: build docker image
-        run: docker build . --pull -t ${{ needs.set_version.outputs.image }}
-        working-directory: quizboard
-      - name: push docker image
-        run: |
-          docker login --username "$GITHUB_REPOSITORY" -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
-          docker push ${{ needs.set_version.outputs.image }}
-
+      - name: Push docker image to GAR
+        uses: nais/docker-build-push@v0
+        id: docker-build-push
+        with:
+          team: leesah-quiz
+          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }} # Provided as Organization Secret
+          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }} # Provided as Organization Variable
+  
   deployDev:
     name: Deploy to dev
-    needs: [ set_version, build ]
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: nais/deploy/actions/deploy@v1
+      - uses: nais/login@v0
+        with:
+          team: leesah-quiz
+          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
+          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
+      - uses: nais/deploy/actions/deploy@v2
         env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: dev-gcp
           RESOURCE: nais/quizboard-dev.yml
-          IMAGE: ${{ needs.set_version.outputs.image }}
+          IMAGE: ${{ needs.build.outputs.image }}
 
   deployProd:
     name: Deploy to prod
-    needs: [ set_version, build ]
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: nais/deploy/actions/deploy@v1
+      - uses: nais/login@v0
+        with:
+          team: leesah-quiz
+          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
+          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
+      - uses: nais/deploy/actions/deploy@v2
         env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: prod-gcp
           RESOURCE: nais/quizboard-prod.yml
-          IMAGE: ${{ needs.set_version.outputs.image }}
+          IMAGE: ${{ needs.build.outputs.image }}

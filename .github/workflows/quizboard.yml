@@ -13,9 +13,11 @@ jobs:
   build:
     name: build docker image
     runs-on: ubuntu-latest
-      permissions:
+    permissions:
       contents: read
       packages: write
+    outputs:
+      image: ${{ steps.docker-build-push.outputs.image }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v3

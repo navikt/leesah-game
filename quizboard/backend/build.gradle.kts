@@ -43,11 +43,11 @@ tasks {
     }
     tasks {
         compileKotlin {
-            kotlinOptions.jvmTarget = "21"
+            kotlinOptions.jvmTarget = "17"
         }
 
         compileTestKotlin {
-            kotlinOptions.jvmTarget = "21"
+            kotlinOptions.jvmTarget = "17"
         }
         withType<Test> {
             useJUnitPlatform()
@@ -60,13 +60,11 @@ tasks {
 repositories {
     mavenCentral()
 }
-
 val compileKotlin: KotlinCompile by tasks
 compileKotlin.kotlinOptions {
-    jvmTarget = "21"
+    jvmTarget = "1.8"
 }
-
 val compileTestKotlin: KotlinCompile by tasks
 compileTestKotlin.kotlinOptions {
-    jvmTarget = "21"
+    jvmTarget = "1.8"
 }

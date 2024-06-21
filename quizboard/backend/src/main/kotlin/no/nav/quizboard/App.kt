@@ -95,7 +95,7 @@ fun ktorServer(quizboard: Quizboard): ApplicationEngine = embeddedServer(CIO, ap
             }
 
             get("/metrics") {
-                call.respondText(prometheusRegistry.scrape().toString())
+                call.respond(prometheusRegistry.scrape())
             }
         }
     }

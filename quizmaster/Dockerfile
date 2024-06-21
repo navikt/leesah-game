@@ -1,3 +1,3 @@
-FROM navikt/java:18
+FROM navikt/java:21
 
 COPY build/libs/*.jar ./

@@ -1,3 +1,3 @@
-FROM navikt/java:21
+FROM eclipse-temurin:21-jre-alpine
 
 COPY build/libs/*.jar ./

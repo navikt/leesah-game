@@ -1,10 +1,6 @@
 import java.nio.file.Paths
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-val ktorVersion = "1.6.4"
-val kafkaVersion = "2.8.0"
-val junitJupiterVersion = "5.8.1"
-
 plugins {
     application
     kotlin("jvm")
@@ -53,9 +49,9 @@ repositories {
 }
 val compileKotlin: KotlinCompile by tasks
 compileKotlin.kotlinOptions {
-    jvmTarget = "1.8"
+    jvmTarget = "21"
 }
 val compileTestKotlin: KotlinCompile by tasks
 compileTestKotlin.kotlinOptions {
-    jvmTarget = "1.8"
+    jvmTarget = "21"
 }

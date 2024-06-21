@@ -5,7 +5,7 @@ jobs:
   gradle-dependency-submission:
     name: Dependencies
     runs-on: ubuntu-latest
-    permissions:
+    permissions: # The Dependency Submission API requires write permission
       contents: write
     steps:
       - name: 'Checkout Repository'

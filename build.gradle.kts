@@ -55,6 +55,7 @@ subprojects {
         api("io.ktor:ktor-metrics-micrometer:$ktorVersion")
         api("io.micrometer:micrometer-registry-prometheus:$prometheusVerison")
 
+
         testImplementation("no.nav:kafka-embedded-env:$kafkaEmbeddedEnvVersion")
         testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
         testImplementation("org.junit.jupiter:junit-jupiter-params:$junitJupiterVersion")

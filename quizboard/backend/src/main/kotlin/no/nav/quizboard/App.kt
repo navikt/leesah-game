@@ -16,10 +16,9 @@ import io.micrometer.core.instrument.binder.jvm.JvmGcMetrics
 import io.micrometer.core.instrument.binder.jvm.JvmMemoryMetrics
 import io.micrometer.core.instrument.binder.jvm.JvmThreadMetrics
 import io.micrometer.core.instrument.binder.system.ProcessorMetrics
-import io.micrometer.prometheus.PrometheusConfig
-import io.micrometer.prometheus.PrometheusMeterRegistry
-import io.prometheus.client.CollectorRegistry
-import io.prometheus.client.exporter.common.TextFormat
+import io.micrometer.prometheusmetrics.PrometheusConfig
+import io.micrometer.prometheusmetrics.PrometheusMeterRegistry
+import io.prometheus.metrics.model.registry.PrometheusRegistry
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.ReceiveChannel
 import kotlinx.coroutines.channels.broadcast
@@ -29,7 +28,7 @@ import no.nav.quizrapid.RapidServer
 import no.nav.quizrapid.objectMapper
 import java.util.*
 
-val collectorRegistry: CollectorRegistry = CollectorRegistry.defaultRegistry
+val prometheusRegistry: PrometheusRegistry = PrometheusRegistry()
 
 fun main() {
     val quizboard = Quizboard()
@@ -46,7 +45,7 @@ fun ktorServer(quizboard: Quizboard): ApplicationEngine = embeddedServer(CIO, ap
         install(MicrometerMetrics) {
             registry = PrometheusMeterRegistry(
                 PrometheusConfig.DEFAULT,
-                collectorRegistry,
+                prometheusRegistry,
                 Clock.SYSTEM
             )
             meterBinders = listOf(
@@ -96,11 +95,7 @@ fun ktorServer(quizboard: Quizboard): ApplicationEngine = embeddedServer(CIO, ap
             }
 
             get("/metrics") {
-                val names = call.request.queryParameters.getAll("name[]")?.toSet() ?: emptySet()
-
-                call.respondTextWriter(ContentType.parse(TextFormat.CONTENT_TYPE_004)) {
-                    TextFormat.write004(this, collectorRegistry.filteredMetricFamilySamples(names))
-                }
+                call.respondText(prometheusRegistry.scrape().toString())
             }
         }
     }
@@ -124,4 +119,3 @@ suspend fun ApplicationCall.respondSse(events: ReceiveChannel<SseEvent<BoardResu
         }
     }
 }
-

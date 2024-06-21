@@ -31,18 +31,18 @@ fun main() {
 
 
 fun ktorServer(quizMaster: QuizMaster): ApplicationEngine = embeddedServer(CIO, applicationEngineEnvironment {
-    val prometheusRegistry = PrometheusRegistry()
+    val prometheusRegistry = PrometheusMeterRegistry(
+        PrometheusConfig.DEFAULT,
+        PrometheusRegistry(),
+        Clock.SYSTEM
+    )
 
     connector {
         port = 8080
     }
     module {
         install(MicrometerMetrics) {
-            registry = PrometheusMeterRegistry(
-                PrometheusConfig.DEFAULT,
-                prometheusRegistry,
-                Clock.SYSTEM
-            )
+            registry = prometheusRegistry
             meterBinders = listOf(
                 ClassLoaderMetrics(),
                 JvmMemoryMetrics(),
@@ -111,7 +111,7 @@ fun ktorServer(quizMaster: QuizMaster): ApplicationEngine = embeddedServer(CIO, 
             }
 
             get("/metrics") {
-                call.respond(prometheusRegistry.scrape())
+                call.respondText(prometheusRegistry.scrape(), ContentType.Text.Plain)
             }
 
             get("/ready") {

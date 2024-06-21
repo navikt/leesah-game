@@ -28,7 +28,11 @@ import no.nav.quizrapid.RapidServer
 import no.nav.quizrapid.objectMapper
 import java.util.*
 
-val prometheusRegistry: PrometheusRegistry = PrometheusRegistry()
+val prometheusRegistry: PrometheusMeterRegistry = PrometheusMeterRegistry(
+    PrometheusConfig.DEFAULT,
+    PrometheusRegistry(),
+    Clock.SYSTEM
+)
 
 fun main() {
     val quizboard = Quizboard()
@@ -43,11 +47,7 @@ fun ktorServer(quizboard: Quizboard): ApplicationEngine = embeddedServer(CIO, ap
     }
     module {
         install(MicrometerMetrics) {
-            registry = PrometheusMeterRegistry(
-                PrometheusConfig.DEFAULT,
-                prometheusRegistry,
-                Clock.SYSTEM
-            )
+            registry = prometheusRegistry
             meterBinders = listOf(
                 ClassLoaderMetrics(),
                 JvmMemoryMetrics(),
@@ -95,7 +95,7 @@ fun ktorServer(quizboard: Quizboard): ApplicationEngine = embeddedServer(CIO, ap
             }
 
             get("/metrics") {
-                call.respond(prometheusRegistry.scrape())
+                call.respondText(prometheusRegistry.scrape(), ContentType.Text.Plain)
             }
         }
     }

@@ -1,9 +1,8 @@
 package no.nav.quizmaster.questions
 
 import no.nav.quizrapid.Answer
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
-
-import org.junit.jupiter.api.Assertions.*
 import java.time.Duration
 
 internal class PingPongTest {

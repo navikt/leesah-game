@@ -4,7 +4,6 @@ import no.nav.quizrapid.Answer
 import no.nav.quizrapid.Question
 import java.time.Duration
 import java.util.*
-import kotlin.Exception
 
 enum class TransactionType {
     INNSKUDD,

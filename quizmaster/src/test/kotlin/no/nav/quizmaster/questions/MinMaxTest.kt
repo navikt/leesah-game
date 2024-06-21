@@ -2,7 +2,7 @@ package no.nav.quizmaster.questions
 
 import no.nav.quizrapid.Answer
 import no.nav.quizrapid.Question
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import java.time.Duration
 

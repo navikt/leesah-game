@@ -1,5 +1,5 @@
-import java.nio.file.Paths
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import java.nio.file.Paths
 
 plugins {
     kotlin("jvm")

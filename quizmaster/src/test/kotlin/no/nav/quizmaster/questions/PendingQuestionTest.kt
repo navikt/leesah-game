@@ -1,7 +1,7 @@
 package no.nav.quizmaster.questions
 
 import no.nav.quizrapid.Answer
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 internal class PendingQuestionTest {

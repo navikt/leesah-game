@@ -23,3 +23,5 @@ gradle-app.setting
 certs/
 
 .DS_Store
+
+.tool-versions

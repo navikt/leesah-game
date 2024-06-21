@@ -11,7 +11,7 @@ class IsAPrime(maxCount: Int = 10, active: Boolean = false, interval: Duration =
     val fasit = mutableMapOf<String, Boolean>()
 
     companion object {
-        internal fun questionNumber(question: Question) = question.question.split("?")[1].removePrefix(" ").toInt()
+        internal fun questionNumber(question: Question) = question.question.split(" ")[4].removePrefix(" ").toInt()
     }
 
     override fun check(answer: Answer) {
@@ -28,7 +28,7 @@ class IsAPrime(maxCount: Int = 10, active: Boolean = false, interval: Duration =
 
         val newQuestion = Question(
             category = category,
-            question = "Er det et primtall? ${number.key}"
+            question = "Er det et primtall? ${number.key} (svar på format \"true\" eller \"false\". Husk fnuttene!)"
         )
         fasit[newQuestion.id()] = number.value
         return listOf(newQuestion)

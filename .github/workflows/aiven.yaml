@@ -1,0 +1,24 @@
+name: Aiven Kafka config
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'nais/topic.yml'
+
+jobs:
+  deployDev:
+    name: apply dev-gcp
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: nais/login@v0
+        with:
+          team: leesah-quiz
+          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
+          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
+      - uses: nais/deploy/actions/deploy@v2
+        env:
+          CLUSTER: dev-gcp
+          RESOURCE: nais/topic.yml

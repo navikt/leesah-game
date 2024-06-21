@@ -18,7 +18,7 @@ internal class IsAPrimeTest {
         Assertions.assertTrue(isAPrime.questions().isNotEmpty())
 
         val question = isAPrime.questions().first()
-        val answer = isPrime(question.question.split("?")[1].trim().toInt()).answer("coolteam", question.messageId)
+        val answer = isPrime(question.question.split(" ")[4].trim().toInt()).answer("coolteam", question.messageId)
         isAPrime.handle(answer)
         val assessment = isAPrime.events().first()
         Assertions.assertTrue(assessment.json().contains("coolteam") && assessment.json().contains("SUCCESS"))

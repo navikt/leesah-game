@@ -3,7 +3,6 @@ package no.nav.quizmaster.questions
 import no.nav.quizrapid.Answer
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 internal class RegisterTeamTest {
@@ -40,10 +39,18 @@ internal class RegisterTeamTest {
         val registerQuestion = RegisterTeam(true)
         val q = registerQuestion.questions().first()
 
-        registerQuestion.check(answer(q.id(), "test","ffffff"))
-        registerQuestion.check(answer(q.id(), "test","000000"))
+        registerQuestion.check(answer(q.id(), "test","#ffffff"))
+        registerQuestion.check(answer(q.id(), "test","#000000"))
         assertTrue(registerQuestion.events().size == 1)
         assertTrue(registerQuestion.events().isEmpty())
+    }
+
+    @Test
+    fun `registrer team med hashtag`() {
+        val registerQuestion = RegisterTeam(true)
+        assertTrue(registerQuestion.checkHex("#ffffff"))
+        assertTrue(registerQuestion.checkHex("ffffff"))
+        assertFalse(registerQuestion.checkHex("fffff"))
     }
 
     @Test
@@ -52,8 +59,8 @@ internal class RegisterTeamTest {
         val q = registerQuestion.questions()
         val qId = q.first().id()
 
-        registerQuestion.check(answer(qId, "1234567890123456789012345123456","000000"))
-        registerQuestion.check(answer(qId, "12346789012345678901234","000000"))
+        registerQuestion.check(answer(qId, "1234567890123456789012345123456","#000000"))
+        registerQuestion.check(answer(qId, "12346789012345678901234","#000000"))
 
         val assessments = registerQuestion.events()
 
@@ -67,9 +74,9 @@ internal class RegisterTeamTest {
         val question = registerQuestion.questions()
         val qId = question.first().id()
 
-        registerQuestion.handle(answer(qId, "test","ffffff"))
-        registerQuestion.handle(answer("wrongid", "test","ff1100"))
-        registerQuestion.handle(answer(qId, "test","000000"))
+        registerQuestion.handle(answer(qId, "test","#ffffff"))
+        registerQuestion.handle(answer("wrongid", "test","#ff1100"))
+        registerQuestion.handle(answer(qId, "test","#000000"))
 
         val assessments = registerQuestion.events()
         assertTrue(assessments.size == 1)

@@ -1,17 +1,17 @@
 val ktorVersion = "1.6.8"
 val kafkaVersion = "3.6.0"
-val junitJupiterVersion = "5.10.0"
-val kotlinVersion = "1.9.10"
-val jacksonVersion = "2.15.2"
-val slf4jApiVersion = "2.0.9"
-val logbackClassicVersion = "1.4.11"
+val junitJupiterVersion = "5.10.2"
+val kotlinVersion = "2.0.0"
+val jacksonVersion = "2.17.1"
+val slf4jApiVersion = "2.0.13"
+val logbackClassicVersion = "1.5.6"
 val logbackEncoderVersion = "7.4"
-val prometheusVerison = "1.11.5"
-val kafkaEmbeddedEnvVersion = "3.2.3"
-val awaitilityVerison = "4.2.0"
+val prometheusVerison = "1.13.1"
+val kafkaEmbeddedEnvVersion = "3.2.8"
+val awaitilityVerison = "4.2.1"
 
 plugins {
-    kotlin("jvm") version "1.9.10"
+    kotlin("jvm") version "2.0.0"
 }
 allprojects {
     repositories {
@@ -54,6 +54,7 @@ subprojects {
 
         api("io.ktor:ktor-metrics-micrometer:$ktorVersion")
         api("io.micrometer:micrometer-registry-prometheus:$prometheusVerison")
+
 
         testImplementation("no.nav:kafka-embedded-env:$kafkaEmbeddedEnvVersion")
         testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")

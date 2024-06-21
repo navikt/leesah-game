@@ -1,4 +1,4 @@
-name: Quizmaster-build
+name: Quizboard-build
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
     paths-ignore:
       - '*.md'
       - 'docker-compose.yml'
-      - 'quizboard'
+      - 'quizmaster'
       - 'docs/**'
 
 jobs:
@@ -24,10 +24,10 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '21'
       - name: test and build
         run: ../gradlew build
-        working-directory: quizmaster
+        working-directory: quizboard
       - name: Push docker image to GAR
         uses: nais/docker-build-push@v0
         id: docker-build-push
@@ -35,8 +35,8 @@ jobs:
           team: leesah-quiz
           identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }} # Provided as Organization Secret
           project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }} # Provided as Organization Variable
-          docker_context: quizmaster
-
+          docker_context: quizboard
+  
   deployDev:
     name: Deploy to dev
     needs: build
@@ -54,7 +54,7 @@ jobs:
       - uses: nais/deploy/actions/deploy@v2
         env:
           CLUSTER: dev-gcp
-          RESOURCE: nais/quizmaster-dev.yml,nais/quizmaster-dev-netpol.yaml
+          RESOURCE: nais/quizboard-dev.yml
           IMAGE: ${{ needs.build.outputs.image }}
 
   deployProd:
@@ -74,5 +74,5 @@ jobs:
       - uses: nais/deploy/actions/deploy@v2
         env:
           CLUSTER: prod-gcp
-          RESOURCE: nais/quizmaster-prod.yml
+          RESOURCE: nais/quizboard-prod.yml
           IMAGE: ${{ needs.build.outputs.image }}

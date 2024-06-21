@@ -35,7 +35,7 @@ jobs:
           team: leesah-quiz
           identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }} # Provided as Organization Secret
           project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }} # Provided as Organization Variable
-          dockerfile: quizboard/Dockerfile
+          dockerfile: Dockerfile
           docker_context: quizboard
   
   deployDev:

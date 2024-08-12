@@ -1,17 +1,17 @@
 val ktorVersion = "1.6.8"
 val kafkaVersion = "3.6.0"
 val junitJupiterVersion = "5.10.3"
-val kotlinVersion = "2.0.0"
-val jacksonVersion = "2.17.1"
-val slf4jApiVersion = "2.0.13"
+val kotlinVersion = "2.0.10"
+val jacksonVersion = "2.17.2"
+val slf4jApiVersion = "2.0.16"
 val logbackClassicVersion = "1.5.6"
-val logbackEncoderVersion = "7.4"
-val prometheusVerison = "1.13.1"
+val logbackEncoderVersion = "8.0"
+val prometheusVerison = "1.13.2"
 val kafkaEmbeddedEnvVersion = "3.2.8"
-val awaitilityVerison = "4.2.1"
+val awaitilityVerison = "4.2.2"
 
 plugins {
-    kotlin("jvm") version "2.0.0"
+    kotlin("jvm") version "2.0.10"
 }
 allprojects {
     repositories {

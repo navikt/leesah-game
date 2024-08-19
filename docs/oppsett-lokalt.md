@@ -8,13 +8,13 @@ Så det eneste man trenger er sertifikater for å snakke med Kafka, og bibliotek
 
 ### Hent Kafkasertifikat
 
-Gå til [leesah-game-cert.ekstern.dev.nav.no/certs](https://leesah-game-cert.ekstern.dev.nav.no/certs), brukernavn og passord finner du på en tavle eller slide.
-Pakk ut zip-filen i katalogen `certs/` i katalogen du kjører spillet i lokalt.
+Gå til [leesah-certs.ekstern.dev.nav.no](https://leesah-certs.ekstern.dev.nav.no), brukernavn og passord finner du på en tavle eller slide.
+Pakk ut zip-filen, som vil gi deg en `leesah-certs.yaml` som biblioteket du har valgt trenger.
 
-Du kan også peke på sertifikatet med miljøvariabelen ``.
+Du kan også peke på sertifikatet med miljøvariabelen `QUIZ_CERT`.
 
 ```shell
-export QUIZ_CERT=/path/to/student-certs.yaml
+export QUIZ_CERT=/path/to/leesah-certs.yaml
 ```
 
 ### Quiz topic
@@ -22,7 +22,7 @@ export QUIZ_CERT=/path/to/student-certs.yaml
 Som regel kommer sertifikatet med riktig topic ut av boksen, men av og til må denne settes eksplisitt, da kan du bruke miljøvariabelen `QUIZ_TOPIC`.
 
 ```shell
-export QUIZ_TOPIC=leesah-quiz-fagtorsdag-1
+export QUIZ_TOPIC=leesah-quiz-galtvort-1
 ```
 
 ### Biblioteker
@@ -30,6 +30,8 @@ export QUIZ_TOPIC=leesah-quiz-fagtorsdag-1
 Vi har laget biblioteker i flere forskjellige språk, så her er det bare å velge det du liker best.
 Hvert bibliotek vil ha sin egen dokumentasjon for hvordan man kommer i gang.
 
-- [Python 🐍](https://github.com/navikt/leesah-game-python)
-- [Go](https://github.com/navikt/go-leesah)
+- [Python 🐍](https://github.com/navikt/leesah-game-python): `python3 -m pip install leesah-game`
+- [Go](https://github.com/navikt/go-leesah): `go get github.com/navikt/go-leesah`
+
+Typescript er enda ikke støttet som et bibliotek, så det må man klone ned til sin egen maskin for å starte.
 - [Typescript](https://github.com/navikt/leesah-game-starter-ts)

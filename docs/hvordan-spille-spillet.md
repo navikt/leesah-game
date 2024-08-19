@@ -1,1 +1,0 @@
-# Hvordan spille Leesah-game

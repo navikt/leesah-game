@@ -1,16 +1,16 @@
 # ping-pong
 
-Oppgaven er å svare på alle ping oppgave-meldinger.
+Oppgaven er å svare på alle ping oppgave-meldingene.
 
 **Eksempel oppgave-hendelse**
 
 ```json
 {
-  "type": "QUESTION",
-  "messageId": "9e679608-fb1c-482c-9ced-00a3593bb684",
-  "question": "ping",
-  "category": "ping-pong",
-  "created": "2022-11-07T14:53:27.581147"
+  "type": "SPØRSMÅL",
+  "spørsmålId": "9e679608-fb1c-482c-9ced-00a3593bb684",
+  "kategorinavn": "ping-pong",
+  "spørsmål": "ping",
+  "svarformat": "String"
 }
 ```
 
@@ -18,12 +18,12 @@ Oppgaven er å svare på alle ping oppgave-meldinger.
 
 ```json
 {
-  "type": "ANSWER",
-  "messageId": "2d4c8698-3fc1-4a8a-acd1-f428eea303aa",
-  "questionId": "9e679608-fb1c-482c-9ced-00a3593bb684",
-  "category": "ping-pong",
-  "teamName": "l33t team",
-  "answer": "pong",
-  "created": "2022-11-07T14:53:27.581147"
+  "type": "SVAR",
+  "svarId": "2d4c8698-3fc1-4a8a-acd1-f428eea303aa",
+  "spørsmålId": "9e679608-fb1c-482c-9ced-00a3593bb684",
+  "kategorinavn": "ping-pong",
+  "lagnavn": "l33t team",
+  "svar": "pong",
+  "opprettet": "2022-11-07T14:53:27.581147"
 }
 ```

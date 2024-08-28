@@ -1,4 +1,4 @@
-# deduplication
+# deduplisering
 
 ## Bakgrunn
 
@@ -20,8 +20,8 @@ I denne oppgaven vil Quizmaster sende ut samme melding flere ganger, og det er d
 {
   "type": "SPØRSMÅL",
   "spørsmålId": "0c8408aa-d592-47fa-aaef-eb8ee90993e5",
-  "kategorinavn": "deduplication",
-  "spørsmål": "answer this question only once with an <you wont dupe me!>",
+  "kategorinavn": "deduplisering",
+  "spørsmål": "Svar på kun ett spørsmål i denne kategorien med en <Du lurer ikke meg!>.",
   "svarformat": "String"
 }
 ```
@@ -33,9 +33,9 @@ I denne oppgaven vil Quizmaster sende ut samme melding flere ganger, og det er d
   "type": "SVAR",
   "svarId": "2e47641c-4023-4893-8187-9de2445b45c0",
   "spørsmålId": "0c8408aa-d592-47fa-aaef-eb8ee90993e5",
-  "kategorinavn": "deduplication",
+  "kategorinavn": "deduplisering",
   "lagnavn": "l33t team",
-  "svar": "you wont dupe me!",
+  "svar": "Du lurer ikke meg!",
   "opprettet": "2022-11-07T14:53:27.581147"
 }
 ```
@@ -46,7 +46,7 @@ Du vil se at du har fått underkjent løsningen din på leaderboardet, som betyr
 
 <img src="/leesah-game/assets/deduplication-failed.png" style="width: 25%;padding: 1em" alt="deduplication failed showed on leaderboard">
 
-For å nullstille oppgaven for ditt team må du sende følgende streng som svar på oppgaven: `you duped me!`
+For å nullstille oppgaven for ditt team må du sende følgende streng som svar på oppgaven: `Du lurte meg :(`
 
 **Eksempel på nullstilling**
 
@@ -55,9 +55,9 @@ For å nullstille oppgaven for ditt team må du sende følgende streng som svar 
   "type": "SVAR",
   "svarId": "22c9bd00-bb38-4996-8f24-528dbbeb8b95",
   "spørsmålId": "0c8408aa-d592-47fa-aaef-eb8ee90993e5",
-  "kategorinavn": "deduplication",
+  "kategorinavn": "deduplisering",
   "lagnavn": "l33t team",
-  "svar": "you duped me!",
+  "svar": "Du lurte meg :(",
   "opprettet": "2022-11-07T14:53:27.581147"
 }
 ```

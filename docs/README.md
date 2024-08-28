@@ -35,4 +35,4 @@ Oppgavene du kan møte i Leesah-game er som følger, og de kommer ikke nødvendi
 - [primtall](oppgaver/primtall.md)
 - [bankkonto](oppgaver/bankkonto.md)
 - [min-max](oppgaver/min-max.md)
-- [deduplication](oppgaver/deduplication.md)
+- [deduplisering](oppgaver/deduplisering.md)

@@ -11,7 +11,7 @@ Spør den etter `LAVESTE`, skal du returnere det laveste tallet.
   "type": "SPØRSMÅL",
   "spørsmålId": "9e679608-fb1c-482c-9ced-00a3593bb684",
   "kategorinavn": "min-max",
-  "spørsmål": "HOYESTE tall i [25, 66, 12, 3, 53, 54, 94, 67, 23, 55, 41, 30, 40, 50, 60, 70, 80, 10, 11, 1]",
+  "spørsmål": "HØYESTE tall i [25, 66, 12, 3, 53, 54, 94, 67, 23, 55, 41, 30, 40, 50, 60, 70, 80, 10, 11, 1]",
   "svarformat": "String"
 }
 ```

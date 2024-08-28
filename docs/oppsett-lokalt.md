@@ -1,8 +1,8 @@
 # Lokal Leesah
 
-Lokal Leesah er versjonen vi kjører med studenter som en del av rekruteringsarbeidet til NAV.
-Når man spiller den lokale varianten har vi bygd et eget bibliotek man importere inn i koden sin.
-Så det eneste man trenger er sertifikater for å snakke med Kafka, og biblioteket for ditt språk.
+Lokal Leesah er versjonen vi kjører med studenter som en del av rekrutteringsarbeidet til NAV.
+Når man spiller den lokale varianten har vi bygd et eget bibliotek man importerer inn i koden sin,
+slik at man kun trenger sertifikater for å snakke med Kafka, og biblioteket for ditt språk.
 
 ## Kom i gang
 

@@ -2,7 +2,7 @@
 
 Første oppgave alle team må løse er "team-registration"-oppgaven.
 Oppgaven løses ved å publisere et svar med en farge i form av hex-kode som skal representere deres team i `svar`, i tillegg til et lagnavn i `lagnavn`.
-Lagnavnet må være det samme gjennom hele spillet, og kan ikke endres
+Lagnavnet må være det samme gjennom hele spillet, og skal ikke endres.
 
 **Eksempel på oppgave-hendelse**
 
@@ -10,7 +10,7 @@ Lagnavnet må være det samme gjennom hele spillet, og kan ikke endres
 {
   "type": "SPØRSMÅL",
   "spørsmålId": "41fe30bd-4050-45cb-80b2-cb2e82ec4b84",
-  "spørsmål": "Registrér et nytt teamnavn og en hex-farge",
+  "spørsmål": "Velg en hex-kode med 6 tegn for å representere ditt team. Eksempel: #FFFFFF",
   "kategorinavn": "team-registration",
   "svarformat": "Hex kode i string"
 }

@@ -11,7 +11,7 @@ Oppgaven svares med riktig svar i heltall (integer).
   "type": "SPØRMÅL",
   "spørsmålId": "96acb8f4-4b1e-4f0a-9d54-fcdda1223d9d",
   "kategorinavn": "aritmetikk",
-  "spørsmål": "49 - 62 (svaret må rundes til int)",
+  "spørsmål": "49 - 62",
   "svarformat": "Svaret må rundes til int, men sender som en string"
 }
 ```

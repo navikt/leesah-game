@@ -25,4 +25,4 @@ certs/
 .DS_Store
 
 .tool-versions
-../venv/
+/venv/

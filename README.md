@@ -1,14 +1,14 @@
 # 🏞️ Livet er en strøm av oppgaver
 
-Leesah-game er et hendelsedrevet applikasjonsutviklingspill laget for å utfordre spilleren til å utvikle en applikasjon som kan håndtere et diverst utvalg av utfordrende hendelser som den mottar på eller utenfor NAIS-plattformen.
+Leesah Game er et hendelsedrevet applikasjonsutviklingspill laget for å utfordre spilleren til å utvikle en applikasjon som kan håndtere et diverst utvalg av utfordrende hendelser som den mottar på eller utenfor NAIS-plattformen.
 
 ## Om repoet
 
-Dette repoet er for dokumentasjon for både spillere og utvikling av Leesah-game.
+Dette repoet er for dokumentasjon for både spillere og utvikling av Leesah Game.
 
 ## Våre repoer
 
-Spillet Leesah-game består av en Quizmaster og et Leaderboard, med hver sin backend og frontend.
+Spillet Leesah Game består av en Quizmaster og et Leaderboard, med hver sin backend og frontend.
 
 - [Quizmaster](https://github.com/navikt/leesah-quizmaster/)
 - [Leaderboard](https://github.com/navikt/leesah-leaderboard/)

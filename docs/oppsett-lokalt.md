@@ -11,10 +11,10 @@ slik at man kun trenger sertifikater for å snakke med Kafka, og biblioteket for
 Gå til [leesah-certs.ekstern.dev.nav.no](https://leesah-certs.ekstern.dev.nav.no), brukernavn og passord finner du på en tavle eller slide.
 Pakk ut zip-filen, som vil gi deg en `leesah-certs.yaml` som biblioteket du har valgt trenger.
 
-Du kan også peke på sertifikatet med miljøvariabelen `QUIZ_CERT`.
+Du kan også peke på sertifikatet med miljøvariabelen `QUIZ_CERTS`.
 
 ```shell
-export QUIZ_CERT=/path/to/leesah-certs.yaml
+export QUIZ_CERTS=/path/to/leesah-certs.yaml
 ```
 
 ### Quiz topic

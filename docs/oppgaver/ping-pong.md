@@ -1,4 +1,4 @@
-# ping-pong
+# Ping-pong
 
 Oppgaven er å svare på alle ping oppgave-meldingene.
 

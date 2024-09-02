@@ -1,4 +1,4 @@
-# min-max
+# Min-max
 
 Oppgaven spør deg om det høyeste eller laveste tallet i en liste.
 Spør den etter `HØYESTE`, skal du returnere det høyeste tallet.

@@ -1,4 +1,4 @@
-# deduplisering
+# Deduplisering
 
 ## Bakgrunn
 

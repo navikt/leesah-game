@@ -29,3 +29,6 @@ Lagnavnet må være det samme gjennom hele spillet, og skal ikke endres.
   "opprettet": "2022-11-07T14:53:27.581147"
 }
 ```
+
+Når team-registration er godkjent vil teamet bli lagt til på leaderboardet.
+<img src="/leesah-game/assets/team-registration-leaderboard.png" alt="Leaderboard etter team-registration er godkjent">

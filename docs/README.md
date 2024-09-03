@@ -34,5 +34,6 @@ Oppgavene du kan møte i Leesah Game er som følger, og de kommer ikke nødvendi
 - [base64](oppgaver/base64.md)
 - [primtall](oppgaver/primtall.md)
 - [bankkonto](oppgaver/bankkonto.md)
+- [kalkulator](oppgaver/kalkulator.md)
 - [min-max](oppgaver/min-max.md)
 - [deduplisering](oppgaver/deduplisering.md)

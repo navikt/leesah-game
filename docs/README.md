@@ -37,3 +37,10 @@ Oppgavene du kan møte i Leesah Game er som følger, og de kommer ikke nødvendi
 - [min-max](oppgaver/min-max.md)
 - [deduplisering](oppgaver/deduplisering.md)
 - [grunnbeløp](oppgaver/grunnbeløp.md)
+
+
+NAIS-spesifikke oppgaver:
+
+- [logg](oppgaver/nais/logg.md)
+- [service-discovery](oppgaver/nais/service-discovery.md)
+- [ingress](oppgaver/nais/ingress.md)

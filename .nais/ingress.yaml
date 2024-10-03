@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: HTTP
+    nginx.ingress.kubernetes.io/proxy-body-size: 50M
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "90"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+  labels:
+    team: leesah-quiz
+  name: leesah-io-delegated-domain
+  namespace: leesah-quiz
+spec:
+  ingressClassName: nais-ingress
+  rules:
+  - host: leesah-io.intern.nav.no

@@ -11,7 +11,7 @@ Svar med korrekt sum i kroner for hver oppgave.
 {
   "type": "SPØRSMÅL",
   "spørsmålId": "a662cd19-0eea-42f6-9850-a65ea419b7d9",
-  "kategorinavn": "kalkulator",
+  "kategori": "kalkulator",
   "spørsmål": "På https://www.nav.no/aap/kalkulator kan du beregne omtrent hvor mye du får i AAP. Du er 69 år og ble syk i 2014. Du har ingen inntekt, har ikke AAP, eller en jobb. Barn har du heller ikke. Hva kan du omtrent få i året?",
   "svarformat": "Int som string"
 }
@@ -24,7 +24,7 @@ Svar med korrekt sum i kroner for hver oppgave.
   "type": "SVAR",
   "svarId": "db99ca84-07d4-4720-8841-c80786ed8cfc",
   "spørsmålId": "a662cd19-0eea-42f6-9850-a65ea419b7d9",
-  "kategorinavn": "kalkulator",
+  "kategori": "kalkulator",
   "lagnavn": "l33t team",
   "svar": "253141",
   "opprettet": "2022-11-07T14:53:27.581147"

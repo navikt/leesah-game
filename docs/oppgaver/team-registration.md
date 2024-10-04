@@ -11,7 +11,7 @@ Lagnavnet må være det samme gjennom hele spillet, og skal ikke endres.
   "type": "SPØRSMÅL",
   "spørsmålId": "41fe30bd-4050-45cb-80b2-cb2e82ec4b84",
   "spørsmål": "Velg en hex-kode med 6 tegn for å representere ditt team. Eksempel: #FFFFFF",
-  "kategorinavn": "team-registration",
+  "kategori": "team-registration",
   "svarformat": "Hex kode i string"
 }
 ```
@@ -23,7 +23,7 @@ Lagnavnet må være det samme gjennom hele spillet, og skal ikke endres.
   "type": "SVAR",
   "svarId": "d36b4273-0571-42f2-b3bd-7b7987de43b0",
   "spørsmålId": "41fe30bd-4050-45cb-80b2-cb2e82ec4b84",
-  "kategorinavn": "team-registration",
+  "kategori": "team-registration",
   "lagnavn": "l33t team",
   "svar": "#ff2255",
   "opprettet": "2022-11-07T14:53:27.581147"

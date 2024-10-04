@@ -14,7 +14,7 @@ Oppgaven svares med navn på appen.
 {
   "type": "SPØRSMÅL",
   "spørsmålId": "a662cd19-0eea-42f6-9850-a65ea419b7d9",
-  "kategorinavn": "service-discovery",
+  "kategori": "service-discovery",
   "spørsmål": "[NAIS Oppgave] Quizmaster ønsker å snakke med appen din via noe som kalles for Service Discovery, men den blir stoppet av access policy hos deg. Gi quizmaster tilgang og svar med appnavnet ditt. Quizmaster forventer at appen din svarer med 200 ok.",
   "svarformat": "String"
 }
@@ -27,7 +27,7 @@ Oppgaven svares med navn på appen.
   "type": "SVAR",
   "svarId": "db99ca84-07d4-4720-8841-c80786ed8cfc",
   "spørsmålId": "a662cd19-0eea-42f6-9850-a65ea419b7d9",
-  "kategorinavn": "service-discovery",
+  "kategori": "service-discovery",
   "lagnavn": "l33t team",
   "svar": "leet",
   "opprettet": "2022-11-07T14:53:27.581147"

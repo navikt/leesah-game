@@ -11,7 +11,7 @@ Om du ikke er kjent med base64 encoding så anbefaler vi [Wikipedia/base64](http
   "spørsmålId": "608df513-96e1-4c4e-af26-ec81823aed1d",
   "spørsmål": "TEVFU0FI",
   "svarformat": "Dekryptert string",
-  "kategorinavn": "base64"
+  "kategori": "base64"
 }
 ```
 
@@ -22,7 +22,7 @@ Om du ikke er kjent med base64 encoding så anbefaler vi [Wikipedia/base64](http
   "type": "SVAR",
   "svarId": "d36b4273-0571-42f2-b3bd-7b7987de43b0",
   "spørsmålId": "608df513-96e1-4c4e-af26-ec81823aed1d",
-  "kategorinavn": "base64",
+  "kategori": "base64",
   "lagnavn": "l33t team",
   "svar": "LEESAH",
   "opprettet": "2022-11-07T14:53:27.581147"

@@ -14,7 +14,7 @@ Oppgaven svares med adressen vi kan nå tjenesten din på.
 {
   "type": "SPØRSMÅL",
   "spørsmålId": "a662cd19-0eea-42f6-9850-a65ea419b7d9",
-  "kategorinavn": "ingress",
+  "kategori": "ingress",
   "spørsmål": "[NAIS Oppgave] Lag en NAIS ingress for appen din i formatet: <app navn>.intern.dev.nav.no. Send oss din nye ingress som svar, vi forventer at den svarer med 200 ok.)",
   "svarformat": "ingress i string"
 }
@@ -27,7 +27,7 @@ Oppgaven svares med adressen vi kan nå tjenesten din på.
   "type": "SVAR",
   "svarId": "db99ca84-07d4-4720-8841-c80786ed8cfc",
   "spørsmålId": "a662cd19-0eea-42f6-9850-a65ea419b7d9",
-  "kategorinavn": "ingress",
+  "kategori": "ingress",
   "lagnavn": "l33t team",
   "svar": "leet.intern.dev.nav.no",
   "opprettet": "2022-11-07T14:53:27.581147"

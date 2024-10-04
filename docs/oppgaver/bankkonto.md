@@ -10,7 +10,7 @@ Svar med korrekt sammenstilt saldo for hver oppgave-hendelse applikasjonen motta
 {
   "type": "SPØRSMÅL",
   "spørsmålId": "bc22a3d2-ff4b-477c-8b67-52f3888f5848",
-  "kategorinavn": "bankkonto",
+  "kategori": "bankkonto",
   "spørsmål": "UTTREKK 6764",
   "svarformat": "Tall i String"
 }
@@ -20,7 +20,7 @@ Svar med korrekt sammenstilt saldo for hver oppgave-hendelse applikasjonen motta
 {
   "type": "SPØRSMÅL",
   "spørsmålId": "6748a649-83f8-4953-8154-cd7f57e0d9fb",
-  "kategorinavn": "bankkonto",
+  "kategori": "bankkonto",
   "spørsmål": "UTTREKK 8421",
   "svarformat": "Tall i String"
 }
@@ -33,7 +33,7 @@ Svar med korrekt sammenstilt saldo for hver oppgave-hendelse applikasjonen motta
   "type": "SVAR",
   "svarId": "07e8ca72-ff90-4c68-ad6e-476e7becc5ac",
   "spørsmålId": "bc22a3d2-ff4b-477c-8b67-52f3888f5848",
-  "kategorinavn": "bankkonto",
+  "kategori": "bankkonto",
   "lagnavn": "l33t team",
   "svar": "-6764",
   "opprettet": "2022-11-07T14:53:27.581147"
@@ -45,7 +45,7 @@ Svar med korrekt sammenstilt saldo for hver oppgave-hendelse applikasjonen motta
   "type": "SVAR",
   "svarId": "07e8ca72-ff90-4c68-ad6e-476e7becc5ac",
   "spørsmålId": "6748a649-83f8-4953-8154-cd7f57e0d9fb",
-  "kategorinavn": "bankkonto",
+  "kategori": "bankkonto",
   "lagnavn": "l33t team",
   "svar": "-15185",
   "opprettet": "2022-11-07T14:53:27.581147"

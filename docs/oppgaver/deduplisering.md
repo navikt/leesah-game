@@ -20,7 +20,7 @@ I denne oppgaven vil Quizmaster sende ut samme melding flere ganger, og det er d
 {
   "type": "SPØRSMÅL",
   "spørsmålId": "0c8408aa-d592-47fa-aaef-eb8ee90993e5",
-  "kategorinavn": "deduplisering",
+  "kategori": "deduplisering",
   "spørsmål": "Svar på kun ett spørsmål i denne kategorien med en <Du lurer ikke meg!>.",
   "svarformat": "String"
 }
@@ -33,7 +33,7 @@ I denne oppgaven vil Quizmaster sende ut samme melding flere ganger, og det er d
   "type": "SVAR",
   "svarId": "2e47641c-4023-4893-8187-9de2445b45c0",
   "spørsmålId": "0c8408aa-d592-47fa-aaef-eb8ee90993e5",
-  "kategorinavn": "deduplisering",
+  "kategori": "deduplisering",
   "lagnavn": "l33t team",
   "svar": "Du lurer ikke meg!",
   "opprettet": "2022-11-07T14:53:27.581147"
@@ -57,7 +57,7 @@ For å nullstille oppgaven for ditt team må du sende følgende streng som svar 
   "type": "SVAR",
   "svarId": "22c9bd00-bb38-4996-8f24-528dbbeb8b95",
   "spørsmålId": "0c8408aa-d592-47fa-aaef-eb8ee90993e5",
-  "kategorinavn": "deduplisering",
+  "kategori": "deduplisering",
   "lagnavn": "l33t team",
   "svar": "Du lurte meg :(",
   "opprettet": "2022-11-07T14:53:27.581147"

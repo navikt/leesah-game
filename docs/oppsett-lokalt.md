@@ -8,7 +8,7 @@ slik at man kun trenger sertifikater for å snakke med Kafka, og biblioteket for
 
 ### Hent Kafkasertifikat
 
-Gå til [leesah-certs.ekstern.dev.nav.no](https://leesah-certs.ekstern.dev.nav.no), brukernavn og passord finner du på en tavle eller slide.
+Gå til [leesah.io/certs](https://leesah.io/certs), brukernavn og passord finner du på en tavle eller slide.
 Pakk ut zip-filen, som vil gi deg en `leesah-certs.yaml` som biblioteket du har valgt trenger.
 
 Du kan også peke på sertifikatet med miljøvariabelen `QUIZ_CERTS`.

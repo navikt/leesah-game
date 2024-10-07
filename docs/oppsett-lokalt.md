@@ -32,6 +32,4 @@ Hvert bibliotek vil ha sin egen dokumentasjon for hvordan man kommer i gang.
 
 - [Python 🐍](https://github.com/navikt/leesah-game-python): `python3 -m pip install leesah-game`
 - [Go](https://github.com/navikt/go-leesah): `go get github.com/navikt/go-leesah`
-
-Typescript er enda ikke støttet som et bibliotek, så det må man klone ned til sin egen maskin for å starte.
-- [Typescript](https://github.com/navikt/leesah-game-starter-ts)
+- [JavaScript](https://github.com/navikt/leesah-game): `npm install @navikt/leesah-game`

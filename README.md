@@ -21,7 +21,7 @@ Biblioteker vi tilbyr:
 
 - [Python](https://github.com/navikt/leesah-game-python)
 - [Go](https://github.com/navikt/go-leesah)
-- [JavaScript](https://github.com/navikt/leesah-game-python)
+- [JavaScript](https://github.com/navikt/leesah-game-javascript)
 
 Templates (brukes for NAIS-versjonen):
 

@@ -1,0 +1,36 @@
+name: Deploy produktside
+
+on:
+  push:
+    branches:
+      - main
+      - astro-doks
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Yarn install
+        working-directory: doks
+        run: yarn install
+      - name: Yarn build
+        working-directory: doks
+        run: yarn build
+      - uses: navikt/frontend/actions/spa-deploy/v2@main
+        with:
+          app: leesah-produktside
+          team: leesah-quiz
+          source: ./dist
+          ingress: leesah.io
+          environment: prod
+          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
+          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}

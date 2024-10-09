@@ -1,11 +1,11 @@
 @font-face {
     font-family: "Pixellet";
-    src: url("./fonts/pixellet.ttf") format("truetype");
+    src: url("../fonts/pixellet.ttf") format("truetype");
 }
 
 @font-face {
     font-family: "rainyhearts";
-    src: url("./fonts/rainyhearts.ttf") format("truetype");
+    src: url("../fonts/rainyhearts.ttf") format("truetype");
 }
 
 body {

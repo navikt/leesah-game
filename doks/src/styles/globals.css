@@ -11,7 +11,7 @@
 body {
     background-color: #5b37a3;
     margin: 0;
-    margin-inline: 3rem;
+    margin-inline: 8rem;
 }
 
 h3 {
@@ -29,6 +29,27 @@ h3 {
 }
 
 p {
+    color: #FFF;
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-family: rainyhearts;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px;
+}
+
+li::marker {
+    content: ">> ";
+    color: #D08770;
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-family: rainyhearts;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px;
+}
+
+li {
     color: #FFF;
     font-feature-settings: 'liga' off, 'clig' off;
     font-family: rainyhearts;

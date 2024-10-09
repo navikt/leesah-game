@@ -10,4 +10,30 @@
 
 body {
     background-color: #5b37a3;
+    margin: 0;
+    margin-inline: 3rem;
+}
+
+h3 {
+    color: #D08770;
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-family: rainyhearts;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 40px;
+    letter-spacing: -0.48px;
+    text-decoration-line: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 6px;
+}
+
+p {
+    color: #FFF;
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-family: rainyhearts;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px;
 }

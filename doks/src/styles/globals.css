@@ -29,7 +29,7 @@ h3 {
 }
 
 p {
-    color: #FFF;
+    color: #E0FFFF;
     font-feature-settings: 'liga' off, 'clig' off;
     font-family: rainyhearts;
     font-size: 28px;
@@ -50,11 +50,25 @@ li::marker {
 }
 
 li {
-    color: #FFF;
+    color: #E0FFFF;
     font-feature-settings: 'liga' off, 'clig' off;
     font-family: rainyhearts;
     font-size: 28px;
     font-style: normal;
     font-weight: 500;
     line-height: 26px;
+}
+
+a {
+    color: #FFF;
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-family: rainyhearts;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }

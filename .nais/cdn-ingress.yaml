@@ -1,0 +1,34 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: https
+    nginx.ingress.kubernetes.io/configuration-snippet: |-
+      more_set_headers "Cache-Control: public,max-age=0";
+      rewrite ^(.*)/$ /leesah-quiz/leesah-produktside/dist/index.html break;
+      rewrite ^/(.*)$ /leesah-quiz/leesah-produktside/dist//$1 break;
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
+    nginx.ingress.kubernetes.io/server-snippet: |-
+      proxy_intercept_errors on;
+      error_page 404 = /index.html;
+    nginx.ingress.kubernetes.io/upstream-vhost: cdn.nav.cloud.nais.io
+    nginx.ingress.kubernetes.io/use-regex: "true"
+  labels:
+    app: leesah-produktside
+    env: prod
+    team: leesah-quiz
+  name: leesah-produktside
+  namespace: leesah-quiz
+spec:
+  ingressClassName: nais-ingress-external
+  rules:
+  - host: leesah.io
+    http:
+      paths:
+      - backend:
+          service:
+            name: leesah-produktside
+            port:
+              number: 443
+        path: /
+        pathType: ImplementationSpecific

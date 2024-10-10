@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: leesah-produktside
+    env: prod
+    team: leesah-quiz
+  name: leesah-produktside
+  namespace: leesah-quiz
+spec:
+  externalName: cdn.nav.cloud.nais.io
+  ports:
+  - name: http
+    port: 443
+    protocol: TCP
+    targetPort: 443
+  sessionAffinity: None
+  type: ExternalName

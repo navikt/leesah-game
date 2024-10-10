@@ -25,12 +25,12 @@ jobs:
       - name: Yarn build
         working-directory: doks
         run: yarn build
-      - uses: navikt/frontend/actions/spa-deploy/v2@main
+      - uses: nais/deploy/actions/spa-deploy/v2@main
         with:
           app: leesah-produktside
           team: leesah-quiz
           source: ./dist
-          ingress: https://leesah.io/landing
+          ingress: https://leesah.io
           environment: prod
           project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
           identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}

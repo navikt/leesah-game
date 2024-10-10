@@ -25,7 +25,7 @@ jobs:
       - name: Yarn build
         working-directory: doks
         run: yarn build
-      - uses: nais/deploy/actions/spa-deploy/v2@main
+      - uses: nais/deploy/actions/spa-deploy/v2
         with:
           app: leesah-produktside
           team: leesah-quiz

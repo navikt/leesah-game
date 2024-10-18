@@ -34,8 +34,7 @@ jobs:
           source: doks/dist
           ingress: https://leesah.io
           ingressClass: nais-ingress-external
-          cluster: prod-gcp
-          environment: prod
+          environment: prod-gcp
           project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
           identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
       - run: echo "### CDN uploaded! :rocket:" >> $GITHUB_STEP_SUMMARY

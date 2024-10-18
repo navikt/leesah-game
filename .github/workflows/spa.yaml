@@ -27,11 +27,14 @@ jobs:
         run: yarn build
       - name: Upload static files to CDN
         id: upload
-        uses: nais/deploy/actions/cdn-upload/v2@master
+        uses: nais/deploy/actions/spa-deploy/v2@master
         with:
           team: leesah-quiz
           source: doks/dist
-          destination: leesah-produktside
+          ingress: https://leesah.io
+          ingressClass: nais-ingress-external
+          cluster: prod-gcp
+          environment: prod
           project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
           identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
       - run: echo "### CDN uploaded! :rocket:" >> $GITHUB_STEP_SUMMARY

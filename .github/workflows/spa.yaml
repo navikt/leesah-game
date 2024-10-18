@@ -29,6 +29,7 @@ jobs:
         id: upload
         uses: nais/deploy/actions/spa-deploy/v2@master
         with:
+          app: leesah-produktside
           team: leesah-quiz
           source: doks/dist
           ingress: https://leesah.io

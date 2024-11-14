@@ -28,13 +28,13 @@ main > * {
     }
     @media screen and (min-width: 0px) and (max-width: 678px) {
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 2.5rem;
+        gap: 1rem;
 
         img {
-            width: 100%;
+            width: 93%;
             height: auto;
             display: block;
             box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;

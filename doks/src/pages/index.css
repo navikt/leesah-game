@@ -1,3 +1,13 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-container > * {
+    max-width: 60rem;
+}
+
 .ingress-container {
     display: grid;
     grid-template-columns: 50% 50%;

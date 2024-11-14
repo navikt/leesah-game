@@ -16,6 +16,7 @@ import { Image } from "astro:assets";
 		<title>Astro</title>
 	</head>
 	<body>
+	<main class="main-container">
 		<Header tittel="livet er en strøm av hendelser" />
 		<div class="ingress-container">
 			<div class="text-container">
@@ -43,45 +44,48 @@ import { Image } from "astro:assets";
 			innblikk i fordeler og ulemper med slike systemer. Dessuten er det
 			innmari moro!
 		</p>
-
-		<h3>Kom i gang</h3>
-		<p>
-			Vi har to versjoner av Leesah Game, en hvor man lærer å deploye en
-			applikasjon på Nais-plattformen, og en hvor man kjører lokalt. Disse
-			to forskjellige versjonene har også to forskjellige kodebaser.
-		</p>
-		<ul>
-			<li><a href="#">Lokal leesah</a></li>
-			<li><a href="#">NAIS leesah</a></li>
-		</ul>
-
-		<h3>Dokumentasjon om oppgavene</h3>
-		<p>
-			Oppgavene du kan møte i Leesah Game er som følger, og de kommer ikke
-			nødvendigvis i rekkefølgen til listen.
-		</p>
-		<ul>
-			<!-- TODO: gjøre at disse rendres automatisk utifra Mardown filene for kategorier -->
-			<li>
-				<a href="#">team-registration</a> (Første oppgaven som alltid må
-				gjøres før man kan løse andre oppgaver)
-			</li>
-			<li><a href="#">aritmetikk</a></li>
-			<li><a href="#">NAV</a></li>
-			<li><a href="#">primtall</a></li>
-			<li><a href="#">bankkonto</a></li>
-			<li><a href="#">kalkulator</a></li>
-			<li><a href="#">base64</a></li>
-			<li><a href="#">min-max</a></li>
-			<li><a href="#">Deduplisering</a></li>
-			<li><a href="#">grunnbeløp</a></li>
-		</ul>
-		<p>NAIS spesifike oppgaver:</p>
-		<ul>
-			<!-- TODO: gjøre at disse rendres automatisk utifra Mardown filene for kategorier -->
-			<li><a href="#">logg</a></li>
-			<li><a href="#">service-discovery</a></li>
-			<li><a href="#">ingress</a></li>
-		</ul>
+		<div>
+			<h3>Kom i gang</h3>
+			<p>
+				Vi har to versjoner av Leesah Game, en hvor man lærer å deploye en
+				applikasjon på Nais-plattformen, og en hvor man kjører lokalt. Disse
+				to forskjellige versjonene har også to forskjellige kodebaser.
+			</p>
+			<ul>
+				<li><a href="#">Lokal leesah</a></li>
+				<li><a href="#">NAIS leesah</a></li>
+			</ul>
+		</div>
+		<div>
+			<h3>Dokumentasjon om oppgavene</h3>
+			<p>
+				Oppgavene du kan møte i Leesah Game er som følger, og de kommer ikke
+				nødvendigvis i rekkefølgen til listen.
+			</p>
+			<ul>
+				<!-- TODO: gjøre at disse rendres automatisk utifra Mardown filene for kategorier -->
+				<li>
+					<a href="#">team-registration</a> (Første oppgaven som alltid må
+					gjøres før man kan løse andre oppgaver)
+				</li>
+				<li><a href="#">aritmetikk</a></li>
+				<li><a href="#">NAV</a></li>
+				<li><a href="#">primtall</a></li>
+				<li><a href="#">bankkonto</a></li>
+				<li><a href="#">kalkulator</a></li>
+				<li><a href="#">base64</a></li>
+				<li><a href="#">min-max</a></li>
+				<li><a href="#">Deduplisering</a></li>
+				<li><a href="#">grunnbeløp</a></li>
+			</ul>
+			<p>NAIS spesifike oppgaver:</p>
+			<ul>
+				<!-- TODO: gjøre at disse rendres automatisk utifra Mardown filene for kategorier -->
+				<li><a href="#">logg</a></li>
+				<li><a href="#">service-discovery</a></li>
+				<li><a href="#">ingress</a></li>
+			</ul>
+		</div>
+	</main>
 	</body>
 </html>

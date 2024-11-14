@@ -1,24 +1,31 @@
-.main-container {
+main {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.main-container > * {
+main > * {
     max-width: 60rem;
+    margin-inline: 1rem;
 }
 
 .ingress-container {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    gap: 0.5rem;
+    @media screen and (min-width: 679px) {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        gap: 0.5rem;
 
-    img {
-        width: 100%;
-        height: auto;
-        display: block;
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
     }
-
+    @media screen and (min-width: 0px) and (max-width: 678px) {
+        img {
+            display: none;
+        }
+    }
 }
 
 .text-container {

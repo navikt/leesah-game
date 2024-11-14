@@ -4,7 +4,6 @@ import "./index.css";
 import Header from "../components/Header/Header.astro";
 import leaderboardImg from "./leaderboard.png";
 import catSleepingGif from "./cat_sleeping.gif";
-import { Image } from "astro:assets";
 ---
 
 <html lang="en">
@@ -16,76 +15,75 @@ import { Image } from "astro:assets";
 		<title>Astro</title>
 	</head>
 	<body>
-	<main class="main-container">
-		<Header tittel="livet er en strøm av hendelser" />
-		<div class="ingress-container">
-			<div class="text-container">
-				<p>
-					Leesah Game er et hendelsedrevet applikasjonsutviklingspill
-					som utfordrer spillerne til å bygge en hendelsedrevet
-					applikasjon. Applikasjonen håndterer forskjellige typer
-					oppgaver som den mottar som hendelser på en Kafka-basert
-					hendelsestrøm. Oppgavene varierer fra veldig enkle til mer
-					komplekse.
-				</p>
-				<img src={catSleepingGif.src} alt="Gif av en katt som sover" />
+		<main>
+			<Header tittel="livet er en strøm av hendelser" />
+			<div class="ingress-container">
+				<div class="text-container">
+					<p>
+						Leesah Game er et hendelsedrevet applikasjonsutviklingspill
+						som utfordrer spillerne til å bygge en hendelsedrevet
+						applikasjon. Applikasjonen håndterer forskjellige typer
+						oppgaver som den mottar som hendelser på en Kafka-basert
+						hendelsestrøm. Oppgavene varierer fra veldig enkle til mer
+						komplekse.
+					</p>
+					<img src={catSleepingGif.src} alt="Gif av en katt som sover" />
+				</div>
+				<img
+					src={leaderboardImg.src}
+					alt="Illustrasjon over leaderboardet i et spill av leesah."
+				/>
 			</div>
 
-			<Image
-				src={leaderboardImg}
-				alt="Illustrasjon over leaderboardet i et spill av leesah."
-			/>
-		</div>
-
-		<p>
-			NAV bygger i stor grad alle nye systemer som hendelsedrevet, og
-			formålet med Leesah Game er at spillerne skal få en bedre forståelse
-			for hvordan man bygger hendelsedrevne applikasjoner. Man får også et
-			innblikk i fordeler og ulemper med slike systemer. Dessuten er det
-			innmari moro!
-		</p>
-		<div>
-			<h3>Kom i gang</h3>
 			<p>
-				Vi har to versjoner av Leesah Game, en hvor man lærer å deploye en
-				applikasjon på Nais-plattformen, og en hvor man kjører lokalt. Disse
-				to forskjellige versjonene har også to forskjellige kodebaser.
+				NAV bygger i stor grad alle nye systemer som hendelsedrevet, og
+				formålet med Leesah Game er at spillerne skal få en bedre forståelse
+				for hvordan man bygger hendelsedrevne applikasjoner. Man får også et
+				innblikk i fordeler og ulemper med slike systemer. Dessuten er det
+				innmari moro!
 			</p>
-			<ul>
-				<li><a href="#">Lokal leesah</a></li>
-				<li><a href="#">NAIS leesah</a></li>
-			</ul>
-		</div>
-		<div>
-			<h3>Dokumentasjon om oppgavene</h3>
-			<p>
-				Oppgavene du kan møte i Leesah Game er som følger, og de kommer ikke
-				nødvendigvis i rekkefølgen til listen.
-			</p>
-			<ul>
-				<!-- TODO: gjøre at disse rendres automatisk utifra Mardown filene for kategorier -->
-				<li>
-					<a href="#">team-registration</a> (Første oppgaven som alltid må
-					gjøres før man kan løse andre oppgaver)
-				</li>
-				<li><a href="#">aritmetikk</a></li>
-				<li><a href="#">NAV</a></li>
-				<li><a href="#">primtall</a></li>
-				<li><a href="#">bankkonto</a></li>
-				<li><a href="#">kalkulator</a></li>
-				<li><a href="#">base64</a></li>
-				<li><a href="#">min-max</a></li>
-				<li><a href="#">Deduplisering</a></li>
-				<li><a href="#">grunnbeløp</a></li>
-			</ul>
-			<p>NAIS spesifike oppgaver:</p>
-			<ul>
-				<!-- TODO: gjøre at disse rendres automatisk utifra Mardown filene for kategorier -->
-				<li><a href="#">logg</a></li>
-				<li><a href="#">service-discovery</a></li>
-				<li><a href="#">ingress</a></li>
-			</ul>
-		</div>
-	</main>
+			<div>
+				<h3>Kom i gang</h3>
+				<p>
+					Vi har to versjoner av Leesah Game, en hvor man lærer å deploye en
+					applikasjon på Nais-plattformen, og en hvor man kjører lokalt. Disse
+					to forskjellige versjonene har også to forskjellige kodebaser.
+				</p>
+				<ul>
+					<li><a href="#">Lokal leesah</a></li>
+					<li><a href="#">NAIS leesah</a></li>
+				</ul>
+			</div>
+			<div>
+				<h3>Dokumentasjon om oppgavene</h3>
+				<p>
+					Oppgavene du kan møte i Leesah Game er som følger, og de kommer ikke
+					nødvendigvis i rekkefølgen til listen.
+				</p>
+				<ul>
+					<!-- TODO: gjøre at disse rendres automatisk utifra Mardown filene for kategorier -->
+					<li>
+						<a href="#">team-registration</a> (Første oppgaven som alltid må
+						gjøres før man kan løse andre oppgaver)
+					</li>
+					<li><a href="#">aritmetikk</a></li>
+					<li><a href="#">NAV</a></li>
+					<li><a href="#">primtall</a></li>
+					<li><a href="#">bankkonto</a></li>
+					<li><a href="#">kalkulator</a></li>
+					<li><a href="#">base64</a></li>
+					<li><a href="#">min-max</a></li>
+					<li><a href="#">Deduplisering</a></li>
+					<li><a href="#">grunnbeløp</a></li>
+				</ul>
+				<p>NAIS spesifike oppgaver:</p>
+				<ul>
+					<!-- TODO: gjøre at disse rendres automatisk utifra Mardown filene for kategorier -->
+					<li><a href="#">logg</a></li>
+					<li><a href="#">service-discovery</a></li>
+					<li><a href="#">ingress</a></li>
+				</ul>
+			</div>
+		</main>
 	</body>
 </html>

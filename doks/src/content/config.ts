@@ -9,10 +9,8 @@ const collectionSchema = {
 
 const oppsettCollection = defineCollection(collectionSchema)
 const oppgaverCollection = defineCollection(collectionSchema)
-const naisOppgaverCollection = defineCollection(collectionSchema)
 
 export const collections = {
     oppsett: oppsettCollection,
     oppgaver: oppgaverCollection,
-    naisOppgaver: naisOppgaverCollection,
 }

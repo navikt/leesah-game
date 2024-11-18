@@ -36,4 +36,4 @@ Lagnavnet må være det samme gjennom hele spillet, og skal ikke endres.
 
 Når team-registration er godkjent vil teamet bli lagt til på leaderboardet.
 
-<img src="../../assets/team-registration-leaderboard.png" alt="Leaderboard etter team-registration er godkjent">
+![Leaderboard etter team-registration er godkjent](../assets/team-registration-leaderboard.png)

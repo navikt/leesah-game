@@ -1,17 +1,98 @@
 ---
-import "../styles/globals.css";
+//import "../styles/globals.css";
 import "./index.css";
 import Header from "../components/Header/Header.astro";
 import leaderboardImg from "./leaderboard.png";
 import catSleepingGif from "./cat_sleeping.gif";
+import { getCollection } from 'astro:content';
 
-const oppsettSider = Object.values(await import.meta.glob('./oppsett/*.md', { eager: true }))
-
+const oppgaverSider = await getCollection('oppsett')
 // Flytter team-registration til å være først i listen
-const oppgaveSider = Object.values(await import.meta.glob('./oppgaver/*.md', { eager: true })).sort(side => side.frontmatter.title === 'team-registration' ? -1 : 0 )
+oppgaverSider.sort(side => side.data.title === 'team-registration' ? -1 : 0 )
 
-const naisOppgaveSider = Object.values(await import.meta.glob('./oppgaver/nais/*.md', { eager: true }))
+const naisOppgaverSider = await getCollection('naisOppgaver')
+const oppsettSider = await getCollection('oppsett')
 ---
+
+<style is:global>
+	@font-face {
+		font-family: "Pixellet";
+		src: url("../fonts/pixellet.ttf") format("truetype");
+	}
+
+	@font-face {
+		font-family: "rainyhearts";
+		src: url("../fonts/rainyhearts.ttf") format("truetype");
+	}
+
+	body {
+		background-color: #5b37a3;
+		margin: 0;
+	}
+
+	h3 {
+		color: #D08770;
+		font-feature-settings: 'liga' off, 'clig' off;
+		font-family: rainyhearts;
+		font-size: 50px;
+		font-style: normal;
+		font-weight: 500;
+		line-height: 40px;
+		letter-spacing: -0.48px;
+		text-decoration-line: underline;
+		text-decoration-thickness: 3px;
+		text-underline-offset: 6px;
+	}
+
+	p {
+		color: #E0FFFF;
+		font-feature-settings: 'liga' off, 'clig' off;
+		font-family: rainyhearts;
+		font-size: 28px;
+		font-style: normal;
+		font-weight: 500;
+		line-height: 26px;
+	}
+
+	li::marker {
+		content: ">> ";
+		color: #D08770;
+		font-feature-settings: 'liga' off, 'clig' off;
+		font-family: rainyhearts;
+		font-size: 28px;
+		font-style: normal;
+		font-weight: 500;
+		line-height: 26px;
+	}
+
+	li {
+		color: #E0FFFF;
+		font-feature-settings: 'liga' off, 'clig' off;
+		font-family: rainyhearts;
+		font-size: 28px;
+		font-style: normal;
+		font-weight: 500;
+		line-height: 26px;
+	}
+
+	li:not(:last-child) {
+		margin-bottom: 0.2rem;
+	}
+
+	a {
+		color: #FFF;
+		font-feature-settings: 'liga' off, 'clig' off;
+		font-family: rainyhearts;
+		font-size: 28px;
+		font-style: normal;
+		font-weight: 500;
+		text-decoration: none;
+	}
+
+	a:hover {
+		text-decoration: underline;
+	}
+</style>
 
 <html lang="en">
 	<head>
@@ -57,7 +138,7 @@ const naisOppgaveSider = Object.values(await import.meta.glob('./oppgaver/nais/*
 					to forskjellige versjonene har også to forskjellige kodebaser.
 				</p>
 				<ul>
-					{oppsettSider.map(oppsettSide => <li><a href={oppsettSide.url}>{oppsettSide.frontmatter.title}</a></li>)}
+					{oppsettSider.map(side => <li><a href={`/oppsett/${side.slug}`}>{side.data.title}</a></li>)}
 				</ul>
 			</div>
 			<div>
@@ -67,20 +148,20 @@ const naisOppgaveSider = Object.values(await import.meta.glob('./oppgaver/nais/*
 					nødvendigvis i rekkefølgen til listen.
 				</p>
 				<ul>
-					{oppgaveSider.map(oppgaveSide => oppgaveSide.frontmatter.title === 'team-registration' ? (
+					{oppgaverSider.map(side => side.data.title === 'team-registration' ? (
 						<li>
-							<a href={oppgaveSide.url}>{oppgaveSide.frontmatter.title}</a> (Første oppgaven som alltid må
+							<a href={`/oppgaver/${side.slug}`}>{side.data.title}</a> (Første oppgaven som alltid må
 							gjøres før man kan løse andre oppgaver)
 						</li>
 					) : (
 						<li>
-							<a href={oppgaveSide.url}>{oppgaveSide.frontmatter.title}</a>
+							<a href={`/oppgaver/${side.slug}`}>{side.data.title}</a>
 						</li>
 					))}
 				</ul>
 				<p>NAIS spesifike oppgaver:</p>
 				<ul>
-					{naisOppgaveSider.map(naisOppgaveSide => <li><a href={naisOppgaveSide.url}>{naisOppgaveSide.frontmatter.title}</a></li>)}
+					{naisOppgaverSider.map(side => <li><a href={`/oppgaver/nais/${side.slug}`}>{side.data.title}</a></li>)}
 				</ul>
 			</div>
 		</main>

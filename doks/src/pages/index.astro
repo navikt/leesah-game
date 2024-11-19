@@ -1,5 +1,5 @@
 ---
-//import "../styles/globals.css";
+import '../styles/global.css'
 import './index.css'
 import Header from '../components/Header/Header.astro'
 import leaderboardImg from '../assets/leaderboard.png'
@@ -13,96 +13,6 @@ oppgaverSider.sort((side) => (side.data.title === 'team-registration' ? -1 : 0))
 const naisOppgaverSider = [...oppgaverSider].filter((side) => side.slug.includes('nais/'))
 const oppsettSider = await getCollection('oppsett')
 ---
-
-<style is:global>
-	@font-face {
-		font-family: 'Pixellet';
-		src: url('../fonts/pixellet.ttf') format('truetype');
-	}
-
-	@font-face {
-		font-family: 'rainyhearts';
-		src: url('../fonts/rainyhearts.ttf') format('truetype');
-	}
-
-	body {
-		background-color: #5b37a3;
-		margin: 0;
-	}
-
-	h3 {
-		color: #d08770;
-		font-feature-settings:
-			'liga' off,
-			'clig' off;
-		font-family: rainyhearts;
-		font-size: 50px;
-		font-style: normal;
-		font-weight: 500;
-		line-height: 40px;
-		letter-spacing: -0.48px;
-		text-decoration-line: underline;
-		text-decoration-thickness: 3px;
-		text-underline-offset: 6px;
-	}
-
-	p {
-		color: #e0ffff;
-		font-feature-settings:
-			'liga' off,
-			'clig' off;
-		font-family: rainyhearts;
-		font-size: 28px;
-		font-style: normal;
-		font-weight: 500;
-		line-height: 26px;
-	}
-
-	li::marker {
-		content: '>> ';
-		color: #d08770;
-		font-feature-settings:
-			'liga' off,
-			'clig' off;
-		font-family: rainyhearts;
-		font-size: 28px;
-		font-style: normal;
-		font-weight: 500;
-		line-height: 26px;
-	}
-
-	li {
-		color: #e0ffff;
-		font-feature-settings:
-			'liga' off,
-			'clig' off;
-		font-family: rainyhearts;
-		font-size: 28px;
-		font-style: normal;
-		font-weight: 500;
-		line-height: 26px;
-	}
-
-	li:not(:last-child) {
-		margin-bottom: 0.2rem;
-	}
-
-	a {
-		color: #fff;
-		font-feature-settings:
-			'liga' off,
-			'clig' off;
-		font-family: rainyhearts;
-		font-size: 28px;
-		font-style: normal;
-		font-weight: 500;
-		text-decoration: none;
-	}
-
-	a:hover {
-		text-decoration: underline;
-	}
-</style>
 
 <html lang="en">
 	<head>
@@ -134,7 +44,7 @@ const oppsettSider = await getCollection('oppsett')
 			</div>
 
 			<div>
-				<h3>Kom i gang</h3>
+				<h2>Kom i gang</h2>
 				<p>
 					Vi har to versjoner av Leesah Game, en hvor man lærer å deploye en applikasjon på Nais-plattformen,
 					og en hvor man kjører lokalt. Disse to forskjellige versjonene har også to forskjellige kodebaser.
@@ -150,7 +60,7 @@ const oppsettSider = await getCollection('oppsett')
 				</ul>
 			</div>
 			<div>
-				<h3>Dokumentasjon om oppgavene</h3>
+				<h2>Dokumentasjon om oppgavene</h2>
 				<p>
 					Oppgavene du kan møte i Leesah Game er som følger, og de kommer ikke nødvendigvis i rekkefølgen til
 					listen.

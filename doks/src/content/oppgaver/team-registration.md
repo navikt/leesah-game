@@ -2,7 +2,7 @@
 title: 'team-registration'
 ---
 
-# Team-registration
+## Team-registration
 
 Første oppgave alle team må løse er "team-registration"-oppgaven.
 Oppgaven løses ved å publisere et svar med en farge i form av hex-kode som skal representere deres team i `svar`, i tillegg til et lagnavn i `lagnavn`.

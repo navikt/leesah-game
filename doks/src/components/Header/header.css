@@ -9,12 +9,13 @@
         @media screen and (min-width: 679px) {
             transform: scale(0.6);
         }
+
         @media screen and (min-width: 0px) and (max-width: 678px) {
             display: none;
         }
     }
 
-    h2 {
+    h1 {
         color: #E0FFFF;
         font-feature-settings: 'liga' off, 'clig' off;
         font-family: rainyhearts;

@@ -1,7 +1,8 @@
 ---
+import '../../styles/global.css'
 import { getCollection } from 'astro:content'
 import Header from '../../components/Header/Header.astro'
-// 1. Generate a new path for every collection entry
+
 export async function getStaticPaths() {
     const oppgaverEntries = await getCollection('oppgaver')
     return oppgaverEntries.map((entry) => ({
@@ -15,101 +16,6 @@ const { Content } = await entry.render()
 ---
 
 <style is:global>
-    @font-face {
-        font-family: 'Pixellet';
-        src: url('../../fonts/pixellet.ttf') format('truetype');
-    }
-
-    @font-face {
-        font-family: 'rainyhearts';
-        src: url('../../fonts/rainyhearts.ttf') format('truetype');
-    }
-
-    body {
-        background-color: #5b37a3;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    body > * {
-        max-width: 60rem;
-        margin-inline: 1rem;
-    }
-
-    h1 {
-        color: #d08770;
-        font-feature-settings:
-            'liga' off,
-            'clig' off;
-        font-family: rainyhearts;
-        font-size: 50px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 40px;
-        letter-spacing: -0.48px;
-        text-decoration-line: underline;
-        text-decoration-thickness: 3px;
-        text-underline-offset: 6px;
-    }
-
-    p {
-        color: #e0ffff;
-        font-feature-settings:
-            'liga' off,
-            'clig' off;
-        font-family: rainyhearts;
-        font-size: 28px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 26px;
-    }
-
-    li::marker {
-        content: '>> ';
-        color: #d08770;
-        font-feature-settings:
-            'liga' off,
-            'clig' off;
-        font-family: rainyhearts;
-        font-size: 28px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 26px;
-    }
-
-    li {
-        color: #e0ffff;
-        font-feature-settings:
-            'liga' off,
-            'clig' off;
-        font-family: rainyhearts;
-        font-size: 28px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 26px;
-    }
-
-    li:not(:last-child) {
-        margin-bottom: 0.2rem;
-    }
-
-    a {
-        color: #fff;
-        font-feature-settings:
-            'liga' off,
-            'clig' off;
-        font-family: rainyhearts;
-        font-size: 28px;
-        font-style: normal;
-        font-weight: 500;
-        text-decoration: none;
-    }
-
-    a:hover {
-        text-decoration: underline;
-    }
-
     img {
         width: 100%;
         height: auto;
@@ -117,7 +23,12 @@ const { Content } = await entry.render()
     }
 </style>
 
-<Header />
-<div style={{ width: '100%' }}>
-    <Content />
-</div>
+<head>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <Header />
+    <div style={{ width: '100%' }}>
+        <Content />
+    </div>
+</body>

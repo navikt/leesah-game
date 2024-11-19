@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
 @font-face {
     font-family: 'Pixellet';
     src: url('../fonts/pixellet.ttf') format('truetype');
@@ -46,6 +48,50 @@ p {
     font-style: normal;
     font-weight: 500;
     line-height: 26px;
+
+    img {
+        border: 1rem solid #2E3440;
+        width: 97%;
+        border-radius: 0.5rem;
+    }
+}
+
+
+code {
+    color: #d08770;
+    font-feature-settings:
+        'liga' off,
+        'clig' off;
+    font-family: rainyhearts;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px;
+    background-color: #2E3440;
+    border-radius: 0.5rem;
+    padding-inline: 7px;
+}
+
+.astro-code {
+    background-color: #2E3440;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-items: center;
+
+    code {
+        background-color: transparent;
+        color: #FFF;
+        font-feature-settings: 'liga' off, 'clig' off;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 26px;
+    }
 }
 
 li::marker {

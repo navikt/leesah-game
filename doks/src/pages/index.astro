@@ -12,7 +12,7 @@ oppgaverSider.sort((side) => (side.data.title === 'team-registration' ? -1 : 0))
 
 const naisOppgaverSider = [...oppgaverSider].filter((side) => side.slug.includes('nais/'))
 
-// Fjerne nais oppgaver fra nais siden
+// Fjerne nais oppgaver fra de vanlige oppgavene
 oppgaverSider = [...oppgaverSider.filter((side) => !side.slug.includes('nais'))]
 
 const oppsettSider = await getCollection('oppsett')

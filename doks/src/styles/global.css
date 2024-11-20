@@ -84,14 +84,24 @@ code {
 
     code {
         background-color: transparent;
-        color: #FFF;
         font-feature-settings: 'liga' off, 'clig' off;
         font-family: "JetBrains Mono", monospace;
         font-size: 18px;
         font-style: normal;
         font-weight: 500;
         line-height: 26px;
+
+        span.line {
+            span:first-child {
+                color: white !important;
+            }
+
+            span:nth-child(3n) {
+                color: #A3BE8C !important;
+            }
+        }
     }
+
 }
 
 li::marker {

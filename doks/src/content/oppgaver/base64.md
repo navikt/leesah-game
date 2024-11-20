@@ -2,7 +2,7 @@
 title: 'base64'
 ---
 
-# Base64
+## Base64
 
 Base64 oppgaven handler om å svare tilbake med "noe" som forståelig tekst.
 Om du ikke er kjent med base64 encoding så anbefaler vi [Wikipedia/base64](https://en.wikipedia.org/wiki/Base64)-artikkelen før man hiver seg løs på oppgaven.

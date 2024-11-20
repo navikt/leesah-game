@@ -2,7 +2,7 @@
 title: 'artimetikk'
 ---
 
-# Aritmetikk
+## Aritmetikk
 
 Aritmetikkoppgaver handler om å løse matteoppgaven som ligger i `spørsmål` feltet i oppgave-hendelsen.
 Feltet er bygd opp slik: `"<integer> <operator> <integer>"`hvor operatoren kan være `+`, `-`, `*` eller `/`.

@@ -2,9 +2,9 @@
 title: 'deduplisering'
 ---
 
-# Deduplisering
+## Deduplisering
 
-## Bakgrunn
+### Bakgrunn
 
 Denne oppgaven har som mål å gjøre deg litt mer kjent med et viktig konsept innen distribuerte, hendelsedrevne
 systemer, nemlig dupliserte hendelser.
@@ -14,7 +14,7 @@ Derfor er det viktig å bygge systemer som håndterer at samme melding kan komme
 
 Interessant artikkel om problemet med [exactly-once-delivery](https://www.confluent.io/blog/exactly-once-semantics-are-possible-heres-how-apache-kafka-does-it/).
 
-## Oppgaven
+### Oppgaven
 
 I denne oppgaven vil Quizmaster sende ut samme melding flere ganger, og det er din applikasjons oppgave å svare på meldingen kun én gang.
 

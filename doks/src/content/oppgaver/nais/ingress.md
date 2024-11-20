@@ -2,7 +2,7 @@
 title: 'ingress'
 ---
 
-# Ingress
+## Ingress
 
 Det er ikke kun [service discovery](service-discovery.md) som kan brukes for å kommunisere mellom applikasjoner.
 Hvis en ekstern app skal nå din app må du gjøre den tilgjengelig på internett, og da kan du bruke en [ingress](https://docs.nais.io/workloads/reference/environments/).
@@ -14,7 +14,6 @@ Oppgaven svares med adressen vi kan nå tjenesten din på.
 **Eksempel på oppgave-hendelse**
 
 ```json
-
 {
   "type": "SPØRSMÅL",
   "spørsmålId": "a662cd19-0eea-42f6-9850-a65ea419b7d9",

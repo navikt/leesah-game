@@ -2,7 +2,7 @@
 title: 'primtall'
 ---
 
-# Primtall
+## Primtall
 
 Denne oppgaven handler om å finne ut om et tall er primtall eller ikke.
 Et primtall er et naturlig tall større enn 1, som bare er delelig med seg selv og 1.

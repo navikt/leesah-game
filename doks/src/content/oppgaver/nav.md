@@ -2,7 +2,7 @@
 title: 'nav'
 ---
 
-# Nav
+## Nav
 
 Denne oppgaven handler om å svare på noen helt vanlige quiz-spørsmål, altså ikke noe fancy programmering her.
 Temaet for oppgavene er ikke overraskende Nav!

@@ -6,11 +6,15 @@ import leaderboardImg from '../assets/leaderboard.png'
 import catSleepingGif from '../assets/cat_sleeping.gif'
 import { getCollection } from 'astro:content'
 
-const oppgaverSider = await getCollection('oppgaver')
+let oppgaverSider = await getCollection('oppgaver')
 // Flytter team-registration til å være først i listen
 oppgaverSider.sort((side) => (side.data.title === 'team-registration' ? -1 : 0))
 
 const naisOppgaverSider = [...oppgaverSider].filter((side) => side.slug.includes('nais/'))
+
+// Fjerne nais oppgaver fra nais siden
+oppgaverSider = [...oppgaverSider.filter((side) => !side.slug.includes('nais'))]
+
 const oppsettSider = await getCollection('oppsett')
 ---
 

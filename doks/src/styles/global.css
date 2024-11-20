@@ -38,6 +38,32 @@ h2 {
     text-underline-offset: 6px;
 }
 
+h3 {
+    color: #d08770;
+    font-feature-settings:
+        'liga' off,
+        'clig' off;
+    font-family: rainyhearts;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 40px;
+    letter-spacing: -0.48px;
+}
+
+h4 {
+    color: #d08770;
+    font-feature-settings:
+        'liga' off,
+        'clig' off;
+    font-family: rainyhearts;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 40px;
+    letter-spacing: -0.48px;
+}
+
 p {
     color: #e0ffff;
     font-feature-settings:
@@ -51,7 +77,8 @@ p {
 
     img {
         border: 1rem solid #2E3440;
-        width: 97%;
+        width: initial;
+        max-width: 97%;
         border-radius: 0.5rem;
     }
 }
@@ -104,29 +131,58 @@ code {
 
 }
 
-li::marker {
-    content: '>> ';
-    color: #d08770;
-    font-feature-settings:
-        'liga' off,
-        'clig' off;
-    font-family: rainyhearts;
-    font-size: 28px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 26px;
+
+ul {
+    li::marker {
+        content: '>> ';
+        color: #d08770;
+        font-feature-settings:
+            'liga' off,
+            'clig' off;
+        font-family: rainyhearts;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 26px;
+    }
+
+    li {
+        color: #e0ffff;
+        font-feature-settings:
+            'liga' off,
+            'clig' off;
+        font-family: rainyhearts;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 26px;
+    }
 }
 
-li {
-    color: #e0ffff;
-    font-feature-settings:
-        'liga' off,
-        'clig' off;
-    font-family: rainyhearts;
-    font-size: 28px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 26px;
+ol {
+    li::marker {
+        color: #d08770;
+        font-feature-settings:
+            'liga' off,
+            'clig' off;
+        font-family: rainyhearts;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 26px;
+    }
+
+    li {
+        color: #e0ffff;
+        font-feature-settings:
+            'liga' off,
+            'clig' off;
+        font-family: rainyhearts;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 26px;
+    }
 }
 
 li:not(:last-child) {

@@ -2,7 +2,7 @@
 title: 'grunnbeløp'
 ---
 
-# Grunnbeløp
+## Grunnbeløp
 
 Grunnbeløpet blir bruk til å beregne mange av NAVs utbetalinger.
 Satsen blir oppdatert 1. mai hvert år og blir bestemt etter trygdeoppgjøret.

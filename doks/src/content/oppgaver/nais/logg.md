@@ -2,7 +2,7 @@
 title: 'logg'
 ---
 
-# Logg
+## Logg
 
 Denne oppgaven ber deg om å utforske loggene til Quizmaster.
 NAV sine logger finner du i Kibana som ligger på [logs.adeo.no](https://logs.adeo.no).

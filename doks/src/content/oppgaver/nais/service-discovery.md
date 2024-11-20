@@ -2,7 +2,7 @@
 title: 'service-discovery'
 ---
 
-# Service discovery
+## Service discovery
 
 Det er ikke kun [ingress](ingress.md) som kan brukes for å kommunisere mellom applikasjoner.
 Spesielt intern kommunikasjon er det ingen grunn til å gå via internett, da er det bedre å gå internt via [service discovery](https://docs.nais.io/workloads/application/explanations/expose/#service-discovery).

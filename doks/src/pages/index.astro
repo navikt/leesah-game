@@ -57,7 +57,7 @@ const oppsettSider = await getCollection('oppsett')
 					{
 						oppsettSider.map((side) => (
 							<li>
-								<a href={`/oppsett/${side.slug}`}>{side.data.title}</a>
+								<a href={`/oppsett/${side.slug}/index.html`}>{side.data.title}</a>
 							</li>
 						))
 					}

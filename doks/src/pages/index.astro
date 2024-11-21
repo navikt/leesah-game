@@ -57,7 +57,7 @@ const oppsettSider = await getCollection('oppsett')
 					{
 						oppsettSider.map((side) => (
 							<li>
-								<a href={`/oppsett/${side.slug}.html`}>{side.data.title}</a>
+								<a href={`/oppsett/${side.slug}/`}>{side.data.title}</a>
 							</li>
 						))
 					}
@@ -74,12 +74,12 @@ const oppsettSider = await getCollection('oppsett')
 						oppgaverSider.map((side) =>
 							side.data.title === 'team-registration' ? (
 								<li>
-									<a href={`/oppgaver/${side.slug}.html`}>{side.data.title}</a> (Første oppgaven som
+									<a href={`/oppgaver/${side.slug}/`}>{side.data.title}</a> (Første oppgaven som
 									alltid må gjøres før man kan løse andre oppgaver)
 								</li>
 							) : (
 								<li>
-									<a href={`/oppgaver/${side.slug}.html`}>{side.data.title}</a>
+									<a href={`/oppgaver/${side.slug}/`}>{side.data.title}</a>
 								</li>
 							)
 						)
@@ -90,7 +90,7 @@ const oppsettSider = await getCollection('oppsett')
 					{
 						naisOppgaverSider.map((side) => (
 							<li>
-								<a href={`/oppgaver/${side.slug}.html`}>{side.data.title}</a>
+								<a href={`/oppgaver/${side.slug}/`}>{side.data.title}</a>
 							</li>
 						))
 					}

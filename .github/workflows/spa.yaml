@@ -29,7 +29,7 @@ jobs:
         id: deploy
         uses: nais/deploy/actions/spa-deploy/v2@master
         with:
-          destination: leesah-produktside
+          app: leesah-produktside
           team: leesah-quiz
           source: doks/dist
           ingress: https://leesah.io

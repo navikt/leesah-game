@@ -9,10 +9,10 @@ spec:
   image: {{image}}
   port: 4321
   liveness:
-    path: /isAlive
+    path: /api/isAlive
     initialDelay: 10
   readiness:
-    path: /isReady
+    path: /api/isReady
     initialDelay: 10
   ingresses:
     - "https://leesah.io"

@@ -3,6 +3,8 @@ import '../../styles/global.css'
 import { getCollection } from 'astro:content'
 import Header from '../../components/Header/Header.astro'
 
+export const prerender = true
+
 export async function getStaticPaths() {
     const oppsettEntries = await getCollection('oppsett')
     return oppsettEntries.map((entry) => ({

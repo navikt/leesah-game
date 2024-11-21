@@ -25,17 +25,33 @@ jobs:
       - name: Yarn build
         working-directory: doks
         run: yarn build
-      - name: Deploy doc to leesah.io
+      - name: Deploy doc to SPA
         id: deploy
         uses: nais/deploy/actions/spa-deploy/v2@master
         with:
           app: leesah-produktside
           team: leesah-quiz
           source: doks/dist
-          ingress: https://leesah.io
-          ingressClass: nais-ingress-external
+          ingress: https://leesah.nav.no
           environment: prod-gcp
           project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
           identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
       - run: echo "### SPA deployed! :rocket:" >> $GITHUB_STEP_SUMMARY
       - run: echo "${{ steps.deploy.outputs.url }}" >> $GITHUB_STEP_SUMMARY
+
+      - name: Build and push
+        uses: nais/docker-build-push@v0
+        id: docker-build-push
+        with:
+          team: leesah-quiz
+          docker_context: doks
+          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
+          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
+      - name: Deploy to prod
+        uses: nais/deploy/actions/deploy@v2
+        env:
+          CLUSTER: prod-gcp
+          RESOURCE: doks/.nais/prod.yaml
+          VAR: image=${{ steps.docker-build-push.outputs.image }}
+          TELEMETRY: ${{ steps.docker-build-push.outputs.telemetry }}
+

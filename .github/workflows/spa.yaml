@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - astro-doks
 
 jobs:
   build-and-deploy:

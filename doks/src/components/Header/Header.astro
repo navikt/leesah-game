@@ -6,6 +6,8 @@ const { tittel } = Astro.props
 ---
 
 <header class="header-container">
-    <Fragment set:html={leesahWithClouds} />
+    <a href="/">
+        <Fragment set:html={leesahWithClouds} />
+    </a>
     {tittel && <h1>{tittel}</h1>}
 </header>

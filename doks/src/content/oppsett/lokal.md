@@ -10,6 +10,15 @@ slik at man kun trenger sertifikater for å snakke med Kafka, og biblioteket for
 
 ### Kom i gang
 
+#### Biblioteker
+
+Vi har laget biblioteker i flere forskjellige språk, så her er det bare å velge det du liker best.
+Hvert bibliotek vil ha sin egen dokumentasjon for hvordan man kommer i gang.
+
+- [Python 🐍](https://github.com/navikt/leesah-game-python): `python3 -m pip install leesah-game`
+- [Go](https://github.com/navikt/go-leesah): `go get github.com/navikt/go-leesah`
+- [JavaScript](https://github.com/navikt/leesah-game): `npm install @navikt/leesah-game`
+
 #### Hent Kafkasertifikat
 
 Gå til [leesah.io/certs](https://leesah.io/certs), brukernavn og passord finner du på en tavle eller slide.
@@ -28,12 +37,3 @@ Som regel kommer sertifikatet med riktig topic ut av boksen, men av og til må d
 ```shell
 export QUIZ_TOPIC=leesah-quiz-galtvort-1
 ```
-
-#### Biblioteker
-
-Vi har laget biblioteker i flere forskjellige språk, så her er det bare å velge det du liker best.
-Hvert bibliotek vil ha sin egen dokumentasjon for hvordan man kommer i gang.
-
-- [Python 🐍](https://github.com/navikt/leesah-game-python): `python3 -m pip install leesah-game`
-- [Go](https://github.com/navikt/go-leesah): `go get github.com/navikt/go-leesah`
-- [JavaScript](https://github.com/navikt/leesah-game): `npm install @navikt/leesah-game`

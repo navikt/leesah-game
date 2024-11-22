@@ -1,5 +1,5 @@
 ---
-title: 'artimetikk'
+title: 'aritmetikk'
 ---
 
 ## Aritmetikk

@@ -156,6 +156,7 @@ ul {
         font-style: normal;
         font-weight: 500;
         line-height: 26px;
+        text-decoration-line: underline;
     }
 }
 
@@ -182,6 +183,7 @@ ol {
         font-style: normal;
         font-weight: 500;
         line-height: 26px;
+        text-decoration-line: underline;
     }
 }
 

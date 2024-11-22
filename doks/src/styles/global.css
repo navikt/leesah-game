@@ -156,7 +156,6 @@ ul {
         font-style: normal;
         font-weight: 500;
         line-height: 26px;
-        text-decoration-line: underline;
     }
 }
 
@@ -183,7 +182,6 @@ ol {
         font-style: normal;
         font-weight: 500;
         line-height: 26px;
-        text-decoration-line: underline;
     }
 }
 
@@ -200,7 +198,7 @@ a {
     font-size: 28px;
     font-style: normal;
     font-weight: 500;
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 a:hover {

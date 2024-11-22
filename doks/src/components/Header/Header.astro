@@ -1,0 +1,11 @@
+---
+import './header.css'
+import leesahWithClouds from '../../assets/leesah-with-clouds.svg?raw'
+
+const { tittel } = Astro.props
+---
+
+<header class="header-container">
+    <Fragment set:html={leesahWithClouds} />
+    {tittel && <h1>{tittel}</h1>}
+</header>

@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+@font-face {
+    font-family: 'Pixellet';
+    src: url('../fonts/pixellet.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'rainyhearts';
+    src: url('../fonts/rainyhearts.ttf') format('truetype');
+}
+
+body {
+    background-color: #5b37a3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body>* {
+    max-width: 60rem;
+    margin-inline: 1rem;
+}
+
+h2 {
+    color: #d08770;
+    font-feature-settings:
+        'liga' off,
+        'clig' off;
+    font-family: rainyhearts;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 40px;
+    letter-spacing: -0.48px;
+    text-decoration-line: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 6px;
+}
+
+h3 {
+    color: #d08770;
+    font-feature-settings:
+        'liga' off,
+        'clig' off;
+    font-family: rainyhearts;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 40px;
+    letter-spacing: -0.48px;
+}
+
+h4 {
+    color: #d08770;
+    font-feature-settings:
+        'liga' off,
+        'clig' off;
+    font-family: rainyhearts;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 40px;
+    letter-spacing: -0.48px;
+}
+
+p {
+    color: #e0ffff;
+    font-feature-settings:
+        'liga' off,
+        'clig' off;
+    font-family: rainyhearts;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px;
+
+    img {
+        border: 1rem solid #2E3440;
+        width: initial;
+        max-width: 97%;
+        border-radius: 0.5rem;
+    }
+}
+
+
+code {
+    color: #d08770;
+    font-feature-settings:
+        'liga' off,
+        'clig' off;
+    font-family: rainyhearts;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px;
+    background-color: #2E3440;
+    border-radius: 0.5rem;
+    padding-inline: 7px;
+}
+
+.astro-code {
+    background-color: #2E3440;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-items: center;
+
+    code {
+        background-color: transparent;
+        font-feature-settings: 'liga' off, 'clig' off;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 26px;
+
+        span.line {
+            span:first-child {
+                color: white !important;
+            }
+
+            span:nth-child(3n) {
+                color: #A3BE8C !important;
+            }
+        }
+    }
+
+}
+
+
+ul {
+    li::marker {
+        content: '>> ';
+        color: #d08770;
+        font-feature-settings:
+            'liga' off,
+            'clig' off;
+        font-family: rainyhearts;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 26px;
+    }
+
+    li {
+        color: #e0ffff;
+        font-feature-settings:
+            'liga' off,
+            'clig' off;
+        font-family: rainyhearts;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 26px;
+    }
+}
+
+ol {
+    li::marker {
+        color: #d08770;
+        font-feature-settings:
+            'liga' off,
+            'clig' off;
+        font-family: rainyhearts;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 26px;
+    }
+
+    li {
+        color: #e0ffff;
+        font-feature-settings:
+            'liga' off,
+            'clig' off;
+        font-family: rainyhearts;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 26px;
+    }
+}
+
+li:not(:last-child) {
+    margin-bottom: 0.2rem;
+}
+
+a {
+    color: #fff;
+    font-feature-settings:
+        'liga' off,
+        'clig' off;
+    font-family: rainyhearts;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

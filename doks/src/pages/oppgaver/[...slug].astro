@@ -1,0 +1,40 @@
+---
+import '../../styles/global.css'
+import { getCollection } from 'astro:content'
+import Header from '../../components/Header/Header.astro'
+
+export const prerender = true
+
+export async function getStaticPaths() {
+    const oppgaverEntries = await getCollection('oppgaver')
+    return oppgaverEntries.map((entry) => ({
+        params: { slug: entry.slug },
+        props: { entry },
+    }))
+}
+
+const { entry } = Astro.props
+const { Content } = await entry.render()
+---
+
+<style is:global>
+    img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+</style>
+
+<html lang="no">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="../cat.svg" />
+        <meta name="viewport" content="width=device-width" />
+    </head>
+    <body>
+        <Header />
+        <div style={{ width: '100%' }}>
+            <Content />
+        </div>
+    </body>
+</html>

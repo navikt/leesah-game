@@ -12,7 +12,8 @@ slik at man kun trenger sertifikater for å snakke med Kafka, og biblioteket for
 
 #### Hent Kafkasertifikat
 
-Sertifikater for å koble seg på Kafka ligger tilgjengelig på [leesah.io/certs](https://leesah.io/certs), passord får du utdelt.
+Sertifikater for å koble seg på Kafka ligger tilgjengelig på [leesah.io/certs](https://leesah.io/certs), brukernavn er `leesah-game`, og
+passord får du utdelt.
 
 Du kan også bruke kommandoen nedenfor:
 

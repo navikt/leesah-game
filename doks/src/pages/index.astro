@@ -7,8 +7,8 @@ import catSleepingGif from '../assets/cat_sleeping.gif'
 import { getCollection } from 'astro:content'
 
 let oppgaverSider = await getCollection('oppgaver')
-// Flytter team-registration til å være først i listen
-oppgaverSider.sort((side) => (side.data.title === 'team-registration' ? -1 : 0))
+// Flytter lagregistrering til å være først i listen
+oppgaverSider.sort((side) => (side.data.title === 'lagregistrering' ? -1 : 0))
 
 const naisOppgaverSider = [...oppgaverSider].filter((side) => side.slug.includes('nais/'))
 
@@ -72,7 +72,7 @@ const oppsettSider = await getCollection('oppsett')
 				<ul>
 					{
 						oppgaverSider.map((side) =>
-							side.data.title === 'team-registration' ? (
+							side.data.title === 'lagregistrering' ? (
 								<li>
 									<a href={`/oppgaver/${side.slug}/`}>{side.data.title}</a> (Første oppgaven som
 									alltid må gjøres før man kan løse andre oppgaver)

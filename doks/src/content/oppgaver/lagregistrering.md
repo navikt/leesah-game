@@ -1,10 +1,10 @@
 ---
-title: 'team-registration'
+title: Lagregistrering
 ---
 
-## Team-registration
+## Lagregistrering
 
-Første oppgave alle team må løse er "team-registration"-oppgaven.
+Første oppgave alle team må løse er "lagregistrering"-oppgaven.
 Oppgaven løses ved å publisere et svar med en farge i form av hexkode som skal representere deres team i `svar`, i tillegg til et lagnavn i `lagnavn`.
 Lagnavnet må være det samme gjennom hele spillet, og skal ikke endres.
 
@@ -15,7 +15,7 @@ Lagnavnet må være det samme gjennom hele spillet, og skal ikke endres.
   "type": "SPØRSMÅL",
   "spørsmålId": "41fe30bd-4050-45cb-80b2-cb2e82ec4b84",
   "spørsmål": "Velg en hexkode med 6 tegn for å representere ditt team. Eksempel: #FFFFFF",
-  "kategori": "team-registration",
+  "kategori": "lagregistrering",
   "svarformat": "Hexkode i string"
 }
 ```
@@ -27,13 +27,13 @@ Lagnavnet må være det samme gjennom hele spillet, og skal ikke endres.
   "type": "SVAR",
   "svarId": "d36b4273-0571-42f2-b3bd-7b7987de43b0",
   "spørsmålId": "41fe30bd-4050-45cb-80b2-cb2e82ec4b84",
-  "kategori": "team-registration",
+  "kategori": "lagregistrering",
   "lagnavn": "l33t team",
   "svar": "#ff2255",
   "opprettet": "2022-11-07T14:53:27.581147"
 }
 ```
 
-Når team-registration er godkjent vil teamet bli lagt til på leaderboardet.
+Når lagregistrering er godkjent vil teamet bli lagt til på leaderboardet.
 
-![Leaderboard etter team-registration er godkjent](../assets/team-registration-leaderboard.png)
+![Leaderboard etter lagregistrering er godkjent](../assets/lagregistrering-leaderboard.png)

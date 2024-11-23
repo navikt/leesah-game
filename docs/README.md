@@ -26,7 +26,7 @@ Disse to forskjellige versjonene har også to forskjellige kodebaser.
 
 Oppgavene du kan møte i Leesah Game er som følger, og de kommer ikke nødvendigvis i rekkefølgen til listen.
 
-- [team-registration](oppgaver/team-registration.md) (Første oppgaven som alltid må gjøres før man kan løse andre oppgaver)
+- [lagregistrering](oppgaver/lagregistrering.md) (Første oppgaven som alltid må gjøres før man kan løse andre oppgaver)
 - [ping-pong](oppgaver/ping-pong.md)
 - [aritmetikk](oppgaver/aritmetikk.md)
 - [NAV](oppgaver/nav.md)

@@ -1,5 +1,5 @@
 ---
-title: Lagregistrering
+title: lagregistrering
 ---
 
 ## Lagregistrering

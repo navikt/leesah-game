@@ -4,6 +4,7 @@ import './index.css'
 import Header from '../components/Header/Header.astro'
 import leaderboardImg from '../assets/leaderboard.png'
 import catSleepingGif from '../assets/cat_sleeping.gif'
+import spinningFoxGif from '../assets/spinning-fox.gif'
 import { getCollection } from 'astro:content'
 
 let oppgaverSider = await getCollection('oppgaver')
@@ -96,6 +97,10 @@ const oppsettSider = await getCollection('oppsett')
 					}
 				</ul>
 			</div>
+			<a class="hvem-er-leesah-container" href="/hvem-er-leesah">
+				<img srcset={`${spinningFoxGif.src} 5x`} />
+				<h2 class="hvem-er-leesah-heading">Hvem er leesah? --></h2>
+			</a>
 		</main>
 	</body>
 </html>

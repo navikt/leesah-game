@@ -1,0 +1,86 @@
+---
+import '../../styles/global.css'
+import './index.css'
+import Header from '../../components/Header/Header.astro'
+
+import tania from '../../assets/tania.png'
+import oydis from '../../assets/øydis.png'
+import helene from '../../assets/helene.png'
+import kyrre from '../../assets/kyrre.png'
+import emil from '../../assets/emil.png'
+---
+
+<html lang="no">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/cat.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Leesah Game</title>
+    </head>
+    <body>
+        <main>
+            <Header tittel="livet er en strøm av hendelser" />
+            <div class="flex-gap-container">
+                <p>
+                    Masse greier om leesah siodghsdoighsdog sodighsd ogihsd giosdh gisdh gisdh soidgh soighsodighigh
+                    osdgh osdhio
+                </p>
+                <div class="person">
+                    <div>
+                        <h3>Tania Holst</h3>
+                        <p>
+                            Masse greier om tania siodghsdoighsdog sodighsd ogihsd giosdh gisdh gisdh soidgh
+                            soighsodighigh osdgh osdhio
+                        </p>
+                    </div>
+                    <img srcset={`${tania.src} 2x`} />
+                </div>
+
+                <div class="person">
+                    <img srcset={`${oydis.src} 2x`} />
+                    <div>
+                        <h3>Øydis Kind Refsum</h3>
+                        <p>
+                            Masse greier om øydis siodghsdoighsdog sodighsd ogihsd giosdh gisdh gisdh soidgh
+                            soighsodighigh osdgh osdhio
+                        </p>
+                    </div>
+                </div>
+
+                <div class="person">
+                    <div>
+                        <h3>Helene Arnesen</h3>
+                        <p>
+                            Masse greier om helene siodghsdoighsdog sodighsd ogihsd giosdh gisdh gisdh soidgh
+                            soighsodighigh osdgh osdhio
+                        </p>
+                    </div>
+                    <img srcset={`${helene.src} 2x`} />
+                </div>
+
+                <div class="person">
+                    <img srcset={`${kyrre.src} 2x`} />
+                    <div>
+                        <h3>Kyrre Havik</h3>
+                        <p>
+                            Masse greier om kyrre siodghsdoighsdog sodighsd ogihsd giosdh gisdh gisdh soidgh
+                            soighsodighigh osdgh osdhio
+                        </p>
+                    </div>
+                </div>
+
+                <div class="person">
+                    <div>
+                        <h3>Emil Elton Nilsen</h3>
+                        <p>
+                            Masse greier om emil siodghsdoighsdog sodighsd ogihsd giosdh gisdh gisdh soidgh
+                            soighsodighigh osdgh osdhio
+                        </p>
+                    </div>
+                    <img srcset={`${emil.src} 2x`} />
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

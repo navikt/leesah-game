@@ -1,0 +1,12 @@
+.flex-gap-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.person {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 4rem;
+}

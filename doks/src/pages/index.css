@@ -63,6 +63,12 @@
     text-underline-offset: 5px;
 
     margin-block: 3rem;
+
+    @media screen and (min-width: 0px) and (max-width: 678px) {
+        img {
+            display: none;
+        }
+    }
 }
 
 .hvem-er-leesah-container:hover {
@@ -84,6 +90,7 @@
     font-size: 70px;
     font-style: normal;
     font-weight: 500;
+    line-height: 50px;
     text-decoration: none;
     /* 33.333% */
     letter-spacing: -0.96px;

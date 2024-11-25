@@ -9,4 +9,27 @@
     flex-direction: row;
     justify-content: space-between;
     gap: 4rem;
+
+    @media screen and (min-width: 0px) and (max-width: 678px) {
+        flex-direction: column;
+        gap: 2rem;
+
+        img {
+            transform: scale(0.9);
+        }
+
+        h3 {
+            margin-block: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.person:nth-child(2n) {
+    @media screen and (min-width: 679px) {
+        flex-direction: row-reverse;
+    }
 }

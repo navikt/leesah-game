@@ -28,7 +28,7 @@ jobs:
         with:
           app: leesah-produktside
           team: leesah-quiz
-          source: doks/dist
+          source: dist
           ingress: https://leesah.nav.no
           environment: prod-gcp
           project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}

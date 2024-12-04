@@ -1,0 +1,24 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: leesah-dokumentasjon
+  namespace: leesah-quiz
+  labels:
+    team: leesah-quiz
+spec:
+  image: {{image}}
+  port: 4321
+  liveness:
+    path: /api/isAlive
+    initialDelay: 10
+  readiness:
+    path: /api/isReady
+    initialDelay: 10
+  ingresses:
+    - "https://leesah.io"
+  resources:
+    limits:
+      memory: 768Mi
+    requests:
+      cpu: "10m"
+      memory: 128Mi

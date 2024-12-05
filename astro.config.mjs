@@ -8,7 +8,4 @@ export default defineConfig({
     adapter: node({
         mode: "standalone",
     }),
-    // build: {
-    //     assetsPrefix: 'https://cdn.nav.no/leesah-quiz/leesah-produktside/_astro'
-    // }
 });

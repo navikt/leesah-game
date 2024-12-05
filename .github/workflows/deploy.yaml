@@ -22,14 +22,6 @@ jobs:
         run: yarn install
       - name: Yarn build
         run: yarn build
-      - name: Upload static files to CDN
-        uses: nais/deploy/actions/cdn-upload/v2@master
-        with:
-          team: leesah-quiz
-          source: dist
-          destination: "/leesah-produktside/prod-gcp/"
-          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }} # Provided as Organization Secret
-          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }} # Provided as Organization Variable
 
       - name: Build and push
         uses: nais/docker-build-push@v0

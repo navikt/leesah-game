@@ -22,19 +22,14 @@ jobs:
         run: yarn install
       - name: Yarn build
         run: yarn build
-      - name: Deploy doc to SPA
-        id: deploy
-        uses: nais/deploy/actions/spa-deploy/v2@master
+      - name: Upload static files to CDN
+        uses: nais/deploy/actions/cdn-upload/v2@master
         with:
-          app: leesah-produktside
           team: leesah-quiz
           source: dist
-          ingress: https://leesah.nav.no
-          environment: prod-gcp
-          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
-          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
-      - run: echo "### SPA deployed! :rocket:" >> $GITHUB_STEP_SUMMARY
-      - run: echo "${{ steps.deploy.outputs.url }}" >> $GITHUB_STEP_SUMMARY
+          destination: "/leesah-produktside/prod-gcp/"
+          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }} # Provided as Organization Secret
+          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }} # Provided as Organization Variable
 
       - name: Build and push
         uses: nais/docker-build-push@v0

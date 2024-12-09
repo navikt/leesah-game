@@ -1,28 +1,42 @@
-# accidental node modules
-**/node_modules/
+node_modules/
+dist/
+*.tsbuildinfo
+.DS_Store
+.vercel
+.netlify
+_site/
+scripts/smoke/*-main/
+scripts/memory/project/src/pages/
+benchmark/projects/
+benchmark/results/
+test-results/
+*.log
+package-lock.json
+.turbo/
+.eslintcache
+.pnpm-store
 
-.gradle
-**/build/
-!src/**/build/
+# do not commit .env files or any files that end with `.env`
+*.env
 
-# Ignore Gradle GUI config
-gradle-app.setting
+packages/astro/src/**/*.prebuilt.ts
+packages/astro/src/**/*.prebuilt-dev.ts
+packages/astro/test/units/_temp-fixtures/*
+!packages/astro/test/units/_temp-fixtures/package.json
+packages/integrations/**/.netlify/
 
-# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
-!gradle-wrapper.jar
-
-# Cache of project
-.gradletasknamecache
-
+# exclude IntelliJ/WebStorm stuff
 .idea
 
-*.pem
-*.cert
-*.key
-*.p12
-certs/
+# ignore content collection generated files
+packages/**/test/**/fixtures/**/.astro/
+packages/**/test/**/fixtures/**/env.d.ts
+packages/**/e2e/**/fixtures/**/.astro/
+packages/**/e2e/**/fixtures/**/env.d.ts
+examples/**/.astro/
+examples/**/env.d.ts
 
-.DS_Store
-
-.tool-versions
-/venv/
+# make it easy for people to add project-specific Astro settings that they don't
+# want to share with others (see
+# https://github.com/withastro/astro/pull/11759#discussion_r1721444711)
+*.code-workspace

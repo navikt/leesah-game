@@ -1,12 +1,12 @@
 ---
-import '../../styles/global.css'
-import './index.css'
-import Header from '../../components/Header/Header.astro'
-
-import tania from '../../assets/tania.png'
-import oydis from '../../assets/øydis.png'
-import helene from '../../assets/helene.png'
-import kyrre from '../../assets/kyrre.png'
+import '../../styles/global.css';
+import './index.css';
+import Header from '../../components/Header/Header.astro';
+import { Image } from 'astro:assets';
+import tania from '../../assets/tania.png';
+import oydis from '../../assets/øydis.png';
+import helene from '../../assets/helene.png';
+import kyrre from '../../assets/kyrre.png';
 import emil from '../../assets/emil.png'
 ---
 
@@ -31,9 +31,10 @@ import emil from '../../assets/emil.png'
                 <div class="person">
                     <div>
                         <h3>Tania Holst</h3>
-                        <p>Tania er utvikler i "team personbruker" og jobber med nav.no</p>
+						<p>Tania er frontendutvikler i Team Personbruker og jobber med å utvikle nav.no. Hun har jobbet i Nav siden 2019 og stortrives som utvikler her. Hun ranter om at folk må legge vekk telefonene sine, og for øyeblikket tar hun på seg nye utfordringer som å være Security Champion for nav.no.</p>
+						<p>Ellers er det strikking det går i, og et hårete mål om å klare så mange Escape Rooms som mulig før pensjonsalder.</p>
                     </div>
-                    <img srcset={`${tania.src} 2x`} />
+                    <Image src={tania} height="300" alt=""/>
                 </div>
 
                 <div class="person">
@@ -41,7 +42,7 @@ import emil from '../../assets/emil.png'
                         <h3>Øydis Kind Refsum</h3>
                         <p>Øydis er utvikler i speilvendt i produktområde helse</p>
                     </div>
-                    <img srcset={`${oydis.src} 2x`} />
+                    <Image src={oydis} height="300" alt=""/>
                 </div>
 
                 <div class="person">
@@ -49,7 +50,7 @@ import emil from '../../assets/emil.png'
                         <h3>Helene Arnesen</h3>
                         <p>Helene er utvikler i team sykemelding i produktområde helse</p>
                     </div>
-                    <img srcset={`${helene.src} 2x`} />
+                    <Image src={helene} height="300" alt=""/>
                 </div>
 
                 <div class="person">
@@ -58,7 +59,7 @@ import emil from '../../assets/emil.png'
                         <p>Kyrre startet i Nav som plattformutvikler i 2018. Han er utvikler i <a href="https://nais.io/">Nais</a> og bygger applikasjonsplattform basert på Kubernetes i skyen!</p>
 						<p>I Leesah prøver Kyrre å selge inn programmeringsspråket Go. Ellers er han over gjennomsnittlig interessert i <a href="https://kyrremann.no/keebs/">tastaturer</a>, og brettspill.</p>
                     </div>
-                    <img srcset={`${kyrre.src} 2x`} />
+                    <Image src={kyrre} height="300" alt=""/>
                 </div>
 
                 <div class="person">
@@ -66,7 +67,7 @@ import emil from '../../assets/emil.png'
                         <h3>Emil Elton Nilsen</h3>
                         <p>Emil er utvikler i etterlatte i produktområde pensjon</p>
                     </div>
-                    <img srcset={`${emil.src} 2x`} />
+                    <Image src={emil} height="300" alt=""/>
                 </div>
             </div>
         </main>

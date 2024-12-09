@@ -36,4 +36,4 @@ Lagnavnet må være det samme gjennom hele spillet, og skal ikke endres.
 
 Når lagregistrering er godkjent vil teamet bli lagt til på leaderboardet.
 
-![Leaderboard etter lagregistrering er godkjent](../assets/lagregistrering-leaderboard.png)
+![Leaderboard etter lagregistrering er godkjent](../../assets/lagregistrering-leaderboard.png)

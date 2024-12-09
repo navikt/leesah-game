@@ -11,10 +11,10 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/node": "^8.3.4",
-    "astro": "^4.16.1",
-    "prettier": "^3.3.3",
-    "typescript": "^5.6.2"
+    "@astrojs/node": "^9.0.0",
+    "astro": "^5.0.3",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.2"
   },
   "prettier": {
     "trailingComma": "es5",

@@ -46,10 +46,10 @@
     vscode-html-languageservice "^5.2.0"
     vscode-uri "^3.0.8"
 
-"@astrojs/markdown-remark@6.0.0":
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/@astrojs/markdown-remark/-/markdown-remark-6.0.0.tgz#bf0a4e97bd71685e27f9f36cc103239d99fbe83e"
-  integrity sha512-Tabo7xM44Pz2Yf9qpdaCCgxRmtaypi2YCinqTUNefDrWUa+OyKW62OuNeCaGwNh/ys+QAd9FUWN5/3HgPWjP4Q==
+"@astrojs/markdown-remark@6.0.1":
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@astrojs/markdown-remark/-/markdown-remark-6.0.1.tgz#6bffdebbf7a802b85a0c3795c5f02de49d8a5334"
+  integrity sha512-CTSYijj25NfxgZi15TU3CwPwgyD1/7yA3FcdcNmB9p94nydupiUbrIiq3IqeTp2m5kCVzxbPZeC7fTwEOaNyGw==
   dependencies:
     "@astrojs/prism" "3.2.0"
     github-slugger "^2.0.0"
@@ -899,14 +899,14 @@ array-iterate@^2.0.0:
   resolved "https://registry.yarnpkg.com/array-iterate/-/array-iterate-2.0.1.tgz#6efd43f8295b3fee06251d3d62ead4bd9805dd24"
   integrity sha512-I1jXZMjAgCMmxT4qxXfPXa6SthSoE8h6gkSI9BGGNv8mP8G/v0blc+qFnZu6K42vTOiuME596QaLO0TP3Lk0xg==
 
-astro@^5.0.3:
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/astro/-/astro-5.0.3.tgz#0059a7706043523bb85c75440096a7b77ed714f2"
-  integrity sha512-qpeN+POmmfAQu/XDXaI2CxkUgQFwH9uMUVaA1reV9rybzIbOVYc3E3BU5SkiP/W4BMUFPdJtyw6+/n/0AUv6rw==
+astro@^5.0.5:
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/astro/-/astro-5.0.5.tgz#eda165b948bb4fbe3c231e184f69ff81d7241249"
+  integrity sha512-xfptdmurDsQcj/Anc7mU+eKlcyV7ppJIlmaSwhX3ZWwK5N/0rGKVmUqnuILgR6MB0XVJiIfublNzDGoyj4Q6BQ==
   dependencies:
     "@astrojs/compiler" "^2.10.3"
     "@astrojs/internal-helpers" "0.4.2"
-    "@astrojs/markdown-remark" "6.0.0"
+    "@astrojs/markdown-remark" "6.0.1"
     "@astrojs/telemetry" "3.2.0"
     "@oslojs/encoding" "^1.1.0"
     "@rollup/pluginutils" "^5.1.3"

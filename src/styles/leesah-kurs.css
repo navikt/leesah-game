@@ -1,0 +1,14 @@
+.flex-gap-container {
+    display: flex;
+    flex-direction: column;
+
+    .leesah-kurs-image-container {
+        margin: 0 auto;
+
+        img {
+            width: 100%;
+            max-width: 50rem;
+            height: auto;
+        }
+    }
+}

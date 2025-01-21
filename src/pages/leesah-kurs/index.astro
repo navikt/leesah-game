@@ -1,0 +1,73 @@
+---
+import '../../styles/global.css';
+import '../../styles/leesah-kurs.css';
+import Header from '../../components/Header/Header.astro';
+import leesahTeam from '../../assets/leesahteam.jpg';
+import leesahKurs1 from '../../assets/leesah-kurs1.jpg';
+import leesahKurs2 from '../../assets/leesah-kurs2.jpg';
+---
+
+<html lang="no">
+<head>
+    <meta charset="utf-8"/>
+    <link rel="icon" type="image/svg+xml" href="/cat.svg"/>
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="generator" content={Astro.generator}/>
+    <title>Leesah Game</title>
+</head>
+<body>
+<main>
+    <Header tittel="Vil du spille Leesah Game?"/>
+    <div class="flex-gap-container">
+
+        <div class="leesah-kurs-image-container">
+            <img src={leesahTeam.src} alt="Leesah team samlet"/>
+        </div>
+
+        <p>
+            Klar for å lære og ha det gøy samtidig? Bli med på gamified kurs i hendelsesdrevet
+            utvikling! 🌟
+            <br/><br/>
+            I Nav utvikler vi moderne systemer med en hendelsesdrevet mikrotjenestearkitektur som
+            møter fremtidens arbeids- og velferdsbehov. Nå inviterer vi deg til å lære hvordan vi
+            bygger applikasjoner som løser komplekse utfordringer.
+        </p>
+
+        <div class="leesah-kurs-image-container">
+            <img src={leesahKurs1.src} alt="Leesah team kurs"/>
+        </div>
+
+        <p>
+            I kurset vil vi først introdusere de viktigste prinsippene bak hendelsesdrevet
+            utvikling. Deretter blir det action: vi kjører i gang med en gamified workshop hvor dere
+            koder i par. Sammen skal dere utvikle en applikasjon som kobles mot Kafka for å håndtere
+            utfordringer fortløpende. Dette blir en morsom og utfordrende ettermiddag full av koding
+            og læring!
+            <br/><br/>
+            Våre kursholdere Tania, Emil, Øydis og Kyrre er erfarne utviklere som jobber i
+            forskjellige team i Nav. De har variert bakgrunn og ekspertise, og har designet dette
+            kurset for å styrke både egen og din kompetanse innen hendelsesdrevet utvikling og
+            programmering.
+        </p>
+
+        <div class="leesah-kurs-image-container">
+            <img src={leesahKurs2.src} alt="Leesah team kurs"/>
+        </div>
+
+        <p>
+            Hvem bør delta? Du som er nysgjerrig på hendelsesdrevet utvikling og vil lære hvordan vi
+            jobber i Nav, er dette kurset for deg! Litt erfaring med Python, JavaScript, Go eller
+            programmering generelt anbefales, men du trenger ikke være en ekspert. Ikke gå glipp av
+            denne unike muligheten til å utvikle ferdighetene dine i en interaktiv og morsom
+            setting! 💻👾
+            <br/><br/>
+            Vi holder Leesah Game for universiteter, høyskoler, på konferanser og hos forskjellige
+            bedrifter.
+            Om du tenker at dette kunne vært et artig kurs vi kan holde for deg og dine kollegaer,
+            kan du ta kontakt med Tania Holst på <a href="mailto:tania.holst@nav.no">tania.holst@nav.no</a>!
+        </p>
+
+    </div>
+</main>
+</body>
+</html>

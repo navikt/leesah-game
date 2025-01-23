@@ -51,7 +51,7 @@ Svar med korrekt sammenstilt saldo for hver oppgave-hendelse applikasjonen motta
   "spørsmålId": "6748a649-83f8-4953-8154-cd7f57e0d9fb",
   "kategori": "bankkonto",
   "lagnavn": "l33t team",
-  "svar": "-15185",
+  "svar": "1657",
   "opprettet": "2022-11-07T14:53:27.581147"
 }
 ```

@@ -15,7 +15,7 @@ Svar med korrekt sammenstilt saldo for hver oppgave-hendelse applikasjonen motta
   "type": "SPØRSMÅL",
   "spørsmålId": "bc22a3d2-ff4b-477c-8b67-52f3888f5848",
   "kategori": "bankkonto",
-  "spørsmål": "UTTREKK 6764",
+  "spørsmål": "UTTREKK: 6764",
   "svarformat": "Tall i String"
 }
 ```
@@ -25,7 +25,7 @@ Svar med korrekt sammenstilt saldo for hver oppgave-hendelse applikasjonen motta
   "type": "SPØRSMÅL",
   "spørsmålId": "6748a649-83f8-4953-8154-cd7f57e0d9fb",
   "kategori": "bankkonto",
-  "spørsmål": "UTTREKK 8421",
+  "spørsmål": "INNSKUDD: 8421",
   "svarformat": "Tall i String"
 }
 ```

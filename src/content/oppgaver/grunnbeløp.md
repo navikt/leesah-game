@@ -4,7 +4,7 @@ title: 'grunnbeløp'
 
 ## Grunnbeløp
 
-Grunnbeløpet blir bruk til å beregne mange av NAVs utbetalinger.
+Grunnbeløpet blir bruk til å beregne mange av Navs utbetalinger.
 Satsen blir oppdatert 1. mai hvert år og blir bestemt etter trygdeoppgjøret.
 Du kan lese mer om det på [nav.no/grunnbelopet](https://www.nav.no/grunnbelopet)
 Det finnes også et åpent API for Grunnbeløp på [g.nav.no/](https://g.nav.no/)! 😻

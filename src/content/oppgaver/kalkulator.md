@@ -5,7 +5,7 @@ title: 'kalkulator'
 ## Kalkulator
 
 Denne oppgaven ber deg finne ut hvor mye en bruker kan få i arbeidsavklaringspenger (AAP).
-NAV tilbyr en kalkulator som gjør det enkelt å finne ut hva man har krav på, den finner du under [nav.no/aap/kalkulator](https://www.nav.no/aap/kalkulator).
+Nav tilbyr en kalkulator som gjør det enkelt å finne ut hva man har krav på, den finner du under [nav.no/aap/kalkulator](https://www.nav.no/aap/kalkulator).
 Svar med korrekt sum i kroner for hver oppgave.
 
 **Eksempel på oppgave-hendelse**

@@ -5,7 +5,7 @@ title: 'logg'
 ## Logg
 
 Denne oppgaven ber deg om å utforske loggene til Quizmaster.
-NAV sine logger finner du i Kibana som ligger på [logs.adeo.no](https://logs.adeo.no).
+Nav sine logger finner du i Kibana som ligger på [logs.adeo.no](https://logs.adeo.no).
 Oppgaven svares med nøkkelordet tildelt din app.
 
 **Eksempel på oppgave-hendelse**

@@ -18,7 +18,7 @@ I denne oppgaven skal du svare på datoen i oppgaven med riktig grunnbeløp.
   "type": "SPØRSMÅL",
   "spørsmålId": "3cf7a835-cd5e-4a40-baf9-844119f52ac6",
   "kategori": "grunnbeløp",
-  "spørsmål": "Grunnbeløp for dato: 1967-07-14",
+  "spørsmål": "Grunnbeløp for dato 1967-07-14",
   "svarformat": "Tall i String"
 }
 ```

@@ -2,6 +2,8 @@
 title: team-registration
 ---
 
+## Team-registration
+
 The first task each team has to solve is the "team-registration" task. The task is solved by publishing an answering a hex code color which will represent your team in `answer`, in addition to a team name in `team_name`. Your team name must be the same throughout the whole game and cannot be changed.
 
 **Example of a task event**

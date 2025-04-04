@@ -5,7 +5,7 @@ title: 'aritmetikk'
 ## Aritmetikk
 
 Aritmetikkoppgaver handler om å løse matteoppgaven som ligger i `spørsmål` feltet i oppgave-hendelsen.
-Feltet er bygd opp slik: `"<integer> <operator> <integer>"`hvor operatoren kan være `+`, `-`, `*` eller `/`.
+Feltet er bygd opp slik: `"<integer> <operator> <integer>"`, hvor operatoren kan være `+`, `-`, `*` eller `/`.
 Oppgaven svares med riktig svar i heltall (integer).
 
 **Eksempel på oppgave-hendelse**

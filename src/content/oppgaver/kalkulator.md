@@ -11,7 +11,6 @@ Svar med korrekt sum i kroner for hver oppgave.
 **Eksempel på oppgave-hendelse**
 
 ```json
-
 {
   "type": "SPØRSMÅL",
   "spørsmålId": "a662cd19-0eea-42f6-9850-a65ea419b7d9",

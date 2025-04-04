@@ -19,6 +19,7 @@ The arithmetic task is all about solving math problems which can be found in the
 ```
 
 **Example of answer**
+
 ```json
 {
   "type": "ANSWER",

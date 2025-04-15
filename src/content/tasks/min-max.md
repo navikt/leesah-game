@@ -29,7 +29,6 @@ If asked for the `LOWEST`, you shall return the lowest number.
   "questionId": "41fe30bd-4050-45cb-80b2-cb2e82ec4b84",
   "category": "min-max",
   "teamName": "l33t team",
-  "answer": "94",
-  "created": "2022-11-07T14:53:27.581147"
+  "answer": "94"
 }
 ```

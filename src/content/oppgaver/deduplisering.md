@@ -39,8 +39,7 @@ I denne oppgaven vil Quizmaster sende ut samme melding flere ganger, og det er d
   "spørsmålId": "0c8408aa-d592-47fa-aaef-eb8ee90993e5",
   "kategori": "deduplisering",
   "lagnavn": "l33t team",
-  "svar": "Du lurer ikke meg!",
-  "opprettet": "2022-11-07T14:53:27.581147"
+  "svar": "Du lurer ikke meg!"
 }
 ```
 
@@ -64,7 +63,6 @@ For å nullstille oppgaven for ditt team må du sende følgende streng som svar 
   "spørsmålId": "0c8408aa-d592-47fa-aaef-eb8ee90993e5",
   "kategori": "deduplisering",
   "lagnavn": "l33t team",
-  "svar": "Du lurte meg :(",
-  "opprettet": "2022-11-07T14:53:27.581147"
+  "svar": "Du lurte meg :("
 }
 ```

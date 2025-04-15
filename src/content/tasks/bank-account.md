@@ -38,8 +38,7 @@ Answer with the correct consolidated balance for each question event your applic
   "questionId": "41fe30bd-4050-45cb-80b2-cb2e82ec4b84",
   "category": "bank-account",
   "teamName": "l33t team",
-  "answer": "-6764",
-  "created": "2022-11-07T14:53:27.581147"
+  "answer": "-6764"
 }
 ```
 
@@ -50,7 +49,6 @@ Answer with the correct consolidated balance for each question event your applic
   "questionId": "41fe30bd-4050-45cb-80b2-cb2e82ec4b84",
   "category": "bank-account",
   "teamName": "l33t team",
-  "answer": "1657",
-  "created": "2022-11-07T14:53:27.581147"
+  "answer": "1657"
 }
 ```

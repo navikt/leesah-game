@@ -33,7 +33,6 @@ Oppgaven svares med navn på appen.
   "spørsmålId": "a662cd19-0eea-42f6-9850-a65ea419b7d9",
   "kategori": "service-discovery",
   "lagnavn": "l33t team",
-  "svar": "leet",
-  "opprettet": "2022-11-07T14:53:27.581147"
+  "svar": "leet"
 }
 ```

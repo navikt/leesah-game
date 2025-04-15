@@ -29,7 +29,6 @@ Svar med `true` eller `false` avhengig av om tallet inne i `spørsmål`-feltet i
   "spørsmålId": "444b1103-b8f5-4efc-8182-d71b7c2c9e5e",
   "kategori": "primtall",
   "lagnavn": "l33t team",
-  "svar": "true",
-  "opprettet": "2022-11-07T14:53:27.581147"
+  "svar": "true"
 }
 ```

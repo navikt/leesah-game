@@ -32,7 +32,6 @@ In this task the goal is to answer the correct basic amount at the given date.
   "questionId": "41fe30bd-4050-45cb-80b2-cb2e82ec4b84",
   "category": "basic-amount",
   "teamName": "l33t team",
-  "answer": "5400",
-  "created": "2022-11-07T14:53:27.581147"
+  "answer": "5400"
 }
 ```

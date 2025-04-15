@@ -28,7 +28,6 @@ Temaet for oppgavene er ikke overraskende Nav!
   "spørsmålId": "176cc8af-3f37-4659-9dac-29d3d5537ebe",
   "kategori": "Nav",
   "lagnavn": "l33t team",
-  "svar": "sykepenger",
-  "opprettet": "2022-11-07T14:53:27.581147"
+  "svar": "sykepenger"
 }
 ```

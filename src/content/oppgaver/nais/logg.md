@@ -30,7 +30,6 @@ Oppgaven svares med nøkkelordet tildelt din app.
   "spørsmålId": "a662cd19-0eea-42f6-9850-a65ea419b7d9",
   "kategori": "logg",
   "lagnavn": "l33t team",
-  "svar": "harepus",
-  "opprettet": "2022-11-07T14:53:27.581147"
+  "svar": "harepus"
 }
 ```

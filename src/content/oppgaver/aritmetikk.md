@@ -29,7 +29,6 @@ Oppgaven svares med riktig svar i heltall (integer).
   "spørsmålId": "96acb8f4-4b1e-4f0a-9d54-fcdda1223d9d",
   "kategori": "aritmetikk",
   "lagnavn": "l33t team",
-  "svar": "-13",
-  "opprettet": "2022-11-07T14:53:27.581147"
+  "svar": "-13"
 }
 ```

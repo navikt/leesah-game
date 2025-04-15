@@ -39,7 +39,6 @@ alv
   "spørsmålId": "608df513-96e1-4c4e-af26-ec81823aed1d",
   "kategori": "ordsøk",
   "lagnavn": "l33t team",
-  "svar": "nav,aap",
-  "opprettet": "2022-11-07T14:53:27.581147"
+  "svar": "nav,aap"
 }
 ```

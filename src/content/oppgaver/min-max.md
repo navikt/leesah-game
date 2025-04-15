@@ -29,7 +29,6 @@ Spør den etter `LAVESTE`, skal du returnere det laveste tallet.
   "spørsmålId": "9e679608-fb1c-482c-9ced-00a3593bb684",
   "kategori": "min-max",
   "lagnavn": "l33t team",
-  "svar": "94",
-  "opprettet": "2022-11-07T14:53:27.581147"
+  "svar": "94"
 }
 ```

@@ -28,7 +28,6 @@ Om du ikke er kjent med base64 encoding så anbefaler vi [Wikipedia/base64](http
   "spørsmålId": "608df513-96e1-4c4e-af26-ec81823aed1d",
   "kategori": "base64",
   "lagnavn": "l33t team",
-  "svar": "LEESAH",
-  "opprettet": "2022-11-07T14:53:27.581147"
+  "svar": "LEESAH"
 }
 ```

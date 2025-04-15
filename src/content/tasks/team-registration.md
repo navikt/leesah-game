@@ -28,8 +28,7 @@ Your team name must be the same throughout the whole game and cannot be changed.
   "questionId": "41fe30bd-4050-45cb-80b2-cb2e82ec4b84",
   "category": "team-registration",
   "teamName": "l33t team",
-  "answer": "#ff2255",
-  "created": "2022-11-07T14:53:27.581147"
+  "answer": "#ff2255"
 }
 ```
 

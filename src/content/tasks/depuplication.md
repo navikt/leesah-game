@@ -38,8 +38,7 @@ In this task Quizmaster wil send the same question multiple times and it is your
   "questionId": "41fe30bd-4050-45cb-80b2-cb2e82ec4b84",
   "category": "deduplication",
   "teamName": "l33t team",
-  "answer": "You shall not fool me!",
-  "created": "2022-11-07T14:53:27.581147"
+  "answer": "You shall not fool me!"
 }
 ```
 
@@ -60,7 +59,6 @@ To reset the task your team must send the following string as a answer to the ta
   "questionId": "41fe30bd-4050-45cb-80b2-cb2e82ec4b84",
   "category": "deduplication",
   "teamName": "l33t team",
-  "answer": "You fooled me :(",
-  "created": "2022-11-07T14:53:27.581147"
+  "answer": "You fooled me :("
 }
 ```

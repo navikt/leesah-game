@@ -29,8 +29,7 @@ Lagnavnet må være det samme gjennom hele spillet, og skal ikke endres.
   "spørsmålId": "41fe30bd-4050-45cb-80b2-cb2e82ec4b84",
   "kategori": "lagregistrering",
   "lagnavn": "l33t team",
-  "svar": "#ff2255",
-  "opprettet": "2022-11-07T14:53:27.581147"
+  "svar": "#ff2255"
 }
 ```
 

@@ -27,7 +27,6 @@ Oppgaven er å svare på alle ping oppgave-meldingene.
   "spørsmålId": "9e679608-fb1c-482c-9ced-00a3593bb684",
   "kategori": "ping-pong",
   "lagnavn": "l33t team",
-  "svar": "pong",
-  "opprettet": "2022-11-07T14:53:27.581147"
+  "svar": "pong"
 }
 ```

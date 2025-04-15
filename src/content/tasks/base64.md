@@ -28,7 +28,6 @@ If you are not familiar with base64 encoding, we recommend [reading this article
   "questionId": "41fe30bd-4050-45cb-80b2-cb2e82ec4b84",
   "category": "base64",
   "teamName": "l33t team",
-  "answer": "LEESAH",
-  "created": "2022-11-07T14:53:27.581147"
+  "answer": "LEESAH"
 }
 ```

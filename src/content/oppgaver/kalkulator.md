@@ -29,7 +29,6 @@ Svar med korrekt sum i kroner for hver oppgave.
   "spørsmålId": "a662cd19-0eea-42f6-9850-a65ea419b7d9",
   "kategori": "kalkulator",
   "lagnavn": "l33t team",
-  "svar": "253141",
-  "opprettet": "2022-11-07T14:53:27.581147"
+  "svar": "253141"
 }
 ```

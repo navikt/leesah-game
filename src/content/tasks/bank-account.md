@@ -4,9 +4,10 @@ title: bank-account
 
 ## Bank account
 
-This task is all about managing deposits and withdrawals; a important task both here and elsewhere in life. Answer with the correct consolidated balance for each question event your application receives.
+This task is all about managing deposits and withdrawals; a important task both here and elsewhere in life.
+Answer with the correct consolidated balance for each question event your application receives.
 
-**Example of task events**
+**Example of questions**
 
 ```json
 {
@@ -40,6 +41,7 @@ This task is all about managing deposits and withdrawals; a important task both 
   "answer": "-6764",
   "created": "2022-11-07T14:53:27.581147"
 }
+```
 
 ```json
 {
@@ -51,3 +53,4 @@ This task is all about managing deposits and withdrawals; a important task both 
   "answer": "1657",
   "created": "2022-11-07T14:53:27.581147"
 }
+```

@@ -20,7 +20,7 @@ Svar med korrekt sammenstilt saldo for hver oppgave-hendelse applikasjonen motta
 }
 ```
 
-``` json
+```json
 {
   "type": "SPØRSMÅL",
   "spørsmålId": "6748a649-83f8-4953-8154-cd7f57e0d9fb",
@@ -44,7 +44,7 @@ Svar med korrekt sammenstilt saldo for hver oppgave-hendelse applikasjonen motta
 }
 ```
 
-``` json
+```json
 {
   "type": "SVAR",
   "svarId": "07e8ca72-ff90-4c68-ad6e-476e7becc5ac",

@@ -4,9 +4,11 @@ title: 'arithmetic'
 
 ## Arithmetic
 
-The arithmetic task is all about solving math problems which can be found in the `question` field of the event. The field is built on the following format `"<integer> <operator> <integer>"`, where the operator could include the following: `+`, `-`, `*` or `/`. The answer has to be the correct integer.
+The arithmetic task is all about solving math problems which can be found in the `question` field of the event.
+The field is built on the following format `"<integer> <operator> <integer>"`, where the operator could include the following: `+`, `-`, `*` or `/`.
+The answer has to be the correct integer.
 
-**Example of a task event**
+**Example of a question**
 
 ```json
 {

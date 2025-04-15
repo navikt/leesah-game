@@ -1,0 +1,82 @@
+---
+import '../../../styles/global.css';
+import '../../../styles/leesah-kurs.css';
+import Header from '../../../components/Header/Header.astro';
+import leesahTeam from '../../../assets/leesahteam.jpg';
+import leesahKurs1 from '../../../assets/leesah-kurs1.jpg';
+import leesahKurs2 from '../../../assets/leesah-kurs2.jpg';
+---
+
+<html lang="no">
+<head>
+    <meta charset="utf-8"/>
+    <link rel="icon" type="image/svg+xml" href="/cat.svg"/>
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="generator" content={Astro.generator}/>
+    <title>Leesah Game</title>
+</head>
+<body>
+<main>
+    <Header tittel="Do you want to play a game?"/>
+    <div class="flex-gap-container">
+        <div class="leesah-kurs-image-container">
+            <img src={leesahTeam.src} alt="The whole crew"/>
+        </div>
+    </div>
+
+    <div class="text-container">
+        <p>
+            Ready to learn and have fun at the same time? Join us for a gamified course in event-driven
+            development! 🌟
+        </p>
+        <p>
+            At Nav, we develop modern systems with an event-driven microservice architecture that
+            meets future labour and welfare needs. Now we invite you to learn how we
+            build applications that solve complex challenges.
+        </p>
+
+        <div class="flex-gap-container">
+            <div class="leesah-kurs-image-container">
+                <img src={leesahKurs1.src} alt="Leesah course"/>
+            </div>
+        </div>
+
+        <p>
+            In the course, we will first introduce the key principles behind event-driven
+            development. Then it's time for action: we start with a gamified workshop where you
+            code in pairs. Together you will develop an application that connects to Kafka to handle
+            challenges on an ongoing basis. This will be a fun and challenging afternoon full of coding
+            and learning!
+        </p>
+        <p>
+            Our trainers are experienced developers who work in different teams in Nav.
+            They have varied backgrounds and expertise, and have designed this
+            course to strengthen both their own and your expertise in event-driven development and
+            programming.
+        </p>
+
+
+        <div class="flex-gap-container">
+            <div class="leesah-kurs-image-container">
+                <img src={leesahKurs2.src} alt="A different Leesah course"/>
+            </div>
+        </div>
+
+        <p>
+            Who should attend? If you are curious about event-driven development and want to learn how we
+            work in Nav, this course is for you! Some experience with Python, JavaScript, or Go, and
+            programming in general is recommended, but you don't need to be an expert. Don't miss
+            this unique opportunity to develop your skills in an interactive and fun
+            setting! 💻👾
+        </p>
+        <p>
+            We run Leesah Game for universities, colleges, at conferences and at various
+            companies.
+            If you think this could be a fun course we can organise for you and your colleagues,
+            please contact Tania Holst at <a href="mailto:tania.holst@nav.no">tania.holst@nav.no</a>!
+        </p>
+
+    </div>
+</main>
+</body>
+</html>

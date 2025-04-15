@@ -1,0 +1,114 @@
+---
+import '../../../styles/global.css';
+import '../../../styles/hvem-er-leesah.css';
+import Header from '../../../components/Header/Header.astro';
+import tania from '../../../assets/tania.png';
+import oydis from '../../../assets/øydis.png';
+import helene from '../../../assets/helene.png';
+import kyrre from '../../../assets/kyrre.png';
+import emil from '../../../assets/emil.png'
+import { getLangFromUrl } from '../../../i18n/utils'
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<html lang={`${lang}`}>
+<head>
+    <meta charset="utf-8"/>
+    <link rel="icon" type="image/svg+xml" href="/cat.svg"/>
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="generator" content={Astro.generator}/>
+    <title>Leesah Game</title>
+</head>
+<body>
+<main>
+    <Header tittel="Hvem står bak Leesah?"/>
+    <div class="text-container">
+        <p>
+            Leesah Game is a product of the strong focus on competence sharing in Nav IT.
+            Leesah Game is organised as a professional group, which means that every other Thursday++ is set aside to work with Leesah Game.
+            Leesah Game is conducted as courses internally in Nav IT, at universities, conferences and other agencies in the public sector.
+            All in paid working hours!
+        </p>
+        <p>
+            Leesah ‘Gang’ consists of the following members:
+        </p>
+
+        <div class="person">
+            <div>
+                <h3>Tania Holst</h3>
+                <p>
+                    Tania is a front-end developer in Team Personbruker and works on developing nav.no.
+                    She's worked at Nav since 2019 and loves being a developer here.
+                    She rants about people needing to <a href="https://vimeo.com/861732616">put their phones away</a>, and is currently taking on new challenges such as being Security Champion for nav.no.
+                </p>
+                <p>
+                    Other than that, it's all about knitting and an ambitious goal of completing as many Escape Rooms as possible before retirement.
+                </p>
+            </div>
+            <img src={tania.src} height="300" alt=""/>
+        </div>
+
+        <div class="person">
+            <div>
+                <h3>Øydis Kind Refsum</h3>
+                <p>
+                    Øydis is a backend developer in Team Speilvendt and is working on developing the case management solution for sickness benefit.
+                    Øydis started as a summer student in Nav in 2021 and as a permanent employee in 2022.
+                </p>
+                <p>
+                    She thrives on social gatherings and usually finds that her diary is packed, just the way she likes it.
+                </p>
+            </div>
+            <img src={oydis.src} height="300" alt=""/>
+        </div>
+
+        <div class="person">
+            <div>
+                <h3>Helene Arnesen</h3>
+                <p>
+                    Helene is a backend developer in Team Sykmelding and works with the submission and processing of the sickness certificate before it is sent to the case management solution where Øydis works.
+                </p>
+                <p>
+                    Helene started as a summer student at Nav in 2022 and became a permanent employee that autumn.
+                    Alongside her job, she is studying for a master's degree in programming and system architecture at the University of Oslo.
+                    Because of her studies, Helene has taken a short break from Leesah, but as soon as she gets some extra time in her schedule, she's back.
+                </p>
+            </div>
+            <img src={helene.src} height="300" alt=""/>
+        </div>
+
+        <div class="person">
+            <div>
+                <h3>Kyrre Havik</h3>
+                <p>
+                    Kyrre joined Nav as a platform developer in 2018.
+                    He is a developer at <a href="https://nais.io/">Nais</a> and builds application platform based on Kubernetes in the cloud!
+                </p>
+                <p>
+                    In Leesah, Kyrre tries to sell the Go programming language.
+                    Otherwise, he has an above-average interest in <a href="https://kyrremann.no/keebs/">keyboards</a> and board games.
+                </p>
+            </div>
+            <img src={kyrre.src} height="300" alt=""/>
+        </div>
+
+        <div class="person">
+            <div>
+                <h3>Emil Elton Nilsen</h3>
+                <p>
+                    Emil is a front-end developer in Team Etterlatte and works on developing self-service solutions for the bereaved.                </p>
+                <p>
+                    Emil started as a summer intern in 2021 and worked part-time alongside his studies from autumn 2021 to 2023.
+                    In 2024, Emil started working permanently as a developer in Team Etterlatte.
+                </p>
+                <p>
+                    Emil thrives best when it's cold, sunny and freshly groomed trails in the field, or in deep snow and steep slopes outside the groomed trails.
+                </p>
+            </div>
+            <img src={emil.src} height="300" alt=""/>
+        </div>
+    </div>
+</main>
+</body>
+</html>

@@ -4,9 +4,11 @@ title: min-max
 
 ## Min-max
 
-In this task we will ask you for the highest or lowest number in a list of numbers. If asked for the `HIGHEST`, you shall return the highest number. If asked for the `LOWEST`, you shall return the lowest number.
+In this task we will ask you for the highest or lowest number in a list of numbers. 
+If asked for the `HIGHEST`, you shall return the highest number. 
+If asked for the `LOWEST`, you shall return the lowest number.
 
-**Example of a task event**
+**Example of a question**
 
 ```json
 {

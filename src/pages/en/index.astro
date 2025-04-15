@@ -1,0 +1,104 @@
+---
+import '../../styles/global.css'
+import '../../styles/index.css'
+import Header from '../../components/Header/Header.astro'
+import leaderboardImg from '../../assets/leaderboard.png'
+import catSleepingGif from '../../assets/cat_sleeping.gif'
+import spinningFoxGif from '../../assets/spinning-fox.gif'
+import megamanGif from '../../assets/megaman.gif'
+import { getCollection } from 'astro:content'
+import LanguagePicker from '../../components/LanguagePicker.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+let tasksPages = await getCollection('tasks')
+// Moving team-registration to be first in the list
+tasksPages.sort((side) => (side.data.title === 'team-registration' ? -1 : 0))
+
+const oppsettSider = await getCollection('oppsett')
+---
+
+<html lang={`${lang}`}>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/cat.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Leesah Game</title>
+    </head>
+    <body>
+        <main>
+            <Header tittel="Livet er en strøm av hendelser" />
+            <div class="ingress-container">
+                <div class="text-container">
+                    <p>
+                        Leesah-game is an event-driven application development game that challenges players to build an event-driven application.
+                        The application handles different types of tasks that it receives as events on a Kafka-based event stream.
+                        The tasks vary from very simple to more complex.
+                    </p>
+                    <img class="cat-sleeping" src={catSleepingGif.src} alt={t('alt.sleeping_cat')} />
+                </div>
+                <img src={leaderboardImg.src} alt={t('alt.leaderboard')} />
+            </div>
+
+            <p>
+                Nav builds most new systems as event-driven, and the purpose of Leesah Game is for players to gain a better understanding of how to build event-driven applications.
+                Players also get an insight into the advantages and disadvantages of such systems. Besides, it's a lot of fun!
+            </p>
+
+            <div>
+                <h2>Getting started</h2>
+                <p>
+                    There are two versions of the the Leesah game! On is for local play, directly in the terminal.
+                    While the other is running on the Nais platform, and you will learn how to be a developer in Nav and use Nais.
+                    For now only the local version has been translated to English.
+                </p>
+                <ul>
+                            <li>
+                                <a href="/en/setup/local/">Local Leesah</a>
+                            </li>
+                </ul>
+            </div>
+
+            <div>
+                <h2>Task specific documentation</h2>
+                <p>
+                    The tasks you can encounter in Leesah Game are as follows, and they do not necessarily come in the order of
+                    the list.
+                </p>
+                <ul>
+                    {
+                        tasksPages.map((side) =>
+                            side.data.title === 'team-registration' ? (
+                                <li>
+                                    <a href={`/${lang}/tasks/${side.slug}/`}>{side.data.title}</a> (First task, and needs to be done before we start)
+                                </li>
+                            ) : (
+                                <li>
+                                    <a href={`/${lang}/tasks/${side.slug}/`}>{side.data.title}</a>
+                                </li>
+                            )
+                        )
+                    }
+                </ul>
+            </div>
+
+            <div class="lenkemeny">
+                <a class="lenkemeny-element" href={`/${lang}/who-is-leesah`}>
+                    <img src={spinningFoxGif.src} height="100" alt={t('alt.spinning_fox')} />
+                    <h2 class="lenkemeny-element-heading">{t('nav.about')} --></h2>
+                </a>
+
+                <a class="lenkemeny-element" href={`/${lang}/play-leesah`}>
+                    <img src={megamanGif.src} height="100" alt={t('alt.megaman')} />
+                    <h2 class="lenkemeny-element-heading">{t('nav.play')} --></h2>
+                </a>
+            </div>
+        </main>
+        <footer>
+            <LanguagePicker />
+        </footer>
+    </body>
+</html>

@@ -7,23 +7,20 @@ import catSleepingGif from '../assets/cat_sleeping.gif'
 import spinningFoxGif from '../assets/spinning-fox.gif'
 import megamanGif from '../assets/megaman.gif'
 import { getCollection } from 'astro:content'
+import LanguagePicker from '../components/LanguagePicker.astro'
+import { getLangFromUrl, useTranslations } from '../i18n/utils'
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 let oppgaverSider = await getCollection('oppgaver')
 // Flytter lagregistrering til å være først i listen
 oppgaverSider.sort((side) => (side.data.title === 'lagregistrering' ? -1 : 0))
 
-const naisOppgaverSider = [...oppgaverSider].filter((side) => side.slug.includes('nais/'))
-
-// Fjerne nais oppgaver fra de vanlige oppgavene og enkelske oversettelser for nå
-// TODO: Mer permanent fiks på engelske oversettelser her
-oppgaverSider = [
-    ...oppgaverSider.filter((side) => !side.slug.includes('nais')).filter((side) => !side.slug.includes('en')),
-]
-
 const oppsettSider = await getCollection('oppsett')
 ---
 
-<html lang="no">
+<html lang={`${lang}`}>
     <head>
         <meta charset="utf-8" />
         <link rel="icon" type="image/svg+xml" href="/cat.svg" />
@@ -42,9 +39,9 @@ const oppsettSider = await getCollection('oppsett')
                         mottar som hendelser på en Kafka-basert hendelsestrøm. Oppgavene varierer fra veldig enkle til
                         mer komplekse.
                     </p>
-                    <img class="cat-sleeping" src={catSleepingGif.src} alt="Gif av en katt som sover" />
+                    <img class="cat-sleeping" src={catSleepingGif.src} alt={t('alt.sleeping_cat')} />
                 </div>
-                <img src={leaderboardImg.src} alt="Illustrasjon over leaderboardet i et spill av leesah." />
+                <img src={leaderboardImg.src} alt={t('alt.leaderboard')} />
             </div>
 
             <p>
@@ -78,7 +75,7 @@ const oppsettSider = await getCollection('oppsett')
                 </p>
                 <ul>
                     {
-                        oppgaverSider.map((side) =>
+                        oppgaverSider.filter((side) => !side.slug.includes('nais')).map((side) =>
                             side.data.title === 'lagregistrering' ? (
                                 <li>
                                     <a href={`/oppgaver/${side.slug}/`}>{side.data.title}</a> (Første oppgaven som
@@ -95,7 +92,7 @@ const oppsettSider = await getCollection('oppsett')
                 <p>NAIS spesifike oppgaver:</p>
                 <ul>
                     {
-                        naisOppgaverSider.map((side) => (
+                        oppgaverSider.filter((side) => side.slug.includes('nais/')).map((side) => (
                             <li>
                                 <a href={`/oppgaver/${side.slug}/`}>{side.data.title}</a>
                             </li>
@@ -105,16 +102,19 @@ const oppsettSider = await getCollection('oppsett')
             </div>
 
             <div class="lenkemeny">
-                <a class="lenkemeny-element" href="/hvem-er-leesah">
-                    <img src={spinningFoxGif.src} height="100" alt="En rødrev som løper i sirkel" />
-                    <h2 class="lenkemeny-element-heading">Hvem står bak Leesah? --></h2>
+                <a class="lenkemeny-element" href={`/hvem-er-leesah`}>
+                    <img src={spinningFoxGif.src} height="100" alt={t('alt.spinning_fox')} />
+                    <h2 class="lenkemeny-element-heading">{t('nav.about')} --></h2>
                 </a>
 
-                <a class="lenkemeny-element" href="/leesah-kurs">
-                    <img src={megamanGif.src} height="100" alt="Megaman som løper" />
-                    <h2 class="lenkemeny-element-heading">Vil du spille Leesah Game? --></h2>
+                <a class="lenkemeny-element" href={`/leesah-kurs`}>
+                    <img src={megamanGif.src} height="100" alt={t('alt.megaman')} />
+                    <h2 class="lenkemeny-element-heading">{t('nav.play')} --></h2>
                 </a>
             </div>
         </main>
+        <footer>
+            <LanguagePicker />
+        </footer>
     </body>
 </html>

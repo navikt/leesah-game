@@ -4,9 +4,11 @@ title: nav
 
 ## Nav
 
-This task is all about answering some ordinary quiz questions. No fancy coding required! The theme for this task is (not surprisingly) Nav!
+This task is all about answering some ordinary quiz questions.
+No fancy coding required! 
+The theme for this task is (not surprisingly) Nav!
 
-**Example of a task event**
+**Example of a question**
 
 ```json
 {

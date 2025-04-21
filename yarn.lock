@@ -181,13 +181,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@capsizecss/metrics@npm:^3.5.0":
-  version: 3.5.0
-  resolution: "@capsizecss/metrics@npm:3.5.0"
-  checksum: 10c0/1a06d25c18cb552c40334cda34b436bb5f63d2a95a37ec413a3ca564cdc7ce70dc8a0180c7dcab5dbd79bba0a4fbbde7f97e9057c8a84715a1abcdf610843fd8
-  languageName: node
-  linkType: hard
-
 "@capsizecss/unpack@npm:^2.4.0":
   version: 2.4.0
   resolution: "@capsizecss/unpack@npm:2.4.0"
@@ -1195,15 +1188,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro@npm:5.7.0":
-  version: 5.7.0
-  resolution: "astro@npm:5.7.0"
+"astro@npm:5.7.4":
+  version: 5.7.4
+  resolution: "astro@npm:5.7.4"
   dependencies:
     "@astrojs/compiler": "npm:^2.11.0"
     "@astrojs/internal-helpers": "npm:0.6.1"
     "@astrojs/markdown-remark": "npm:6.3.1"
     "@astrojs/telemetry": "npm:3.2.0"
-    "@capsizecss/metrics": "npm:^3.5.0"
     "@capsizecss/unpack": "npm:^2.4.0"
     "@oslojs/encoding": "npm:^1.1.0"
     "@rollup/pluginutils": "npm:^5.1.4"
@@ -1248,7 +1240,7 @@ __metadata:
     tinyglobby: "npm:^0.2.12"
     tsconfck: "npm:^3.1.5"
     ultrahtml: "npm:^1.6.0"
-    unifont: "npm:^0.1.7"
+    unifont: "npm:~0.2.0"
     unist-util-visit: "npm:^5.0.0"
     unstorage: "npm:^1.15.0"
     vfile: "npm:^6.0.3"
@@ -1265,7 +1257,7 @@ __metadata:
       optional: true
   bin:
     astro: astro.js
-  checksum: 10c0/2f2d74c26b8eabe740ce98906e12f3585fb02dd30f1d9c0f392fdc6890ccd0c3762cae6ca227c6acf38da2682e987ba889bc43b49d16e0519687b98737762822
+  checksum: 10c0/12f124975b044d60e7e26b19aa73b7b0261accf00089a002c36e7b529aa42e94a2096775a14e6e40c874328245534d1129f20cc64d945d343202b30b6b97fc9d
   languageName: node
   linkType: hard
 
@@ -1707,7 +1699,7 @@ __metadata:
   dependencies:
     "@astrojs/check": "npm:^0.9.4"
     "@astrojs/node": "npm:9.2.0"
-    astro: "npm:5.7.0"
+    astro: "npm:5.7.4"
     prettier: "npm:^3.5.3"
     typescript: "npm:^5.8.3"
   languageName: unknown
@@ -3412,10 +3404,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ohash@npm:^1.1.4":
-  version: 1.1.6
-  resolution: "ohash@npm:1.1.6"
-  checksum: 10c0/3c25dde77662fffa3fa956b8975d7324311e3df15d9cf8d79b466ac3508f313e02b8ed3041d967810f68e00af344a5a3c4288be0208143c1844ba0f3cc83f777
+"ohash@npm:^2.0.0":
+  version: 2.0.11
+  resolution: "ohash@npm:2.0.11"
+  checksum: 10c0/d07c8d79cc26da082c1a7c8d5b56c399dd4ed3b2bd069fcae6bae78c99a9bcc3ad813b1e1f49ca2f335292846d689c6141a762cf078727d2302a33d414e69c79
   languageName: node
   linkType: hard
 
@@ -4490,13 +4482,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unifont@npm:^0.1.7":
-  version: 0.1.7
-  resolution: "unifont@npm:0.1.7"
+"unifont@npm:~0.2.0":
+  version: 0.2.0
+  resolution: "unifont@npm:0.2.0"
   dependencies:
     css-tree: "npm:^3.0.0"
-    ohash: "npm:^1.1.4"
-  checksum: 10c0/ad1f51ac766a8f85542c936d431b60c84abb40d234717cf2b0a9d7775beb02099df23c753d93996b213642f0a714ad6a62d08bd8db168ca1368ba74aa8e24a51
+    ohash: "npm:^2.0.0"
+  checksum: 10c0/638b6ace1ed65fbd926022f01a16247b45b906c134241ecb665d0d18940d85dfddb160c74f0bd78e0ae0d3d2a3ff89e2bcaaa53ff01d5a35240edc23372d1b3d
   languageName: node
   linkType: hard
 

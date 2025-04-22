@@ -1,5 +1,5 @@
 ---
-title: 'Prime number'
+title: 'prime-number'
 ---
 
 ## Prime number

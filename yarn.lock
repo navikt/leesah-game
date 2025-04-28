@@ -100,16 +100,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/node@npm:9.2.0":
-  version: 9.2.0
-  resolution: "@astrojs/node@npm:9.2.0"
+"@astrojs/node@npm:9.2.1":
+  version: 9.2.1
+  resolution: "@astrojs/node@npm:9.2.1"
   dependencies:
     "@astrojs/internal-helpers": "npm:0.6.1"
     send: "npm:^1.1.0"
     server-destroy: "npm:^1.0.1"
   peerDependencies:
     astro: ^5.3.0
-  checksum: 10c0/cbeb6a823f231894912cf365d1b31144af909f9e75e4e0ada70cd7cd44e073e11a0b83cdbcf0af58171f6d02948bc76c54ff8b078c4aa72c3896d1b56df307c0
+  checksum: 10c0/71a3de6d050e67fe9668e98d1d7b8784ed47cb073d86a7b2361a1abe94ab4beded833d1d908c85e3b618e4d998386b1c6b6ccf1517bdda5480d314638b78fc4b
   languageName: node
   linkType: hard
 
@@ -122,18 +122,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/telemetry@npm:3.2.0":
-  version: 3.2.0
-  resolution: "@astrojs/telemetry@npm:3.2.0"
+"@astrojs/telemetry@npm:3.2.1":
+  version: 3.2.1
+  resolution: "@astrojs/telemetry@npm:3.2.1"
   dependencies:
-    ci-info: "npm:^4.1.0"
-    debug: "npm:^4.3.7"
+    ci-info: "npm:^4.2.0"
+    debug: "npm:^4.4.0"
     dlv: "npm:^1.1.3"
     dset: "npm:^3.1.4"
     is-docker: "npm:^3.0.0"
     is-wsl: "npm:^3.1.0"
     which-pm-runs: "npm:^1.1.0"
-  checksum: 10c0/5727205ca13fc9f83ff97b64838f6edd4010e8307d19f781f641c0c99e779d7d3e15469d66a67ba119c87963cd1c529bbd0f15bc8b88d88918f8fda04805c610
+  checksum: 10c0/7af06ba35fdd6f4c6b27e4bb3f1071b43a8918d046ddebf201fcbce7e6b1b8902be34abf2b00f7a647a0f03d5738f7d9f67b4d852a2032634cbe64abb68518d3
   languageName: node
   linkType: hard
 
@@ -1188,14 +1188,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro@npm:5.7.4":
-  version: 5.7.4
-  resolution: "astro@npm:5.7.4"
+"astro@npm:5.7.6":
+  version: 5.7.6
+  resolution: "astro@npm:5.7.6"
   dependencies:
     "@astrojs/compiler": "npm:^2.11.0"
     "@astrojs/internal-helpers": "npm:0.6.1"
     "@astrojs/markdown-remark": "npm:6.3.1"
-    "@astrojs/telemetry": "npm:3.2.0"
+    "@astrojs/telemetry": "npm:3.2.1"
     "@capsizecss/unpack": "npm:^2.4.0"
     "@oslojs/encoding": "npm:^1.1.0"
     "@rollup/pluginutils": "npm:^5.1.4"
@@ -1257,7 +1257,7 @@ __metadata:
       optional: true
   bin:
     astro: astro.js
-  checksum: 10c0/12f124975b044d60e7e26b19aa73b7b0261accf00089a002c36e7b529aa42e94a2096775a14e6e40c874328245534d1129f20cc64d945d343202b30b6b97fc9d
+  checksum: 10c0/664e2327714da3aa85ceab784758c67b9975ebe6965d857ba063de79d4b26cd58bf4f932f034aa7629d3bb3c5751ce78859aaadc4e01dbed9ccad0513fe7cf20
   languageName: node
   linkType: hard
 
@@ -1433,7 +1433,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ci-info@npm:^4.1.0, ci-info@npm:^4.2.0":
+"ci-info@npm:^4.2.0":
   version: 4.2.0
   resolution: "ci-info@npm:4.2.0"
   checksum: 10c0/37a2f4b6a213a5cf835890eb0241f0d5b022f6cfefde58a69e9af8e3a0e71e06d6ad7754b0d4efb9cd2613e58a7a33996d71b56b0d04242722e86666f3f3d058
@@ -1584,7 +1584,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:4, debug@npm:^4.0.0, debug@npm:^4.3.4, debug@npm:^4.3.5, debug@npm:^4.3.7, debug@npm:^4.4.0":
+"debug@npm:4, debug@npm:^4.0.0, debug@npm:^4.3.4, debug@npm:^4.3.5, debug@npm:^4.4.0":
   version: 4.4.0
   resolution: "debug@npm:4.4.0"
   dependencies:
@@ -1698,8 +1698,8 @@ __metadata:
   resolution: "doks@workspace:."
   dependencies:
     "@astrojs/check": "npm:^0.9.4"
-    "@astrojs/node": "npm:9.2.0"
-    astro: "npm:5.7.4"
+    "@astrojs/node": "npm:9.2.1"
+    astro: "npm:5.7.6"
     prettier: "npm:^3.5.3"
     typescript: "npm:^5.8.3"
   languageName: unknown

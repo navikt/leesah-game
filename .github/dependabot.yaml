@@ -21,14 +21,6 @@ updates:
       docker:
         patterns:
           - '*'
-  - package-ecosystem: "docker"
-    directory: "leesah-leaderboard-frontend/"
-    schedule:
-      interval: "weekly"
-    groups:
-      docker:
-        patterns:
-          - '*'
   - package-ecosystem: "npm"
     directory: "/"
     schedule:

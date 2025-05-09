@@ -958,6 +958,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/fontkit@npm:^2.0.8":
+  version: 2.0.8
+  resolution: "@types/fontkit@npm:2.0.8"
+  dependencies:
+    "@types/node": "npm:*"
+  checksum: 10c0/e5a124d468f17d3b74a07d38257fc38b8d3d1e3e1e68b1c4a3314beb274223499009f4a6c1d2f15a9928ad6643fb8bfca4881d13447cfbf5de1733ad6fd5d4b1
+  languageName: node
+  linkType: hard
+
 "@types/hast@npm:^3.0.0, @types/hast@npm:^3.0.4":
   version: 3.0.4
   resolution: "@types/hast@npm:3.0.4"
@@ -989,6 +998,15 @@ __metadata:
   dependencies:
     "@types/unist": "npm:*"
   checksum: 10c0/d83549aaee59681ae8fa2a78d8a1b968a41eb7c0422773dff12acbf3661e4b2b2859740c3effdad9d0cd12ea14a0ec33ca302da12106476b627e09d2a029d3c1
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:*":
+  version: 22.15.17
+  resolution: "@types/node@npm:22.15.17"
+  dependencies:
+    undici-types: "npm:~6.21.0"
+  checksum: 10c0/fb92aa10b628683c5b965749f955bc2322485ecb0ea6c2f4cae5f2c7537a16834607e67083a9e9281faaae8d7dee9ada8d6a5c0de9a52c17d82912ef00c0fdd4
   languageName: node
   linkType: hard
 
@@ -1202,9 +1220,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro@npm:5.7.10":
-  version: 5.7.10
-  resolution: "astro@npm:5.7.10"
+"astro@npm:5.7.12":
+  version: 5.7.12
+  resolution: "astro@npm:5.7.12"
   dependencies:
     "@astrojs/compiler": "npm:^2.11.0"
     "@astrojs/internal-helpers": "npm:0.6.1"
@@ -1232,6 +1250,7 @@ __metadata:
     esbuild: "npm:^0.25.0"
     estree-walker: "npm:^3.0.3"
     flattie: "npm:^1.1.1"
+    fontace: "npm:~0.3.0"
     github-slugger: "npm:^2.0.0"
     html-escaper: "npm:3.0.3"
     http-cache-semantics: "npm:^4.1.1"
@@ -1254,7 +1273,7 @@ __metadata:
     tinyglobby: "npm:^0.2.12"
     tsconfck: "npm:^3.1.5"
     ultrahtml: "npm:^1.6.0"
-    unifont: "npm:~0.4.1"
+    unifont: "npm:~0.5.0"
     unist-util-visit: "npm:^5.0.0"
     unstorage: "npm:^1.15.0"
     vfile: "npm:^6.0.3"
@@ -1271,7 +1290,7 @@ __metadata:
       optional: true
   bin:
     astro: astro.js
-  checksum: 10c0/65a86a5c09473ec2071ad349e421235f0c9aa352a4934315af288791ab6b2af24419dc9eec87442f07022235c5c7ed482259f2ff0fe7016401ccc5f733904ffe
+  checksum: 10c0/cb41b715ff3f79eae07a389d2270f5a04bc9908a911fbdaef70ad585809a2c03a6218d9e190e0e52203905e45dbab8f1530c6bfd90da868f373e6cb96469dbe6
   languageName: node
   linkType: hard
 
@@ -1713,7 +1732,7 @@ __metadata:
   dependencies:
     "@astrojs/check": "npm:^0.9.4"
     "@astrojs/node": "npm:9.2.1"
-    astro: "npm:5.7.10"
+    astro: "npm:5.7.12"
     prettier: "npm:^3.5.3"
     typescript: "npm:^5.8.3"
   languageName: unknown
@@ -2049,7 +2068,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fontkit@npm:^2.0.2":
+"fontace@npm:~0.3.0":
+  version: 0.3.0
+  resolution: "fontace@npm:0.3.0"
+  dependencies:
+    "@types/fontkit": "npm:^2.0.8"
+    fontkit: "npm:^2.0.4"
+  checksum: 10c0/a81bef4f20c4bb6bb2cb7777d6fa267edb341b1b4c549b0918473d399c2314bf482f098d8ba0ae839bdfc8b63daa78815b647fd781157cb2d8bfc78c56a9745a
+  languageName: node
+  linkType: hard
+
+"fontkit@npm:^2.0.2, fontkit@npm:^2.0.4":
   version: 2.0.4
   resolution: "fontkit@npm:2.0.4"
   dependencies:
@@ -4486,6 +4515,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"undici-types@npm:~6.21.0":
+  version: 6.21.0
+  resolution: "undici-types@npm:6.21.0"
+  checksum: 10c0/c01ed51829b10aa72fc3ce64b747f8e74ae9b60eafa19a7b46ef624403508a54c526ffab06a14a26b3120d055e1104d7abe7c9017e83ced038ea5cf52f8d5e04
+  languageName: node
+  linkType: hard
+
 "unicode-properties@npm:^1.4.0":
   version: 1.4.1
   resolution: "unicode-properties@npm:1.4.1"
@@ -4521,13 +4557,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unifont@npm:~0.4.1":
-  version: 0.4.1
-  resolution: "unifont@npm:0.4.1"
+"unifont@npm:~0.5.0":
+  version: 0.5.0
+  resolution: "unifont@npm:0.5.0"
   dependencies:
     css-tree: "npm:^3.0.0"
     ohash: "npm:^2.0.0"
-  checksum: 10c0/81e3820496ca2c473251768722d5a8d470a2c0ab87cc8c59bc8aff30c55c5d7a59bfd7df23e833e4ca315d70f1d1777798039cba6648c039983d1f7dda2183c4
+  checksum: 10c0/4395af8a95722d88389ae100686577a80d9ff7a3e129dadf836e7beb1dbbd448d7bb12b9d8988084c186748fbb4763ce19457c7a119b8343a0fb5c81767896a2
   languageName: node
   linkType: hard
 

@@ -2,9 +2,9 @@
 title: basic-amount
 ---
 
-## Basic-amount
+## National Insurance scheme basic amount ("Grunnbeløp")
 
-National Insurance scheme basic amount (often written as "G") is used to calculate many of Nav's payments. 
+National Insurance scheme basic amount ("Grunnbeløp" - often written as "G") is used to calculate many of Nav's payments. 
 The rate is updated each year at 1. may and is decided the social security settlement.
 You can read [more about it in the following article](https://www.skatteetaten.no/en/rates/national-insurance-scheme-basic-amount/). 
 There is also a open API for the basic amount at [g.nav.no](g.nav.no)! 😻

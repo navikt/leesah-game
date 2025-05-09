@@ -11,11 +11,11 @@ It is rare that a distributed system can guarantee "once-and-only-once-delivery"
 You have to choose between "at-most-once-delivery" or "at-least-once-delivery", where the later is chosen. 
 It is therefore important to build systems that can handle the same message being delivered multiple times.
 
-Interesting article on the problem with [exactly-once-delivery](https://www.confluent.io/blog/exactly-once-semantics-are-possible-heres-how-apache-kafka-does-it/)
+Interesting article on the problem with [exactly-once-delivery](https://www.confluent.io/blog/exactly-once-semantics-are-possible-heres-how-apache-kafka-does-it/).
 
 ### Task
 
-In this task Quizmaster wil send the same question multiple times and it is your task to only answer the question once.
+In this task the Quizmaster will send the same question multiple times and it is your task to only answer the question once.
 
 **Example of a question**
 

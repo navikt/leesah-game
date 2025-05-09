@@ -4,7 +4,7 @@ title: base64
 
 ## Base64
 
-The base64 task is all about answering back "something" as understandable text". 
+The base64 task is all about answering back "something" as understandable text. 
 If you are not familiar with base64 encoding, we recommend [reading this article](https://en.wikipedia.org/wiki/Base64) before going straight to solving the task.
 
 **Example of a question**

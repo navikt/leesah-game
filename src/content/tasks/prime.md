@@ -1,8 +1,8 @@
 ---
-title: 'prime-number'
+title: 'prime'
 ---
 
-## Prime number
+## Prime
 
 This task is about determining whether a number is prime or not.
 A prime number is a natural number greater than 1 that cannot be formed by multiplying two smaller natural numbers.
@@ -15,7 +15,7 @@ Respond with `true` or `false` depending on whether the number inside the `quest
 {
   "type": "QUESTION",
   "questionId": "41fe30bd-4050-45cb-80b2-cb2e82ec4b84",
-  "category": "prime-number",
+  "category": "prime",
   "question": "7",
   "answerFormat": "true or false as String"
 }
@@ -28,7 +28,7 @@ Respond with `true` or `false` depending on whether the number inside the `quest
   "type": "ANSWER",
   "answerId": "d36b4273-0571-42f2-b3bd-7b7987de43b0",
   "questionId": "41fe30bd-4050-45cb-80b2-cb2e82ec4b84",
-  "category": "prime-number",
+  "category": "prime",
   "teamName": "l33t team",
   "answer": "true"
 }

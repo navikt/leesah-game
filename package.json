@@ -13,8 +13,8 @@
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/node": "9.2.2",
-    "astro": "5.9.3",
-    "prettier": "^3.5.3",
+    "astro": "5.10.0",
+    "prettier": "^3.6.0",
     "typescript": "^5.8.3"
   },
   "prettier": {

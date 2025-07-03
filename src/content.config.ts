@@ -13,15 +13,7 @@ const tasksCollection = defineCollection({
   })
 });
 
-const setupCollection = defineCollection({
-  schema: z.object({
-    title: z.string(),
-  })
-});
-
-
 export const collections = {
   oppgaver: oppgaverCollection,
   tasks: tasksCollection,
-  setup: setupCollection,
 };

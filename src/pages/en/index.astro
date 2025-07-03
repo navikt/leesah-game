@@ -16,8 +16,6 @@ const t = useTranslations(lang)
 let tasksPages = await getCollection('tasks')
 // Moving team-registration to be first in the list
 tasksPages.sort((side) => (side.data.title === 'team-registration' ? -1 : 0))
-
-const oppsettSider = await getCollection('oppsett')
 ---
 
 <html lang={`${lang}`}>

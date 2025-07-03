@@ -16,8 +16,6 @@ const t = useTranslations(lang)
 let oppgaverSider = await getCollection('oppgaver')
 // Flytter lagregistrering til å være først i listen
 oppgaverSider.sort((side) => (side.data.title === 'lagregistrering' ? -1 : 0))
-
-const oppsettSider = await getCollection('oppsett')
 ---
 
 <html lang={`${lang}`}>

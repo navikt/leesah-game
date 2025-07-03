@@ -7,11 +7,11 @@ import catSleepingGif from '../../assets/cat_sleeping.gif'
 import spinningFoxGif from '../../assets/spinning-fox.gif'
 import megamanGif from '../../assets/megaman.gif'
 import { getCollection } from 'astro:content'
-import LanguagePicker from '../../components/LanguagePicker.astro';
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import LanguagePicker from '../../components/LanguagePicker.astro'
+import { getLangFromUrl, useTranslations } from '../../i18n/utils'
 
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
 
 let tasksPages = await getCollection('tasks')
 // Moving team-registration to be first in the list
@@ -34,9 +34,9 @@ const oppsettSider = await getCollection('oppsett')
             <div class="ingress-container">
                 <div class="text-container">
                     <p>
-                        Leesah Game is an event-driven application development game that challenges players to build an event-driven application.
-                        The application handles different types of tasks that it receives as events on a Kafka-based event stream.
-                        The tasks vary from very simple to more complex.
+                        Leesah Game is an event-driven application development game that challenges players to build an
+                        event-driven application. The application handles different types of tasks that it receives as
+                        events on a Kafka-based event stream. The tasks vary from very simple to more complex.
                     </p>
                     <img class="cat-sleeping" src={catSleepingGif.src} alt={t('alt.sleeping_cat')} />
                 </div>
@@ -44,15 +44,26 @@ const oppsettSider = await getCollection('oppsett')
             </div>
 
             <p>
-                Nav builds most new systems as event-driven, and the purpose of Leesah Game is for players to gain a better understanding of how to build event-driven applications.
-                Players also get an insight into the advantages and disadvantages of such systems. Besides, it's a lot of fun!
+                Nav builds most new systems as event-driven, and the purpose of Leesah Game is for players to gain a
+                better understanding of how to build event-driven applications. Players also get an insight into the
+                advantages and disadvantages of such systems. Besides, it's a lot of fun!
             </p>
 
             <div>
                 <h2>Getting started</h2>
+                <p>
+                    We have created libraries in several different languages, so just choose the one you like best. Each
+                    library will have its own documentation on how to get started.
+                </p>
                 <ul>
                     <li>
-                        <a href="/en/setup/local/">Local Leesah</a>
+                        <a href="https://pypi.org/project/leesah-game/">Python 🐍</a>
+                    </li>
+                    <li>
+                        <a href="https://www.npmjs.com/package/@navikt/leesah-game">JavaScript</a>
+                    </li>
+                    <li>
+                        <a href="https://pkg.go.dev/github.com/navikt/go-leesah">Go</a>
                     </li>
                 </ul>
             </div>
@@ -60,15 +71,16 @@ const oppsettSider = await getCollection('oppsett')
             <div>
                 <h2>Task specific documentation</h2>
                 <p>
-                    The tasks you can encounter in Leesah Game are as follows, and they do not necessarily come in the order of
-                    the list.
+                    The tasks you can encounter in Leesah Game are as follows, and they do not necessarily come in the
+                    order of the list.
                 </p>
                 <ul>
                     {
                         tasksPages.map((side) =>
                             side.data.title === 'team-registration' ? (
                                 <li>
-                                    <a href={`/${lang}/tasks/${side.slug}/`}>{side.data.title}</a> (First task, and needs to be done before we start)
+                                    <a href={`/${lang}/tasks/${side.slug}/`}>{side.data.title}</a> (First task, and
+                                    needs to be done before we start)
                                 </li>
                             ) : (
                                 <li>

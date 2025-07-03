@@ -10,8 +10,8 @@ import { getCollection } from 'astro:content'
 import LanguagePicker from '../components/LanguagePicker.astro'
 import { getLangFromUrl, useTranslations } from '../i18n/utils'
 
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
 
 let oppgaverSider = await getCollection('oppgaver')
 // Flytter lagregistrering til å være først i listen
@@ -53,17 +53,19 @@ const oppsettSider = await getCollection('oppsett')
             <div>
                 <h2>Kom i gang</h2>
                 <p>
-                    Vi har to versjoner av Leesah Game, en hvor man lærer å deploye en applikasjon på Nais-plattformen,
-                    og en hvor man kjører lokalt. Disse to forskjellige versjonene har også to forskjellige kodebaser.
+                    Vi har laget biblioteker i flere forskjellige språk, så her er det bare å velge det du liker best.
+                    Hvert bibliotek vil ha sin egen dokumentasjon for hvordan man kommer i gang.
                 </p>
                 <ul>
-                    {
-                        oppsettSider.map((side) => (
-                            <li>
-                                <a href={`/oppsett/${side.slug}/`}>{side.data.title}</a>
-                            </li>
-                        ))
-                    }
+                    <li>
+                        <a href="https://pypi.org/project/leesah-game/">Python 🐍</a>
+                    </li>
+                    <li>
+                        <a href="https://www.npmjs.com/package/@navikt/leesah-game">JavaScript</a>
+                    </li>
+                    <li>
+                        <a href="https://pkg.go.dev/github.com/navikt/go-leesah">Go</a>
+                    </li>
                 </ul>
             </div>
 
@@ -75,28 +77,32 @@ const oppsettSider = await getCollection('oppsett')
                 </p>
                 <ul>
                     {
-                        oppgaverSider.filter((side) => !side.slug.includes('nais')).map((side) =>
-                            side.data.title === 'lagregistrering' ? (
-                                <li>
-                                    <a href={`/oppgaver/${side.slug}/`}>{side.data.title}</a> (Første oppgaven som
-                                    alltid må gjøres før man kan løse andre oppgaver)
-                                </li>
-                            ) : (
-                                <li>
-                                    <a href={`/oppgaver/${side.slug}/`}>{side.data.title}</a>
-                                </li>
+                        oppgaverSider
+                            .filter((side) => !side.slug.includes('nais'))
+                            .map((side) =>
+                                side.data.title === 'lagregistrering' ? (
+                                    <li>
+                                        <a href={`/oppgaver/${side.slug}/`}>{side.data.title}</a> (Første oppgaven som
+                                        alltid må gjøres før man kan løse andre oppgaver)
+                                    </li>
+                                ) : (
+                                    <li>
+                                        <a href={`/oppgaver/${side.slug}/`}>{side.data.title}</a>
+                                    </li>
+                                )
                             )
-                        )
                     }
                 </ul>
                 <p>NAIS spesifike oppgaver:</p>
                 <ul>
                     {
-                        oppgaverSider.filter((side) => side.slug.includes('nais/')).map((side) => (
-                            <li>
-                                <a href={`/oppgaver/${side.slug}/`}>{side.data.title}</a>
-                            </li>
-                        ))
+                        oppgaverSider
+                            .filter((side) => side.slug.includes('nais/'))
+                            .map((side) => (
+                                <li>
+                                    <a href={`/oppgaver/${side.slug}/`}>{side.data.title}</a>
+                                </li>
+                            ))
                     }
                 </ul>
             </div>

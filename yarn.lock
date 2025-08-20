@@ -22,11 +22,6 @@
   resolved "https://registry.yarnpkg.com/@astrojs/internal-helpers/-/internal-helpers-0.7.1.tgz#50ce657c415b18b88369e9c6eeb12da208783905"
   integrity sha512-7dwEVigz9vUWDw3nRwLQ/yH/xYovlUA0ZD86xoeKEBmkz9O6iELG1yri67PgAPW6VLL/xInA4t7H0CK6VmtkKQ==
 
-"@astrojs/internal-helpers@0.7.1":
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/@astrojs/internal-helpers/-/internal-helpers-0.7.1.tgz#50ce657c415b18b88369e9c6eeb12da208783905"
-  integrity sha512-7dwEVigz9vUWDw3nRwLQ/yH/xYovlUA0ZD86xoeKEBmkz9O6iELG1yri67PgAPW6VLL/xInA4t7H0CK6VmtkKQ==
-
 "@astrojs/language-server@^2.15.0":
   version "2.15.4"
   resolved "https://registry.npmjs.org/@astrojs/language-server/-/language-server-2.15.4.tgz"
@@ -840,10 +835,10 @@ array-iterate@^2.0.0:
   resolved "https://registry.npmjs.org/array-iterate/-/array-iterate-2.0.1.tgz"
   integrity sha512-I1jXZMjAgCMmxT4qxXfPXa6SthSoE8h6gkSI9BGGNv8mP8G/v0blc+qFnZu6K42vTOiuME596QaLO0TP3Lk0xg==
 
-astro@5.12.9:
-  version "5.12.9"
-  resolved "https://registry.yarnpkg.com/astro/-/astro-5.12.9.tgz#f579b09add12a4bd02f438866c5a6a5832c9215e"
-  integrity sha512-cZ7kZ61jyE5nwSrFKSRyf5Gds+uJELqQxJFqMkcgiWQvhWZJUSShn8Uz3yc9WLyLw5Kim5P5un9SkJSGogfEZQ==
+astro@5.13.1:
+  version "5.13.1"
+  resolved "https://registry.yarnpkg.com/astro/-/astro-5.13.1.tgz#38f7a441abc95cedcff9c1259e95a6f99444d5c9"
+  integrity sha512-8p0UmH/h5DbmxSiu4W9RAODlRrqIYzI+hpDYhyU9jd/og1o9AIF1OsL90KIa/vTdSpm1kNRCfJnwDHddWP3q5A==
   dependencies:
     "@astrojs/compiler" "^2.12.2"
     "@astrojs/internal-helpers" "0.7.1"

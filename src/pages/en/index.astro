@@ -74,18 +74,20 @@ tasksPages.sort((side) => (side.data.title === 'team-registration' ? -1 : 0))
                 </p>
                 <ul>
                     {
-                        tasksPages.map((side) =>
-                            side.data.title === 'team-registration' ? (
-                                <li>
-                                    <a href={`/${lang}/tasks/${side.slug}/`}>{side.data.title}</a> (First task, and
-                                    needs to be done before we start)
-                                </li>
-                            ) : (
-                                <li>
-                                    <a href={`/${lang}/tasks/${side.slug}/`}>{side.data.title}</a>
-                                </li>
+                        tasksPages
+                            .filter((side) => !side.data.title.includes('deduplication'))
+                            .map((side) =>
+                                side.data.title === 'team-registration' ? (
+                                    <li>
+                                        <a href={`/${lang}/tasks/${side.slug}/`}>{side.data.title}</a> (First task, and
+                                        needs to be done before we start)
+                                    </li>
+                                ) : (
+                                    <li>
+                                        <a href={`/${lang}/tasks/${side.slug}/`}>{side.data.title}</a>
+                                    </li>
+                                )
                             )
-                        )
                     }
                 </ul>
             </div>

@@ -77,6 +77,7 @@ oppgaverSider.sort((side) => (side.data.title === 'lagregistrering' ? -1 : 0))
                     {
                         oppgaverSider
                             .filter((side) => !side.slug.includes('nais'))
+                            .filter((side) => !side.data.title.includes('deduplisering'))
                             .map((side) =>
                                 side.data.title === 'lagregistrering' ? (
                                     <li>

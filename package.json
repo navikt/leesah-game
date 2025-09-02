@@ -12,8 +12,8 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "astro": "5.12.9",
-    "@astrojs/node": "9.4.1",
+    "astro": "5.13.5",
+    "@astrojs/node": "9.4.3",
     "prettier": "^3.6.2",
     "typescript": "^5.9.2"
   },

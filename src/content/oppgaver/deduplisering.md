@@ -45,12 +45,12 @@ I denne oppgaven vil Quizmaster sende ut samme melding flere ganger, og det er d
 
 ### Om du svarer på meldingen flere ganger
 
-Du vil se at du har fått underkjent løsningen din på leaderboardet, som betyr at oppgaven blir låst som underkjent til du nullstiller den.
+Løsningen din har blitt underkjent i leaderboardet, og vil forbli underkjent helt til du nullstiller den.
 
 ![Deduplisering feilet, vist i Leaderboardet](../../assets/deduplisering-feilet.png)
 
-
-For å nullstille oppgaven for ditt team må du sende følgende streng som svar på oppgaven:
+### Om du svarer på meldingen flere ganger
+For å nullstille oppgaven må du sende følgende streng som svar på oppgaven:
 
 `Du lurte meg :(`
 

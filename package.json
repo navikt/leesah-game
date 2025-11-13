@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "astro": "5.12.9",
+    "astro": "5.15.6",
     "@astrojs/node": "9.4.1",
     "prettier": "^3.6.2",
     "typescript": "^5.9.2"

@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@astrojs/check@^0.9.4":
-  version "0.9.4"
-  resolved "https://registry.npmjs.org/@astrojs/check/-/check-0.9.4.tgz"
-  integrity sha512-IOheHwCtpUfvogHHsvu0AbeRZEnjJg3MopdLddkJE70mULItS/Vh37BHcI00mcOJcH1vhD3odbpvWokpxam7xA==
+"@astrojs/check@^0.9.5":
+  version "0.9.5"
+  resolved "https://registry.yarnpkg.com/@astrojs/check/-/check-0.9.5.tgz#302a2bacda608556185eabdd413ab593b08d2729"
+  integrity sha512-88vc8n2eJ1Oua74yXSGo/8ABMeypfQPGEzuoAx2awL9Ju8cE6tZ2Rz9jVx5hIExHK5gKVhpxfZj4WXm7e32g1w==
   dependencies:
     "@astrojs/language-server" "^2.15.0"
     chokidar "^4.0.1"
@@ -16,11 +16,6 @@
   version "2.13.0"
   resolved "https://registry.yarnpkg.com/@astrojs/compiler/-/compiler-2.13.0.tgz#a40bef3106fff808bd91b41680275a7e28996d63"
   integrity sha512-mqVORhUJViA28fwHYaWmsXSzLO9osbdZ5ImUfxBarqsYdMlPbqAqGJCxsNzvppp1BEzc1mJNjOVvQqeDN8Vspw==
-
-"@astrojs/internal-helpers@0.7.1":
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/@astrojs/internal-helpers/-/internal-helpers-0.7.1.tgz#50ce657c415b18b88369e9c6eeb12da208783905"
-  integrity sha512-7dwEVigz9vUWDw3nRwLQ/yH/xYovlUA0ZD86xoeKEBmkz9O6iELG1yri67PgAPW6VLL/xInA4t7H0CK6VmtkKQ==
 
 "@astrojs/internal-helpers@0.7.4":
   version "0.7.4"
@@ -78,12 +73,12 @@
     unist-util-visit-parents "^6.0.1"
     vfile "^6.0.3"
 
-"@astrojs/node@9.4.1":
-  version "9.4.1"
-  resolved "https://registry.yarnpkg.com/@astrojs/node/-/node-9.4.1.tgz#3debe92644f544d0ac71390305ea36d53d671357"
-  integrity sha512-lpSAQFS4IiCFGQHL/q/1CcX+AmFbma4NOoV5j7Z7Ml2wevyDe/2kAjScKIKk2DA7k/MrXSZ5ZN+IxJgpPbnAOQ==
+"@astrojs/node@9.5.0":
+  version "9.5.0"
+  resolved "https://registry.yarnpkg.com/@astrojs/node/-/node-9.5.0.tgz#a2af2f63e6b27f89f3eb0379441f3bf75caf217b"
+  integrity sha512-x1whLIatmCefaqJA8FjfI+P6FStF+bqmmrib0OUGM1M3cZhAXKLgPx6UF2AzQ3JgpXgCWYM24MHtraPvZhhyLQ==
   dependencies:
-    "@astrojs/internal-helpers" "0.7.1"
+    "@astrojs/internal-helpers" "0.7.4"
     send "^1.2.0"
     server-destroy "^1.0.1"
 
@@ -2794,10 +2789,10 @@ typescript-auto-import-cache@^0.3.3:
   dependencies:
     semver "^7.3.8"
 
-typescript@^5.9.2:
-  version "5.9.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.9.2.tgz#d93450cddec5154a2d5cabe3b8102b83316fb2a6"
-  integrity sha512-CWBzXQrc/qOkhidw1OzBTQuYRbfyxDXJMVJ1XNwUHGROVmuaeiEm3OslpZ1RV96d7SKKjZKrSJu3+t/xlw3R9A==
+typescript@^5.9.3:
+  version "5.9.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.9.3.tgz#5b4f59e15310ab17a216f5d6cf53ee476ede670f"
+  integrity sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==
 
 ufo@^1.5.4, ufo@^1.6.1:
   version "1.6.1"

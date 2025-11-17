@@ -872,10 +872,10 @@ array-iterate@^2.0.0:
   resolved "https://registry.npmjs.org/array-iterate/-/array-iterate-2.0.1.tgz"
   integrity sha512-I1jXZMjAgCMmxT4qxXfPXa6SthSoE8h6gkSI9BGGNv8mP8G/v0blc+qFnZu6K42vTOiuME596QaLO0TP3Lk0xg==
 
-astro@5.15.6:
-  version "5.15.6"
-  resolved "https://registry.yarnpkg.com/astro/-/astro-5.15.6.tgz#e483f0c00f04cd675fd13ac21b8be088abddeda9"
-  integrity sha512-luLcw+FGkeUHYTfbmYjIWHB4T0D+3VSjCy8DKTXglJ2O3lU40AbwmPVBcnqhRnA1SneKzP5V5pzqjsHzUZ1+Rg==
+astro@5.15.8:
+  version "5.15.8"
+  resolved "https://registry.yarnpkg.com/astro/-/astro-5.15.8.tgz#4261554a36f0c2e8f14c56311f158d0ae44d8329"
+  integrity sha512-QiiRnNPdxCcAGO2UlO07o+QeGgRfEC5Dlm0x35WPB/ixFK1T2bsNB6KaXri70cVkYY1GYgoRtrWv3HCR26o9aw==
   dependencies:
     "@astrojs/compiler" "^2.13.0"
     "@astrojs/internal-helpers" "0.7.4"

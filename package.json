@@ -11,10 +11,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.5",
-    "astro": "5.16.0",
+    "@astrojs/check": "^0.9.6",
+    "astro": "5.16.3",
     "@astrojs/node": "9.5.1",
-    "prettier": "^3.6.2",
+    "prettier": "^3.7.3",
     "typescript": "^5.9.3"
   },
   "prettier": {

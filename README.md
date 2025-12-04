@@ -23,12 +23,6 @@ Biblioteker vi tilbyr:
 - [Go](https://github.com/navikt/go-leesah)
 - [JavaScript](https://github.com/navikt/leesah-game-javascript)
 
-Templates (brukes for NAIS-versjonen):
-
-- [Python](https://github.com/navikt/leesah-game-starter-python)
-- [Typescript](https://github.com/navikt/leesah-game-starter-ts)
-- [Go](https://github.com/navikt/leesah-game-template-go)
-
 ## Videreutvikling av dokumentasjon/Astro Starter Kit: Minimal
 
 ### 🚀 Project Structure

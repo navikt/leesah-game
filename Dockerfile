@@ -1,7 +1,7 @@
 FROM node:24 AS build
 WORKDIR /app
 
-COPY astro.config.mjs tsconfig.json package.json package-lock.json ./
+COPY astro.config.mjs tsconfig.json package.json ./
 COPY public ./public
 COPY src ./src
 

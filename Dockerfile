@@ -16,4 +16,6 @@ WORKDIR /app
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/node_modules/ ./node_modules/
 
+ENV HOST=0.0.0.0
+
 CMD ["./dist/server/entry.mjs"]

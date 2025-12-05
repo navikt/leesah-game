@@ -5,8 +5,8 @@ COPY astro.config.mjs tsconfig.json package.json ./
 COPY public ./public
 COPY src ./src
 
-RUN npm install
-RUN npm run build
+RUN yarn install
+RUN yarn build
 
 FROM cgr.dev/chainguard/node AS runtime
 ENV NODE_ENV=production

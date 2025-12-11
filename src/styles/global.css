@@ -23,7 +23,7 @@ body>* {
 }
 
 h2 {
-    color: #d08770;
+    color: #D58971;
     font-feature-settings:
         'liga' off,
         'clig' off;
@@ -39,7 +39,7 @@ h2 {
 }
 
 h3 {
-    color: #d08770;
+    color: #D58971;
     font-feature-settings:
         'liga' off,
         'clig' off;
@@ -52,7 +52,7 @@ h3 {
 }
 
 h4 {
-    color: #d08770;
+    color: #D58971;
     font-feature-settings:
         'liga' off,
         'clig' off;
@@ -85,7 +85,7 @@ p {
 
 
 code {
-    color: #d08770;
+    color: #D58971;
     font-feature-settings:
         'liga' off,
         'clig' off;
@@ -135,7 +135,7 @@ code {
 ul {
     li::marker {
         content: '>> ';
-        color: #d08770;
+        color: #D58971;
         font-feature-settings:
             'liga' off,
             'clig' off;
@@ -161,7 +161,7 @@ ul {
 
 ol {
     li::marker {
-        color: #d08770;
+        color: #D58971;
         font-feature-settings:
             'liga' off,
             'clig' off;

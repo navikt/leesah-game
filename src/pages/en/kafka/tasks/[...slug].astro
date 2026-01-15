@@ -1,18 +1,18 @@
 ---
-import '../../styles/global.css'
+import '../../../../styles/global.css'
 import { getCollection } from 'astro:content'
-import Header from '../../components/Header/Header.astro'
-import { getLangFromUrl } from '../../i18n/utils'
+import Header from '../../../../components/Header/Header.astro'
+import { getLangFromUrl } from '../../../../i18n/utils.ts'
+
+const lang = getLangFromUrl(Astro.url);
 
 // getStaticPaths() ignored in dynamic page /src/pages/oppgaver/[...slug].astro.
 // Add `export const prerender = true;` to prerender the page as static HTML during the build process.
 export const prerender = true;
 
-const lang = getLangFromUrl(Astro.url);
-
 export async function getStaticPaths() {
-    const oppgaverEntries = await getCollection('oppgaver')
-    return oppgaverEntries.map((entry) => ({
+    const taskEntries = await getCollection('tasks')
+    return taskEntries.map((entry) => ({
         params: { slug: entry.slug },
         props: { entry },
     }))
@@ -35,7 +35,7 @@ const { Content } = await entry.render()
         <meta charset="utf-8" />
         <link rel="icon" type="image/svg+xml" href="/cat.svg" />
         <meta name="viewport" content="width=device-width" />
-        <title>Oppgave: {entry.slug}</title>
+        <title>Task: {entry.slug}</title>
     </head>
     <body>
         <Header />

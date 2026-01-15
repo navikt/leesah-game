@@ -80,12 +80,12 @@ oppgaverSider.sort((side) => (side.data.title === 'lagregistrering' ? -1 : 0))
                     .map((side) =>
                         side.data.title === 'lagregistrering' ? (
                                 <li>
-                                    <a href={`/oppgaver/${side.slug}/`}>{side.data.title}</a> (Første oppgaven som
+                                    <a href={`/kafka/oppgaver/${side.slug}/`}>{side.data.title}</a> (Første oppgaven som
                                     alltid må gjøres før man kan løse andre oppgaver)
                                 </li>
                         ) : (
                                 <li>
-                                    <a href={`/oppgaver/${side.slug}/`}>{side.data.title}</a>
+                                    <a href={`/kafka/oppgaver/${side.slug}/`}>{side.data.title}</a>
                                 </li>
                         )
                     )
@@ -107,7 +107,7 @@ oppgaverSider.sort((side) => (side.data.title === 'lagregistrering' ? -1 : 0))
 
     <div class="lenkemeny">
 
-        <a class="lenkemeny-element" href={`/leesah/leesah-kurs`}>
+        <a class="lenkemeny-element" href={`/kafka/leesah-kurs`}>
             <img src={megamanGif.src} height="100" alt={t('alt.megaman')} />
             <h2 class="lenkemeny-element-heading">{t('nav.leesah-play')} --></h2>
         </a>

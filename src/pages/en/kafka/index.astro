@@ -78,12 +78,12 @@ tasksPages.sort((side) => (side.data.title === 'team-registration' ? -1 : 0))
                     .map((side) =>
                         side.data.title === 'team-registration' ? (
                                 <li>
-                                    <a href={`/${lang}/tasks/${side.slug}/`}>{side.data.title}</a> (First task, and
+                                    <a href={`/${lang}/kafka/tasks/${side.slug}/`}>{side.data.title}</a> (First task, and
                                     needs to be done before we start)
                                 </li>
                         ) : (
                                 <li>
-                                    <a href={`/${lang}/tasks/${side.slug}/`}>{side.data.title}</a>
+                                    <a href={`/${lang}/kafka/tasks/${side.slug}/`}>{side.data.title}</a>
                                 </li>
                         )
                     )

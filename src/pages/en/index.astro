@@ -28,13 +28,9 @@ tasksPages.sort((side) => (side.data.title === 'team-registration' ? -1 : 0))
     <body>
         <main>
             <Header tittel="Life is a stream of events" />
+            <p>Blablabla</p>
 
             <div class="lenkemeny">
-                <a class="lenkemeny-element" href={`/${lang}/who-is-leesah`}>
-                    <img src={spinningFoxGif.src} height="100" alt={t('alt.spinning_fox')} />
-                    <h2 class="lenkemeny-element-heading">{t('nav.about')} --></h2>
-                </a>
-
                 <a class="lenkemeny-element" href={`/${lang}/leesah`}>
                     <img src={megamanGif.src} height="100" alt={t('alt.megaman')} />
                     <h2 class="lenkemeny-element-heading">{t('nav.leesah-game')} --></h2>
@@ -43,6 +39,13 @@ tasksPages.sort((side) => (side.data.title === 'team-registration' ? -1 : 0))
                 <a class="lenkemeny-element" href={`/pleesah`}>
                     <img src={poddyGif.src} height="100" alt={t('alt.poddy_gif')} />
                     <h2 class="lenkemeny-element-heading">{t('nav.pleesah-game')} --></h2>
+                </a>
+
+                <br/>
+
+                <a class="lenkemeny-element" href={`/${lang}/who-is-leesah`}>
+                    <img src={spinningFoxGif.src} height="100" alt={t('alt.spinning_fox')} />
+                    <h2 class="lenkemeny-element-heading">{t('nav.about')} --></h2>
                 </a>
             </div>
         </main>

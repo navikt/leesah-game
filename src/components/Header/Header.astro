@@ -1,6 +1,6 @@
 ---
 import './header.css'
-import leesahWithClouds from '../../assets/leesah-with-clouds.svg?raw'
+import leesahHeadingKort from '../../assets/heading-kort.svg?raw'
 import { getLangFromUrl, useTranslatedPath } from '../../i18n/utils'
 
 const { tittel } = Astro.props
@@ -10,7 +10,7 @@ const translatePath = useTranslatedPath(lang);
 
 <header class="header-container">
     <a href={translatePath("/")}>
-        <Fragment set:html={leesahWithClouds} />
+        <Fragment set:html={leesahHeadingKort} />
     </a>
     {tittel && <h1>{tittel}</h1>}
 </header>

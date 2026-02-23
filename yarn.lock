@@ -73,10 +73,10 @@
     unist-util-visit-parents "^6.0.2"
     vfile "^6.0.3"
 
-"@astrojs/node@9.5.3":
-  version "9.5.3"
-  resolved "https://registry.yarnpkg.com/@astrojs/node/-/node-9.5.3.tgz#26b8af1fd1628e8be5f267782b922ee7d2519ce2"
-  integrity sha512-72jrSn0XtrD7COJVO6TxJmyU1yXdYK7MDdN/+fhqhf4YOhxuIPHclkXrJs8FbLCMx5ur56d/1ijX4XBeneqyXQ==
+"@astrojs/node@9.5.4":
+  version "9.5.4"
+  resolved "https://registry.yarnpkg.com/@astrojs/node/-/node-9.5.4.tgz#0db5a71c8c0d47921f5af8176db218f059632d59"
+  integrity sha512-AbPSZsMGu8hXPR2XxV79RaKy8h6wijhtoqZGeUf4OXg2w1mxXlx4VnIc1D+QvtsgauSz7P5PLhmvf6w/J41GJg==
   dependencies:
     "@astrojs/internal-helpers" "0.7.5"
     send "^1.2.1"
@@ -1011,10 +1011,10 @@ array-iterate@^2.0.0:
   resolved "https://registry.npmjs.org/array-iterate/-/array-iterate-2.0.1.tgz"
   integrity sha512-I1jXZMjAgCMmxT4qxXfPXa6SthSoE8h6gkSI9BGGNv8mP8G/v0blc+qFnZu6K42vTOiuME596QaLO0TP3Lk0xg==
 
-astro@5.17.2:
-  version "5.17.2"
-  resolved "https://registry.yarnpkg.com/astro/-/astro-5.17.2.tgz#f3c26a71927f05706d964e70918dd6927fad8907"
-  integrity sha512-7jnMqGo53hOQNwo1N/wqeOvUp8wwW/p+DeerSjSkHNx8L/1mhy6P7rVo7EhdmF8DpKqw0tl/B5Fx1WcIzg1ysA==
+astro@5.17.3:
+  version "5.17.3"
+  resolved "https://registry.yarnpkg.com/astro/-/astro-5.17.3.tgz#dd0d3fd659b280d7ff20fc5fc37277675ebd2e82"
+  integrity sha512-69dcfPe8LsHzklwj+hl+vunWUbpMB6pmg35mACjetxbJeUNNys90JaBM8ZiwsPK689SAj/4Zqb1ayaANls9/MA==
   dependencies:
     "@astrojs/compiler" "^2.13.0"
     "@astrojs/internal-helpers" "0.7.5"
@@ -1039,7 +1039,7 @@ astro@5.17.2:
     dlv "^1.1.3"
     dset "^3.1.4"
     es-module-lexer "^1.7.0"
-    esbuild "^0.27.0"
+    esbuild "^0.27.3"
     estree-walker "^3.0.3"
     flattie "^1.1.1"
     fontace "~0.4.0"
@@ -1457,7 +1457,7 @@ esbuild@^0.25.0:
     "@esbuild/win32-ia32" "0.25.12"
     "@esbuild/win32-x64" "0.25.12"
 
-esbuild@^0.27.0:
+esbuild@^0.27.3:
   version "0.27.3"
   resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.27.3.tgz#5859ca8e70a3af956b26895ce4954d7e73bd27a8"
   integrity sha512-8VwMnyGCONIs6cWue2IdpHxHnAjzxnw2Zr7MkVxB2vjmQ2ivqGFb4LEG3SMnv0Gb2F/G/2yA8zUaiL1gywDCCg==

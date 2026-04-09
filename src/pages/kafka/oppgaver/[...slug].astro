@@ -1,6 +1,6 @@
 ---
 import '../../../styles/global.css'
-import { getCollection } from 'astro:content'
+import { getCollection, render } from 'astro:content'
 import Header from '../../../components/Header/Header.astro'
 import { getLangFromUrl } from '../../../i18n/utils.ts'
 
@@ -13,13 +13,13 @@ const lang = getLangFromUrl(Astro.url);
 export async function getStaticPaths() {
     const oppgaverEntries = await getCollection('oppgaver')
     return oppgaverEntries.map((entry) => ({
-        params: { slug: entry.slug },
+        params: { slug: entry.id.replace(/\.mdx?$/, '') },
         props: { entry },
     }))
 }
 
 const { entry } = Astro.props
-const { Content } = await entry.render()
+const { Content } = await render(entry)
 ---
 
 <style is:global>
@@ -35,7 +35,7 @@ const { Content } = await entry.render()
         <meta charset="utf-8" />
         <link rel="icon" type="image/svg+xml" href="/cat.svg" />
         <meta name="viewport" content="width=device-width" />
-        <title>Oppgave: {entry.slug}</title>
+        <title>Oppgave: {entry.id.replace(/\.mdx?$/, '')}</title>
     </head>
     <body>
         <Header />

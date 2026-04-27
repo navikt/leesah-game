@@ -15,27 +15,30 @@ jobs:
 
     steps:
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0 # Fetch all history for what-changed action
+      - name: Determine what to do
+        id: changed-files
+        uses: "nais/what-changed@main"
+        with:
+          files: .nais/app.yaml
+
       - uses: actions/setup-node@v6
         with:
           node-version: 24
-      - name: Yarn install
-        run: yarn install
-      - name: Yarn build
-        run: yarn build
+      - run: yarn install
+      - run: yarn build
 
       - name: Build and push
+        if: steps.changed-files.outputs.changed != 'only-inputs'
         uses: nais/docker-build-push@v0
         id: docker-build-push
         with:
-          team: leesah-quiz
-          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
-          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
+          team: leesah
 
       - name: Deploy to prod
         uses: nais/deploy/actions/deploy@v2
         env:
           CLUSTER: prod-gcp
-          RESOURCE: .nais/prod.yaml
-          VAR: image=${{ steps.docker-build-push.outputs.image }}
-          TELEMETRY: ${{ steps.docker-build-push.outputs.telemetry }}
-
+          RESOURCE: .nais/app.yaml
+          WORKLOAD_IMAGE: ${{ steps.docker-build-push.outputs.image }}

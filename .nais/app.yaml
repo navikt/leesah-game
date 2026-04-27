@@ -2,11 +2,10 @@ apiVersion: "nais.io/v1alpha1"
 kind: "Application"
 metadata:
   name: leesah-dokumentasjon
-  namespace: leesah-quiz
+  namespace: leesah
   labels:
-    team: leesah-quiz
+    team: leesah
 spec:
-  image: {{image}}
   port: 4321
   liveness:
     path: /api/isAlive
